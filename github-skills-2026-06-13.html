@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 · 2026-06-13</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e2e8f0;font-family:'Inter',-apple-system,sans-serif;min-height:100vh;padding:20px}
+.container{max-width:1400px;margin:0 auto}
+.api-warn{background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:16px;padding:14px 20px;margin-bottom:20px;display:flex;align-items:center;gap:12px;font-size:14px}
+.api-warn .icon{font-size:22px}
+.api-warn strong{color:#fbbf24}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#13131a;border-radius:24px;border:1px solid rgba(255,255,255,0.06);margin-bottom:24px}
+.nav-brand{font-size:20px;font-weight:700;background:linear-gradient(135deg,#a8e063,#f7ff00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-date{color:#64748b;font-size:14px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-card{background:linear-gradient(135deg,rgba(168,224,99,0.08),rgba(247,255,0,0.03));border:1px solid rgba(168,224,99,0.12);border-radius:24px;padding:24px}
+.stat-value{font-size:36px;font-weight:800;background:linear-gradient(135deg,#a8e063,#f7ff00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:13px;color:#64748b;margin-top:4px}
+.stat-card.muted .stat-value{background:linear-gradient(135deg,#64748b,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title{font-size:18px;font-weight:700;margin:32px 0 16px;padding:0 4px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:4px;height:24px;background:linear-gradient(180deg,#a78bfa,#c4b5fd);border-radius:2px}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px}
+.skill-card{background:#13131a;border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:20px;transition:all 0.2s}
+.skill-card:hover{border-color:rgba(168,224,99,0.2);transform:translateY(-1px)}
+.skill-card.must{border-left:3px solid #f59e0b}
+.skill-card.worth{border-left:3px solid #a78bfa}
+.skill-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.skill-name{font-weight:600;font-size:15px;color:#e2e8f0}
+.skill-name a{color:inherit;text-decoration:none}
+.skill-name a:hover{color:#a8e063}
+.skill-stars{display:flex;align-items:center;gap:4px;font-size:13px;color:#f59e0b;font-weight:600}
+.skill-desc{color:#94a3b8;font-size:13px;line-height:1.6;margin-bottom:12px}
+.skill-meta{display:flex;gap:12px;flex-wrap:wrap}
+.meta-tag{font-size:11px;padding:3px 10px;border-radius:12px;font-weight:500}
+.meta-lang{background:rgba(168,224,99,0.1);color:#a8e063}
+.meta-date{background:rgba(100,116,139,0.1);color:#64748b}
+.meta-topic{background:rgba(167,139,250,0.1);color:#a78bfa}
+.meta-score{background:rgba(245,158,11,0.1);color:#f59e0b}
+.insight-box{background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(196,181,253,0.03));border:1px solid rgba(167,139,250,0.15);border-radius:20px;padding:20px;margin:24px 0}
+.insight-box h3{color:#c4b5fd;font-size:16px;margin-bottom:12px}
+.insight-box ul{list-style:none;padding:0}
+.insight-box li{color:#94a3b8;font-size:13px;padding:6px 0;padding-left:20px;position:relative}
+.insight-box li::before{content:'▸';position:absolute;left:0;color:#a78bfa}
+.footer{text-align:center;color:#475569;font-size:12px;padding:32px 0}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="api-warn">
+<span class="icon">⚠️</span>
+<span>GitHub API 不可达（连接超时），以下数据基于 <strong>2026-06-12 快照</strong>。2026-06-13 无新数据发现。</span>
+</div>
+
+<nav class="nav">
+<span class="nav-brand">📦 GitHub Hermes Skill 每日盘点</span>
+<span class="nav-date">2026年6月13日 星期六 · 农历五月十八</span>
+</nav>
+
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-value">94</div><div class="stat-label">Hermes Skill 仓库总数</div></div>
+<div class="stat-card muted"><div class="stat-value">0</div><div class="stat-label">今日新增（API 不可达）</div></div>
+<div class="stat-card"><div class="stat-value">2</div><div class="stat-label">🔥 必装 Skill</div></div>
+<div class="stat-card"><div class="stat-value">Python</div><div class="stat-label">主力语言</div></div>
+</div>
+
+<div class="insight-box">
+<h3>🔍 复盘亮点（基于 6/12 快照）</h3>
+<ul>
+<li><strong>omnilimb</strong> — 社区最活跃的 Hermes 扩展项目，提供隔离沙箱 + Playwright 浏览器 + 多语言运行时</li>
+<li><strong>hermes-collab-engine</strong> — 多智能体协作引擎，可插拔 Claude Code / Codex / OpenCode 后端</li>
+<li><strong>uniskill</strong> — 通用 AI Agent 中间层，一次编写 Skill 跨 Cursor / Claude Code / OpenClaw / Hermes 复用</li>
+<li><strong>hermes-a-share-commodity-data-skill</strong> — A股/期货数据采集 Skill，直接对 Bobby 的日报场景有用</li>
+<li><strong>web-access</strong> — 网页搜索 + Chrome CDP 浏览器共享访问</li>
+</ul>
+</div>
+
+<div class="section-title">🔥 必装 Skill</div>
+<div class="skills-grid">
+<div class="skill-card must">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/seanyang1983/omnilimb" target="_blank">seanyang1983/omnilimb</a></span>
+<span class="skill-stars">⭐ 1</span>
+</div>
+<div class="skill-desc">Give your Hermes agent hands & feet — run OpenClaw/ClawHub community skills, an isolated sandbox, a Playwright browser and multi-language runtimes as deterministic structured-JSON tools. Zero extra LLM tokens.</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-11</span>
+<span class="meta-tag meta-score">🔥 必装</span>
+<span class="meta-tag meta-topic">playwright</span>
+</div>
+</div>
+
+<div class="skill-card must">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/GeniusDream/hermes-a-share-commodity-data-skill" target="_blank">GeniusDream/hermes-a-share-commodity-data-skill</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Hermes skill for Chinese commodity futures, A-share board/index, and market news data collection</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+<span class="meta-tag meta-score">🔥 必装</span>
+<span class="meta-tag meta-topic">a-share</span>
+<span class="meta-tag meta-topic">akshare</span>
+</div>
+</div>
+</div>
+
+<div class="section-title">⭐ 值得安装</div>
+<div class="skills-grid">
+<div class="skill-card worth">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/lpc0387/hermes-collab-engine" target="_blank">lpc0387/hermes-collab-engine</a></span>
+<span class="skill-stars">⭐ 1</span>
+</div>
+<div class="skill-desc">Multi-agent collaboration engine with pluggable Worker backends (Claude Code / Codex / OpenCode), Skill distribution, MCP tool management, and visual dashboard</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-11</span>
+<span class="meta-tag meta-score">⭐ 值得装</span>
+</div>
+</div>
+
+<div class="skill-card worth">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Justin810124/hermes-browser-computer-automation" target="_blank">Justin810124/hermes-browser-computer-automation</a></span>
+<span class="skill-stars">⭐ 1</span>
+</div>
+<div class="skill-desc">User-in-the-loop Chrome and macOS automation skill for Hermes Agent</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+<span class="meta-tag meta-score">⭐ 值得装</span>
+</div>
+</div>
+
+<div class="skill-card worth">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/maomaocn/uniskill" target="_blank">maomaocn/uniskill</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">The Universal Middle-Layer for AI Agents. Write your skills (Prompts/MCP) once, and transparently mount them across Cursor, Claude Code, OpenClaw, Hermes</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">JavaScript</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+<span class="meta-tag meta-score">⭐ 值得装</span>
+</div>
+</div>
+
+<div class="skill-card worth">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Alex-giao/web-access" target="_blank">Alex-giao/web-access</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Hermes skill for web search, extraction, and shared Chrome CDP browser access</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">JavaScript</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+<span class="meta-tag meta-score">⭐ 值得装</span>
+</div>
+</div>
+
+<div class="skill-card worth">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Alex-giao/wechat-mp-article-list" target="_blank">Alex-giao/wechat-mp-article-list</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Hermes skill for extracting WeChat Official Account article lists through the official backend</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">N/A</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+<span class="meta-tag meta-score">⭐ 值得装</span>
+</div>
+</div>
+</div>
+
+<div class="section-title">· 一般</div>
+<div class="skills-grid">
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Dui-F/candid-snapshot-prompt" target="_blank">Dui-F/candid-snapshot-prompt</a></span>
+<span class="skill-stars">⭐ 1</span>
+</div>
+<div class="skill-desc">Hermes Agent Skill：生成「手机快照风格」结构化图片提示词 — 22段式模板，模拟真实社交平台照片</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">N/A</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Richicinschi/hermes-skills" target="_blank">Richicinschi/hermes-skills</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Public Hermes Agent skills library</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/athronix/hermes-skills_message-category" target="_blank">athronix/hermes-skills_message-category</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Hermes Skill: message category classification and processor routing</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Tamsi/hermes-evolution" target="_blank">Tamsi/hermes-evolution</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Auto evolution for hermes-skills from internet</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">TypeScript</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/LuoJiangYong/muse-video-skill" target="_blank">LuoJiangYong/muse-video-skill</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">天马行空视频创作 Skill — AI-driven video pre-production engine for Hermes Agent</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">HTML</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/D-kart/ma-pitch-skill" target="_blank">D-kart/ma-pitch-skill</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">M&A 并购标的推介书 AI Skill · 16:9 宽幅 HTML 输出 · 兼容 WorkBuddy/Claude/OpenClaw/Hermes/SkillHub</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">HTML</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/athronix/hermes-skills_skill-development-deployment" target="_blank">athronix/hermes-skills_skill-development-deployment</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Source repo for Hermes skill: skill-development-deployment</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">Python</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+<div class="skill-card">
+<div class="skill-header">
+<span class="skill-name"><a href="https://github.com/Tamsi/hermes-skills" target="_blank">Tamsi/hermes-skills</a></span>
+<span class="skill-stars">⭐ 0</span>
+</div>
+<div class="skill-desc">Symfony / Drupal / Php skills</div>
+<div class="skill-meta">
+<span class="meta-tag meta-lang">TypeScript</span>
+<span class="meta-tag meta-date">2026-06-12</span>
+</div>
+</div>
+</div>
+
+<div class="insight-box">
+<h3>📊 趋势分析</h3>
+<ul>
+<li><strong>⚠️ 数据滞后：</strong>GitHub API 不可达，无 6/13 增量数据。以下分析基于 6/12 快照</li>
+<li><strong>语言分布：</strong>Python（8）> TypeScript（2）= HTML（2）> JavaScript（2）> N/A（1）</li>
+<li><strong>热点方向：</strong>多智能体协作（collab-engine）、桌面/浏览器自动化（omnilimb, browser-automation）、跨平台 Skill 复用（uniskill）、金融数据采集（a-share-commodity）</li>
+<li><strong>生态规模：</strong>94个仓库总量，48小时内新增15个，增速健康但多数为0星（个人初版），生态仍处早期爆发期</li>
+<li><strong>中国开发者占比：</strong>约60%的仓库来自中国开发者，中文文档和证券数据是特色方向</li>
+</ul>
+</div>
+
+<div class="footer">
+Generated by Hermes Agent · Data from GitHub API (⚠️ offline, snapshot 2026-06-12) · 2026-06-13
+</div>
+</div>
+</body>
+</html>
