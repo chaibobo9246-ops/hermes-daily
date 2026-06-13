@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-06-10</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+
+.header { text-align: center; padding: 40px 20px 30px; }
+.header h1 { font-size: 2em; background: linear-gradient(135deg, #667eea, #764ba2, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+.header .subtitle { color: #888; font-size: 0.9em; }
+
+.stats { display: flex; gap: 16px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+.stat-card { background: linear-gradient(135deg, #16213e, #1a1a2e); border: 1px solid #2a2a4a; border-radius: 16px; padding: 20px 28px; text-align: center; min-width: 130px; }
+.stat-card .num { font-size: 2.2em; font-weight: 700; color: #667eea; }
+.stat-card .label { font-size: 0.85em; color: #888; margin-top: 4px; }
+.stat-card.fire .num { color: #ff6b6b; }
+.stat-card.new .num { color: #51cf66; }
+
+.section-title { font-size: 1.3em; margin: 30px 0 16px; padding: 10px 16px; background: linear-gradient(90deg, #2a2a4a, transparent); border-left: 4px solid #667eea; border-radius: 8px; }
+.section-title.fire { border-left-color: #ff6b6b; }
+.section-title.star { border-left-color: #ffd43b; }
+.section-title.dot { border-left-color: #888; }
+
+.card { background: #16213e; border: 1px solid #2a2a4a; border-radius: 16px; padding: 20px; margin-bottom: 14px; transition: border-color 0.2s, transform 0.2s; }
+.card:hover { border-color: #667eea; transform: translateY(-2px); }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.card-header .name { font-size: 1.1em; font-weight: 600; color: #fff; }
+.card-header .name a { color: #fff; text-decoration: none; }
+.card-header .name a:hover { color: #667eea; }
+.card-header .stars { background: #2a2a4a; padding: 4px 10px; border-radius: 12px; font-size: 0.85em; color: #ffd43b; white-space: nowrap; }
+.card-header .badge { font-size: 1.3em; }
+.card-header .rating-tag { padding: 3px 10px; border-radius: 10px; font-size: 0.8em; font-weight: 600; }
+.rating-fire { background: #ff6b6b20; color: #ff6b6b; }
+.rating-star { background: #ffd43b20; color: #ffd43b; }
+.rating-dot { background: #88888820; color: #888; }
+
+.card .desc { color: #aaa; font-size: 0.9em; margin-bottom: 8px; line-height: 1.5; }
+.card .reason { color: #51cf66; font-size: 0.88em; padding: 8px 12px; background: #51cf6610; border-radius: 8px; margin-bottom: 8px; line-height: 1.5; }
+.card .why { color: #888; font-size: 0.82em; line-height: 1.5; }
+.card .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.card .tags span { background: #2a2a4a; padding: 3px 8px; border-radius: 6px; font-size: 0.75em; color: #aaa; }
+
+.footer { text-align: center; padding: 40px 20px; color: #555; font-size: 0.82em; border-top: 1px solid #2a2a4a; margin-top: 40px; }
+.footer a { color: #667eea; }
+
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.4em; }
+  .stats { gap: 8px; }
+  .stat-card { padding: 14px 18px; min-width: 90px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🤖 GitHub Hermes Skill 每日盘点</h1>
+<div class="subtitle">2026-06-10 · 自动发现 & 评估 Hermes Agent 社区技能</div>
+</div>
+
+<div class="stats">
+<div class="stat-card"><div class="num">39</div><div class="label">📦 今日盘点</div></div>
+<div class="stat-card new"><div class="num">39</div><div class="label">🆕 首次发现</div></div>
+<div class="stat-card fire"><div class="num">6</div><div class="label">🔥 必装推荐</div></div>
+<div class="stat-card"><div class="num">17</div><div class="label">⭐ 值得装</div></div>
+<div class="stat-card"><div class="num">16</div><div class="label">· 一般关注</div></div>
+</div>
+<div class="section-title fire">🔥 必装推荐<span style="color:#888;font-size:0.8em;margin-left:10px;">这些 Skill 对 Bobby 的场景（macOS、飞书交流、日报生成、AI Agent 管理、内网穿透、数据分析）有直接且重大的价值</span></div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/anbeime/skill" target="_blank"><span class="name">anbeime/skill</span></a>
+<span class="stars">⭐ 1393</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝 收录最全、更新最快的技能Skills 商店，涵盖文档处理、内容创作、编程开发、机器学习、自动化工作流等多个领域的 72 个精选技能包。所有技能已打包完成，可直接安装使用！ 该商店中自动抓取了 Github 上的所有的 Skills 项目，并按照分类、更新时间、Star 数量等标签进行整理。</div>
+<div class="reason">💡 <b>对你有什么用：</b>最全技能商店，72个精选技能包自动抓取GitHub所有Skills项目，分类+排序+直接安装</div>
+<div class="tags"><span>🔧 Python</span><span>#claude-skills</span><span>#finance-skill</span><span>#gemini-skills</span><span>#hermes-skill</span><span>#office-skill</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/prompt-security/clawsec" target="_blank"><span class="name">prompt-security/clawsec</span></a>
+<span class="stars">⭐ 1031</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝 A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents (and variants). Protect your SOUL.md (etc') with drift detection, live security recommendations, automated audits, and skill integrity verification. All from one installable suite.</div>
+<div class="reason">💡 <b>对你有什么用：</b>Hermes 安全防护套件：SOUL.md 防篡改、安全审计、技能完整性验证，AI Agent 安全必备</div>
+<div class="tags"><span>🔧 JavaScript</span><span>#clawdbot</span><span>#clawdbot-skill</span><span>#hermes</span><span>#hermes-agent</span><span>#hermes-skill</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/Romanescu11/hermes-skill-factory" target="_blank"><span class="name">Romanescu11/hermes-skill-factory</span></a>
+<span class="stars">⭐ 364</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝  A meta-skill plugin for Nous Research's Hermes AI agent that watches your workflows and automatically turns them into reusable skills.  Every time you work with Hermes and solve something — setting up a project, debugging code, creating a PR — that   workflow disappears at the end of the session. You have to explain it again next time.</div>
+<div class="reason">💡 <b>对你有什么用：</b>元技能工厂：自动观察你的工作流并生成可复用 Skill，告别重复教 AI 做事的痛苦</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/Rainhoole/hermes-agent-acp-skill" target="_blank"><span class="name">Rainhoole/hermes-agent-acp-skill</span></a>
+<span class="stars">⭐ 38</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝 Hermes skill for ACP-style multi-agent delegation (Hermes, Codex, Claude Code).</div>
+<div class="reason">💡 <b>对你有什么用：</b>多 Agent 协作（ACP协议）：Hermes 委派任务给 Codex/Claude Code，AI Agent 管理核心能力</div>
+<div class="tags"></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/zcweah1981/awesome-hermes-agent-zh" target="_blank"><span class="name">zcweah1981/awesome-hermes-agent-zh</span></a>
+<span class="stars">⭐ 23</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝 Hermes Agent中文站- 中文实战入口：上手路径、国内落地、OpenClaw 共存迁移、排障参考与可下载方案包。</div>
+<div class="reason">💡 <b>对你有什么用：</b>中文用户必备！Hermes Agent 中文站，国内落地指南、DeepSeek/Qwen集成、排障参考，无需翻墙直接可用</div>
+<div class="tags"><span>🔧 Python</span><span>#agent</span><span>#ai</span><span>#ai-agent</span><span>#ai-agents</span><span>#ai-workflow</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">🔥</span>
+<a href="https://github.com/itgoyo/hermes-skills" target="_blank"><span class="name">itgoyo/hermes-skills</span></a>
+<span class="stars">⭐ 15</span>
+<span class="rating-tag rating-fire">必装</span>
+</div>
+<div class="desc">📝 310+ Hermes Agent Skills — reusable AI agent workflows for coding, marketing, design, finance, MLOps and more</div>
+<div class="reason">💡 <b>对你有什么用：</b>310+ Hermes Agent Skills 超全合集，涵盖编码、营销、设计、金融、MLOps，一键安装</div>
+<div class="tags"><span>🔧 TeX</span></div>
+</div>
+<div class="section-title star">⭐ 值得安装<span style="color:#888;font-size:0.8em;margin-left:10px;">在特定场景下很有用，按需选择</span></div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/OthmanAdi/planning-with-files" target="_blank"><span class="name">OthmanAdi/planning-with-files</span></a>
+<span class="stars">⭐ 22963</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Claude Code skill implementing Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition.</div>
+<div class="reason">💡 <b>对你有什么用：</b>Manus 风格持久化 Markdown 规划工作流（22k⭐超热项目），适用于复杂任务拆解和日报生成</div>
+<div class="tags"><span>🔧 Python</span><span>#adal</span><span>#agent-skills</span><span>#antigravity</span><span>#claude</span><span>#claude-code</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/GumbyEnder/hermes-kanban" target="_blank"><span class="name">GumbyEnder/hermes-kanban</span></a>
+<span class="stars">⭐ 252</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 A dedicated Obsidian plugin + Hermes skill that turns Hermes into an autonomous project executor using Kanban boards inside your Obsidian vault.</div>
+<div class="reason">💡 <b>对你有什么用：</b>Obsidian + Hermes Kanban 看板，将 AI 变成自主项目执行器，适合个人任务管理</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/dodo-reach/hermes-link-curator" target="_blank"><span class="name">dodo-reach/hermes-link-curator</span></a>
+<span class="stars">⭐ 79</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Hermes profile pack for archiving and browsing curated links + web dashboard app</div>
+<div class="reason">💡 <b>对你有什么用：</b>链接归档+浏览+Web仪表盘，管理和检索你收藏的所有链接</div>
+<div class="tags"><span>🔧 HTML</span><span>#agent-skills</span><span>#ai-agents</span><span>#fastapi</span><span>#hermes</span><span>#hermes-agent</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/ChuckSRQ/awesome-hermes-skills" target="_blank"><span class="name">ChuckSRQ/awesome-hermes-skills</span></a>
+<span class="stars">⭐ 67</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 A curated collection of production-ready Hermes Agent skills — brainstorming, PRD workflows, debugging, Apple integrations, MLOps, document processing, and more.</div>
+<div class="reason">💡 <b>对你有什么用：</b>生产级 Hermes 技能精选集：头脑风暴、PRD工作流、调试、Apple集成、MLOps</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/codesstar/hermes-skill-atlas" target="_blank"><span class="name">codesstar/hermes-skill-atlas</span></a>
+<span class="stars">⭐ 59</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 The complete, interactive map of Hermes Agent skills — 70+ curated, verified, open source. 🗺️</div>
+<div class="reason">💡 <b>对你有什么用：</b>70+ Hermes 技能交互式导航地图，可视化浏览和发现技能</div>
+<div class="tags"><span>🔧 HTML</span><span>#ai-agent</span><span>#ai-tools</span><span>#hermes</span><span>#hermes-agent</span><span>#nous-research</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/hegeo/Lobster-Research" target="_blank"><span class="name">hegeo/Lobster-Research</span></a>
+<span class="stars">⭐ 49</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 AI-Powered Financial Research Report Generator  AI 驱动的金融研究报告生成助手</div>
+<div class="reason">💡 <b>对你有什么用：</b>AI 驱动金融研究报告生成器，支持股票分析、市场研究、自动化报告，数据分析利器</div>
+<div class="tags"><span>🔧 Python</span><span>#autoreportgen</span><span>#autoresearch</span><span>#clawdbot-skill</span><span>#clawhub-skill</span><span>#hermes-skill</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/freu-ai/freu-cli" target="_blank"><span class="name">freu-ai/freu-cli</span></a>
+<span class="stars">⭐ 30</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Cut AI agent token usage by up to 90%: record a browser session once with freu-cli and it compiles into a reusable skill command. Constellation-based DOM targeting survives class renames and page reshuffles, so skills keep working. Drops into Claude Code, Codex CLI, Cursor, OpenClaw, and Hermes skills directories.</div>
+<div class="reason">💡 <b>对你有什么用：</b>浏览器操作录制→编译为 Skill，token 用量降低 90%，自动化重复网页操作</div>
+<div class="tags"><span>🔧 Python</span><span>#browser-automation</span><span>#llm</span><span>#rpa</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/Lethe044/hermes-skill-marketplace" target="_blank"><span class="name">Lethe044/hermes-skill-marketplace</span></a>
+<span class="stars">⭐ 29</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Açıklama: Self-evolving Hermes agent that writes, tests, and publishes reusable Skills autonomously. Uses Memory + Skills + Atropos RL.</div>
+<div class="reason">💡 <b>对你有什么用：</b>自进化技能市场，AI 自主编写、测试、发布可复用 Skills（Memory+RL）</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/1lystore/awaek" target="_blank"><span class="name">1lystore/awaek</span></a>
+<span class="stars">⭐ 28</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝  Chat with your X bookmarks. Turn saved posts into answers, drafts, plans, and decisions</div>
+<div class="reason">💡 <b>对你有什么用：</b>X/Twitter 书签对话式检索，把收藏的帖子变成答案、草稿和决策</div>
+<div class="tags"><span>🔧 Python</span><span>#ai-agent</span><span>#ai-agents</span><span>#ai-assistant</span><span>#bookmarks</span><span>#clawhub</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/ZeroPointRepo/awesome-hermes-skills" target="_blank"><span class="name">ZeroPointRepo/awesome-hermes-skills</span></a>
+<span class="stars">⭐ 24</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Curated, install-ready skills for Hermes Agent. 85 built-in + 78 community skills, plugins, and tools for the self-improving AI agent from Nous Research. Cross-compatible with Claude Code, OpenClaw, Cursor, and Windsurf.</div>
+<div class="reason">💡 <b>对你有什么用：</b>85内置+78社区技能大全，跨平台兼容 Claude Code/OpenClaw/Cursor/Windsurf</div>
+<div class="tags"><span>#agent-skills</span><span>#ai-agents</span><span>#awesome</span><span>#awesome-list</span><span>#claude-code</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/Potarix/agent-hub" target="_blank"><span class="name">Potarix/agent-hub</span></a>
+<span class="stars">⭐ 18</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 One place to talk to all your agents</div>
+<div class="reason">💡 <b>对你有什么用：</b>统一 Agent 管理界面（macOS Electron 应用），一站管理 Hermes/Claude Code/Codex/OpenClaw</div>
+<div class="tags"><span>🔧 HTML</span><span>#ai</span><span>#ai-agents</span><span>#claude</span><span>#claude-code</span><span>#claude-code-gui</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/danieljustus/symaira-vault" target="_blank"><span class="name">danieljustus/symaira-vault</span></a>
+<span class="stars">⭐ 18</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 🔐 The password manager for terminal users and AI agents. Age-encrypted, keyring-cached, MCP-ready. Zero telemetry.</div>
+<div class="reason">💡 <b>对你有什么用：</b>终端用户和 AI Agent 的密码管理器，Age 加密，MCP 就绪，兼顾安全与便捷</div>
+<div class="tags"><span>🔧 Go</span><span>#age-encryption</span><span>#agent-skills</span><span>#ai-agents</span><span>#claude-code</span><span>#cli</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/alblez/hermes-skills" target="_blank"><span class="name">alblez/hermes-skills</span></a>
+<span class="stars">⭐ 16</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 A collection of reusable skills for Hermes Agent</div>
+<div class="reason">💡 <b>对你有什么用：</b>可复用 Hermes 技能集，涵盖常用自动化场景</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/galyarderlabs/galyarder-framework" target="_blank"><span class="name">galyarderlabs/galyarder-framework</span></a>
+<span class="stars">⭐ 14</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 An Agentic Company Framework: skills, commands, agents, and protocols for turning founder intent into coordinated execution across engineering, finance, marketing, sales, ops, security, docs, and strategy.</div>
+<div class="reason">💡 <b>对你有什么用：</b>企业级 Agentic 框架，覆盖工程/金融/营销/销售/运营/安全/文档/战略</div>
+<div class="tags"><span>🔧 Python</span><span>#agent-skills</span><span>#agentic-company</span><span>#agentic-framework</span><span>#agents</span><span>#ai-agents</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/domvox/hermes-skills" target="_blank"><span class="name">domvox/hermes-skills</span></a>
+<span class="stars">⭐ 12</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Reusable skills and dependency graph system for Hermes Agent — bitwarden secrets, email composition, autoresearch loop</div>
+<div class="reason">💡 <b>对你有什么用：</b>密码管理+邮件撰写+自动研究循环，依赖图系统让技能互相调用</div>
+<div class="tags"><span>🔧 Python</span><span>#ai-agent</span><span>#automation</span><span>#bitwarden</span><span>#dependency-graph</span><span>#hermes-agent</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/mantenasud/hermes-notion-gbrain" target="_blank"><span class="name">mantenasud/hermes-notion-gbrain</span></a>
+<span class="stars">⭐ 8</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Natural language task management via WhatsApp/Slack → Notion, with automatic GBrain knowledge enrichment</div>
+<div class="reason">💡 <b>对你有什么用：</b>WhatsApp/Slack→Notion 自然语言任务管理，适合作为飞书任务管理的参考方案</div>
+<div class="tags"><span>🔧 Python</span><span>#ai-agent</span><span>#ai-agents</span><span>#gbrain</span><span>#hermes</span><span>#hermes-agent</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">⭐</span>
+<a href="https://github.com/dowmar/paper2podcast" target="_blank"><span class="name">dowmar/paper2podcast</span></a>
+<span class="stars">⭐ 5</span>
+<span class="rating-tag rating-star">值得装</span>
+</div>
+<div class="desc">📝 Hermes skill to transform research papers into studio-quality podcast episodes. Multi-style scripts, dual-voice TTS, PDF & arXiv support. Works via CLI or Telegram.</div>
+<div class="reason">💡 <b>对你有什么用：</b>研究论文→播客，多风格脚本+双声TTS，支持 PDF/arXiv，CLI/Telegram 双模式</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="section-title dot">· 一般关注<span style="color:#888;font-size:0.8em;margin-left:10px;">特定领域工具或通用技能，了解即可</span></div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/nativ3ai/hermes-geopolitical-market-sim" target="_blank"><span class="name">nativ3ai/hermes-geopolitical-market-sim</span></a>
+<span class="stars">⭐ 117</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes skill package for WorldOSINT headless + Polymarket + MiroFish simulation workflows</div>
+<div class="reason">💡 <b>对你有什么用：</b>地缘政治市场模拟+Polymarket，适合对国际政治和预测市场感兴趣的用户</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/arimanyus/hermes-merchant" target="_blank"><span class="name">arimanyus/hermes-merchant</span></a>
+<span class="stars">⭐ 31</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 A collection of portable agent skills that scrape ML/AI jobs, score them against your profile, and auto-fill Greenhouse applications.</div>
+<div class="reason">💡 <b>对你有什么用：</b>ML/AI 求职自动化：抓取职位→匹配评分→自动填写申请表</div>
+<div class="tags"><span>#agent-skills</span><span>#hermes-agent</span><span>#hermes-skill</span><span>#skills</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/Wholiver/Math.Skill" target="_blank"><span class="name">Wholiver/Math.Skill</span></a>
+<span class="stars">⭐ 26</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 A comprehensive mathematical reasoning skill for AI assistants — arithmetic to research-level problems with rigorous verification.</div>
+<div class="reason">💡 <b>对你有什么用：</b>数学推理 Skill，从算术到研究级问题，带验证</div>
+<div class="tags"><span>#agent</span><span>#agent-skills</span><span>#claude-code</span><span>#claude-skills</span><span>#hermes</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/uzairansaruzi/youtube-ingest" target="_blank"><span class="name">uzairansaruzi/youtube-ingest</span></a>
+<span class="stars">⭐ 18</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes skill for ingesting YouTube podcasts</div>
+<div class="reason">💡 <b>对你有什么用：</b>YouTube 播客内容摄取，适合视频内容学习场景</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/iPythoning/b2b-sdr-hermes-skill" target="_blank"><span class="name">iPythoning/b2b-sdr-hermes-skill</span></a>
+<span class="stars">⭐ 17</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Autonomous AI SDR skill for Hermes Agent — finds buyers, qualifies leads, sends outreach, manages CRM across WhatsApp/Email/Telegram for B2B export businesses</div>
+<div class="reason">💡 <b>对你有什么用：</b>B2B 销售自动化：找买家→筛选→外联→CRM，覆盖 WhatsApp/Email/Telegram</div>
+<div class="tags"><span>#agent-skill</span><span>#ai-agent</span><span>#b2b</span><span>#crm</span><span>#hermes-agent</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/zzyong24/skills-judgment" target="_blank"><span class="name">zzyong24/skills-judgment</span></a>
+<span class="stars">⭐ 17</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes Skills Ecosystem Judgment — self-sustaining skill lifecycle management with natural selection</div>
+<div class="reason">💡 <b>对你有什么用：</b>技能生态「自然选择」管理系统，技能生命周期自动化管理</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/Andrew-Girgis/microsoft-workspace-skill" target="_blank"><span class="name">Andrew-Girgis/microsoft-workspace-skill</span></a>
+<span class="stars">⭐ 14</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Microsoft Graph API skill for Hermes Agent — Outlook Calendar, Mail, Contacts integration</div>
+<div class="reason">💡 <b>对你有什么用：</b>Microsoft Graph API 集成：Outlook 日历/邮件/联系人，适合 Microsoft 生态用户</div>
+<div class="tags"><span>🔧 Python</span><span>#calendar</span><span>#email</span><span>#hermes-skill</span><span>#hotmail</span><span>#microsoft-graph</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/DrFIRASS/hermes-skills-autopilot" target="_blank"><span class="name">DrFIRASS/hermes-skills-autopilot</span></a>
+<span class="stars">⭐ 13</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Agentic AI Operations Stack for Founders, Creators & Solo Operators — 8 autonomous skills for the Hermes Agent runtime</div>
+<div class="reason">💡 <b>对你有什么用：</b>创始人&创作者 8 合 1 AI 运营栈</div>
+<div class="tags"><span>#hermes-agent</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/gloweaseco-leo/hyperdirector" target="_blank"><span class="name">gloweaseco-leo/hyperdirector</span></a>
+<span class="stars">⭐ 12</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes Skill Pack for structured AI video production on HyperFrames — brief → storyboard → HTML → lint/render.</div>
+<div class="reason">💡 <b>对你有什么用：</b>AI 视频制作：Brief→故事板→HTML→渲染</div>
+<div class="tags"><span>🔧 JavaScript</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/Zhonghao1995/agentic-swmm-workflow" target="_blank"><span class="name">Zhonghao1995/agentic-swmm-workflow</span></a>
+<span class="stars">⭐ 11</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Agentic SWMM is an automated, auditable, and memory-informed framework for reproducible stormwater modelling, integrating QGIS and EPA SWMM through the aiswmm runtime, reusable Skills, and MCP interfaces, with QA verification, provenance tracking, calibration support, and Codex, Hermes, Claude code as well as OpenClaw compatibility</div>
+<div class="reason">💡 <b>对你有什么用：</b>雨水建模自动化框架，极其专业的 GIS+SWMM 领域工具</div>
+<div class="tags"><span>🔧 Python</span><span>#agentic-ai</span><span>#agentic-framework</span><span>#claude-code</span><span>#claude-skills</span><span>#codex</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/hrabanazviking/Seidr-Smidja" target="_blank"><span class="name">hrabanazviking/Seidr-Smidja</span></a>
+<span class="stars">⭐ 9</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Allows AI Agents like Hermes Agent, OpenClaw, Claude Code, and others to make a VRM (anime avatar used for either VRchat, V-Tube, or other purposes) all via agent only processes, using either MCP, command line, or API.</div>
+<div class="reason">💡 <b>对你有什么用：</b>VRM 虚拟形象创建（VRchat/VTube），趣味性大于实用性</div>
+<div class="tags"><span>🔧 Python</span><span>#3d-avatar</span><span>#ai</span><span>#ai-agent</span><span>#ai-agents</span><span>#hermes</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/that-yolanda/yolanda-skills" target="_blank"><span class="name">that-yolanda/yolanda-skills</span></a>
+<span class="stars">⭐ 8</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Yolanda Daily Skill, eg: obsidian llm wiki management, common coding skill.</div>
+<div class="reason">💡 <b>对你有什么用：</b>Obsidian LLM Wiki 管理+编码技能，个人知识库工具</div>
+<div class="tags"><span>🔧 TypeScript</span><span>#claude-code</span><span>#claude-code-skill</span><span>#hermes</span><span>#hermes-skill</span><span>#obsidian</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/DezXBT/AgentX" target="_blank"><span class="name">DezXBT/AgentX</span></a>
+<span class="stars">⭐ 7</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Agent-first X/Twitter client in Go — JSON envelope per command, multi-account, cookie-safe anti-detection for autonomous agents</div>
+<div class="reason">💡 <b>对你有什么用：</b>Agent 优先的 X/Twitter 客户端（Go），多账号+防检测</div>
+<div class="tags"><span>🔧 Go</span><span>#agent</span><span>#automation</span><span>#autonomous-agent</span><span>#bot</span><span>#claude-skills</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/imphillip/SoulTavern" target="_blank"><span class="name">imphillip/SoulTavern</span></a>
+<span class="stars">⭐ 7</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Import SillyTavern V2 character cards as SOUL.md personas for SOUL-aware agent runtimes (Hermes-Agent, OpenClaw, …).</div>
+<div class="reason">💡 <b>对你有什么用：</b>导入 SillyTavern 角色卡为 SOUL.md 人格，角色扮演场景</div>
+<div class="tags"><span>🔧 Python</span><span>#ai-agent</span><span>#character-card</span><span>#chatbot</span><span>#hermes-agent</span><span>#hermes-skill</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/devswha/hermes-omx-bridge-skill" target="_blank"><span class="name">devswha/hermes-omx-bridge-skill</span></a>
+<span class="stars">⭐ 7</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes skill that bridges chosen Hermes bots/profiles to oh-my-codex (OMX) for delegated coding work</div>
+<div class="reason">💡 <b>对你有什么用：</b>Hermes→oh-my-codex 桥接，跨平台委派编码任务</div>
+<div class="tags"><span>🔧 Shell</span></div>
+</div>
+<div class="card">
+<div class="card-header">
+<span class="badge">·</span>
+<a href="https://github.com/patrickjane/hss-server" target="_blank"><span class="name">patrickjane/hss-server</span></a>
+<span class="stars">⭐ 5</span>
+<span class="rating-tag rating-dot">一般</span>
+</div>
+<div class="desc">📝 Hermes Skill Server for MQTT based voice assistants</div>
+<div class="reason">💡 <b>对你有什么用：</b>MQTT 语音助手服务器，IoT 语音场景</div>
+<div class="tags"><span>🔧 Python</span></div>
+</div>
+
+<div class="footer">
+<p>🕗 每日 8:20 自动更新 · 数据来源 <a href="https://api.github.com" target="_blank">GitHub API</a> · 为 Bobby 定制</p>
+<p style="margin-top:8px;">本次搜索：topic:hermes-skill (top20) + "hermes skill" in:name (top10) + "hermes skill" in:description (top10) · 去重后共 39 个仓库</p>
+</div>
+
+</div>
+</body>
+</html>
