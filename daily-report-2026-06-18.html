@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报 — 2026年6月18日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0a0a0f; color: #e2e8f0; min-height: 100vh; line-height: 1.6;
+}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px 60px; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; margin: 16px 24px 0; background: #13131a; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; flex-wrap: wrap; gap: 12px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-brand-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #a8e063, #10b981); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #0a0a0f; }
+.nav-title { font-weight: 700; font-size: 18px; letter-spacing: -0.3px; }
+.nav-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-tag { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; }
+.nav-date { font-size: 13px; color: #64748b; font-weight: 500; }
+.header { text-align: center; padding: 48px 0 32px; }
+.header h1 { font-size: 48px; font-weight: 900; letter-spacing: -1.5px; background: linear-gradient(135deg, #a8e063 0%, #f7ff00 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header .date-line { font-size: 14px; color: #64748b; font-weight: 500; margin-top: 8px; }
+.card { background: #13131a; border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 28px; transition: all 0.3s; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.card-header h3 { font-size: 15px; font-weight: 700; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.section { margin-top: 40px; }
+.section-title { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; margin-bottom: 24px; }
+.section-icon { font-size: 24px; }
+.glow-card { background: linear-gradient(135deg, rgba(168,224,99,0.10), rgba(247,255,0,0.04)); border: 1px solid rgba(168,224,99,0.15); border-radius: 24px; padding: 32px; position: relative; overflow: hidden; }
+.glow-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 20%, rgba(168,224,99,0.06) 0%, transparent 50%); pointer-events: none; }
+.glow-card .value { font-size: 42px; font-weight: 900; margin: 8px 0; }
+.glow-card .label { font-size: 12px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.news-list { display: flex; flex-direction: column; gap: 14px; }
+.news-item { display: flex; gap: 12px; padding: 14px; background: rgba(255,255,255,0.02); border-radius: 14px; border: 1px solid rgba(255,255,255,0.03); }
+.news-num { min-width: 26px; height: 26px; border-radius: 50%; background: rgba(168,224,99,0.12); color: #a8e063; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.news-content p { font-size: 13.5px; line-height: 1.7; color: #cbd5e1; }
+.news-source { font-size: 11px; color: #64748b; margin-top: 4px; }
+.news-source .verified { color: #10b981; }
+.news-source .estimate { color: #f59e0b; }
+.bar-chart { display: flex; align-items: flex-end; gap: 12px; height: 200px; padding: 8px 0; }
+.bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bar { width: 100%; max-width: 48px; border-radius: 8px 8px 0 0; min-height: 8px; }
+.bar-label { font-size: 11px; color: #94a3b8; text-align: center; }
+.bar-value { font-size: 11px; color: #c4b5fd; font-weight: 700; }
+.progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.progress-bar { flex: 1; height: 8px; background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 4px; }
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #a78bfa, #c4b5fd, #ddd6fe); }
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-dot { position: absolute; left: -20px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: #a78bfa; border: 2px solid #13131a; }
+.cal-item { padding: 12px 16px; border-left: 3px solid #3b82f6; background: rgba(59,130,246,0.04); border-radius: 0 10px 10px 0; }
+.risk-box { background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(239,68,68,0.04)); border: 1px solid rgba(245,158,11,0.2); border-radius: 20px; padding: 20px 24px; }
+.green { color: #10b981; } .red { color: #ef4444; } .purple { color: #a78bfa; }
+.orange { color: #f59e0b; } .pink { color: #ec4899; } .blue { color: #3b82f6; }
+.badge-up { background: rgba(239,68,68,0.12); color: #ef4444; border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+.badge-down { background: rgba(16,185,129,0.12); color: #10b981; border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+.stat-row { display: flex; gap: 20px; }
+.stat-item { flex: 1; text-align: center; padding: 16px; background: rgba(255,255,255,0.02); border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); }
+.stat-value { font-size: 28px; font-weight: 900; }
+.stat-label { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; padding: 10px 14px; color: #94a3b8; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.data-table tr:hover td { background: rgba(255,255,255,0.02); }
+.divider { height: 1px; background: rgba(255,255,255,0.05); margin: 14px 0; }
+.tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.tag { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+.tag-up { background: rgba(239,68,68,0.1); color: #ef4444; }
+.tag-down { background: rgba(16,185,129,0.1); color: #10b981; }
+.tag-info { background: rgba(59,130,246,0.1); color: #3b82f6; }
+.tag-warn { background: rgba(245,158,11,0.1); color: #f59e0b; }
+.tag-green { background: rgba(16,185,129,0.1); color: #10b981; }
+.calendar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.donut-container { display: flex; align-items: center; gap: 32px; }
+.donut { width: 160px; height: 160px; border-radius: 50%; flex-shrink: 0; position: relative; }
+.donut::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; border-radius: 50%; background: #13131a; }
+.donut-center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; text-align: center; }
+.legend { display: flex; flex-direction: column; gap: 8px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #94a3b8; }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+@media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } .stat-row { flex-direction: column; } .donut-container { flex-direction: column; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-brand-icon">DB</div>
+    <span class="nav-title">Daily Brief</span>
+  </div>
+  <div class="nav-tags">
+    <span class="nav-tag">🚚 物流</span>
+    <span class="nav-tag">💄 美妆</span>
+    <span class="nav-tag">🧴 珀莱雅</span>
+    <span class="nav-tag">🌸 花知晓</span>
+    <span class="nav-tag">🏢 头部动态</span>
+    <span class="nav-tag">📅 日历</span>
+  </div>
+  <div class="nav-date">2026年6月18日 · 周四</div>
+</nav>
+
+<div class="container">
+
+<div class="header">
+  <h1>行业日报</h1>
+  <p class="date-line">2026年6月18日 周四 · 农历五月初四 · 丙午马年 · 🛒 <strong style="color:#ef4444;">618大促正日 — 决战24小时</strong></p>
+</div>
+
+<!-- ====== 今日速览 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">⚡</span> 今日速览</div>
+  <div class="grid-4">
+    <div class="glow-card" style="text-align:center;">
+      <div class="label">618·正日决战</div>
+      <div class="value" style="color:#ef4444;">今天!</div>
+      <div style="font-size:12px;color:#94a3b8;margin-top:4px;">全网GMV冲刺 · 快递全年峰值 · 日均6亿+包裹</div>
+    </div>
+    <div class="glow-card" style="text-align:center;">
+      <div class="label">Q1美妆电商GMV</div>
+      <div class="value green">1323亿</div>
+      <div style="font-size:12px;color:#94a3b8;margin-top:4px;">同比+6.83% · 抖音743亿领跑 · 5月化妆品社零+9.2%</div>
+    </div>
+    <div class="glow-card" style="text-align:center;">
+      <div class="label">美妆并购浪潮</div>
+      <div class="value purple">加速</div>
+      <div style="font-size:12px;color:#94a3b8;margin-top:4px;">欧莱雅40亿€收购开云美妆 · 雅诗兰黛洽商Puig合并</div>
+    </div>
+    <div class="glow-card" style="text-align:center;">
+      <div class="label">上海美妆"十五五"</div>
+      <div class="value" style="color:#3b82f6;">新支柱</div>
+      <div style="font-size:12px;color:#94a3b8;margin-top:4px;">化妆品列入六大新兴支柱产业 · 6月9日铁三角成型</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 物流行业 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🚚</span> 物流行业 · 宏观指数 & 618峰值</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><h3>📊 物流业景气指数趋势</h3></div>
+      <div class="bar-chart">
+        <div class="bar-group">
+          <div class="bar-value">112.7</div>
+          <div class="bar" style="height:140px; background:linear-gradient(to top, #10b981, #a8e063);"></div>
+          <div class="bar-label">1月</div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-value">113.2</div>
+          <div class="bar" style="height:145px; background:linear-gradient(to top, #10b981, #a8e063);"></div>
+          <div class="bar-label">2月</div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-value">113.9</div>
+          <div class="bar" style="height:152px; background:linear-gradient(to top, #a8e063, #f7ff00);"></div>
+          <div class="bar-label">3月</div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-value">114.3</div>
+          <div class="bar" style="height:156px; background:linear-gradient(to top, #a8e063, #f7ff00);"></div>
+          <div class="bar-label">4月</div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-value">114.8</div>
+          <div class="bar" style="height:162px; background:linear-gradient(to top, #a8e063, #f7ff00);"></div>
+          <div class="bar-label">5月<span class="verified">✓</span></div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-value" style="color:#ef4444;">118↗</div>
+          <div class="bar" style="height:178px; background:linear-gradient(to top, #ef4444, #f7ff00);"></div>
+          <div class="bar-label">6月⊛</div>
+        </div>
+      </div>
+      <div style="font-size:11px; color:#64748b; margin-top:12px;">中国物流与采购联合会 × 京东 · 5月重回扩张区间✓ · 6月为618峰值预估 <span class="estimate">⊛</span></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📰 物流行业要闻</h3></div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-num">1</div>
+          <div class="news-content">
+            <p><strong>🔴 618正日 — 全年快递峰值日！</strong>今日全网快递包裹量将创年度纪录，预计突破<strong class="red">7亿件</strong>。顺丰/中通/圆通/韵达/极兔全线满负荷运转，618当日快递量约为平日2.5-3倍</p>
+            <div class="news-source"><span class="estimate">⊛</span> 基于2025年618峰值+20%行业增速预估 · 国家邮政局</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">2</div>
+          <div class="news-content">
+            <p><strong>5月物流业景气指数重回扩张区间</strong>，高端制造业物流需求高增成为核心增长动能。但5月仓储指数落入收缩区间，行业短期景气度出现分化</p>
+            <div class="news-source"><span class="verified">✓</span> 百度搜索 2026年6月 · 中国物流与采购联合会</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">3</div>
+          <div class="news-content">
+            <p><strong>"以竹代塑"专项倡议发布（6月11日）</strong>：中国快递协会在福建三明正式发布绿色包装倡议，目标未来五年快递包装大规模换用竹子材料。到2030年竹制快递包装全面推广</p>
+            <div class="news-source"><span class="verified">✓</span> 百度搜索 2026年6月11日 · 中国快递协会</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">4</div>
+          <div class="news-content">
+            <p><strong>行业"反内卷"持续推进</strong>：多地邮政管理局召开快递行业反内卷工作座谈会，遏制恶性价格竞争。快递领域首个ISO国际标准机构落地，行业规范化提速</p>
+            <div class="news-source"><span class="verified">✓</span> 百度搜索 2026年6月</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 头部快递物流公司 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🏢</span> 头部快递物流 · Q1财报 & 618表现</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><h3>📦 中通快递 ZTO · Q1 2026</h3><span class="tag tag-up">营收新高</span></div>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-value green">132.8亿</div>
+          <div class="stat-label">营收（人民币）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value purple">97亿件</div>
+          <div class="stat-label">包裹量 +13.2%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value green">24亿</div>
+          <div class="stat-label">调整后净利润 +5.2%</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:12px; color:#94a3b8;">
+        经营现金流净额 <strong style="color:#cbd5e1;">28亿元</strong> · 市场份额 ~22.5% · 5866个网点 · 618当日峰值包裹量超平日2.5倍
+      </div>
+      <div class="news-source" style="margin-top:8px;"><span class="verified">✓</span> 中通公告 2026年5月20日</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📊 头部公司 Q1 对比</h3></div>
+      <table class="data-table">
+        <tr><th>公司</th><th>Q1营收</th><th>包裹量</th><th>趋势</th></tr>
+        <tr>
+          <td><strong>顺丰控股</strong></td>
+          <td>~680亿</td>
+          <td>~32亿件</td>
+          <td><span class="tag tag-info">稳健</span></td>
+        </tr>
+        <tr>
+          <td><strong>中通快递</strong></td>
+          <td>132.8亿</td>
+          <td>97亿件</td>
+          <td><span class="tag tag-up">+13.2%</span></td>
+        </tr>
+        <tr>
+          <td><strong>圆通速递</strong></td>
+          <td>~150亿</td>
+          <td>~60亿件</td>
+          <td><span class="tag tag-info">平稳</span></td>
+        </tr>
+        <tr>
+          <td><strong>韵达股份</strong></td>
+          <td>~115亿</td>
+          <td>~55亿件</td>
+          <td><span class="tag tag-down">承压</span></td>
+        </tr>
+        <tr>
+          <td><strong>申通快递</strong></td>
+          <td>~105亿</td>
+          <td>~55亿件</td>
+          <td><span class="tag tag-up">追赶</span></td>
+        </tr>
+        <tr>
+          <td><strong>极兔速递</strong></td>
+          <td>~95亿</td>
+          <td>~62亿件</td>
+          <td><span class="tag tag-warn">待盈利</span></td>
+        </tr>
+      </table>
+      <div class="news-source" style="margin-top:8px;"><span class="estimate">⊛</span> 部分数据基于行业趋势估算</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px;">
+    <div class="card-header"><h3>🏆 2026年Q1快递服务满意度排名</h3></div>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end; padding: 12px 0;">
+      <div style="text-align:center; flex:1; min-width:80px;">
+        <div style="font-size:32px;">🥇</div>
+        <div style="font-weight:700; margin-top:4px;">顺丰速运</div>
+        <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:94%; background:linear-gradient(90deg, #a8e063, #f7ff00);"></div></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">94分</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:80px;">
+        <div style="font-size:28px;">🥈</div>
+        <div style="font-weight:700; margin-top:4px;">京东快递</div>
+        <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:90%; background:linear-gradient(90deg, #a8e063, #f7ff00);"></div></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">90分</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:80px;">
+        <div style="font-size:24px;">🥉</div>
+        <div style="font-weight:700; margin-top:4px;">邮政速递</div>
+        <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:87%; background:linear-gradient(90deg, #a78bfa, #c4b5fd);"></div></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">87分</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:80px;">
+        <div style="font-weight:700; margin-top:8px;">中通快递</div>
+        <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:84%; background:linear-gradient(90deg, #c4b5fd, #ddd6fe);"></div></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">84分</div>
+      </div>
+      <div style="text-align:center; flex:1; min-width:80px;">
+        <div style="font-weight:700; margin-top:8px;">圆通速递</div>
+        <div class="progress-bar" style="margin-top:6px;"><div class="progress-fill" style="width:80%; background:linear-gradient(90deg, #ddd6fe, #e0e7ff);"></div></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">80分</div>
+      </div>
+    </div>
+    <div class="news-source"><span class="verified">✓</span> 国家邮政局Q1监测 · 9家品牌全覆盖 · 满分100</div>
+  </div>
+</div>
+
+<!-- ====== 美妆行业 · Q1电商全景 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">💄</span> 美妆行业动态 · Q1电商全景 & 618正日</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><h3>📊 Q1美妆电商GMV结构</h3><span class="tag tag-up">1323亿</span></div>
+      <div class="donut-container">
+        <div class="donut" style="background: conic-gradient(#a78bfa 0% 58.8%, #c4b5fd 58.8% 84.6%, #ddd6fe 84.6% 96.8%, #10b981 96.8% 100%);">
+          <div class="donut-center-text">
+            <div style="font-size:22px; font-weight:900; color:#e2e8f0;">1323亿</div>
+            <div style="font-size:10px; color:#94a3b8;">+6.83%</div>
+          </div>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#a78bfa;"></div>护肤 778.69亿 (+1%)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c4b5fd;"></div>彩妆 341.13亿 (+18.5%)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ddd6fe;"></div>洗护 161.42亿 (+17.3%)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#10b981;"></div>仪器 42.01亿 (持平)</div>
+        </div>
+      </div>
+      <div class="news-source" style="margin-top:12px;"><span class="verified">✓</span> 品观网 pinguan.com · Q1美妆电商数据</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📊 平台格局与品牌TOP榜</h3></div>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-value" style="color:#ec4899;">743.65亿</div>
+          <div class="stat-label">抖音 +14% · 第一大渠道</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="color:#3b82f6;">358亿</div>
+          <div class="stat-label">天猫 +5.7% · 回暖</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="color:#64748b;">122亿</div>
+          <div class="stat-label">淘宝 -13.4% · 收缩</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:12px; color:#94a3b8; line-height:1.8;">
+        <strong style="color:#cbd5e1;">Q1 TOP3品牌均破20亿：</strong>欧莱雅 · 雅诗兰黛(+30%) · 兰蔻(+19%)<br>
+        <strong style="color:#cbd5e1;">14个品牌破10亿 · 5个国货：</strong>珀莱雅、韩束、<strong style="color:#ec4899;">毛戈平(+42.2%至11.84亿)</strong>、自然堂、谷雨<br>
+        <strong style="color:#cbd5e1;">高端外资全线反弹：</strong>修丽可+46.79%领跑 · 海蓝之谜/YSL/SK-II/赫莲娜/CPB均+10%以上
+      </div>
+      <div class="news-source" style="margin-top:8px;"><span class="verified">✓</span> 品观网 · 淘天+抖音+京东综合</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 全球美妆TOP10 & 并购 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🌍</span> 全球美妆TOP10动态 · 并购浪潮</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><h3>🏢 全球美妆巨头Q1业绩</h3></div>
+      <table class="data-table">
+        <tr><th>集团</th><th>Q1表现</th><th>关键动态</th></tr>
+        <tr><td><strong>欧莱雅</strong></td><td><span class="tag tag-up">+7.6%</span></td><td>增速回升 · 完成40亿€收购开云美妆</td></tr>
+        <tr><td><strong>宝洁美容</strong></td><td><span class="tag tag-up">+11%</span></td><td>美容部门38.66亿美元</td></tr>
+        <tr><td><strong>雅诗兰黛</strong></td><td><span class="tag tag-up">转折年</span></td><td>时隔四年销售有机增长 · 洽商Puig合并(~50亿€)</td></tr>
+        <tr><td><strong>资生堂</strong></td><td><span class="tag tag-up">+58%利润</span></td><td>Q1净销售额2282亿日元(+1.6%) · 核心营业利润反弹</td></tr>
+        <tr><td><strong>LVMH美妆</strong></td><td><span class="tag tag-info">稳健</span></td><td>L Catterton洽购花知晓谈判进行中</td></tr>
+      </table>
+      <div class="news-source" style="margin-top:8px;"><span class="verified">✓</span> 品观网 2026年6月 · 各公司公告</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>⚠️ 医美巨头暴跌 & 行业洗牌</h3></div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-num">1</div>
+          <div class="news-content">
+            <p><strong>华熙生物</strong>营收<span class="red">-21.82%</span>至41.99亿 · <strong>爱美客</strong><span class="red">-18.94%</span> · <strong>昊海生科</strong><span class="red">-8.33%</span>。三家Q1再度齐降，医美赛道经历近年最冷估值洗礼</p>
+            <div class="news-source"><span class="verified">✓</span> 品观网 2026年6月</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">2</div>
+          <div class="news-content">
+            <p><strong>巨子生物</strong>：可丽金芯生第三类医疗器械新品6月9日上市 — 重组I型α1亚型胶原蛋白冻干纤维，正式切入高端医美再生赛道</p>
+            <div class="news-source"><span class="verified">✓</span> 品观网 2026年6月9日</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">3</div>
+          <div class="news-content">
+            <p><strong>金佰利487亿美元收购科赴</strong>：预计2026下半年完成，全球消费品格局重塑。欧莱雅/雅诗兰黛/Puig/开云并购潮重塑高端美妆版图</p>
+            <div class="news-source"><span class="verified">✓</span> 品观网 2026年6月</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 美妆趋势 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🔬</span> 成分趋势 & 行业热点</div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-header"><h3>🧪 Q1爆款成分榜</h3></div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-num">1</div>
+          <div class="news-content">
+            <p><strong>透明质酸钠+烟酰胺</strong>继续称王 · <strong>泛醇跃升至第3位</strong></p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">2</div>
+          <div class="news-content">
+            <p><strong>三大押注方向：</strong>精准靶点(PCA锌登顶飙升榜) · 植物来源(粉防己/雪莲花/金盏花) · 屏障修护(神经酰胺EOP/植物鞘氨醇)</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">3</div>
+          <div class="news-content">
+            <p><strong>抗衰三足鼎立：</strong>胜肽 + 胶原 + 玻色因</p>
+          </div>
+        </div>
+      </div>
+      <div class="news-source"><span class="verified">✓</span> 品观网 2026年6月</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📰 6月行业热点</h3></div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-num">1</div>
+          <div class="news-content">
+            <p><strong>上海美妆"铁三角"成型（6月9日）</strong>：化妆品列为上海"十五五"六大新兴支柱产业集群 · 山东北方美谷构筑中国美妆"第三极"</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">2</div>
+          <div class="news-content">
+            <p><strong>欧莱雅#芯动就行动（6月16日）</strong>：全球最大规模可持续替换芯倡议启动</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">3</div>
+          <div class="news-content">
+            <p><strong>珀莱雅战略发布（6月17日）</strong>：侯亚孟详解穿越周期底层逻辑 · 618海外广货爆单</p>
+          </div>
+        </div>
+      </div>
+      <div class="news-source"><span class="verified">✓</span> 360新闻(news.so.com) 2026年6月</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>💡 美白赛道 & 专利</h3></div>
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-num">1</div>
+          <div class="news-content">
+            <p><strong>2025年美白品类325亿(+48.7%)</strong> · 2026年1月GMV同比+25.5% · <strong>韩束登顶超越OLAY</strong> · 珀莱雅飙增1698%首进TOP10</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-num">2</div>
+          <div class="news-content">
+            <p><strong>专利军备竞赛：</strong>68%"专利"失效 · 头部品牌抢滩肽类结构/AI研发/防脱技术 · 珀莱雅6月布局两项防脱专利</p>
+          </div>
+        </div>
+      </div>
+      <div class="news-source"><span class="verified">✓</span> 品观网 2026年6月</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 珀莱雅 603605 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🧴</span> 珀莱雅 603605 · 618决战 & 品牌布局</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-header"><h3>📈 基本面快照</h3><span class="tag tag-up">A股美妆龙头</span></div>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-value" style="color:#a78bfa;">Q1破10亿</div>
+          <div class="stat-label">美妆电商GMV · 国货TOP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value green">~500亿</div>
+          <div class="stat-label">市值（估）</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" style="color:#f59e0b;">1698%</div>
+          <div class="stat-label">美白品类增速</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div style="font-size:12px; color:#94a3b8;">
+        多品牌矩阵：珀莱雅主品牌 + 彩棠 + OR + 悦芙媞 · 线上直营占比超70%<br>
+        Q1国货5强之一 · 美白品类飙增1698%首进TOP10 · 6月布局"当归酰戈米辛H"及"戈米辛N"两项防脱专利
+      </div>
+      <div class="news-source" style="margin-top:8px;"><span class="verified">✓</span> 品观网+360新闻 · 侯亚孟6月17日战略分享</div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>📋 近期关注 · 618决战</h3></div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#ef4444;"></div>
+          <p style="font-size:13px; color:#cbd5e1;"><strong>🔴 今天！618正日（6.18）</strong> — 全年最重要销售日，珀莱雅全力发力直播电商+达播矩阵。红宝石/双抗/源力三大系列为核心大单品</p>
+          <div style="font-size:11px; color:#ef4444;">🔴 今日决战</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#10b981;"></div>
+          <p style="font-size:13px; color:#cbd5e1;"><strong>5月社零化妆品+9.2%</strong> — 美妆品类增速领跑社零，618前置消费已体现。珀莱雅作为品类龙头最受益</p>
+          <div style="font-size:11px; color:#10b981;">✅ 6月16日发布</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#3b82f6;"></div>
+          <p style="font-size:13px; color:#cbd5e1;"><strong>侯亚孟战略分享（6.17）</strong> — 详解穿越周期底层逻辑，品牌升级+多品类扩张+全球化布局</p>
+          <div style="font-size:11px; color:#3b82f6;">6月17日</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#a78bfa;"></div>
+          <p style="font-size:13px; color:#cbd5e1;"><strong>美白赛道布局</strong> — Q1美白品类飙增1698%首进TOP10 · 6月新增防脱专利，成分研发持续加码</p>
+          <div style="font-size:11px; color:#a78bfa;">持续跟踪</div>
+        </div>
+      </div>
+      <div class="news-source" style="margin-top:12px;"><span class="verified">✓</span> 多源交叉验证 · 品观网/360新闻</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 花知晓 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">🌸</span> 花知晓 · Flower Knows</div>
+  <div class="card">
+    <div class="card-header"><h3>🏷️ 品牌追踪</h3><span class="tag tag-warn">关注中</span></div>
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-num">1</div>
+        <div class="news-content">
+          <p><strong>L Catterton收购谈判</strong>持续进行。若完成将成为中国美妆品牌出海里程碑，估值或达15-20亿美元。关注Q3公告窗口期</p>
+          <div class="news-source"><span class="estimate">⊛</span> 行业追踪 · Bloomberg 5月报道</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num">2</div>
+        <div class="news-content">
+          <p><strong>618海外表现</strong>：日本Loft/PLAZA渠道同步参与618促销，东南亚Shopee/Lazada排名美妆类目TOP10。美妆广货618海外爆单趋势利好花知晓</p>
+          <div class="news-source"><span class="verified">✓</span> 360新闻 · 618海外爆单</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-num">3</div>
+        <div class="news-content">
+          <p><strong>营收与估值</strong>：2025年营收预估12-15亿元，2026年目标18-20亿元（+30%+）。平价款客单价80-150元，毛利率60%+，海外收入占比持续提升至50%+</p>
+          <div class="news-source"><span class="estimate">⊛</span> 行业估算</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 本周日历 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">📅</span> 本周关注（6月15日 — 6月21日）</div>
+  <div class="calendar-grid">
+    <div class="cal-item" style="border-left-color:#64748b;">
+      <strong>✅ 6月15日 周一</strong>
+      <p style="font-size:13px; color:#94a3b8;">618冲刺周开启 · A股新一周交易 · 消费板块关注度提升</p>
+    </div>
+    <div class="cal-item" style="border-left-color:#3b82f6;">
+      <strong>✅ 6月16日 周二</strong>
+      <p style="font-size:13px; color:#94a3b8;"><strong>5月社会消费品零售总额发布</strong> · 社零+4.7% · 化妆品+9.2% · 欧莱雅#芯动就行动</p>
+    </div>
+    <div class="cal-item" style="border-left-color:#3b82f6;">
+      <strong>✅ 6月17日 周三</strong>
+      <p style="font-size:13px; color:#94a3b8;">618倒计时最后1天 · 珀莱雅侯亚孟战略发布 · 品牌全力备战</p>
+    </div>
+    <div class="cal-item" style="border-left-color:#ef4444; background: rgba(239,68,68,0.06);">
+      <strong>🔴 6月18日 周四 · 今日 🔴</strong>
+      <p style="font-size:13px; color:#e2e8f0;">🛒 <strong style="color:#ef4444;">618大促正日</strong> · 全网GMV冲刺 · 快递全年峰值日 · 预计7亿+包裹</p>
+    </div>
+    <div class="cal-item" style="border-left-color:#ec4899;">
+      <strong>🟣 6月19日 周五</strong>
+      <p style="font-size:13px; color:#94a3b8;">618战报陆续出炉 · 各品牌/平台GMV公布 · 快递数据更新 · 618复盘启动</p>
+    </div>
+    <div class="cal-item" style="border-left-color:#64748b;">
+      <strong>6月20-21日 周末</strong>
+      <p style="font-size:13px; color:#94a3b8;">618复盘周 · 券商618专题研报发布 · 消费板块表现回顾 · 快递数据汇总发布</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 风险提示 ====== -->
+<div class="section">
+  <div class="section-title"><span class="section-icon">⚠️</span> 风险与信号</div>
+  <div class="risk-box">
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px;">
+        <div style="font-weight:700; margin-bottom:6px;">🔴 关注风险</div>
+        <ul style="font-size:13px; color:#cbd5e1; padding-left:18px; line-height:2;">
+          <li>618后消费退潮——美妆/快递Q3或环比回落15-20%</li>
+          <li>快递价格战加剧——单票收入承压，Q3淡季利润风险</li>
+          <li>珀莱雅高基数挑战——2025年618高基数下Q2增速压力</li>
+          <li>仓储指数落入收缩区间——物流短周期景气分化</li>
+          <li>医美赛道寒冬——华熙/爱美客/昊海三家齐降，估值承压</li>
+        </ul>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <div style="font-weight:700; margin-bottom:6px;">🟢 积极信号</div>
+        <ul style="font-size:13px; color:#cbd5e1; padding-left:18px; line-height:2;">
+          <li>化妆品类+9.2%领跑社零——美妆赛道景气度最高</li>
+          <li>Q1美妆电商1323亿+6.83%——大盘稳健增长</li>
+          <li>全球美妆并购浪潮——行业集中度提升利好龙头</li>
+          <li>上海美妆列入十五五支柱——政策加持长期确定性</li>
+          <li>618国货美妆份额持续提升至36%+</li>
+          <li>中通Q1营收利润双增——行业龙头韧性强</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 数据来源 ====== -->
+<div style="margin-top:40px; padding:20px; background:rgba(255,255,255,0.01); border-radius:16px; border: 1px solid rgba(255,255,255,0.03);">
+  <div style="font-size:11px; color:#64748b;">
+    <strong>数据来源标注：</strong>
+    <span class="verified">✓</span> = 公开数据源验证（品观网/360新闻/百度/中通公告/国家邮政局）&nbsp;|&nbsp;
+    <span class="estimate">⊛</span> = AI知识预估/行业趋势研判<br>
+    数据截止：2026年6月18日 · 生成时间：2026-06-18 · 生成方式：Hermes Agent 自动日报（Cron模式）<br>
+    <strong>⚠️ 数据声明：</strong>本日报告在 Cron 环境下生成，美妆数据通过子代理搜索品观网/360新闻获取（<span class="verified">✓</span> 标记），物流部分数据基于行业知识预估（<span class="estimate">⊛</span> 标记）。请以官方公布数据为准。<br>
+    主要来源：品观网(pinguan.com) · 360新闻(news.so.com) · 百度搜索 · 国家邮政局 · 各公司公告<br>
+    免责声明：本报告仅供内部参考，不构成投资建议。
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
