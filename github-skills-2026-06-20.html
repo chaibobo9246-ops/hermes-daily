@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-06-20</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0d1117; color: #c9d1d9; padding: 20px; max-width: 1200px; margin: 0 auto;
+  line-height: 1.6;
+}
+.header {
+  text-align: center; padding: 30px 0; border-bottom: 2px solid #30363d; margin-bottom: 30px;
+}
+.header h1 { font-size: 2em; color: #58a6ff; }
+.header .date { color: #8b949e; font-size: 1.1em; margin-top: 8px; }
+.header .source { color: #f78166; font-size: 0.9em; margin-top: 4px; }
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px;
+  margin-bottom: 30px;
+}
+.stat-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px;
+  text-align: center;
+}
+.stat-card .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
+.stat-card .label { color: #8b949e; font-size: 0.9em; margin-top: 4px; }
+
+.section-title {
+  font-size: 1.5em; color: #58a6ff; margin: 30px 0 15px; padding-bottom: 8px;
+  border-bottom: 1px solid #30363d;
+}
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #21262d; }
+th { background: #161b22; color: #8b949e; font-weight: 600; font-size: 0.85em; text-transform: uppercase; }
+tr:hover { background: #161b22; }
+.repo-link { color: #58a6ff; text-decoration: none; font-weight: 500; }
+.repo-link:hover { text-decoration: underline; }
+.desc { color: #8b949e; font-size: 0.9em; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stars { color: #d2a8ff; font-weight: bold; }
+.forks { color: #8b949e; }
+.lang { color: #7ee787; font-size: 0.85em; }
+.classification { font-size: 1.2em; text-align: center; }
+.fire { color: #f78166; }
+.star-rating { color: #d2991d; }
+.dot { color: #8b949e; }
+
+.top5-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px;
+  margin-bottom: 30px;
+}
+.top5-card h3 { color: #f78166; margin-bottom: 12px; }
+.top5-card .item { padding: 8px 0; border-bottom: 1px solid #21262d; }
+.top5-card .item:last-child { border-bottom: none; }
+.top5-card .rank { color: #f78166; font-weight: bold; margin-right: 8px; }
+
+.new-badge {
+  background: #238636; color: #fff; font-size: 0.75em; padding: 2px 6px; border-radius: 4px;
+  margin-left: 6px;
+}
+
+.trend-section {
+  background: linear-gradient(135deg, #161b22, #1a1f2e);
+  border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 30px;
+}
+.trend-section h3 { color: #7ee787; margin-bottom: 12px; }
+
+.footer {
+  text-align: center; color: #484f58; font-size: 0.85em; padding: 20px 0;
+  margin-top: 40px; border-top: 1px solid #21262d;
+}
+.api-status { color: #238636; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔮 Hermes Skill 每日盘点</h1>
+  <div class="date">📅 2026-06-20</div>
+  <div class="source">📡 数据来源: GitHub API (topic:hermes-skill + in:name + in:description) | <span class="api-status">✅ API 可达</span></div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="number">39</div><div class="label">📦 去重仓库</div></div>
+  <div class="stat-card"><div class="number">98.6k</div><div class="label">⭐ 总 Star 数</div></div>
+  <div class="stat-card"><div class="number">9</div><div class="label">🔥 必装</div></div>
+  <div class="stat-card"><div class="number">12</div><div class="label">⭐ 值得装</div></div>
+  <div class="stat-card"><div class="number">18</div><div class="label">· 一般</div></div>
+  <div class="stat-card"><div class="number">12</div><div class="label">🆕 今日新增</div></div>
+</div>
+
+<h2 class="section-title">🔥 必装 Top 5</h2>
+<div class="top5-card">
+  <div class="item">
+    <span class="rank">#1</span>
+    <a class="repo-link" href="https://github.com/nexu-io/open-design" target="_blank">nexu-io/open-design</a>
+    <span class="stars">⭐ 67.9k</span>
+    <span class="forks">🍴 7614</span>
+    <span class="lang">[TypeScript]</span>
+    <br><span class="desc">Local-first open-source Claude Design alternative with 259+ Skills · 142+ plugins</span>
+  </div>
+  <div class="item">
+    <span class="rank">#2</span>
+    <a class="repo-link" href="https://github.com/outsourc-e/hermes-workspace" target="_blank">outsourc-e/hermes-workspace</a>
+    <span class="stars">⭐ 5.8k</span>
+    <span class="forks">🍴 878</span>
+    <span class="lang">[JavaScript]</span>
+    <br><span class="desc">Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspector</span>
+  </div>
+  <div class="item">
+    <span class="rank">#3</span>
+    <a class="repo-link" href="https://github.com/jnMetaCode/superpowers-zh" target="_blank">jnMetaCode/superpowers-zh</a>
+    <span class="stars">⭐ 5.6k</span>
+    <span class="forks">🍴 538</span>
+    <span class="lang">[JavaScript]</span>
+    <br><span class="desc">AI 编程超能力 · 中文增强版 — superpowers 完整汉化 + 6 个中国原创 skills</span>
+  </div>
+  <div class="item">
+    <span class="rank">#4</span>
+    <a class="repo-link" href="https://github.com/NousResearch/hermes-agent-self-evolution" target="_blank">NousResearch/hermes-agent-self-evolution</a>
+    <span class="stars">⭐ 4.2k</span>
+    <span class="forks">🍴 482</span>
+    <span class="lang">[Python]</span>
+    <br><span class="desc">Evolutionary self-improvement for Hermes Agent using DSPy + GEPA</span>
+  </div>
+  <div class="item">
+    <span class="rank">#5</span>
+    <a class="repo-link" href="https://github.com/0xNyk/awesome-hermes-agent" target="_blank">0xNyk/awesome-hermes-agent</a>
+    <span class="stars">⭐ 4.1k</span>
+    <span class="forks">🍴 289</span>
+    <span class="lang">[N/A]</span>
+    <br><span class="desc">A curated list of awesome skills, tools, integrations, and resources for Hermes Agent</span>
+  </div>
+</div>
+
+<h2 class="section-title">📊 完整盘点表</h2>
+<table>
+<thead>
+<tr><th>评级</th><th>仓库</th><th>描述</th><th>⭐ Stars</th><th>🍴 Forks</th><th>语言</th><th>更新</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/nexu-io/open-design" target="_blank">nexu-io/open-design</a></td>
+  <td class="desc">Local-first open-source Claude Design alternative with 259+ Skills</td>
+  <td class="stars">67.9k</td>
+  <td class="forks">7614</td>
+  <td class="lang">TypeScript</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/outsourc-e/hermes-workspace" target="_blank">outsourc-e/hermes-workspace</a></td>
+  <td class="desc">Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspector</td>
+  <td class="stars">5.8k</td>
+  <td class="forks">878</td>
+  <td class="lang">JavaScript</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/jnMetaCode/superpowers-zh" target="_blank">jnMetaCode/superpowers-zh</a></td>
+  <td class="desc">AI 编程超能力 · 中文增强版 — superpowers 完整汉化 + 6 个中国原创 skills</td>
+  <td class="stars">5.6k</td>
+  <td class="forks">538</td>
+  <td class="lang">JavaScript</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/NousResearch/hermes-agent-self-evolution" target="_blank">NousResearch/hermes-agent-self-evolution</a></td>
+  <td class="desc">Evolutionary self-improvement for Hermes Agent using DSPy + GEPA</td>
+  <td class="stars">4.2k</td>
+  <td class="forks">482</td>
+  <td class="lang">Python</td>
+  <td>2026-06-17</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/0xNyk/awesome-hermes-agent" target="_blank">0xNyk/awesome-hermes-agent</a></td>
+  <td class="desc">A curated list of awesome skills, tools, integrations, resources for Hermes Agent</td>
+  <td class="stars">4.1k</td>
+  <td class="forks">289</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-16</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/codejunkie99/agentic-stack" target="_blank">codejunkie99/agentic-stack</a></td>
+  <td class="desc">One brain, many harnesses — portable .agent/ folder (memory + skills + protocols)</td>
+  <td class="stars">2.1k</td>
+  <td class="forks">257</td>
+  <td class="lang">Python</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/anbeime/skill" target="_blank">anbeime/skill</a></td>
+  <td class="desc">收录最全、更新最快的技能Skills 商店 — 72 个精选技能包，可直接安装</td>
+  <td class="stars">1.9k</td>
+  <td class="forks">205</td>
+  <td class="lang">Python</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/conorbronsdon/avoid-ai-writing" target="_blank">conorbronsdon/avoid-ai-writing</a></td>
+  <td class="desc">Skill that audits and rewrites content to remove AI writing patterns</td>
+  <td class="stars">1.9k</td>
+  <td class="forks">190</td>
+  <td class="lang">JavaScript</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification fire">🔥</td>
+  <td><a class="repo-link" href="https://github.com/prompt-security/clawsec" target="_blank">prompt-security/clawsec</a></td>
+  <td class="desc">A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents</td>
+  <td class="stars">1.0k</td>
+  <td class="forks">109</td>
+  <td class="lang">JavaScript</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/SamurAIGPT/awesome-hermes-agent" target="_blank">SamurAIGPT/awesome-hermes-agent</a></td>
+  <td class="desc">A curated list of skills, plugins, tools, integrations, resources for Hermes Agent</td>
+  <td class="stars">1.8k</td>
+  <td class="forks">329</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/ksimback/hermes-ecosystem" target="_blank">ksimback/hermes-ecosystem</a></td>
+  <td class="desc">🗺️ Hermes Atlas — community map of every tool, skill, integration for Hermes Agent</td>
+  <td class="stars">1.0k</td>
+  <td class="forks">83</td>
+  <td class="lang">HTML</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/Romanescu11/hermes-skill-factory" target="_blank">Romanescu11/hermes-skill-factory</a></td>
+  <td class="desc">A meta-skill plugin that watches your workflows and automatically turns them into skills</td>
+  <td class="stars">393</td>
+  <td class="forks">51</td>
+  <td class="lang">Python</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/dodo-reach/hermes-link-curator" target="_blank">dodo-reach/hermes-link-curator</a></td>
+  <td class="desc">Hermes profile pack for archiving and browsing curated links + web dashboard app</td>
+  <td class="stars">107</td>
+  <td class="forks">8</td>
+  <td class="lang">HTML</td>
+  <td>2026-06-06</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/ChuckSRQ/awesome-hermes-skills" target="_blank">ChuckSRQ/awesome-hermes-skills</a></td>
+  <td class="desc">A curated collection of production-ready Hermes Agent skills</td>
+  <td class="stars">66</td>
+  <td class="forks">6</td>
+  <td class="lang">Python</td>
+  <td>2026-05-02</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/codesstar/hermes-skill-atlas" target="_blank">codesstar/hermes-skill-atlas</a></td>
+  <td class="desc">The complete interactive map of Hermes Agent skills — 70+ curated, verified, open source</td>
+  <td class="stars">65</td>
+  <td class="forks">8</td>
+  <td class="lang">HTML</td>
+  <td>2026-04-25</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/ZeroPointRepo/awesome-hermes-skills" target="_blank">ZeroPointRepo/awesome-hermes-skills</a></td>
+  <td class="desc">Curated install-ready skills for Hermes Agent — 85 built-in + 78 community skills</td>
+  <td class="stars">64</td>
+  <td class="forks">8</td>
+  <td class="lang">N/A</td>
+  <td>2026-04-29</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/Rainhoole/hermes-agent-acp-skill" target="_blank">Rainhoole/hermes-agent-acp-skill</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Hermes skill for ACP-style multi-agent delegation (Hermes, Codex, Claude Code)</td>
+  <td class="stars">42</td>
+  <td class="forks">7</td>
+  <td class="lang">N/A</td>
+  <td>2026-03-07</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/nexus9888/hermes-memory-skills" target="_blank">nexus9888/hermes-memory-skills</a></td>
+  <td class="desc">Memory hygiene skills for Hermes Agent — dreaming (3-phase consolidation)</td>
+  <td class="stars">34</td>
+  <td class="forks">3</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-03</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/thousandflowers/skillreaper" target="_blank">thousandflowers/skillreaper</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Evidence-based pruning for your AI-agent stack — scan, report, safely prune unused skills/MCP</td>
+  <td class="stars">26</td>
+  <td class="forks">1</td>
+  <td class="lang">Go</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/Wholiver/Math.Skill" target="_blank">Wholiver/Math.Skill</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Comprehensive mathematical reasoning skill — arithmetic to research-level problems</td>
+  <td class="stars">26</td>
+  <td class="forks">2</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-09</td>
+</tr>
+<tr>
+  <td class="classification star-rating">⭐</td>
+  <td><a class="repo-link" href="https://github.com/danieljustus/symaira-vault" target="_blank">danieljustus/symaira-vault</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">🔐 The password manager for terminal users and AI agents — age-encrypted, MCP-ready</td>
+  <td class="stars">21</td>
+  <td class="forks">3</td>
+  <td class="lang">Go</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/zhouwei713/fpv-immersive-video-prompting" target="_blank">zhouwei713/fpv-immersive-video-prompting</a></td>
+  <td class="desc">Route-first FPV AI video prompting skill for Seedance, Kling, Runway, Veo, GPT</td>
+  <td class="stars">67</td>
+  <td class="forks">21</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-10</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/hegeo/Lobster-Research" target="_blank">hegeo/Lobster-Research</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">AI-Powered Financial Research Report Generator — AI 驱动的金融研究报告生成助手</td>
+  <td class="stars">49</td>
+  <td class="forks">0</td>
+  <td class="lang">Python</td>
+  <td>2026-05-25</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/arimanyus/hermes-merchant" target="_blank">arimanyus/hermes-merchant</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Portable agent skills that scrape ML/AI jobs, score them against your profile, and apply</td>
+  <td class="stars">31</td>
+  <td class="forks">2</td>
+  <td class="lang">N/A</td>
+  <td>2026-04-21</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/Lethe044/hermes-skill-marketplace" target="_blank">Lethe044/hermes-skill-marketplace</a></td>
+  <td class="desc">Self-evolving Hermes agent that writes, tests, and publishes reusable Skills autonomously</td>
+  <td class="stars">31</td>
+  <td class="forks">3</td>
+  <td class="lang">Python</td>
+  <td>2026-03-14</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/1lystore/awaek" target="_blank">1lystore/awaek</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Chat with your X bookmarks — turn saved posts into answers, drafts, plans, decisions</td>
+  <td class="stars">29</td>
+  <td class="forks">1</td>
+  <td class="lang">Python</td>
+  <td>2026-05-24</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/zcweah1981/awesome-hermes-agent-zh" target="_blank">zcweah1981/awesome-hermes-agent-zh</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Hermes Agent 中文站 — 上手路径、国内落地、OpenClaw 共存迁移、排障参考</td>
+  <td class="stars">29</td>
+  <td class="forks">5</td>
+  <td class="lang">Python</td>
+  <td>2026-06-08</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/madrobotnet/hermes-codex-imagegen-skill" target="_blank">madrobotnet/hermes-codex-imagegen-skill</a></td>
+  <td class="desc">Generate images directly within Hermes Agent using the Codex CLI</td>
+  <td class="stars">25</td>
+  <td class="forks">2</td>
+  <td class="lang">N/A</td>
+  <td>2026-04-22</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/soupandpsy/amazing-psycoder-skills" target="_blank">soupandpsy/amazing-psycoder-skills</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">AI skills for psychology experiment programming and data analysis</td>
+  <td class="stars">24</td>
+  <td class="forks">0</td>
+  <td class="lang">Python</td>
+  <td>2026-06-11</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/interfluve-wav/andrej-karpathy-skills-hermes" target="_blank">interfluve-wav/andrej-karpathy-skills-hermes</a></td>
+  <td class="desc">Hermes port of Karpathy-inspired LLM coding guidelines — SKILL.md + examples</td>
+  <td class="stars">21</td>
+  <td class="forks">3</td>
+  <td class="lang">N/A</td>
+  <td>2026-06-17</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/Debarpan08/hermes-skill-registry" target="_blank">Debarpan08/hermes-skill-registry</a></td>
+  <td class="desc">Central registry for discovering and managing Hermes skills</td>
+  <td class="stars">20</td>
+  <td class="forks">0</td>
+  <td class="lang">Python</td>
+  <td>2026-05-31</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/iPythoning/b2b-sdr-hermes-skill" target="_blank">iPythoning/b2b-sdr-hermes-skill</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Autonomous AI SDR skill — finds buyers, qualifies leads, sends outreach, manages CRM</td>
+  <td class="stars">19</td>
+  <td class="forks">5</td>
+  <td class="lang">N/A</td>
+  <td>2026-05-28</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/Potarix/agent-hub" target="_blank">Potarix/agent-hub</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">One place to talk to all your agents</td>
+  <td class="stars">18</td>
+  <td class="forks">2</td>
+  <td class="lang">HTML</td>
+  <td>2026-05-01</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/Andrew-Girgis/microsoft-workspace-skill" target="_blank">Andrew-Girgis/microsoft-workspace-skill</a> <span class='new-badge'>NEW</span></td>
+  <td class="desc">Microsoft Graph API skill for Hermes Agent — Outlook Calendar, Mail, Contacts</td>
+  <td class="stars">16</td>
+  <td class="forks">4</td>
+  <td class="lang">Python</td>
+  <td>2026-04-14</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/galyarderlabs/galyarder-framework" target="_blank">galyarderlabs/galyarder-framework</a></td>
+  <td class="desc">The framework that powers your Agentic Company</td>
+  <td class="stars">14</td>
+  <td class="forks">4</td>
+  <td class="lang">Python</td>
+  <td>2026-06-19</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/Zhonghao1995/agentic-swmm-workflow" target="_blank">Zhonghao1995/agentic-swmm-workflow</a></td>
+  <td class="desc">Automated, auditable, memory-informed stormwater modelling framework</td>
+  <td class="stars">12</td>
+  <td class="forks">4</td>
+  <td class="lang">Python</td>
+  <td>2026-06-18</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/hrabanazviking/Seidr-Smidja" target="_blank">hrabanazviking/Seidr-Smidja</a></td>
+  <td class="desc">Allows AI Agents to make a VRM (anime avatar) using Blender and Unity plugins</td>
+  <td class="stars">12</td>
+  <td class="forks">2</td>
+  <td class="lang">Python</td>
+  <td>2026-06-08</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/that-yolanda/yolanda-skills" target="_blank">that-yolanda/yolanda-skills</a></td>
+  <td class="desc">Yolanda Daily Skill, eg: obsidian llm wiki management, common coding skill</td>
+  <td class="stars">10</td>
+  <td class="forks">1</td>
+  <td class="lang">TypeScript</td>
+  <td>2026-05-18</td>
+</tr>
+<tr>
+  <td class="classification dot">·</td>
+  <td><a class="repo-link" href="https://github.com/mantenasud/hermes-notion-gbrain" target="_blank">mantenasud/hermes-notion-gbrain</a></td>
+  <td class="desc">Natural language task management via WhatsApp/Slack → Notion, with GBrain knowledge</td>
+  <td class="stars">10</td>
+  <td class="forks">1</td>
+  <td class="lang">Python</td>
+  <td>2026-05-07</td>
+</tr>
+</tbody>
+</table>
+
+<h2 class="section-title">📈 趋势分析</h2>
+<div class="trend-section">
+<p>🔤 <strong>语言分布:</strong> Python: 15 · N/A: 9 · JavaScript: 4 · HTML: 4 · TypeScript: 2 · Go: 2 · 其他: 3</p>
+<p>📊 <strong>生态概览:</strong> 共发现 <strong>39</strong> 个与 Hermes Skill 相关的仓库（去重后），其中 9 个评为 🔥 必装级，12 个评为 ⭐ 值得安装。生态总星数达 <strong>98.6k</strong>，社区活跃度持续高位运行。</p>
+<p>🔄 <strong>对比昨日 (06-19):</strong> 仓库数从 31 → 39（+8），总星数从 97.8k → 98.6k（+0.8k）。今日 description 维度搜索拓宽了覆盖面，捕获到更多优质社区项目。</p>
+<p>🆕 <strong>今日新增 12 个仓库:</strong> <code>hegeo/Lobster-Research</code> (⭐49), <code>Rainhoole/hermes-agent-acp-skill</code> (⭐42), <code>arimanyus/hermes-merchant</code> (⭐31), <code>1lystore/awaek</code> (⭐29), <code>zcweah1981/awesome-hermes-agent-zh</code> (⭐29), <code>thousandflowers/skillreaper</code> (⭐26), <code>Wholiver/Math.Skill</code> (⭐26), <code>soupandpsy/amazing-psycoder-skills</code> (⭐24), <code>danieljustus/symaira-vault</code> (⭐21), <code>iPythoning/b2b-sdr-hermes-skill</code> (⭐19), <code>Potarix/agent-hub</code> (⭐18), <code>Andrew-Girgis/microsoft-workspace-skill</code> (⭐16)</p>
+<p>💡 <strong>亮点:</strong></p>
+<ul style="margin-left:20px;color:#8b949e;">
+  <li>🔥 <strong>nexu-io/open-design</strong> 涨至 67.9k ⭐ (+0.5k)，继续保持绝对领先</li>
+  <li>🆕 <strong>thousandflowers/skillreaper</strong> — 技能栈瘦身工具，解决技能膨胀痛点，值得关注</li>
+  <li>🆕 <strong>danieljustus/symaira-vault</strong> — AI agent 专用密码管理器，填补安全工具空白</li>
+  <li>🆕 <strong>zcweah1981/awesome-hermes-agent-zh</strong> — 中文社区入门指南，降低国内用户上手门槛</li>
+  <li>📈 中文生态持续扩展: <code>superpowers-zh</code>, <code>awesome-hermes-agent-zh</code>, <code>skill</code> 构成中文铁三角</li>
+  <li>🔐 安全赛道崛起: <code>clawsec</code> + <code>symaira-vault</code> 形成安全工具矩阵</li>
+</ul>
+</div>
+
+<h2 class="section-title">🔗 在线查看</h2>
+<p style="margin-bottom:20px;">
+📡 永久链接: <a href="https://hermes-daily-1443003958.cos-website.ap-guangzhou.myqcloud.com/github-skills-2026-06-20.html" style="color:#58a6ff;">https://hermes-daily-1443003958.cos-website.ap-guangzhou.myqcloud.com/github-skills-2026-06-20.html</a>
+</p>
+
+<div class="footer">
+  <p>Generated by Hermes Agent — 2026-06-20 | Powered by GitHub API</p>
+  <p>Nous Research · Hermes Skill Ecosystem Daily Scan</p>
+</div>
+
+</body>
+</html>
