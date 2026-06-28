@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>珀莱雅生态系统 V3 — 顺丰业务拓展作战报告</title>
+<style>
+:root{
+--bg:#08080f;--card:#0f0f1a;--border:rgba(255,255,255,0.06);--green:#10b981;--g2:#34d399;--purple:#a78bfa;--amber:#f59e0b;--red:#ef4444;--blue:#3b82f6;--coral:#f87171;--text:#e2e8f0;--muted:#94a3b8;--dim:#64748b;--glow:linear-gradient(135deg,rgba(168,224,99,.12),rgba(16,185,129,.04));
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+header{padding:32px 40px 0;max-width:1400px;margin:0 auto}
+h1{font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--green),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.subtitle{color:var(--muted);font-size:14px;margin-bottom:24px}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:0}
+nav a{padding:10px 18px;color:var(--muted);text-decoration:none;font-size:13px;border-radius:8px 8px 0 0;transition:all .2s;border:1px solid transparent;border-bottom:none;margin-bottom:-1px}
+nav a:hover,.nav-active{color:var(--green);background:rgba(16,185,129,.08);border-color:var(--border)}
+main{max-width:1400px;margin:0 auto;padding:0 40px 60px}
+.section{display:none}
+.section.active{display:block}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:32px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 24px;position:relative;overflow:hidden;transition:transform .2s}
+.kpi:hover{transform:translateY(-2px)}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--glow)}
+.kpi .label{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.kpi .value{font-size:28px;font-weight:700;color:var(--text)}
+.kpi .value.green{color:var(--green)}
+.kpi .delta{font-size:13px;color:var(--muted);margin-top:2px}
+.kpi.highlight{border-color:rgba(16,185,129,.2)}
+.kpi.highlight::before{background:linear-gradient(90deg,var(--green),var(--g2))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.card h3{font-size:16px;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card h3 .icon{font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 12px;color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:hover td{background:rgba(255,255,255,.02)}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-green{background:rgba(16,185,129,.15);color:var(--green)}
+.tag-purple{background:rgba(167,139,250,.15);color:var(--purple)}
+.tag-amber{background:rgba(245,158,11,.15);color:var(--amber)}
+.tag-red{background:rgba(239,68,68,.15);color:var(--red)}
+.tag-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+.stars{color:var(--amber);letter-spacing:1px}
+.priority-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px}
+.priority-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+.priority-card.p1{border-color:rgba(239,68,68,.3)}
+.priority-card.p2{border-color:rgba(245,158,11,.3)}
+.priority-card.p3{border-color:rgba(59,130,246,.3)}
+.priority-card h4{font-size:15px;margin-bottom:8px}
+.priority-card p{font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.product-tag{display:inline-block;padding:3px 8px;margin:2px;border-radius:4px;font-size:11px;background:rgba(16,185,129,.1);color:var(--g2)}
+.chart-bar{display:flex;align-items:center;gap:12px;margin:8px 0}
+.chart-bar .bar-label{width:100px;font-size:13px;text-align:right;color:var(--muted);flex-shrink:0}
+.chart-bar .bar-fill{height:22px;border-radius:4px;min-width:4px;transition:width .5s;display:flex;align-items:center;padding-left:8px;font-size:11px;color:#fff;font-weight:600}
+.bar-g{background:linear-gradient(90deg,var(--green),var(--g2))}
+.bar-p{background:linear-gradient(90deg,var(--purple),#c4b5fd)}
+.bar-a{background:linear-gradient(90deg,var(--amber),#fbbf24)}
+.bar-r{background:linear-gradient(90deg,var(--red),#fca5a5)}
+.bar-b{background:linear-gradient(90deg,var(--blue),#93c5fd)}
+.solution-box{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:20px;margin:12px 0}
+.solution-box h4{color:var(--green);font-size:15px;margin-bottom:8px}
+.solution-box p{font-size:13px;color:var(--muted);line-height:1.5}
+.alert{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:12px;padding:16px;margin:16px 0;font-size:13px;color:var(--amber)}
+footer{text-align:center;padding:32px;color:var(--dim);font-size:12px;border-top:1px solid var(--border);max-width:1400px;margin:0 auto}
+.glow-text{background:linear-gradient(135deg,#a8e063,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:800px){.two-col{grid-template-columns:1fr}.priority-grid{grid-template-columns:1fr}header,main{padding:20px 16px}}
+</style>
+</head>
+<body>
+<header>
+<h1>珀莱雅生态系统 V3</h1>
+<div class="subtitle">顺丰业务拓展作战报告 · 股权穿透 × 物流需求评估 × SF方案精准匹配 · 2026年6月</div>
+<nav id="nav">
+<a href="#overview" class="nav-active" onclick="switchTab('overview')">📊 作战概览</a>
+<a href="#brands" onclick="switchTab('brands')">🏷️ 品牌矩阵</a>
+<a href="#equity" onclick="switchTab('equity')">🔗 股权穿透</a>
+<a href="#flowerknows" onclick="switchTab('flowerknows')">🌸 花知晓专题</a>
+<a href="#sf-solutions" onclick="switchTab('sf-solutions')">🚚 SF方案匹配</a>
+<a href="#strategy" onclick="switchTab('strategy')">⚔️ 拜访策略</a>
+</nav>
+</header>
+<main>
+<section id="overview" class="section active">
+<div class="kpi-grid">
+<div class="kpi highlight"><div class="label">珀莱雅2025营收</div><div class="value green">108.8亿</div><div class="delta">↑ 稳健增长</div></div>
+<div class="kpi highlight"><div class="label">归母净利润</div><div class="value green">15.5亿</div><div class="delta">利润率 14.2%</div></div>
+<div class="kpi"><div class="label">控股子公司</div><div class="value">44家</div><div class="delta">含7家海外</div></div>
+<div class="kpi highlight"><div class="label">花知晓营收</div><div class="value green">17.26亿</div><div class="delta">珀莱雅控股51% · Q1利润占集团42%</div></div>
+<div class="kpi"><div class="label">Brand Portfolio</div><div class="value">10+</div><div class="delta">覆盖护肤·彩妆·洗护</div></div>
+</div>
+<div class="alert">
+<strong>🔥 核心发现：</strong>2026年5月珀莱雅以 <strong>7.79亿元</strong> 累计控股花知晓51%股权，花知晓2026Q1净利润1.55亿占珀莱雅同期42%。花知晓为纯电商彩妆品牌，正在江苏淮安自建仓储物流中心（2027年6月投产），B2C仓配需求极大——这是<span class="glow-text">"顺丰一盘货"方案切入的最佳窗口期</span>。
+</div>
+<div class="card">
+<h3><span class="icon">🎯</span> 顺丰切入优先级总览</h3>
+<div class="priority-grid">
+<div class="priority-card p1">
+<h4>⭐⭐⭐ P0 — 花知晓电商仓配</h4>
+<p>花知晓纯电商品牌，自建仓2027年中才投产。当前完全依赖外部仓配。17.26亿营收对应年包裹量估算1500万+件。B2C仓配一体是最大蛋糕。</p>
+<div><span class="product-tag">电商仓配一体</span><span class="product-tag">顺丰标快</span><span class="product-tag">逆向物流</span></div>
+</div>
+<div class="priority-card p1">
+<h4>⭐⭐⭐ P0 — 珀莱雅抖音/快手电商</h4>
+<p>抖音为第一大渠道（占比超30%），年GMV超30亿。目前主要用通达系。顺丰可在高端线（红宝石/双抗系列，客单价200-500元）和直播电商场景提供差异化服务。</p>
+<div><span class="product-tag">一盘货方案</span><span class="product-tag">顺丰特快</span><span class="product-tag">丰智云商</span></div>
+</div>
+<div class="priority-card p2">
+<h4>⭐⭐ P1 — Off&Relax/原色波塔/惊时 高增长品牌</h4>
+<p>三个品牌增速分别为+102%、+125%、+442%，物流需求快速放大。建议以「一盘货」方案统一承接，用丰智云系列实现全渠道库存共享。</p>
+<div><span class="product-tag">仓配一体</span><span class="product-tag">丰智云链(WMS)</span><span class="product-tag">丰智云策</span></div>
+</div>
+<div class="priority-card p2">
+<h4>⭐⭐ P1 — 花知晓跨境物流</h4>
+<p>海外营收约2亿（占10%），美国为最大市场。需要多市场产品合规、渠道库存、售后发货的全链路跨境方案。</p>
+<div><span class="product-tag">国际电商专递</span><span class="product-tag">海外仓配</span><span class="product-tag">保税仓</span></div>
+</div>
+<div class="priority-card p3">
+<h4>⭐ P2 — 珀莱雅B2B门店配送</h4>
+<p>全国500+单品牌店+CS/KA渠道。适用顺丰卡航（20KG+）、大票直送（500KG+）覆盖门店调拨和铺货。</p>
+<div><span class="product-tag">顺丰卡航</span><span class="product-tag">大票直送</span><span class="product-tag">冷运到店</span></div>
+</div>
+<div class="priority-card p3">
+<h4>⭐ P2 — 跨境/投资组合物流</h4>
+<p>港股IPO后海外并购加速（婴童/香水/男士护肤），提前布局国际物流。方玉友/侯军呈投资生态企业可连带开发。</p>
+<div><span class="product-tag">国际标快</span><span class="product-tag">供应链金融</span></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h3><span class="icon">👤</span> 核心决策人与对接策略</h3>
+<table>
+<tr><th>角色</th><th>姓名</th><th>关联</th><th>顺丰对接切入点</th></tr>
+<tr><td>董事长/实控人</td><td>侯军呈</td><td>持股56.12%</td><td>集团级战略合作框架</td></tr>
+<tr><td>总经理</td><td>侯亚孟</td><td>侯军呈之子 · "双十战略"</td><td>花知晓供应链整合</td></tr>
+<tr><td>原CEO</td><td>方玉友</td><td>持股15.06% · 689家间接投资</td><td>个人投资生态企业开发</td></tr>
+<tr><td>供应链VP</td><td><span class="glow-text">金衍华</span></td><td>董事/副总 · 供应链管理中心总经理</td><td>⭐ 直接对接人 · 一盘货方案</td></tr>
+<tr><td>电商运营</td><td>浙江美丽谷电子商务</td><td>珀莱雅电商运营主体</td><td>B2C仓配一体方案</td></tr>
+<tr><td>花知晓运营</td><td>深圳花知晓</td><td>花知晓运营主体</td><td>淮安仓建设期过渡仓配</td></tr>
+</table>
+</div>
+</section>
+
+<section id="brands" class="section">
+<div class="card">
+<h3><span class="icon">🏷️</span> 品牌矩阵与营收 & 顺丰匹配方案</h3>
+<table>
+<tr><th>品牌</th><th>品类</th><th>2025年营收</th><th>同比</th><th>运营主体</th><th>物流特征</th><th>SF匹配产品</th><th>优先级</th></tr>
+<tr>
+<td><strong>珀莱雅</strong></td><td>大众精致护肤</td><td>76.89亿</td><td>稳健</td><td>珀莱雅+美丽谷</td><td>B2C核心仓配 多平台</td>
+<td>一盘货(仓配一体+全渠道)+丰智云商+标快/特快</td><td><span class="stars">★★★★★</span></td>
+</tr>
+<tr>
+<td><strong>花知晓</strong></td><td>彩妆</td><td>17.26亿</td><td>新并表</td><td>深圳花知晓</td><td>纯电商 包装复杂 跨境</td>
+<td>电商仓配一体+国际电商专递+逆向物流</td><td><span class="stars">★★★★★</span></td>
+</tr>
+<tr>
+<td><strong>彩棠</strong></td><td>中式美学彩妆</td><td>12.55亿</td><td>—</td><td>杭州+宁波彩棠</td><td>B2C电商仓配</td>
+<td>仓配一体+顺丰特快</td><td><span class="stars">★★★★☆</span></td>
+</tr>
+<tr>
+<td><strong>Off&Relax</strong></td><td>洗护</td><td>7.44亿</td><td><span class="tag tag-green">+102%</span></td><td>杭州格珞芮斯</td><td>B2C仓配 高增长</td>
+<td>仓配一体+丰智云链(WMS)</td><td><span class="stars">★★★★☆</span></td>
+</tr>
+<tr>
+<td><strong>悦芙媞</strong></td><td>年轻肌护肤</td><td>3.71亿</td><td>—</td><td>悦芙媞(杭州)</td><td>B2C电商仓配</td>
+<td>标快+仓配</td><td><span class="stars">★★★☆☆</span></td>
+</tr>
+<tr>
+<td><strong>原色波塔</strong></td><td>彩妆</td><td>2.56亿</td><td><span class="tag tag-green">+125%</span></td><td>待验证</td><td>B2C仓配 爆发期</td>
+<td>仓配一体+弹性扩容</td><td><span class="stars">★★★☆☆</span></td>
+</tr>
+<tr>
+<td><strong>惊时</strong></td><td>个人护理</td><td>0.96亿</td><td><span class="tag tag-green">+442%</span></td><td>宁波惊蛰</td><td>B2C仓配 超爆发</td>
+<td>仓配一体+弹性扩容</td><td><span class="stars">★★★☆☆</span></td>
+</tr>
+<tr>
+<td><strong>CORRECTORS</strong></td><td>高功效护肤</td><td>待验证</td><td>—</td><td>杭州科瑞肤</td><td>B2C电商仓配</td><td>标快</td><td><span class="stars">★★☆☆☆</span></td>
+</tr>
+<tr>
+<td><strong>优资莱</strong></td><td>护肤</td><td>待验证</td><td>—</td><td>湖州优资莱</td><td>B2B分销</td><td>顺丰卡航</td><td><span class="stars">★★☆☆☆</span></td>
+</tr>
+</table>
+</div>
+<div class="alert">
+📈 <strong>增长亮点：</strong>Off&Relax +102%、原色波塔 +125%、惊时 +442%——三个高增长品牌处于爆发期，物流需求将快速放大，建议以"一盘货"方案统一承接，用丰智云链实现多品牌库存共享、丰智云策做需求预测和弹性扩容。
+</div>
+</section>
+
+<section id="equity" class="section">
+<div class="card">
+<h3><span class="icon">🔗</span> 珀莱雅控股/投资企业全量清单（按物流优先级分类）</h3>
+<table>
+<tr><th>分类</th><th>企业全称</th><th>持股</th><th>业务类型</th><th>物流需求</th><th>SF优先级</th></tr>
+<tr><td><span class="tag tag-red">U1</span></td><td><strong>浙江美丽谷电子商务有限公司</strong></td><td>100%</td><td>电商/批发零售</td><td>B2C电商仓配（核心）</td><td>P0</td></tr>
+<tr><td><span class="tag tag-red">U1</span></td><td><strong>深圳花知晓</strong>（花知晓运营主体）</td><td>51%</td><td>纯电商彩妆</td><td>B2C仓配+跨境+淮安在建仓</td><td>P0</td></tr>
+<tr><td><span class="tag tag-red">U1</span></td><td>珀莱雅（浙江）化妆品有限公司</td><td>100%</td><td>化妆品生产</td><td>B2B仓配+成品仓</td><td>P1</td></tr>
+<tr><td><span class="tag tag-red">U1</span></td><td>杭州珀莱雅贸易有限公司</td><td>100%</td><td>批发零售</td><td>B2B分销物流</td><td>P1</td></tr>
+<tr><td><span class="tag tag-amber">U2</span></td><td>悦芙媞（杭州）化妆品有限公司</td><td>100%</td><td>化妆品批发零售</td><td>B2C仓配</td><td>P2</td></tr>
+<tr><td><span class="tag tag-amber">U2</span></td><td>宁波彩棠化妆品有限公司</td><td>71.36%</td><td>彩棠运营</td><td>B2C电商仓配</td><td>P2</td></tr>
+<tr><td><span class="tag tag-amber">U2</span></td><td>杭州彩棠化妆品有限公司</td><td>—</td><td>彩棠品牌</td><td>B2C电商仓配</td><td>P2</td></tr>
+<tr><td><span class="tag tag-amber">U2</span></td><td>杭州格珞芮斯（Off&Relax）</td><td>100%</td><td>洗护品牌运营</td><td>B2C仓配 高增长</td><td>P2</td></tr>
+<tr><td><span class="tag tag-blue">U3</span></td><td>珀莱雅（海南）投资有限公司</td><td>100%</td><td>花知晓持股主体</td><td>无直接</td><td>P3</td></tr>
+<tr><td><span class="tag tag-blue">U3</span></td><td>杭州珀莱雅生物科技有限公司</td><td>100%</td><td>生物科技/医疗器械</td><td>B2B B2C</td><td>P3</td></tr>
+<tr><td><span class="tag tag-blue">U3</span></td><td>韩娜化妆品株式会社（韩国）</td><td>100%</td><td>制造业</td><td>跨境物流</td><td>P3</td></tr>
+<tr><td><span class="tag tag-blue">U3</span></td><td>PROYA EUROPE SAS（法国）</td><td>100%</td><td>科创中心</td><td>跨境物流</td><td>P3</td></tr>
+</table>
+</div>
+</section>
+
+<section id="flowerknows" class="section">
+<div class="kpi-grid">
+<div class="kpi highlight"><div class="label">花知晓2025营收</div><div class="value green">17.26亿</div></div>
+<div class="kpi highlight"><div class="label">2025净利润</div><div class="value green">2.80亿</div></div>
+<div class="kpi highlight"><div class="label">2026Q1净利润</div><div class="value green">1.55亿</div><div class="delta">占珀莱雅同期42%</div></div>
+<div class="kpi"><div class="label">收购总价</div><div class="value">7.79亿</div><div class="delta">累计持股51%</div></div>
+</div>
+<div class="card">
+<h3><span class="icon">🌸</span> 花知晓 — 顺丰最高优先级客户</h3>
+<div class="two-col">
+<div>
+<h4 style="color:var(--green);margin-bottom:12px">品牌特征</h4>
+<ul style="font-size:13px;color:var(--muted);line-height:2;list-style:none;padding:0">
+<li>📦 纯电商彩妆品牌，B2C仓配需求极大</li>
+<li>🎁 系列多、包装复杂、礼盒套组占比高</li>
+<li>🌍 海外营收约2亿（10%），美国最大市场</li>
+<li>🏗️ 淮安自建仓2027年中投产，<strong>当前完全依赖外部仓配</strong></li>
+<li>📈 2023-2025年每年保持50%+增长</li>
+</ul>
+</div>
+<div>
+<h4 style="color:var(--green);margin-bottom:12px">顺丰切入方案</h4>
+<div class="solution-box">
+<h4>🎯 核心方案：「一盘货」仓配一体</h4>
+<p>在花知晓自建仓投产前（2026-2027），提供过渡期电商仓配一体服务。配合丰智云链(WMS)实现库存管理，丰智云策做需求预测。</p>
+</div>
+<div class="solution-box">
+<h4>🌍 跨境方案：国际电商专递+海外仓</h4>
+<p>花知晓美国市场为主，提供国际电商专递（小包）到美国，配合顺丰海外仓实现当地配送。多市场合规、渠道库存、售后全链路。</p>
+</div>
+<div class="solution-box">
+<h4>📊 科技增值：丰智云商+丰智云策</h4>
+<p>全渠道订单管理（丰智云商）+ 需求预测与弹性扩容（丰智云策），帮花知晓从"自建仓前过渡"平滑到"自建仓+顺丰协同"的长期模式。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="alert">
+<strong>⚠️ 竞争威胁：</strong>花知晓正在淮安建设年分装1.5亿件的自建仓储物流中心（2027年6月投产）。<strong>必须在2026年内锁定合作</strong>，否则窗口期关闭。建议以"过渡期仓配"+"科技赋能"+"跨境协同"三合一方案切入。
+</div>
+</section>
+
+<section id="sf-solutions" class="section">
+<div class="card">
+<h3><span class="icon">🚚</span> 顺丰解决方案能力清单 × 珀莱雅需求精准匹配</h3>
+<table>
+<tr><th>顺丰产品</th><th>产品类型</th><th>核心能力</th><th>珀莱雅匹配场景</th><th>覆盖/时效</th></tr>
+<tr>
+<td><strong>电商仓配一体</strong></td><td>仓储+配送</td><td>电商专属仓配一体化</td><td><span class="tag tag-green">P0</span> 花知晓/美丽谷 B2C全量订单</td><td>全国分仓网络</td>
+</tr>
+<tr>
+<td><strong>消费品一盘货</strong></td><td>行业方案</td><td>全渠道库存共享、统一管理、按需履约</td><td><span class="tag tag-green">P0</span> 多品牌B2C+B2B统一管理</td><td>端到端数智化</td>
+</tr>
+<tr>
+<td><strong>顺丰标快</strong></td><td>标准快递</td><td>门到门、覆盖300+城市、省内次日12:00前</td><td>高端产品线专属配送（红宝石/双抗）</td><td>次日达</td>
+</tr>
+<tr>
+<td><strong>顺丰特快</strong></td><td>高端快递</td><td>限时达、优先处理</td><td>急单/VIP客户订单、直播电商即时发货</td><td>当日/次晨</td>
+</tr>
+<tr>
+<td><strong>国际电商专递</strong></td><td>跨境</td><td>跨境电商出口专递</td><td><span class="tag tag-green">P0</span> 花知晓海外B2C（美国为主）</td><td>200+国家</td>
+</tr>
+<tr>
+<td><strong>海外仓配</strong></td><td>跨境仓储</td><td>海外仓+当地配送</td><td>花知晓美国站当地履约</td><td>全球</td>
+</tr>
+<tr>
+<td><strong>顺丰卡航</strong></td><td>大件快运</td><td>20KG+门到门、覆盖300+城市</td><td>B2B门店调拨、工厂到仓</td><td>次日12:00前</td>
+</tr>
+<tr>
+<td><strong>大票直送</strong></td><td>零担LTL</td><td>单票500KG+大票零担</td><td>工厂-区域仓干线、KA商超配送</td><td>多样化报价</td>
+</tr>
+<tr>
+<td><strong>丰智云链</strong></td><td>科技-WMS</td><td>仓储管理系统/OMS</td><td>花知晓/美丽谷 多仓库存可视化</td><td>SaaS部署</td>
+</tr>
+<tr>
+<td><strong>丰智云策</strong></td><td>科技-决策</td><td>供应链决策优化/需求预测</td><td>惊时+442%增长弹性扩容</td><td>AI预测</td>
+</tr>
+<tr>
+<td><strong>丰智云商</strong></td><td>科技-全渠道</td><td>全渠道订单管理/渠道数字化</td><td>抖音+天猫+京东+拼多多统一管理</td><td>全渠道打通</td>
+</tr>
+<tr>
+<td><strong>丰智云塔</strong></td><td>科技-可视化</td><td>供应链控制塔/数据监控</td><td>管理层Dashboard、物流KPI可视化</td><td>实时监控</td>
+</tr>
+<tr>
+<td><strong>逆向上门取件</strong></td><td>逆向物流</td><td>全国网点上门取退货</td><td>化妆品退货率15-25%逆向需求</td><td>99.8%县级覆盖</td>
+</tr>
+<tr>
+<td><strong>精温专递</strong></td><td>冷链</td><td>医药级精准温控 -25°C~25°C</td><td>特殊原料运输（如需温控）</td><td>多温区</td>
+</tr>
+</table>
+</div>
+<div class="card">
+<h3><span class="icon">📊</span> 顺丰核心规模数据</h3>
+<div class="kpi-grid">
+<div class="kpi"><div class="label">国内地级市覆盖率</div><div class="value green">100%</div></div>
+<div class="kpi"><div class="label">国内县级覆盖率</div><div class="value green">99.8%</div></div>
+<div class="kpi"><div class="label">国际覆盖国家/地区</div><div class="value">200+</div></div>
+<div class="kpi"><div class="label">全球物流排名</div><div class="value">亚洲#1 全球#4</div></div>
+</div>
+</div>
+</section>
+
+<section id="strategy" class="section">
+<div class="card">
+<h3><span class="icon">⚔️</span> 三步走拜访策略</h3>
+<div class="solution-box">
+<h4>第一步：花知晓破冰（本周启动）</h4>
+<p>目标：花知晓电商/供应链负责人<br>
+核心话术："花知晓年增长50%+，淮安自建仓2027年中才投产，当前18个月的过渡期完全依赖外部仓配。顺丰可提供电商仓配一体+科技赋能的一站式方案，帮助花知晓在自建仓投产前平稳过渡。"<br>
+携带资料：电商仓配一体方案、丰智云链演示、花知晓竞品物流对标分析</p>
+</div>
+<div class="solution-box">
+<h4>第二步：集团供应链升级（1个月内）</h4>
+<p>目标：金衍华（供应链VP）<br>
+核心话术："珀莱雅集团10+品牌、年GMV超100亿，目前各品牌独立运营但物流分散。顺丰'一盘货'方案可实现全渠道库存共享、统一管理、按需履约，配合丰智云系列实现供应链数智化。"<br>
+携带资料：一盘货方案书、丰智云系列产品矩阵、同行业案例（消费品一盘货标杆）</p>
+</div>
+<div class="solution-box">
+<h4>第三步：生态扩展（3个月内）</h4>
+<p>目标：侯亚孟（总经理）、高层战略<br>
+核心话术："珀莱雅港股IPO后海外并购加速，花知晓美国市场拓展，方玉友689家投资生态。顺丰可提供从中国到全球的端到端物流+科技+金融综合解决方案，成为珀莱雅全球化的物流战略伙伴。"<br>
+携带资料：国际物流方案、供应链金融方案、战略合作框架</p>
+</div>
+</div>
+<div class="card">
+<h3><span class="icon">📞</span> 关键对接人</h3>
+<table>
+<tr><th>对接部门</th><th>关键人</th><th>话题</th><th>优先级</th></tr>
+<tr><td>深圳花知晓 供应链</td><td>供应链/仓储负责人</td><td>过渡期仓配 + WMS</td><td><span class="tag tag-red">立即</span></td></tr>
+<tr><td>珀莱雅集团 供应链管理中心</td><td><strong>金衍华（VP）</strong></td><td>一盘货 + 丰智云系列</td><td><span class="tag tag-red">1周内</span></td></tr>
+<tr><td>浙江美丽谷电子商务</td><td>运营负责人</td><td>抖音/天猫B2C仓配</td><td><span class="tag tag-amber">2周内</span></td></tr>
+<tr><td>珀莱雅 电商事业部</td><td>抖音渠道负责人</td><td>直播场景定制化物流</td><td><span class="tag tag-amber">2周内</span></td></tr>
+<tr><td>珀莱雅 国际贸易部</td><td>海外业务负责人</td><td>花知晓美国跨境+并购</td><td><span class="tag tag-blue">1个月</span></td></tr>
+<tr><td>珀莱雅 物流采购部</td><td>招标负责人</td><td>B2B门店配送/干线竞标</td><td><span class="tag tag-blue">参与下一轮</span></td></tr>
+</table>
+</div>
+</section>
+</main>
+<footer>
+珀莱雅生态系统 V3 · 顺丰业务拓展作战报告 · 2026年6月 · 数据来源：东方财富网、界面新闻、顺丰官网、珀莱雅年报<br>
+本报告仅供内部业务拓展参考，不构成投资建议
+</footer>
+<script>
+function switchTab(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('nav a').forEach(a=>a.classList.remove('nav-active'));
+document.querySelector('nav a[href="#'+id+'"]').classList.add('nav-active');
+}
+</script>
+</body>
+</html>
