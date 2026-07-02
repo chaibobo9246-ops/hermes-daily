@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skills 每日盘点 — 2026-07-02</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0d1117; color: #c9d1d9; padding: 20px; line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+h1 { color: #58a6ff; font-size: 28px; margin-bottom: 8px; }
+h2 { color: #f0883e; font-size: 20px; margin: 24px 0 12px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
+.stats { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.stat-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+  padding: 16px 20px; min-width: 120px; text-align: center;
+}
+.stat-card .num { font-size: 32px; font-weight: 700; color: #58a6ff; }
+.stat-card .label { font-size: 12px; color: #8b949e; margin-top: 4px; }
+.stat-card.fire .num { color: #f85149; }
+.stat-card.star .num { color: #d29922; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: #161b22; color: #8b949e; text-align: left; padding: 10px 12px;
+     border-bottom: 1px solid #30363d; font-weight: 600; position: sticky; top: 0; }
+td { padding: 10px 12px; border-bottom: 1px solid #21262d; vertical-align: middle; }
+tr:hover { background: #1a1f2b; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+.tag-fire { background: #f8514922; color: #f85149; }
+.tag-star { background: #d2992222; color: #d29922; }
+.tag-dot { background: #8b949e22; color: #8b949e; }
+.link { color: #58a6ff; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+.desc { color: #8b949e; font-size: 13px; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.num-col { text-align: right; font-variant-numeric: tabular-nums; }
+.trend { font-size: 16px; }
+.update-time { color: #6e7681; font-size: 11px; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #484f58; font-size: 12px; text-align: center; }
+.note { background: #161b22; border-left: 3px solid #58a6ff; padding: 12px 16px; margin: 16px 0; border-radius: 0 6px 6px 0; color: #8b949e; font-size: 13px; }
+.new-badge { display: inline-block; background: #238636; color: #fff; padding: 1px 6px; border-radius: 8px; font-size: 10px; margin-left: 4px; font-weight: 600; }
+.top5 { background: linear-gradient(135deg, #161b22 0%, #1a2332 100%); border: 1px solid #30363d; border-radius: 10px; padding: 20px; margin: 16px 0; }
+.top5 ol { padding-left: 20px; }
+.top5 li { margin: 8px 0; font-size: 15px; }
+.top5 .rank { color: #f0883e; font-weight: 700; }
+.lang { font-size: 11px; color: #6e7681; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔮 Hermes Skills 每日盘点</h1>
+<div class="subtitle">📅 2026-07-02 · 数据来源: GitHub API (topic:hermes-skill + in:name + in:description) · 去重后 39 个项目</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num">39</div>
+    <div class="label">项目总数</div>
+  </div>
+  <div class="stat-card fire">
+    <div class="num">14</div>
+    <div class="label">🔥 必装</div>
+  </div>
+  <div class="stat-card star">
+    <div class="num">13</div>
+    <div class="label">⭐ 推荐</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">110,810</div>
+    <div class="label">总 ⭐ Stars</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">1</div>
+    <div class="label">🆕 今日新增</div>
+  </div>
+</div>
+
+<div class="top5">
+<h2>🔥 必装 Top 5</h2>
+<ol>
+  <li>
+    <span class="rank">#1</span>
+    <a class="link" href="https://github.com/nexu-io/open-design" target="_blank">nexu-io/open-design</a>
+    <span class="tag tag-fire">⭐ 73,793</span>
+    <span class="lang">TypeScript</span>
+    <br><span class="desc">🎨 Local-first, open-source Claude Design alternative. 🖥️ Native desktop app. ⚡ 2</span>
+  </li>
+  <li>
+    <span class="rank">#2</span>
+    <a class="link" href="https://github.com/jnMetaCode/superpowers-zh" target="_blank">jnMetaCode/superpowers-zh</a>
+    <span class="tag tag-fire">⭐ 6,226</span>
+    <span class="lang">JavaScript</span>
+    <br><span class="desc">🦸 AI 编程超能力 · 中文增强版 — superpowers（116k+ ⭐）完整汉化 + 6 个中国原创 skills，让 Claude Code / C</span>
+  </li>
+  <li>
+    <span class="rank">#3</span>
+    <a class="link" href="https://github.com/outsourc-e/hermes-workspace" target="_blank">outsourc-e/hermes-workspace</a>
+    <span class="tag tag-fire">⭐ 5,934</span>
+    <span class="lang">JavaScript</span>
+    <br><span class="desc">Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspecto</span>
+  </li>
+  <li>
+    <span class="rank">#4</span>
+    <a class="link" href="https://github.com/NousResearch/hermes-agent-self-evolution" target="_blank">NousResearch/hermes-agent-self-evolution</a>
+    <span class="tag tag-fire">⭐ 4,452</span>
+    <span class="lang">Python</span>
+    <br><span class="desc">⚒ Evolutionary self-improvement for Hermes Agent — optimize skills, prompts, and</span>
+  </li>
+  <li>
+    <span class="rank">#5</span>
+    <a class="link" href="https://github.com/0xNyk/awesome-hermes-agent" target="_blank">0xNyk/awesome-hermes-agent</a>
+    <span class="tag tag-fire">⭐ 4,367</span>
+    <span class="lang"></span>
+    <br><span class="desc">A curated list of awesome skills, tools, integrations, and resources for Hermes </span>
+  </li>
+</ol>
+</div>
+<div class="note">🆕 <strong>今日新增 1 个项目</strong>：<a class="link" href="https://github.com/wondelai/skills" target="_blank">wondelai/skills</a></div>
+<h2>📋 完整列表（按分类 & Stars 降序）</h2>
+<table>
+<thead>
+<tr>
+  <th>分类</th>
+  <th>项目</th>
+  <th>描述</th>
+  <th style="text-align:right">⭐ Stars</th>
+  <th style="text-align:right">🍴 Forks</th>
+  <th>语言</th>
+  <th>趋势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/nexu-io/open-design" target="_blank">nexu-io/open-design</a></td>
+  <td><span class="desc" title="🎨 Local-first, open-source Claude Design alternative. 🖥️ Native desktop app. ⚡ 259+ Skills · ✨ 142+ Design Systems 🖼️ Web · desktop · mobile prototypes · slides · images · videos · HyperFrames 📦 Sandboxed preview · HTML/PDF/PPTX/MP4 export 🤖 Claude Code / OpenClaw / Codex / Cursor / OpenCode / Qwen / Copilot / Hermes / Kimi &amp; 17+ CLIs.">🎨 Local-first, open-source Claude Design alternative. 🖥️ Native desktop app. ⚡ 259+ Skills · ✨ 142+ </span></td>
+  <td class="num-col"><strong>73,793</strong></td>
+  <td class="num-col">8,396</td>
+  <td><span class="lang">TypeScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/jnMetaCode/superpowers-zh" target="_blank">jnMetaCode/superpowers-zh</a></td>
+  <td><span class="desc" title="🦸 AI 编程超能力 · 中文增强版 — superpowers（116k+ ⭐）完整汉化 + 6 个中国原创 skills，让 Claude Code / Copilot CLI / Hermes Agent / Cursor / Windsurf / Kiro / Gemini CLI 等 16 款 AI 编程工具真正会干活">🦸 AI 编程超能力 · 中文增强版 — superpowers（116k+ ⭐）完整汉化 + 6 个中国原创 skills，让 Claude Code / Copilot CLI / Hermes </span></td>
+  <td class="num-col"><strong>6,226</strong></td>
+  <td class="num-col">598</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/outsourc-e/hermes-workspace" target="_blank">outsourc-e/hermes-workspace</a></td>
+  <td><span class="desc" title="Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspector.">Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspector.</span></td>
+  <td class="num-col"><strong>5,934</strong></td>
+  <td class="num-col">917</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/NousResearch/hermes-agent-self-evolution" target="_blank">NousResearch/hermes-agent-self-evolution</a></td>
+  <td><span class="desc" title="⚒ Evolutionary self-improvement for Hermes Agent — optimize skills, prompts, and code using DSPy + GEPA">⚒ Evolutionary self-improvement for Hermes Agent — optimize skills, prompts, and code using DSPy + G</span></td>
+  <td class="num-col"><strong>4,452</strong></td>
+  <td class="num-col">507</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/0xNyk/awesome-hermes-agent" target="_blank">0xNyk/awesome-hermes-agent</a></td>
+  <td><span class="desc" title="A curated list of awesome skills, tools, integrations, and resources for Hermes Agent by Nous Research">A curated list of awesome skills, tools, integrations, and resources for Hermes Agent by Nous Resear</span></td>
+  <td class="num-col"><strong>4,367</strong></td>
+  <td class="num-col">308</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/anbeime/skill" target="_blank">anbeime/skill</a></td>
+  <td><span class="desc" title="收录最全、更新最快的技能Skills 商店，涵盖文档处理、内容创作、编程开发、机器学习、自动化工作流等多个领域的 72 个精选技能包。所有技能已打包完成，可直接安装使用！ 该商店中自动抓取了 Github 上的所有的 Skills 项目，并按照分类、更新时间、Star 数量等标签进行整理。">收录最全、更新最快的技能Skills 商店，涵盖文档处理、内容创作、编程开发、机器学习、自动化工作流等多个领域的 72 个精选技能包。所有技能已打包完成，可直接安装使用！ 该商店中自动抓取了 Gith</span></td>
+  <td class="num-col"><strong>2,899</strong></td>
+  <td class="num-col">304</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/eugeniughelbur/obsidian-second-brain" target="_blank">eugeniughelbur/obsidian-second-brain</a></td>
+  <td><span class="desc" title="Cross-CLI skill for Obsidian: turn your vault into a living AI-first second brain across Claude Code, Codex, Gemini, OpenCode, Hermes, and Pi. 44 commands - self-rewriting notes, local+hybrid semantic search, key-less web research, /obsidian-architect codebase docs, and scheduled agents that maintain the vault while you sleep.">Cross-CLI skill for Obsidian: turn your vault into a living AI-first second brain across Claude Code</span></td>
+  <td class="num-col"><strong>2,877</strong></td>
+  <td class="num-col">341</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/codejunkie99/agentic-stack" target="_blank">codejunkie99/agentic-stack</a></td>
+  <td><span class="desc" title="One brain, many harnesses. Portable .agent/ folder (memory + skills + protocols) that plugs into Claude Code, Cursor, Windsurf, OpenCode, OpenClaw, Hermes, or DIY Python — and keeps its knowledge when you switch.">One brain, many harnesses. Portable .agent/ folder (memory + skills + protocols) that plugs into Cla</span></td>
+  <td class="num-col"><strong>2,146</strong></td>
+  <td class="num-col">260</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/conorbronsdon/avoid-ai-writing" target="_blank">conorbronsdon/avoid-ai-writing</a></td>
+  <td><span class="desc" title="Skill that audits and rewrites content to remove AI writing patterns. Use it with your favorite agents including Claude Code, OpenClaw, and Hermes.">Skill that audits and rewrites content to remove AI writing patterns. Use it with your favorite agen</span></td>
+  <td class="num-col"><strong>2,111</strong></td>
+  <td class="num-col">209</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/SamurAIGPT/awesome-hermes-agent" target="_blank">SamurAIGPT/awesome-hermes-agent</a></td>
+  <td><span class="desc" title="A curated list of skills, plugins, tools, integrations, and resources for Hermes Agent by Nous Research">A curated list of skills, plugins, tools, integrations, and resources for Hermes Agent by Nous Resea</span></td>
+  <td class="num-col"><strong>1,793</strong></td>
+  <td class="num-col">332</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/wondelai/skills" target="_blank">wondelai/skills</a> <span class="new-badge">NEW</span></td>
+  <td><span class="desc" title="Agent skills for Claude, Claude Code, Claude Cowork, Codex, Cursor, OpenClaw, Hermes Agent and other agentskills.io-compatible agents. See https://developertoolkit.ai to learn more how to use skills properly and create new ones.">Agent skills for Claude, Claude Code, Claude Cowork, Codex, Cursor, OpenClaw, Hermes Agent and other</span></td>
+  <td class="num-col"><strong>1,517</strong></td>
+  <td class="num-col">154</td>
+  <td><span class="lang">Shell</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/prompt-security/clawsec" target="_blank">prompt-security/clawsec</a></td>
+  <td><span class="desc" title="A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents (and variants). Protect your SOUL.md (etc') with drift detection, live security recommendations, automated audits, and skill integrity verification. All from one installable suite.">A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents (and variants). P</span></td>
+  <td class="num-col"><strong>1,056</strong></td>
+  <td class="num-col">111</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/Romanescu11/hermes-skill-factory" target="_blank">Romanescu11/hermes-skill-factory</a></td>
+  <td><span class="desc" title=" A meta-skill plugin for Nous Research's Hermes AI agent that watches your workflows and automatically turns them into reusable skills.  Every time you work with Hermes and solve something — setting up a project, debugging code, creating a PR — that   workflow disappears at the end of the session. You have to explain it again next time."> A meta-skill plugin for Nous Research's Hermes AI agent that watches your workflows and automatical</span></td>
+  <td class="num-col"><strong>416</strong></td>
+  <td class="num-col">56</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-fire">🔥 必装</span></td>
+  <td><a class="link" href="https://github.com/CYC2002tommy/Deep-Research-Agent" target="_blank">CYC2002tommy/Deep-Research-Agent</a></td>
+  <td><span class="desc" title="An autonomous AI agent pipeline for rigorous academic research, featuring strict DOI verification, multi-agent Scopus/OpenAlex/Semantic Scholar retrieval, and APA 7th .docx generation">An autonomous AI agent pipeline for rigorous academic research, featuring strict DOI verification, m</span></td>
+  <td class="num-col"><strong>267</strong></td>
+  <td class="num-col">34</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/dodo-reach/hermes-link-curator" target="_blank">dodo-reach/hermes-link-curator</a></td>
+  <td><span class="desc" title="Hermes profile pack for archiving and browsing curated links + web dashboard app">Hermes profile pack for archiving and browsing curated links + web dashboard app</span></td>
+  <td class="num-col"><strong>114</strong></td>
+  <td class="num-col">8</td>
+  <td><span class="lang">HTML</span></td>
+  <td class="trend">📈</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/zhouwei713/fpv-immersive-video-prompting" target="_blank">zhouwei713/fpv-immersive-video-prompting</a></td>
+  <td><span class="desc" title="Route-first FPV AI video prompting skill for Seedance, Kling, Runway, Veo, GPT Image asset packs, numbered stops, and red-line path control.">Route-first FPV AI video prompting skill for Seedance, Kling, Runway, Veo, GPT Image asset packs, nu</span></td>
+  <td class="num-col"><strong>76</strong></td>
+  <td class="num-col">21</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/ZeroPointRepo/awesome-hermes-skills" target="_blank">ZeroPointRepo/awesome-hermes-skills</a></td>
+  <td><span class="desc" title="Curated, install-ready skills for Hermes Agent (v0.17.0). 72 built-in + 101 optional bundled skills + 85 community skills, plugins &amp; tools for the self-improving AI agent from Nous Research. Cross-compatible with Claude Code, OpenClaw, Cursor, and Windsurf.">Curated, install-ready skills for Hermes Agent (v0.17.0). 72 built-in + 101 optional bundled skills </span></td>
+  <td class="num-col"><strong>72</strong></td>
+  <td class="num-col">14</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/codesstar/hermes-skill-atlas" target="_blank">codesstar/hermes-skill-atlas</a></td>
+  <td><span class="desc" title="The complete, interactive map of Hermes Agent skills — 70+ curated, verified, open source. 🗺️">The complete, interactive map of Hermes Agent skills — 70+ curated, verified, open source. 🗺️</span></td>
+  <td class="num-col"><strong>71</strong></td>
+  <td class="num-col">8</td>
+  <td><span class="lang">HTML</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/ChuckSRQ/awesome-hermes-skills" target="_blank">ChuckSRQ/awesome-hermes-skills</a></td>
+  <td><span class="desc" title="A curated collection of production-ready Hermes Agent skills — brainstorming, PRD workflows, debugging, Apple integrations, MLOps, document processing, and more.">A curated collection of production-ready Hermes Agent skills — brainstorming, PRD workflows, debuggi</span></td>
+  <td class="num-col"><strong>68</strong></td>
+  <td class="num-col">7</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">📈</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/hegeo/Lobster-Research" target="_blank">hegeo/Lobster-Research</a></td>
+  <td><span class="desc" title="AI-Powered Financial Research Report Generator  AI 驱动的金融研究报告生成助手">AI-Powered Financial Research Report Generator  AI 驱动的金融研究报告生成助手</span></td>
+  <td class="num-col"><strong>49</strong></td>
+  <td class="num-col">0</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/Rainhoole/hermes-agent-acp-skill" target="_blank">Rainhoole/hermes-agent-acp-skill</a></td>
+  <td><span class="desc" title="Hermes skill for ACP-style multi-agent delegation (Hermes, Codex, Claude Code).">Hermes skill for ACP-style multi-agent delegation (Hermes, Codex, Claude Code).</span></td>
+  <td class="num-col"><strong>46</strong></td>
+  <td class="num-col">7</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/Lethe044/hermes-skill-marketplace" target="_blank">Lethe044/hermes-skill-marketplace</a></td>
+  <td><span class="desc" title="Açıklama: Self-evolving Hermes agent that writes, tests, and publishes reusable Skills autonomously. Uses Memory + Skills + Atropos RL.">Açıklama: Self-evolving Hermes agent that writes, tests, and publishes reusable Skills autonomously.</span></td>
+  <td class="num-col"><strong>36</strong></td>
+  <td class="num-col">4</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/nexus9888/hermes-memory-skills" target="_blank">nexus9888/hermes-memory-skills</a></td>
+  <td><span class="desc" title="Memory hygiene skills for Hermes Agent — dreaming (3-phase consolidation)">Memory hygiene skills for Hermes Agent — dreaming (3-phase consolidation)</span></td>
+  <td class="num-col"><strong>36</strong></td>
+  <td class="num-col">4</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/konglong87/superPM" target="_blank">konglong87/superPM</a></td>
+  <td><span class="desc" title="专为产品经理设计的 AI工具 Skills技能，一键实现全生命周期的产品管理工作流。skills frame for superPM">专为产品经理设计的 AI工具 Skills技能，一键实现全生命周期的产品管理工作流。skills frame for superPM</span></td>
+  <td class="num-col"><strong>35</strong></td>
+  <td class="num-col">4</td>
+  <td><span class="lang">JavaScript</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/zcweah1981/awesome-hermes-agent-zh" target="_blank">zcweah1981/awesome-hermes-agent-zh</a></td>
+  <td><span class="desc" title="Hermes Agent中文站- 中文实战入口：上手路径、国内落地、OpenClaw 共存迁移、排障参考与可下载方案包。">Hermes Agent中文站- 中文实战入口：上手路径、国内落地、OpenClaw 共存迁移、排障参考与可下载方案包。</span></td>
+  <td class="num-col"><strong>34</strong></td>
+  <td class="num-col">6</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/arimanyus/hermes-merchant" target="_blank">arimanyus/hermes-merchant</a></td>
+  <td><span class="desc" title="A collection of portable agent skills that scrape ML/AI jobs, score them against your profile, and auto-fill Greenhouse applications.">A collection of portable agent skills that scrape ML/AI jobs, score them against your profile, and a</span></td>
+  <td class="num-col"><strong>31</strong></td>
+  <td class="num-col">2</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-star">⭐ 推荐</span></td>
+  <td><a class="link" href="https://github.com/hezkvectory/hermes-edu-skills" target="_blank">hezkvectory/hermes-edu-skills</a></td>
+  <td><span class="desc" title="中文教育 Agent Skill Pack：教材同步、备考复习、拍照答疑、错题复盘、亲子陪学、阅读写作和教师工具，Hermes Agent 可直接使用，也可导出到 OpenClaw/Codex/Cursor/Claude Code。">中文教育 Agent Skill Pack：教材同步、备考复习、拍照答疑、错题复盘、亲子陪学、阅读写作和教师工具，Hermes Agent 可直接使用，也可导出到 OpenClaw/Codex/Cur</span></td>
+  <td class="num-col"><strong>31</strong></td>
+  <td class="num-col">45</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/1lystore/awaek" target="_blank">1lystore/awaek</a></td>
+  <td><span class="desc" title=" Chat with your X bookmarks. Turn saved posts into answers, drafts, plans, and decisions"> Chat with your X bookmarks. Turn saved posts into answers, drafts, plans, and decisions</span></td>
+  <td class="num-col"><strong>29</strong></td>
+  <td class="num-col">2</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/soupandpsy/amazing-psycoder-skills" target="_blank">soupandpsy/amazing-psycoder-skills</a></td>
+  <td><span class="desc" title="AI skills for psychology experiment programming and data analysis, from task design and code generation to reproducible statistical workflows.">AI skills for psychology experiment programming and data analysis, from task design and code generat</span></td>
+  <td class="num-col"><strong>27</strong></td>
+  <td class="num-col">0</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/DezXBT/AgentX" target="_blank">DezXBT/AgentX</a></td>
+  <td><span class="desc" title="Agent-first X/Twitter client in Go — JSON envelope per command, multi-account, cookie-safe anti-detection for autonomous agents">Agent-first X/Twitter client in Go — JSON envelope per command, multi-account, cookie-safe anti-dete</span></td>
+  <td class="num-col"><strong>26</strong></td>
+  <td class="num-col">3</td>
+  <td><span class="lang">Go</span></td>
+  <td class="trend">📈</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/Wholiver/Math.Skill" target="_blank">Wholiver/Math.Skill</a></td>
+  <td><span class="desc" title="A comprehensive mathematical reasoning skill for AI assistants — arithmetic to research-level problems with rigorous verification.">A comprehensive mathematical reasoning skill for AI assistants — arithmetic to research-level proble</span></td>
+  <td class="num-col"><strong>26</strong></td>
+  <td class="num-col">2</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/madrobotnet/hermes-codex-imagegen-skill" target="_blank">madrobotnet/hermes-codex-imagegen-skill</a></td>
+  <td><span class="desc" title="This skill allows you to generate images directly within Hermes Agent using the Codex CLI. If you have a paid subscription to ChatGPT, you can generate images via the Codex CLI without needing a separate API.">This skill allows you to generate images directly within Hermes Agent using the Codex CLI. If you ha</span></td>
+  <td class="num-col"><strong>26</strong></td>
+  <td class="num-col">2</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/iPythoning/b2b-sdr-hermes-skill" target="_blank">iPythoning/b2b-sdr-hermes-skill</a></td>
+  <td><span class="desc" title="Autonomous AI SDR skill for Hermes Agent — finds buyers, qualifies leads, sends outreach, manages CRM across WhatsApp/Email/Telegram for B2B export businesses">Autonomous AI SDR skill for Hermes Agent — finds buyers, qualifies leads, sends outreach, manages CR</span></td>
+  <td class="num-col"><strong>23</strong></td>
+  <td class="num-col">6</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/danieljustus/symaira-vault" target="_blank">danieljustus/symaira-vault</a></td>
+  <td><span class="desc" title="🔐 The password manager for terminal users and AI agents. Age-encrypted, keyring-cached, MCP-ready. Zero telemetry.">🔐 The password manager for terminal users and AI agents. Age-encrypted, keyring-cached, MCP-ready. Z</span></td>
+  <td class="num-col"><strong>22</strong></td>
+  <td class="num-col">3</td>
+  <td><span class="lang">Go</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/Potarix/agent-hub" target="_blank">Potarix/agent-hub</a></td>
+  <td><span class="desc" title="One place to talk to all your agents">One place to talk to all your agents</span></td>
+  <td class="num-col"><strong>19</strong></td>
+  <td class="num-col">2</td>
+  <td><span class="lang">HTML</span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/Zhonghao1995/agentic-swmm-workflow" target="_blank">Zhonghao1995/agentic-swmm-workflow</a></td>
+  <td><span class="desc" title="Agentic SWMM is an automated, auditable, and memory-informed framework for reproducible stormwater modelling, integrating QGIS and EPA SWMM through the aiswmm runtime, reusable Skills, and MCP interfaces, with QA verification, provenance tracking, calibration support, and Codex, Hermes, Claude code as well as OpenClaw compatibility">Agentic SWMM is an automated, auditable, and memory-informed framework for reproducible stormwater m</span></td>
+  <td class="num-col"><strong>16</strong></td>
+  <td class="num-col">7</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🔥</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/Andrew-Girgis/microsoft-workspace-skill" target="_blank">Andrew-Girgis/microsoft-workspace-skill</a></td>
+  <td><span class="desc" title="Microsoft Graph API skill for Hermes Agent — Outlook Calendar, Mail, Contacts integration">Microsoft Graph API skill for Hermes Agent — Outlook Calendar, Mail, Contacts integration</span></td>
+  <td class="num-col"><strong>16</strong></td>
+  <td class="num-col">5</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">🌱</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/galyarderlabs/galyarder-framework" target="_blank">galyarderlabs/galyarder-framework</a></td>
+  <td><span class="desc" title="The framework that powers your Agentic Company">The framework that powers your Agentic Company</span></td>
+  <td class="num-col"><strong>15</strong></td>
+  <td class="num-col">5</td>
+  <td><span class="lang">Python</span></td>
+  <td class="trend">📈</td>
+</tr>
+<tr>
+  <td><span class="tag tag-dot">· 一般</span></td>
+  <td><a class="link" href="https://github.com/that-yolanda/yolanda-skills" target="_blank">that-yolanda/yolanda-skills</a></td>
+  <td><span class="desc" title="Yolanda Daily Skill, eg: obsidian llm wiki management, common coding skill.">Yolanda Daily Skill, eg: obsidian llm wiki management, common coding skill.</span></td>
+  <td class="num-col"><strong>12</strong></td>
+  <td class="num-col">1</td>
+  <td><span class="lang"></span></td>
+  <td class="trend">📈</td>
+</tr>
+</tbody>
+</table>
+
+<div class="footer">
+  <p>🤖 由 Hermes Agent 自动生成 · 每日 UTC 08:00 更新</p>
+  <p>📡 数据来源：GitHub REST API v3 · 搜索词：topic:hermes-skill + hermes-skill in:name + hermes-skill in:description</p>
+  <p>🔗 在线查看：<a class="link" href="https://hermes-daily-1443003958.cos-website.ap-guangzhou.myqcloud.com/github-skills-2026-07-02.html">COS 静态托管</a></p>
+</div>
+
+</div>
+</body>
+</html>
