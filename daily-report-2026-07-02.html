@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 行业日报 | 2026年7月2日</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0a0a0f;color:#e0e0e0;
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  line-height:1.6;padding:24px;
+}
+.container{max-width:1400px;margin:0 auto}
+.header{
+  text-align:center;padding:48px 24px;
+  background:linear-gradient(135deg,#13131a 0%,#0f0f1a 100%);
+  border:1px solid rgba(255,255,255,0.06);border-radius:24px;margin-bottom:32px;
+}
+.header h1{font-size:2.4em;font-weight:800;color:#fff;margin-bottom:8px}
+.header .date{font-size:1.1em;color:#a78bfa;font-weight:500}
+.header .subtitle{font-size:0.9em;color:#6b7280;margin-top:4px}
+
+/* Metric cards row */
+.metrics-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;margin-bottom:32px;
+}
+.metric-card{
+  background:#13131a;border:1px solid rgba(255,255,255,0.06);
+  border-radius:20px;padding:24px;text-align:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.metric-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(16,185,129,0.08)}
+.metric-card .label{font-size:0.8em;color:#6b7280;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.metric-card .value{font-size:2em;font-weight:800;color:#10b981;margin-bottom:4px}
+.metric-card .change{font-size:0.85em;color:#a78bfa}
+.metric-card.warn .value{color:#f59e0b}
+.metric-card.down .value{color:#ef4444}
+
+/* Section */
+.section{
+  background:#13131a;border:1px solid rgba(255,255,255,0.06);
+  border-radius:24px;padding:32px;margin-bottom:24px;
+}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.section-header h2{font-size:1.3em;font-weight:700;color:#fff}
+.section-header .badge{
+  font-size:0.75em;padding:4px 10px;border-radius:12px;
+  background:rgba(16,185,129,0.15);color:#10b981;font-weight:600;
+}
+
+/* Table */
+.data-table{width:100%;border-collapse:collapse;margin:16px 0}
+.data-table th{
+  text-align:left;padding:12px 16px;font-size:0.8em;color:#6b7280;
+  text-transform:uppercase;letter-spacing:0.5px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.data-table td{
+  padding:12px 16px;font-size:0.9em;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.data-table tr:hover{background:rgba(255,255,255,0.02)}
+.data-table .up{color:#10b981;font-weight:600}
+.data-table .down{color:#ef4444;font-weight:600}
+.data-table .num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* Highlight row */
+.highlight-row{background:linear-gradient(135deg,rgba(168,224,99,0.06),rgba(247,255,0,0.02))}
+.highlight-row td{border-bottom:1px solid rgba(168,224,99,0.1)}
+
+/* Two column grid */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+/* News cards */
+.news-item{
+  background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+  border-radius:16px;padding:20px;margin-bottom:16px;
+}
+.news-item h4{font-size:1em;color:#c4b5fd;margin-bottom:8px}
+.news-item p{font-size:0.88em;color:#9ca3af;line-height:1.7}
+.news-item .tag{
+  display:inline-block;font-size:0.72em;padding:2px 8px;border-radius:8px;
+  margin-right:6px;font-weight:600;
+}
+.tag-red{background:rgba(239,68,68,0.15);color:#ef4444}
+.tag-amber{background:rgba(245,158,11,0.15);color:#f59e0b}
+.tag-green{background:rgba(16,185,129,0.15);color:#10b981}
+.tag-purple{background:rgba(167,139,250,0.15);color:#a78bfa}
+
+/* Mini chart bar */
+.bar-chart{margin:16px 0}
+.bar-row{display:flex;align-items:center;margin-bottom:10px;gap:12px}
+.bar-label{width:100px;font-size:0.82em;color:#9ca3af;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:22px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;transition:width .6s ease}
+.bar-value{width:70px;font-size:0.8em;color:#e0e0e0;font-weight:600;flex-shrink:0}
+
+/* Donut */
+.donut-wrap{display:flex;align-items:center;gap:24px;margin:16px 0}
+.donut{position:relative;width:120px;height:120px;flex-shrink:0}
+.donut svg{transform:rotate(-90deg)}
+.donut-legend{font-size:0.82em}
+.donut-legend .item{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.donut-legend .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* Footer */
+.footer{
+  text-align:center;padding:24px;color:#4b5563;font-size:0.78em;
+  margin-top:16px;
+}
+.footer a{color:#6b7280;text-decoration:none}
+.footer a:hover{color:#a78bfa}
+
+/* Responsive */
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+
+/* Status indicators */
+.status-live{display:inline-flex;align-items:center;gap:6px}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#10b981;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>📊 行业日报</h1>
+  <div class="date">2026年7月2日 · 星期四 · 农历五月十八</div>
+  <div class="subtitle">覆盖：物流指数 · 美妆行业 · 快递物流 | 数据截止 2026-07-02 08:00</div>
+</div>
+
+<!-- Key Metrics -->
+<div class="metrics-row">
+  <div class="metric-card">
+    <div class="label">制造业 PMI (6月)</div>
+    <div class="value">50.3%</div>
+    <div class="change">↑ 环比+0.3</div>
+  </div>
+  <div class="metric-card warn">
+    <div class="label">物流业景气指数 (5月)</div>
+    <div class="value">50.3%</div>
+    <div class="change">↑ 环比+0.6 · 重回扩张区间</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">电商物流指数 (5月)</div>
+    <div class="value">111.0</div>
+    <div class="change">↑ +0.4点</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">1-5月社会物流总额</div>
+    <div class="value">146.6万亿</div>
+    <div class="change">↑ 同比+5.2%</div>
+  </div>
+  <div class="metric-card down">
+    <div class="label">618 美妆全网 GMV</div>
+    <div class="value">561亿</div>
+    <div class="change">↓ 同比-2.43% · 首次负增长</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">1-5月快递业务量</div>
+    <div class="value">828.7亿件</div>
+    <div class="change">↑ 同比+5.2%</div>
+  </div>
+</div>
+
+<!-- Section 1: Logistics Macro -->
+<div class="section">
+  <div class="section-header">
+    <h2>📦 物流指数与宏观数据</h2>
+    <span class="badge">CFLP</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="color:#a78bfa;font-size:0.95em;margin-bottom:12px">🏭 制造业 PMI（2026年6月 · 已发布 ✓）</h3>
+      <table class="data-table">
+        <tr><th>指标</th><th class="num">6月值</th><th>环比</th></tr>
+        <tr class="highlight-row"><td>制造业 PMI</td><td class="num">50.3%</td><td class="up">↑ +0.3</td></tr>
+        <tr><td>大型企业</td><td class="num">50.7%</td><td class="down">↓ -0.4</td></tr>
+        <tr><td>中型企业</td><td class="num">50.5%</td><td class="up">↑ +1.9</td></tr>
+        <tr><td>小型企业</td><td class="num">48.2%</td><td class="down">↓ -0.3</td></tr>
+        <tr><td>新订单指数</td><td class="num">51.2%</td><td class="up">↑ +1.3</td></tr>
+        <tr><td>新出口订单</td><td class="num">50.1%</td><td class="up">↑ +1.5</td></tr>
+        <tr><td>购进价格指数</td><td class="num">54.2%</td><td class="down">↓ -6.3</td></tr>
+      </table>
+      <p style="font-size:0.75em;color:#4b5563;margin-top:8px">来源：国家统计局 · 2026-06-30 发布</p>
+    </div>
+
+    <div>
+      <h3 style="color:#a78bfa;font-size:0.95em;margin-bottom:12px">📊 非制造业 & 物流指数</h3>
+      <table class="data-table">
+        <tr><th>指标</th><th class="num">最新值</th><th>变化</th></tr>
+        <tr><td>非制造业商务活动 (6月)</td><td class="num">50.2%</td><td class="up">↑ +0.1</td></tr>
+        <tr><td>建筑业 (6月)</td><td class="num">49.0%</td><td class="up">↑ +0.2</td></tr>
+        <tr class="highlight-row"><td>物流业景气指数 LPI (5月)</td><td class="num">50.3%</td><td class="up">↑ +0.6</td></tr>
+        <tr><td>仓储指数 (5月)</td><td class="num">49.6%</td><td class="down">↓ -1.4</td></tr>
+        <tr><td>电商物流指数 (5月)</td><td class="num">111.0点</td><td class="up">↑ +0.4</td></tr>
+        <tr><td>公路物流运价 (5月)</td><td class="num">105.3点</td><td class="down">↓ -0.91%</td></tr>
+        <tr><td>快递发展指数 (5月)</td><td class="num">472.9</td><td class="up">↑ +3.1%</td></tr>
+      </table>
+      <p style="font-size:0.75em;color:#4b5563;margin-top:8px">来源：中国物流与采购联合会 · 6月LPI/仓储/运价预计7月2-5日发布 ⚠️</p>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;background:linear-gradient(135deg,rgba(167,139,250,0.08),rgba(16,185,129,0.04));border-radius:16px;padding:24px">
+    <h3 style="color:#c4b5fd;font-size:0.95em;margin-bottom:12px">📋 1-5月物流运行核心数据（6月28日发布 ✓）</h3>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">社会物流总额</div>
+        <div class="bar-track"><div class="bar-fill" style="width:85%;background:linear-gradient(90deg,#10b981,#a8e063)"></div></div>
+        <div class="bar-value">146.6万亿 +5.2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">物流业总收入</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div>
+        <div class="bar-value">5.8万亿 +4.2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">高技术制造业</div>
+        <div class="bar-track"><div class="bar-fill" style="width:92%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div>
+        <div class="bar-value">+15.1%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">装备制造业</div>
+        <div class="bar-track"><div class="bar-fill" style="width:72%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div>
+        <div class="bar-value">+9.5%</div>
+      </div>
+    </div>
+    <p style="font-size:0.8em;color:#6b7280;margin-top:8px">来源：中国物流与采购联合会 · 人民网/证券日报 2026-06-29</p>
+  </div>
+</div>
+
+<!-- Section 2: Beauty Industry -->
+<div class="section">
+  <div class="section-header">
+    <h2>💄 美妆行业动态</h2>
+    <span class="badge">618 战报</span>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="color:#f59e0b;font-size:0.95em;margin-bottom:12px">🔴 618 美妆战绩 · 首次负增长</h3>
+      <table class="data-table">
+        <tr><th>品类</th><th class="num">GMV</th><th>同比</th></tr>
+        <tr class="highlight-row"><td>全网电商总额</td><td class="num">9,340亿</td><td class="up">+4.0%</td></tr>
+        <tr><td>美容护肤</td><td class="num">425亿</td><td class="down">-1.62%</td></tr>
+        <tr><td>香水彩妆</td><td class="num">136亿</td><td class="down">-4.90%</td></tr>
+        <tr><td>美妆合计</td><td class="num">561亿</td><td class="down">-2.43%</td></tr>
+      </table>
+      <p style="font-size:0.75em;color:#6b7280;margin-top:4px">注：2025年618美妆增速超63%，2026年为高基数回调</p>
+
+      <h4 style="color:#c4b5fd;margin-top:16px;font-size:0.9em">🏆 品牌排名速览</h4>
+      <table class="data-table">
+        <tr><th>平台</th><th>TOP1</th><th>TOP2</th><th>TOP3</th></tr>
+        <tr><td>天猫</td><td><strong>修丽可</strong> 🆙</td><td>雅诗兰黛</td><td><strong>珀莱雅</strong> 🇨🇳</td></tr>
+        <tr><td>京东</td><td colspan="3">国际品牌霸榜 · 仅毛戈平闯入TOP5</td></tr>
+        <tr><td>抖音</td><td>赫莲娜</td><td>雅诗兰黛</td><td>海蓝之谜</td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3 style="color:#a78bfa;font-size:0.95em;margin-bottom:12px">📈 上市公司动态</h3>
+      <div class="news-item">
+        <h4><span class="tag tag-red">P0</span> 珀莱雅 (603605)</h4>
+        <p>赴港IPO谋求A+H双上市 · 2026年Q1营收净利润双降 · 二代接班 · 6/25融资买入4788万，融资余额连增7天</p>
+      </div>
+      <div class="news-item">
+        <h4><span class="tag tag-amber">P1</span> 圆通快递生态美妆企业</h4>
+        <p>丸美生物A+H递表 · 半亩花田遭证监会六连问 · 颖通（中国香水第一股）停牌3月市值缩水9亿</p>
+      </div>
+      <div class="news-item">
+        <h4><span class="tag tag-purple">并购</span> 行业并购融资活跃</h4>
+        <p>贝恩资本收购菲婷丝 · LVMH拟售Fenty Beauty · 欧邦琪31亿出售 · 丝域生物冲刺港股（GMV 23亿，估值100亿）· 28家美妆企业IPO排队</p>
+      </div>
+      <div class="news-item">
+        <h4><span class="tag tag-green">政策</span> 监管新规</h4>
+        <p>化妆品新原料注册备案新规 <strong>7月15日起施行</strong> · 进出口化妆品检验检疫新规 · 网络测评要求披露利益关联 · 药监智能化政策落地</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:20px">
+    <h3 style="color:#c4b5fd;font-size:0.9em;margin-bottom:10px">🔬 行业趋势</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <span class="tag tag-purple">欧诗漫：中国首个珍珠多肽新原料</span>
+      <span class="tag tag-purple">溯华Nature子刊：胶原透皮突破</span>
+      <span class="tag tag-amber">68%专利失效 · 头部抢滩四大技术高地</span>
+      <span class="tag tag-green">高端美妆杀回抖音 · 国际品牌GMV+67%</span>
+      <span class="tag tag-red">超20个高端品牌2026年已调价 · 原料涨20-30%</span>
+      <span class="tag tag-amber">行业存量博弈 · 从冲动囤货→精准满足</span>
+    </div>
+  </div>
+  <p style="font-size:0.75em;color:#4b5563;margin-top:12px">来源：品观网 · 36氪 · 星图数据 · 新浪财经</p>
+</div>
+
+<!-- Section 3: Express / Courier -->
+<div class="section">
+  <div class="section-header">
+    <h2>🚚 快递物流行业</h2>
+    <span class="badge">5月经营数据</span>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <h3 style="color:#a78bfa;font-size:0.95em;margin-bottom:16px">📦 四大快递 5月经营数据对比</h3>
+    <div style="overflow-x:auto">
+    <table class="data-table">
+      <tr>
+        <th>企业</th><th class="num">营收 (亿元)</th><th>营收同比</th>
+        <th class="num">业务量 (亿票)</th><th>量同比</th>
+        <th class="num">单票收入 (元)</th><th>单价同比</th>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>顺丰控股</strong></td>
+        <td class="num">194.50</td><td class="up">+0.36%</td>
+        <td class="num">14.15</td><td class="down">-4.20%</td>
+        <td class="num">13.75</td><td class="up">+4.80%</td>
+      </tr>
+      <tr>
+        <td>顺丰+供应链</td><td class="num">265.86</td><td class="up">+5.87%</td><td colspan="3" style="color:#6b7280;font-size:0.82em">含供应链及国际业务 71.36亿 (+24.49%)</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>圆通速递</strong></td>
+        <td class="num">62.40</td><td class="up">+6.68%</td>
+        <td class="num">30.57</td><td class="up">+10.61%</td>
+        <td class="num">2.04</td><td class="down">-3.55%</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>申通快递</strong></td>
+        <td class="num">57.44</td><td class="up">+30.23%</td>
+        <td class="num">26.89</td><td class="up">+18.78%</td>
+        <td class="num">2.14</td><td class="up">+9.74%</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>韵达股份</strong></td>
+        <td class="num">47.17</td><td class="up">+6.84%</td>
+        <td class="num">22.91</td><td class="down">-0.52%</td>
+        <td class="num">2.06</td><td class="up">+7.29%</td>
+      </tr>
+    </table>
+    </div>
+    <p style="font-size:0.75em;color:#4b5563;margin-top:8px">来源：各公司月度经营简报 · 东方财富 · 2026-06-17~20</p>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 style="color:#10b981;font-size:0.95em;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+        <span class="status-dot"></span> 7月1日快递股暴涨
+      </h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">快递概念板块</div>
+          <div class="bar-track"><div class="bar-fill" style="width:95%;background:#ef4444"></div></div>
+          <div class="bar-value" style="color:#ef4444">+7.81%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">圆通速递</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#ef4444"></div></div>
+          <div class="bar-value" style="color:#ef4444">涨停 🔥</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">申通快递</div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%;background:#ef4444"></div></div>
+          <div class="bar-value" style="color:#ef4444">涨停 🔥</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">韵达股份</div>
+          <div class="bar-track"><div class="bar-fill" style="width:82%;background:#ef4444"></div></div>
+          <div class="bar-value" style="color:#ef4444">+8%+</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">顺丰控股</div>
+          <div class="bar-track"><div class="bar-fill" style="width:38%;background:#ef4444"></div></div>
+          <div class="bar-value" style="color:#ef4444">+3%+</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="color:#a78bfa;font-size:0.95em;margin-bottom:12px">📊 全国快递行业 1-5月</h3>
+      <table class="data-table">
+        <tr><th>指标</th><th class="num">数值</th><th>同比</th></tr>
+        <tr><td>快递业务量累计</td><td class="num">828.7亿件</td><td class="up">+5.2%</td></tr>
+        <tr><td>快递收入累计</td><td class="num">6,353.7亿</td><td class="up">+7.2%</td></tr>
+        <tr><td>5月单月业务量</td><td class="num">183.0亿件</td><td class="up">+5.7%</td></tr>
+        <tr><td>同城快递</td><td class="num">58.8亿件</td><td class="down">-8.5%</td></tr>
+        <tr><td>异地快递</td><td class="num">752.2亿件</td><td class="up">+6.4%</td></tr>
+        <tr><td>国际/港澳台</td><td class="num">17.8亿件</td><td class="up">+7.4%</td></tr>
+      </table>
+      <p style="font-size:0.75em;color:#6b5563;margin-top:4px">来源：国家邮政局 · 2026-06-22~24</p>
+    </div>
+  </div>
+
+  <div style="margin-top:20px">
+    <h3 style="color:#c4b5fd;font-size:0.9em;margin-bottom:12px">🔥 行业重大事件</h3>
+    <div class="three-col">
+      <div class="news-item">
+        <h4><span class="tag tag-red">P0</span> 圆通H1业绩预增</h4>
+        <p>归母净利润 31-34亿，同比 <strong style="color:#10b981">+69%~86%</strong>。Q2净利17.2-20.2亿，环比+25%~46%。全面推进AI转型。</p>
+        <p style="font-size:0.72em;color:#4b5563">来源：财联社 2026-06-30</p>
+      </div>
+      <div class="news-item">
+        <h4><span class="tag tag-amber">P1</span> 快递"反内卷"深化</h4>
+        <p>产量区锁盘从5月延长至8月。国金证券看好利润提升，华泰证券维持全年价格稳定判断。</p>
+        <p style="font-size:0.72em;color:#4b5563">来源：国金/华泰研报 2026-07-01</p>
+      </div>
+      <div class="news-item">
+        <h4><span class="tag tag-purple">P2</span> 顺丰"激活经营"改革</h4>
+        <p>由规模导向转价值导向，主动优化低利润业务。单票收入连续3月同比回升。60亿回购完成96%。市值约1695亿。</p>
+        <p style="font-size:0.72em;color:#4b5563">来源：21世纪经济报道 2026-06-25</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.75em;color:#4b5563;margin-top:12px">来源：东方财富 · 国家邮政局 · 各公司公告</p>
+</div>
+
+<!-- Section 4: 国际视角 -->
+<div class="section">
+  <div class="section-header">
+    <h2>🌍 国际动态</h2>
+    <span class="badge">Global</span>
+  </div>
+  <div class="two-col">
+    <div class="news-item">
+      <h4><span class="tag tag-green">快递</span> FedEx FY2026 年报</h4>
+      <p>全年营收 <strong>947亿美元</strong> (+7.7%)。Q4营收250亿 (+13%)。调整后EPS 20.24美元 (+11.3%)。</p>
+    </div>
+    <div class="news-item">
+      <h4><span class="tag tag-purple">美妆</span> 国际并购潮</h4>
+      <p>贝恩资本收购菲婷丝（50亿级）、LVMH拟售Fenty Beauty、欧邦琪31亿易主。韩妆品牌10亿待售。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 5: Q1 净利润对比 -->
+<div class="section">
+  <div class="section-header">
+    <h2>💰 快递企业盈利对比</h2>
+    <span class="badge">Q1 2026</span>
+  </div>
+  <div class="three-col">
+    <div style="text-align:center;padding:20px;background:rgba(255,255,255,0.02);border-radius:16px">
+      <div style="font-size:0.8em;color:#6b7280;margin-bottom:8px">申通快递</div>
+      <div style="font-size:2.2em;font-weight:800;color:#10b981">+94.29%</div>
+      <div style="font-size:0.78em;color:#a78bfa">Q1归母净利润同比</div>
+    </div>
+    <div style="text-align:center;padding:20px;background:rgba(255,255,255,0.02);border-radius:16px">
+      <div style="font-size:0.8em;color:#6b7280;margin-bottom:8px">圆通速递</div>
+      <div style="font-size:2.2em;font-weight:800;color:#10b981">+60.76%</div>
+      <div style="font-size:0.78em;color:#a78bfa">Q1归母净利润同比</div>
+    </div>
+    <div style="text-align:center;padding:20px;background:rgba(255,255,255,0.02);border-radius:16px">
+      <div style="font-size:0.8em;color:#6b7280;margin-bottom:8px">韵达股份</div>
+      <div style="font-size:2.2em;font-weight:800;color:#10b981">+51.67%</div>
+      <div style="font-size:0.78em;color:#a78bfa">Q1归母净利润同比</div>
+    </div>
+  </div>
+  <p style="font-size:0.75em;color:#4b5563;margin-top:12px;text-align:center">来源：财联社 2026-06-30 · 申通领跑利润增速</p>
+</div>
+
+<!-- Data Status -->
+<div style="margin-top:32px;padding:24px;background:#13131a;border:1px solid rgba(245,158,11,0.2);border-radius:20px">
+  <h3 style="color:#f59e0b;font-size:0.95em;margin-bottom:12px">⚠️ 数据状态说明</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:8px">
+    <span style="padding:4px 12px;background:rgba(16,185,129,0.1);color:#10b981;border-radius:10px;font-size:0.8em">✓ 6月PMI已发布</span>
+    <span style="padding:4px 12px;background:rgba(16,185,129,0.1);color:#10b981;border-radius:10px;font-size:0.8em">✓ 1-5月物流运行通报已发布</span>
+    <span style="padding:4px 12px;background:rgba(16,185,129,0.1);color:#10b981;border-radius:10px;font-size:0.8em">✓ 5月快递经营数据已发布</span>
+    <span style="padding:4px 12px;background:rgba(16,185,129,0.1);color:#10b981;border-radius:10px;font-size:0.8em">✓ 618战报已发布</span>
+    <span style="padding:4px 12px;background:rgba(245,158,11,0.15);color:#f59e0b;border-radius:10px;font-size:0.8em">⚠️ 6月LPI/仓储指数/运价指数尚未发布（预计7月2-5日）</span>
+    <span style="padding:4px 12px;background:rgba(245,158,11,0.15);color:#f59e0b;border-radius:10px;font-size:0.8em">⚠️ 6月电商物流指数尚未发布（预计7月10-14日）</span>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Generated by Hermes Agent · 数据来源：国家统计局 · 中国物流与采购联合会 · 国家邮政局 · 品观网 · 36氪 · 东方财富 · 新浪财经</p>
+  <p style="margin-top:4px">报告仅供内部参考，不构成投资建议</p>
+</div>
+
+</div>
+</body>
+</html>
