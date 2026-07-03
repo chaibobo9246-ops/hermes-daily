@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ettoreal 行业日报 | 2026-07-03</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a0f;color:#e2e8f0;min-height:100vh}
+.container{max-width:1400px;margin:0 auto;padding:0 24px 60px}
+.header{padding:48px 0 20px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.header h1{font-size:48px;font-weight:900;letter-spacing:-1.5px;background:linear-gradient(135deg,#a8e063,#f7ff00,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .date{color:#64748b;font-size:15px;font-weight:500}
+.header .lunar{color:#475569;font-size:13px}
+.meta-bar{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.meta-tag{padding:4px 12px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:#94a3b8}
+.meta-tag.green{color:#10b981;border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.05)}
+.section-title{font-size:20px;font-weight:800;letter-spacing:-0.3px;margin:0 0 20px;color:#f1f5f9}
+.section-title span{background:linear-gradient(135deg,#a8e063,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.card{background:#13131a;border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,0.3),0 1px 3px rgba(0,0,0,0.2);transition:all 0.3s}
+.card:hover{border-color:rgba(255,255,255,0.12);box-shadow:0 8px 40px rgba(0,0,0,0.5);transform:translateY(-2px)}
+.glow-card{background:linear-gradient(135deg,rgba(168,224,99,0.10),rgba(247,255,0,0.04));border:1px solid rgba(168,224,99,0.15);border-radius:24px;padding:32px;position:relative;overflow:hidden}
+.glow-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 20%,rgba(168,224,99,0.06),transparent 50%);pointer-events:none}
+.glow-card .label{font-size:13px;color:#94a3b8;margin-bottom:8px;position:relative;z-index:1}
+.glow-card .value{font-size:42px;font-weight:900;letter-spacing:-2px;color:#e2e8f0;position:relative;z-index:1}
+.glow-card .sub{font-size:13px;color:#64748b;margin-top:4px;position:relative;z-index:1}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.mt-24{margin-top:24px}
+.mt-32{margin-top:32px}
+.mb-8{margin-bottom:8px}
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.stat-row:last-child{border-bottom:none}
+.stat-label{font-size:13px;color:#94a3b8}
+.stat-value{font-size:14px;font-weight:700}
+.stat-up{color:#ef4444}
+.stat-down{color:#10b981}
+.stat-neutral{color:#e2e8f0}
+.badge{padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap}
+.badge-up{background:rgba(239,68,68,0.12);color:#ef4444}
+.badge-down{background:rgba(16,185,129,0.12);color:#10b981}
+.badge-warn{background:rgba(245,158,11,0.12);color:#f59e0b}
+.badge-info{background:rgba(59,130,246,0.12);color:#3b82f6}
+.badge-pink{background:rgba(236,72,153,0.12);color:#ec4899}
+.badge-cyan{background:rgba(6,182,212,0.12);color:#06b6d4}
+.progress-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.progress-bar{flex:1;height:8px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#a78bfa,#c4b5fd)}
+.progress-fill.green{background:linear-gradient(90deg,#10b981,#34d399)}
+.progress-fill.pink{background:linear-gradient(90deg,#ec4899,#f472b6)}
+.progress-fill.amber{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.donut-container{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.donut{width:160px;height:160px;border-radius:50%;background:conic-gradient(#a78bfa 0% 46%,#c4b5fd 46% 65%,#ddd6fe 65% 78%,#10b981 78% 88%,#f59e0b 88% 100%);position:relative;flex-shrink:0}
+.donut::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:#13131a}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;text-align:center}
+.donut-center .big{font-size:24px;font-weight:900;color:#e2e8f0}
+.donut-center .small{font-size:11px;color:#94a3b8}
+.legend{display:flex;flex-direction:column;gap:8px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:13px}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.chart-bar-group{display:flex;align-items:flex-end;gap:12px;height:200px;padding-top:12px}
+.chart-bar{width:48px;border-radius:8px 8px 0 0;position:relative;background:linear-gradient(to top,#a78bfa,#c4b5fd);transition:all 0.3s}
+.chart-bar:hover{filter:brightness(1.3)}
+.bar-label{text-align:center;font-size:10px;color:#64748b;margin-top:6px}
+.bar-value{text-align:center;font-size:11px;font-weight:700;margin-bottom:4px;color:#c4b5fd}
+.pmi-cards{display:flex;flex-wrap:wrap;gap:12px}
+.pmi-card{flex:1;min-width:140px;background:#0f0f1a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px;text-align:center}
+.pmi-card .name{font-size:12px;color:#94a3b8;margin-bottom:4px}
+.pmi-card .val{font-size:28px;font-weight:900;letter-spacing:-1px}
+.pmi-card .delta{font-size:11px;margin-top:2px}
+.pmi-card.expand .val{color:#10b981}.pmi-card.expand{border-color:rgba(16,185,129,0.2)}
+.pmi-card.contract .val{color:#ef4444}.pmi-card.contract{border-color:rgba(239,68,68,0.2)}
+.pmi-card.neutral .val{color:#f59e0b}.pmi-card.neutral{border-color:rgba(245,158,11,0.2)}
+.note{font-size:12px;color:#475569;margin-top:12px;font-style:italic}
+.note a{color:#3b82f6;text-decoration:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{padding:10px 12px;text-align:left;font-size:11px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid rgba(255,255,255,0.08)}
+tbody td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tbody tr:hover{background:rgba(255,255,255,0.02)}
+.highlight-box{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);border-radius:12px;padding:16px 20px;margin-bottom:12px;font-size:13px;line-height:1.7}
+.highlight-box h4{color:#10b981;font-size:14px;margin-bottom:6px}
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.summary-item{background:#0f0f1a;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:16px}
+.summary-item h5{font-size:13px;color:#a78bfa;margin-bottom:6px}
+.summary-item p{font-size:13px;color:#94a3b8;line-height:1.6}
+.footer{padding:32px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.04);margin-top:40px}
+.footer p{font-size:12px;color:#475569}
+.footer a{color:#3b82f6;text-decoration:none}
+@media(max-width:768px){
+.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+.header h1{font-size:32px}
+.glow-card .value{font-size:28px}
+.donut-container{flex-direction:column;align-items:flex-start}
+.summary-grid{grid-template-columns:1fr}
+.pmi-cards{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <div>
+    <h1>Ettoreal 行业日报</h1>
+    <div class="meta-bar" style="margin-top:12px;">
+      <span class="meta-tag green">2026年7月3日 星期五</span>
+      <span class="meta-tag">农历丙午年 五月十八</span>
+      <span class="meta-tag">总第 N 期</span>
+    </div>
+  </div>
+  <div class="date" style="text-align:right;">
+    数据截至 2026-07-03 09:30<br>
+    <span class="lunar">来源：中物联 · 国家统计局 · 国家邮政局 · 星图数据 · 公司公告</span>
+  </div>
+</div>
+
+<!-- PMI Overview -->
+<div class="grid-3 mt-24">
+  <div class="glow-card">
+    <div class="label">制造业 PMI（6月）</div>
+    <div class="value">50.3% <span style="font-size:18px;color:#34d399;">↑0.3</span></div>
+    <div class="sub">连续2个月位于扩张区间 | 新订单+1.3 → 51.2%</div>
+  </div>
+  <div class="glow-card">
+    <div class="label">非制造业 PMI（6月）</div>
+    <div class="value">50.2% <span style="font-size:18px;color:#34d399;">↑0.1</span></div>
+    <div class="sub">服务业 50.4% | 建筑业 49.0% | 需求反弹新订单+3.0</div>
+  </div>
+  <div class="glow-card">
+    <div class="label">综合 PMI 产出（6月）</div>
+    <div class="value">50.6% <span style="font-size:18px;color:#34d399;">↑0.1</span></div>
+    <div class="sub">企业生产经营活动预期 54.3% | 复苏延续</div>
+  </div>
+</div>
+
+<!-- PMI Detail Cards -->
+<div class="card mt-24">
+  <div class="section-title"><span>📊 制造业PMI</span> 分项指标</div>
+  <div class="pmi-cards">
+    <div class="pmi-card expand"><div class="name">PMI 综合</div><div class="val">50.3</div><div class="delta" style="color:#34d399;">+0.3 ✓</div></div>
+    <div class="pmi-card expand"><div class="name">生产</div><div class="val">51.4</div><div class="delta" style="color:#34d399;">+0.2</div></div>
+    <div class="pmi-card expand"><div class="name">新订单</div><div class="val">51.2</div><div class="delta" style="color:#34d399;">+1.3 ↑↑</div></div>
+    <div class="pmi-card expand"><div class="name">新出口订单</div><div class="val">50.1</div><div class="delta" style="color:#34d399;">+1.5 ↑↑</div></div>
+    <div class="pmi-card expand"><div class="name">采购量</div><div class="val">51.4</div><div class="delta" style="color:#34d399;">+1.6 ↑↑</div></div>
+    <div class="pmi-card contract"><div class="name">产成品库存</div><div class="val">47.7</div><div class="delta" style="color:#ef4444;">-1.6 ↓↓</div></div>
+    <div class="pmi-card expand"><div class="name">购进价格</div><div class="val">54.2</div><div class="delta" style="color:#10b981;">-6.3 ↓↓</div></div>
+    <div class="pmi-card contract"><div class="name">出厂价格</div><div class="val">48.2</div><div class="delta" style="color:#ef4444;">-3.7 ↓↓</div></div>
+    <div class="pmi-card contract"><div class="name">从业人员</div><div class="val">48.5</div><div class="delta" style="color:#ef4444;">-0.1</div></div>
+    <div class="pmi-card neutral"><div class="name">供应商配送</div><div class="val">49.9</div><div class="delta" style="color:#f59e0b;">+0.7</div></div>
+  </div>
+  <div class="note" style="margin-top:16px;">大企业 50.7(-0.4) | 中型 50.5(+1.9) | 小型 48.2(-0.3)。中型企业重回扩张区，小型企业持续承压。✓ 国家统计局 6月30日发布</div>
+</div>
+
+<!-- Logistics Indices -->
+<div class="section-title mt-32"><span>🚛 物流行业</span> 景气指数 & 运行通报</div>
+
+<div class="grid-2">
+  <div class="card">
+    <div style="font-size:15px;font-weight:700;margin-bottom:16px;">物流业景气指数 (LPI) <span style="font-size:11px;color:#64748b">5月 ⚠️ 6月待发布</span></div>
+    <div class="stat-row"><span class="stat-label">LPI 综合</span><span class="stat-value stat-up">50.3% ↑0.6</span></div>
+    <div class="stat-row"><span class="stat-label">业务总量</span><span class="stat-value stat-up">50.3% ↑0.6</span></div>
+    <div class="stat-row"><span class="stat-label">新订单</span><span class="stat-value stat-up">50.2% 连三月↑</span></div>
+    <div class="stat-row"><span class="stat-label">固投完成额</span><span class="stat-value stat-up">54.1% ↑0.4</span></div>
+    <div class="stat-row"><span class="stat-label">业务活动预期</span><span class="stat-value" style="color:#f59e0b">55.9% ↓0.4</span></div>
+    <div class="note">✓ 中物联 6月3日发布 | 物流需求温和扩张</div>
+  </div>
+
+  <div class="card">
+    <div style="font-size:15px;font-weight:700;margin-bottom:16px;">仓储指数 & 电商物流 <span style="font-size:11px;color:#64748b">5月 ⚠️ 6月待发布</span></div>
+    <div class="stat-row"><span class="stat-label">仓储指数</span><span class="stat-value stat-down">49.6% ↓1.4</span></div>
+    <div class="stat-row"><span class="stat-label">新订单</span><span class="stat-value stat-up">↑0.2</span></div>
+    <div class="stat-row"><span class="stat-label">业务活动预期</span><span class="stat-value stat-up">↑0.9</span></div>
+    <div class="stat-row" style="border-top:1px solid rgba(255,255,255,0.08);margin-top:8px;padding-top:12px;"><span class="stat-label">电商物流业务量指数</span><span class="stat-value stat-up">128.3点 ↑0.4</span></div>
+    <div class="stat-row"><span class="stat-label">农村电商物流</span><span class="stat-value stat-up">126.8点 ↑0.6</span></div>
+    <div class="note">✓ 中物联 6月5日 | 仓储指数连续收缩，去库压力大</div>
+  </div>
+</div>
+
+<!-- 1-5月物流运行 -->
+<div class="card mt-24">
+  <div class="section-title"><span>📦 1-5月物流运行</span> 关键指标</div>
+  <div class="grid-4">
+    <div class="pmi-card expand"><div class="name">社会物流总额</div><div class="val">146.6</div><div style="font-size:11px;color:#64748b;">万亿元</div><div class="delta" style="color:#34d399;">+5.2%</div></div>
+    <div class="pmi-card expand"><div class="name">物流业总收入</div><div class="val">5.8</div><div style="font-size:11px;color:#64748b;">万亿元</div><div class="delta" style="color:#34d399;">+4.2%</div></div>
+    <div class="pmi-card expand"><div class="name">中欧班列</div><div class="val">93.7</div><div style="font-size:11px;color:#64748b;">万TEU</div><div class="delta" style="color:#34d399;">+17.2%</div></div>
+    <div class="pmi-card expand"><div class="name">铁水联运</div><div class="val">758</div><div style="font-size:11px;color:#64748b;">万标箱</div><div class="delta" style="color:#34d399;">+11.0%</div></div>
+  </div>
+  <div style="margin-top:20px;display:grid;grid-template-columns:2fr 1fr;gap:16px;">
+    <div>
+      <div class="progress-row"><span style="width:100px;font-size:13px;color:#94a3b8">工业品物流</span><div class="progress-bar"><div class="progress-fill green" style="width:54%"></div></div><span style="font-size:13px;font-weight:700;">+5.4%</span></div>
+      <div class="progress-row"><span style="width:100px;font-size:13px;color:#94a3b8">进口物流</span><div class="progress-bar"><div class="progress-fill green" style="width:26%"></div></div><span style="font-size:13px;font-weight:700;">+2.6%</span></div>
+      <div class="progress-row"><span style="width:100px;font-size:13px;color:#94a3b8">居民物品</span><div class="progress-bar"><div class="progress-fill green" style="width:40%"></div></div><span style="font-size:13px;font-weight:700;">+4.0%</span></div>
+      <div class="progress-row"><span style="width:100px;font-size:13px;color:#94a3b8">再生资源</span><div class="progress-bar"><div class="progress-fill green" style="width:54%"></div></div><span style="font-size:13px;font-weight:700;">+5.4%</span></div>
+      <div class="note" style="margin-top:8px;">重点物流企业收入+6.2% | 供应链合同订单+13.7% | 国铁货运16.7亿吨(+1.8%) | 民航货邮418.5万吨(+7.3%)</div>
+    </div>
+    <div>
+      <div class="stat-row"><span class="stat-label">公路运价指数</span><span class="stat-value" style="color:#f59e0b">105.3点 ↓0.91%</span></div>
+      <div class="stat-row"><span class="stat-label">沿海散货运价</span><span class="stat-value stat-up">1312.9点 ↑7.1%</span></div>
+      <div class="stat-row"><span class="stat-label">出口集装箱运价</span><span class="stat-value stat-up">1310.8点 ↑7.3%</span></div>
+      <div class="stat-row"><span class="stat-label">快递单票均价</span><span class="stat-value" style="color:#10b981">7.5元 ↓1.8%</span></div>
+      <div class="stat-row"><span class="stat-label">企业数字化投入</span><span class="stat-value stat-up">+30.2%</span></div>
+      <div class="note">✓ 中物联 1-5月物流运行通报 6月28日发布</div>
+    </div>
+  </div>
+</div>
+
+<!-- Express Companies -->
+<div class="section-title mt-32"><span>📮 快递快递</span> 5月经营数据</div>
+
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+    <div>
+      <span style="font-size:15px;font-weight:700;">上市公司月度经营简报</span>
+      <span class="badge badge-cyan" style="margin-left:8px;">1-5月行业：828.7亿件 ↑5.2%</span>
+      <span class="badge badge-up" style="margin-left:4px;">收入6353.7亿 ↑7.2%</span>
+    </div>
+  </div>
+  <table>
+    <thead><tr><th>公司</th><th>营收(亿元)</th><th>同比</th><th>业务量(亿票)</th><th>同比</th><th>票均(元)</th><th>同比</th><th>亮点</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>顺丰控股</strong> <span class="badge badge-info">002352</span></td>
+        <td style="font-weight:700">265.86</td>
+        <td><span class="badge badge-up">+5.87%</span></td>
+        <td>14.15</td>
+        <td><span class="badge badge-down">-4.20%</span></td>
+        <td>13.75</td>
+        <td><span class="badge badge-up">+4.80%</span></td>
+        <td><span style="font-size:12px;color:#94a3b8">供应链+24.49% | 端午错期拖累件量</span></td>
+      </tr>
+      <tr>
+        <td><strong>圆通速递</strong> <span class="badge badge-info">600233</span></td>
+        <td style="font-weight:700">62.40</td>
+        <td><span class="badge badge-up">+6.68%</span></td>
+        <td>30.57</td>
+        <td><span class="badge badge-up">+10.61%</span></td>
+        <td>2.04</td>
+        <td><span class="badge badge-down">-3.55%</span></td>
+        <td><span style="font-size:12px;color:#94a3b8">H1预增69%-86% | 票均三通一达最低</span></td>
+      </tr>
+      <tr>
+        <td><strong>申通快递</strong> <span class="badge badge-info">002468</span></td>
+        <td style="font-weight:700">57.44</td>
+        <td><span class="badge badge-up">+30.23%</span></td>
+        <td>26.89</td>
+        <td><span class="badge badge-up">+18.78%</span></td>
+        <td>2.14</td>
+        <td><span class="badge badge-up">+9.74%</span></td>
+        <td><span style="font-size:12px;color:#94a3b8">量价齐升 | 丹鸟并表驱动</span></td>
+      </tr>
+      <tr>
+        <td><strong>韵达股份</strong> <span class="badge badge-info">002120</span></td>
+        <td style="font-weight:700">47.17</td>
+        <td><span class="badge badge-up">+6.84%</span></td>
+        <td>22.91</td>
+        <td><span class="badge badge-down">-0.52%</span></td>
+        <td>2.06</td>
+        <td><span class="badge badge-up">+7.29%</span></td>
+        <td><span style="font-size:12px;color:#94a3b8">以价换量回补 | 件量微降</span></td>
+      </tr>
+      <tr style="color:#64748b;">
+        <td><strong>中通快递</strong> <span class="badge badge-info">2057.HK</span></td>
+        <td colspan="6">港股上市，月度数据不披露 | Q1 2026：约97亿件 +13.2%</td>
+        <td><span style="font-size:12px;color:#475569">⊛ Q1估算</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-top:12px;">✓ 数据来源：各公司公告（6月17-19日发布）| 顺丰供应链及国际收入71.36亿(+24.49%)成第二增长引擎 | 快递反内卷落地：三通一达票均回升初现</div>
+</div>
+
+<!-- Beauty Industry -->
+<div class="section-title mt-32"><span>💄 美妆行业</span> 618数据 & 最新动态</div>
+
+<!-- 618 Core -->
+<div class="grid-3">
+  <div class="glow-card">
+    <div class="label">618 美妆合计</div>
+    <div class="value">561<span style="font-size:20px;color:#64748b;">亿元</span></div>
+    <div class="sub"><span class="badge badge-down">-2.43%</span> 首次负增长 | 全网电商9340亿 +4.0%</div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;color:#94a3b8;margin-bottom:8px;">品类 GMV 分布</div>
+    <div class="donut-container" style="justify-content:center">
+      <div class="donut" style="width:130px;height:130px;background:conic-gradient(#a78bfa 0% 46%,#c4b5fd 46% 65%,#ddd6fe 65% 76%,#10b981 76% 88%,#f59e0b 88% 100%)">
+        <div class="donut-center"><div class="big" style="font-size:18px;">561亿</div><div class="small">-2.43%</div></div>
+      </div>
+      <div class="legend" style="gap:4px">
+        <div class="legend-item"><span class="legend-dot" style="background:#a78bfa"></span>护肤 425亿 -1.62%</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#c4b5fd"></span>彩妆 136亿 -4.90%</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#ddd6fe"></span>香水</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span>个护</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>其他</div>
+      </div>
+    </div>
+    <div class="note">✓ 星图数据 | 对比2025年护肤+65.5%高基数均值回归</div>
+  </div>
+  <div class="card">
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;">平台格局</div>
+    <div class="progress-row"><span style="width:80px;font-size:12px;color:#94a3b8">淘宝天猫</span><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div><span style="font-size:12px;font-weight:700;">44.8%</span></div>
+    <div class="progress-row"><span style="width:80px;font-size:12px;color:#94a3b8">抖音</span><div class="progress-bar"><div class="progress-fill pink" style="width:30%"></div></div><span style="font-size:12px;font-weight:700;">~30%</span></div>
+    <div class="progress-row"><span style="width:80px;font-size:12px;color:#94a3b8">京东</span><div class="progress-bar"><div class="progress-fill amber" style="width:18%"></div></div><span style="font-size:12px;font-weight:700;">~18%</span></div>
+    <div class="progress-row"><span style="width:80px;font-size:12px;color:#94a3b8">其他</span><div class="progress-bar"><div class="progress-fill" style="width:7%;background:#64748b"></div></div><span style="font-size:12px;font-weight:700;">~7%</span></div>
+    <div style="margin-top:10px;font-size:12px;color:#64748b;">天猫TOP3: 修丽可/雅诗兰黛/珀莱雅 | 抖音国际品牌反攻 | 京东全国际品牌</div>
+    <div class="note">✓ 易观分析 | 平台放弃满减凑单转向单件直降</div>
+  </div>
+</div>
+
+<!-- Brand Rankings -->
+<div class="grid-2 mt-24">
+  <div class="card">
+    <div style="font-size:15px;font-weight:700;margin-bottom:12px;">🏆 天猫美妆618 TOP榜</div>
+    <div class="stat-row"><span class="stat-label">🥇 No.1</span><span class="stat-value" style="color:#f59e0b">修丽可</span><span style="font-size:11px;color:#64748b">去年第6 → 今年第1</span></div>
+    <div class="stat-row"><span class="stat-label">🥈 No.2</span><span class="stat-value">雅诗兰黛</span><span style="font-size:11px;color:#64748b">稳定TOP3</span></div>
+    <div class="stat-row"><span class="stat-label">🥉 No.3</span><span class="stat-value">珀莱雅</span><span style="font-size:11px;color:#64748b">连续3年护肤品类第1</span></div>
+    <div class="stat-row"><span class="stat-label">TOP10</span><span class="stat-value" style="color:#94a3b8">兰蔻 · SK-II · 巴黎欧莱雅 · LA MER · 赫莲娜等</span></div>
+    <div class="stat-row"><span class="stat-label">国货黑马</span><span class="stat-value" style="color:#34d399">Fan Beauty Diary <span class="badge badge-up">+78.77%</span></span></div>
+    <div class="note" style="margin-top:8px;">✓ 天猫官方战报 / 36氪转引 | 抖音TOP3: 赫莲娜/雅诗兰黛/海蓝之谜 | 京东仅毛戈平入围国货</div>
+  </div>
+
+  <div class="card">
+    <div style="font-size:15px;font-weight:700;margin-bottom:12px;">📈 上市公司核心动态</div>
+    <div class="stat-row"><span class="stat-label">欧莱雅</span><span class="stat-value" style="color:#34d399">Q1中国中高个位数增长</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">苏州工厂30年 · AI智慧枢纽 · 链博会首秀</span></div>
+    <div class="stat-row"><span class="stat-label">珀莱雅</span><span class="stat-value" style="color:#34d399">天猫618护肤第1 (连续3年)</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">3.51亿增持花知晓控股 · 侯亚孟可持续战略</span></div>
+    <div class="stat-row"><span class="stat-label">华熙生物</span><span class="stat-value" style="color:#ef4444">Q1营收-23% · 净利-37%</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">AI酶工程专利 · 医美管线2026Q3获批 · 娃娃针</span></div>
+    <div class="stat-row"><span class="stat-label">巨子生物</span><span class="stat-value" style="color:#34d399">可复美618止跌回升</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">核心单品11→17款 · 曾陷成分造假风波后恢复</span></div>
+    <div class="stat-row"><span class="stat-label">丸美生物</span><span class="stat-value" style="color:#3b82f6">冲刺港股IPO</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">Q1线下+30% · 线上自播+75% · A+H双平台</span></div>
+    <div class="stat-row"><span class="stat-label">毛戈平</span><span class="stat-value" style="color:#34d399">三平台彩妆TOP2</span></div>
+    <div class="stat-row"><span class="stat-label"></span><span style="font-size:12px;color:#64748b">H股全流通 · 家族减持套现14亿 · 毛利率>84%</span></div>
+    <div class="note" style="margin-top:8px;">✓ 各公司公告/调研纪要/同花顺转引 | 资生堂合资矩阵几近瓦解</div>
+  </div>
+</div>
+
+<!-- Industry Trends -->
+<div class="card mt-24">
+  <div class="section-title"><span>🔮 行业趋势</span> 四大核心变化</div>
+  <div class="highlight-box"><h4>① 经营目标转向：从"冲规模"→"提质量"</h4>天猫美妆复购率超40%，新品首发数+33%，破千万新品增六成。抖音美妆新品数+144%。</div>
+  <div class="highlight-box"><h4>② 平台政策转向：流量驱动→内容驱动</h4>抖音"好看计划"让优质内容获自然流量（3.3万账号入选，46.7万条视频获激励）。京东佣金补贴最高提至100%。</div>
+  <div class="highlight-box"><h4>③ AI 从"可选项"→"必选项"</h4>淘天AI万相（100万+商家调用30亿次）、京东京小通、抖音千川乘方。自然堂用AI发现消费者搜索"熬夜脸怎么救"。</div>
+  <div class="highlight-box"><h4>④ 618 意义重定义</h4>从GMV数字游戏 → 品牌综合能力年度检验。行业告别"青春期"，进入精细化竞争。</div>
+  <div class="note">✓ 来源：36氪/FBeauty未来迹 | 监管：海关第61号公告(12/1施行)、上海电子标签试点、8项检验新规</div>
+</div>
+
+<!-- Today's Summary -->
+<div class="card mt-24">
+  <div class="section-title"><span>📋 今日要点</span> 一句话总结</div>
+  <div class="summary-grid">
+    <div class="summary-item"><h5>📊 PMI</h5><p>6月制造业PMI 50.3%连续两月扩张，新订单+出口双双回暖(+1.3/+1.5)，中型企业重回扩张区(+1.9)为亮点，购进价格大幅回落(-6.3)释放通胀压力。综合PMI 50.6%确认复苏延续。</p></div>
+    <div class="summary-item"><h5>🚛 物流</h5><p>1-5月社会物流总额146.6万亿(+5.2%)。重点物流企业收入+6.2%，供应链合同+13.7%。仓储指数5月49.6%仍处收缩，去库存压力延续。中欧班列+17.2%外贸物流韧性强。</p></div>
+    <div class="summary-item"><h5>📮 快递</h5><p>申通量价齐升(+30%/+19%)领跑，顺丰票均连续3月回升(+4.8%)，供应链第二增长曲线(+24.5%)。快递"反内卷"落地现效——三通一达票均普遍回升。1-5月行业828.7亿件(+5.2%)。</p></div>
+    <div class="summary-item"><h5>💄 美妆</h5><p>618美妆首次负增长(-2.43%)，高基数均值回归。国货珀莱雅连续3年天猫护肤第1，修丽可跃居总榜冠军。国际品牌抖音反攻。华熙生物Q1下滑37%，珀莱雅控股花知晓，丸美冲刺A+H。</p></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>数据来源：中国物流与采购联合会 | 国家统计局 | 国家邮政局 | 星图数据 | 易观分析 | 各上市公司公告</p>
+  <p>✓ = 子代理从原始来源直接验证 | ⚠️ = 对应月份最新数据待发布</p>
+  <p style="margin-top:8px;">Ettoreal 行业日报 · 2026年7月3日 · 自动生成</p>
+</div>
+
+</div>
+</body>
+</html>
