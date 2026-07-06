@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ettoreal 行业日报 · 2026年7月6日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #0a0a0f;
+  color: #e2e8f0;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.container { max-width: 1280px; margin: 0 auto; padding: 24px 20px; }
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 48px 20px 40px;
+  position: relative;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 3px;
+  background: linear-gradient(90deg, #10b981, #a8e063, #f7ff00);
+  border-radius: 2px;
+}
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a8e063, #f7ff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.header .date {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #64748b;
+  letter-spacing: 2px;
+}
+.header .subtitle {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+/* Nav Tabs */
+nav {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+nav a {
+  padding: 12px 24px;
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+nav a:hover { color: #a8e063; }
+nav a.nav-active {
+  color: #a8e063;
+  border-bottom-color: #a8e063;
+}
+.section { display: none; }
+.section.active { display: block; }
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.card {
+  background: #13131a;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 .icon { font-size: 1.2rem; }
+
+/* KPI Cards */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.kpi-card {
+  background: linear-gradient(135deg, rgba(168,224,99,0.10), rgba(247,255,0,0.04));
+  border: 1px solid rgba(168,224,99,0.15);
+  border-radius: 18px;
+  padding: 20px 24px;
+}
+.kpi-card .label {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.kpi-card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a8e063;
+  margin-top: 4px;
+}
+.kpi-card .change {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: #10b981;
+}
+.kpi-card .change.down { color: #ef4444; }
+
+/* News feed */
+.news-feed { margin-bottom: 28px; }
+.news-item {
+  background: #13131a;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+.news-item:hover {
+  border-color: rgba(168,224,99,0.2);
+  background: #161622;
+}
+.news-item .source {
+  font-size: 0.72rem;
+  color: #a8e063;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.news-item .title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+.news-item .date {
+  font-size: 0.75rem;
+  color: #475569;
+  margin-top: 4px;
+}
+
+/* Trend bar chart (pure CSS) */
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 140px;
+  padding: 8px 0;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.bar-col .bar {
+  width: 100%;
+  max-width: 48px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, #a8e063, #10b981);
+  transition: height 0.5s ease;
+  min-height: 4px;
+}
+.bar-col .bar.purple {
+  background: linear-gradient(180deg, #a78bfa, #7c3aed);
+}
+.bar-col .bar.amber {
+  background: linear-gradient(180deg, #fbbf24, #d97706);
+}
+.bar-col .label {
+  font-size: 0.7rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Highlight box */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(168,224,99,0.06), rgba(247,255,0,0.02));
+  border: 1px solid rgba(168,224,99,0.15);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+.highlight-box h3 { color: #a8e063; margin-bottom: 12px; font-size: 0.95rem; }
+.highlight-box p, .highlight-box li { font-size: 0.88rem; color: #cbd5e1; margin-bottom: 6px; }
+
+/* Wide card */
+.wide-card {
+  grid-column: 1 / -1;
+}
+
+/* Section title */
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: #334155;
+  font-size: 0.78rem;
+}
+.footer a { color: #475569; text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr 1fr; }
+  .header h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h1>📊 Ettoreal 行业日报</h1>
+  <div class="date">2026 年 7 月 6 日 · 星期一</div>
+  <div class="subtitle">物流指数 · 美妆消费 · 快递财报 · 三线追踪</div>
+</div>
+
+<nav>
+  <a href="#overview" class="nav-active" onclick="switchTab('overview')">📋 概览</a>
+  <a href="#logistics" onclick="switchTab('logistics')">📦 物流指数</a>
+  <a href="#beauty" onclick="switchTab('beauty')">💄 美妆行业</a>
+  <a href="#express" onclick="switchTab('express')">🚚 快递物流</a>
+</nav>
+
+<!-- ====== OVERVIEW ====== -->
+<section id="overview" class="section active">
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="label">6月物流业景气指数</div>
+    <div class="value">50.6%</div>
+    <div class="change">↑ 环比回升 · 扩张区间</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">6月制造业PMI</div>
+    <div class="value">50.3%</div>
+    <div class="change">↑ +0.3pp · 连续扩张</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">圆通H1净利预估</div>
+    <div class="value">31-34亿</div>
+    <div class="change">↑ +69%~86% YoY</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">美妆"美丽经济"</div>
+    <div class="value">万亿级</div>
+    <div class="change">↑ 内需新引擎</div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card wide-card">
+    <h3><span class="icon">🔥</span> 本期热点速览</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:12px">
+      <div>
+        <div style="font-size:0.85rem;color:#a8e063;margin-bottom:6px">📦 物流</div>
+        <div style="font-size:0.82rem;color:#94a3b8">6月物流景气指数升至50.6%，政策利好提振信心，区域发展均衡性增强。制造业PMI 50.3%连续扩张。</div>
+      </div>
+      <div>
+        <div style="font-size:0.85rem;color:#a8e063;margin-bottom:6px">💄 美妆</div>
+        <div style="font-size:0.82rem;color:#94a3b8">人民日报定调"万亿美丽经济"激发内需新潜能。国货出海遇冷，品牌关店回归潮涌现，丸美港股IPO暂停。</div>
+      </div>
+      <div>
+        <div style="font-size:0.85rem;color:#a8e063;margin-bottom:6px">🚚 快递</div>
+        <div style="font-size:0.82rem;color:#94a3b8">圆通H1净利暴增70%+，快递"反内卷"效果持续。韵达改革阵痛明显，加盟商收缩业务量下滑。FedEx转型AI。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <h3>📌 一句话总结</h3>
+  <p>7月第一周：物流景气回暖至扩张区间，快递行业"反内卷"重塑格局（圆通领跑/韵达承压），美妆行业在万亿规模叙事下面临国货出海受阻与渠道变革双重挑战。</p>
+</div>
+
+</section>
+
+<!-- ====== LOGISTICS ====== -->
+<section id="logistics" class="section">
+
+<div class="section-title">📦 物流行业指数追踪</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="label">物流业景气指数（6月）</div>
+    <div class="value">50.6%</div>
+    <div class="change">↑ 重回扩张区间</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">制造业PMI（6月）</div>
+    <div class="value">50.3%</div>
+    <div class="change">↑ +0.3pp MoM</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">大宗商品价格指数（6月）</div>
+    <div class="value">130.3</div>
+    <div class="change down">↓ -1.7% MoM</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">电商物流业务量（5月）</div>
+    <div class="value">+20%</div>
+    <div class="change">↑ 同比增长</div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h3><span class="icon">📈</span> 物流景气指数趋势</h3>
+    <div class="chart-bars">
+      <div class="bar-col"><div class="bar" style="height:30px"></div><div class="label">1月</div></div>
+      <div class="bar-col"><div class="bar" style="height:50px"></div><div class="label">2月</div></div>
+      <div class="bar-col"><div class="bar" style="height:80px"></div><div class="label">3月</div></div>
+      <div class="bar-col"><div class="bar" style="height:60px"></div><div class="label">4月</div></div>
+      <div class="bar-col"><div class="bar" style="height:70px"></div><div class="label">5月</div></div>
+      <div class="bar-col"><div class="bar" style="height:85px"></div><div class="label">6月</div></div>
+    </div>
+    <div style="font-size:0.75rem;color:#475569;text-align:center;margin-top:4px">2026年1-6月趋势示意（基于中物联公布数据）</div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">🏭</span> 制造业PMI分项</h3>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px"><span>生产指数</span><span style="color:#a8e063">52.1%</span></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:85%;height:100%;background:linear-gradient(90deg,#a8e063,#10b981);border-radius:3px"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px"><span>新订单指数</span><span style="color:#fbbf24">50.8%</span></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:80%;height:100%;background:linear-gradient(90deg,#fbbf24,#d97706);border-radius:3px"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px"><span>原材料库存</span><span style="color:#a78bfa">48.2%</span></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:64%;height:100%;background:linear-gradient(90deg,#a78bfa,#7c3aed);border-radius:3px"></div></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:4px"><span>从业人员</span><span style="color:#ef4444">48.5%</span></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:65%;height:100%;background:linear-gradient(90deg,#ef4444,#dc2626);border-radius:3px"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="news-feed">
+  <div class="section-title" style="margin-top:8px">📰 物流行业要闻</div>
+  <div class="news-item">
+    <div class="source">荆楚网 · 7月5日</div>
+    <div class="title">6月份中国物流业景气指数 | 政策利好提振信心 区域发展均衡性增强</div>
+  </div>
+  <div class="news-item">
+    <div class="source">观点网 · 7月5日</div>
+    <div class="title">中物联：6月份中国物流业景气指数升至50.6%</div>
+  </div>
+  <div class="news-item">
+    <div class="source">观点网 · 7月5日</div>
+    <div class="title">中物联：6月份中国大宗商品价格指数为130.3点 环比下跌1.7%</div>
+  </div>
+  <div class="news-item">
+    <div class="source">国家统计局 · 6月30日</div>
+    <div class="title">2026年6月中国采购经理指数运行情况：制造业PMI 50.3%</div>
+  </div>
+  <div class="news-item">
+    <div class="source">21财经 · 6月13日</div>
+    <div class="title">5月中国电商物流指数继续回升，总业务量同比增长超20%</div>
+  </div>
+  <div class="news-item">
+    <div class="source">新浪网 · 6月9日</div>
+    <div class="title">5月中国公路物流运价指数为105.3点 同比升0.22%</div>
+  </div>
+</div>
+
+</section>
+
+<!-- ====== BEAUTY ====== -->
+<section id="beauty" class="section">
+
+<div class="section-title">💄 美妆行业动态</div>
+
+<div class="card-grid">
+  <div class="card wide-card">
+    <h3><span class="icon">🏛️</span> 政策定调：万亿"美丽经济"</h3>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <div style="font-size:0.78rem;color:#64748b;margin-bottom:8px">人民日报 7月2日</div>
+        <div style="font-size:0.9rem;color:#cbd5e1;line-height:1.8">
+          万亿"美丽经济"激发内需新潜能。化妆品消费从"可选"走向"刚需"，国货品牌市占率持续提升。行业规范化加速，2026年被称为化妆品"最严监管年"。
+        </div>
+      </div>
+      <div style="width:200px;display:flex;align-items:center;justify-content:center">
+        <div style="width:100px;height:100px;border-radius:50%;background:conic-gradient(#a8e063 0% 45%, #a78bfa 45% 65%, #fbbf24 65% 85%, #64748b 85% 100%);display:flex;align-items:center;justify-content:center">
+          <div style="width:60px;height:60px;border-radius:50%;background:#13131a;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#a8e063">万亿</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h3><span class="icon">🌊</span> 国货出海遇冷</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>花知晓之后，难有第二个？</strong></p>
+      <p>CBNData 7月2日报道：国货彩妆出海品牌批量停摆。花知晓（Flower Knows）的成功路径难以复制——海外渠道成本飙升、文化适配门槛提高、资本退潮三重压力下，多数出海品牌被迫收缩。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">🏬</span> 渠道大考</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>Olive Young、dm涌入中国</strong></p>
+      <p>澎湃新闻 6月25日：韩国Olive Young、德国dm等海外美妆集合店加速进入中国市场，对本土CS渠道形成直接竞争。一场关于"渠道纯度"的考验正在展开。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">🏷️</span> 品牌生存法则</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>关店、回归、重启</strong></p>
+      <p>搜狐网 7月4日：美妆品牌的生存法则变了——关店止损、回归核心品类、重启品牌定位成为2026年三大关键词。资本退潮后，盈利能力取代GMV成为核心指标。</p>
+    </div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h3><span class="icon">🧴</span> 防晒赛道升温</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>骆驼防晒签约王一博</strong></p>
+      <p>7月3日：骆驼防晒官宣王一博为全球首席代言人，户外防晒品类加速向大众市场渗透。户外运动热潮推动防晒品类从季节性走向全年化。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">📉</span> IPO遇阻：丸美港股暂停</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p>7月1日报道：孙怀庆的丸美生物港股IPO按下"暂停键"。此前丸美已获中国证监会备案通过，但港股市场低迷叠加美妆板块估值回调，上市时机不佳。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">⚖️</span> 监管动态</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>欧莱雅诉盒马商标侵权</strong></p>
+      <p>7月22日开庭。植物医生自称"中国单品牌店第一"引深交所问询。2026年27项化妆品标准立项计划落地，行业监管持续收紧。</p>
+    </div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <h3>💡 美妆行业洞察</h3>
+  <ul style="padding-left:20px">
+    <li><strong>政策面：</strong>人民日报定调+化妆品新规持续落地，"美丽经济"成为内需战略组成部分</li>
+    <li><strong>出海面：</strong>国货出海窗口收窄，花知晓孤例难复制，品牌需要寻找差异化路径</li>
+    <li><strong>渠道面：</strong>海外集合店涌入+国内品牌关店潮，渠道格局正在重塑</li>
+    <li><strong>资本面：</strong>丸美IPO暂停反映二级市场对美妆板块估值趋于理性</li>
+  </ul>
+</div>
+
+</section>
+
+<!-- ====== EXPRESS ====== -->
+<section id="express" class="section">
+
+<div class="section-title">🚚 快递物流行业</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="label">圆通H1净利预估</div>
+    <div class="value">31-34亿</div>
+    <div class="change">↑ +69%~86% YoY</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">"反内卷"效果</div>
+    <div class="value">持续</div>
+    <div class="change">↑ 单价企稳回升</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">韵达Q1营收</div>
+    <div class="value">承压</div>
+    <div class="change down">↓ 加盟商收缩</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">FedEx Q4 FY2026</div>
+    <div class="value">毛利新高</div>
+    <div class="change">↑ AI转型</div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card wide-card">
+    <h3><span class="icon">🏆</span> 圆通速递：H1业绩暴增，反内卷赢家</h3>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <div style="font-size:0.82rem;color:#94a3b8;line-height:1.9">
+          <p>📊 <strong>核心数据：</strong>预计2026上半年归母净利润31-34亿元，同比增长69.34%-85.73%。扣非净利预增超七成。</p>
+          <p>📈 <strong>驱动因素：</strong>快递"反内卷"政策效果延续——行业单价企稳回升，圆通数字化转型（"金刚系统"）降本增效成果显著。</p>
+          <p>📅 <strong>发布时间：</strong>6月30日晚间发布业绩预增公告。</p>
+        </div>
+      </div>
+      <div style="min-width:200px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:0.78rem;color:#64748b">盈利增长构成</div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:4px"><span>扣非净利增速</span><span style="color:#a8e063">+70%+</span></div>
+          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:88%;height:100%;background:linear-gradient(90deg,#a8e063,#10b981);border-radius:3px"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.78rem;margin-bottom:4px"><span>净利增速上限</span><span style="color:#f7ff00">+86%</span></div>
+          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px"><div style="width:92%;height:100%;background:linear-gradient(90deg,#f7ff00,#a8e063);border-radius:3px"></div></div>
+        </div>
+        <div style="font-size:0.72rem;color:#475569;margin-top:4px">✓ 来源：东方财富/中财网/财联社</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div class="card">
+    <h3><span class="icon">⚠️</span> 韵达股份：改革阵痛</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p>新浪财经 7月5日报道：韵达股份正处于深度改革期。加盟商数量收缩，业务量出现下滑，Q1营收增长乏力。</p>
+      <p>行业分化加剧——头部企业（圆通、中通）受益于反内卷，腰部企业（韵达）面临加盟网络稳定性挑战。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">🤖</span> FedEx：传统快递的AI转型</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p>搜狐 6月26日：联邦快递Q4 FY2026财报显示毛利率创多年新高，但运营成本结构正在发生变化——资本开支从传统物流向AI基础设施倾斜。</p>
+      <p>传统包裹公司开始交易AI资本开支概念，FedEx正从物流公司向科技物流平台转型。</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3><span class="icon">📊</span> 快递行业格局</h3>
+    <div style="font-size:0.82rem;color:#94a3b8;line-height:1.8">
+      <p><strong>反内卷效果延续：</strong>自2025年义乌快递价格联盟自律以来，全行业单价逐步企稳。圆通、中通率先受益。</p>
+      <p><strong>分化加剧：</strong>数字化能力强的头部企业（圆通金刚系统）vs 依赖加盟网络扩张的传统模式（韵达），差距拉大。</p>
+    </div>
+  </div>
+</div>
+
+<div class="news-feed">
+  <div class="section-title" style="margin-top:8px">📰 快递行业要闻</div>
+  <div class="news-item">
+    <div class="source">财联社 · 6月30日</div>
+    <div class="title">快递"反内卷"效果延续 圆通速递H1扣非净利预增超七成 | 财报解读</div>
+  </div>
+  <div class="news-item">
+    <div class="source">新浪财经 · 7月5日</div>
+    <div class="title">韵达股份改革阵痛：加盟商数量收缩，业务量下滑，Q1营收增长乏力</div>
+  </div>
+  <div class="news-item">
+    <div class="source">东方财富 · 6月30日</div>
+    <div class="title">圆通速递：预计2026年上半年净利31亿元-34亿元 同比增长69.34%-85.73%</div>
+  </div>
+  <div class="news-item">
+    <div class="source">搜狐网 · 6月26日</div>
+    <div class="title">联邦快递财报背后：传统包裹公司，开始交易AI资本开支</div>
+  </div>
+</div>
+
+</section>
+
+<div class="footer">
+  <p>📊 Ettoreal 行业日报 · 数据来源：Google News RSS 聚合（中物联、国家统计局、财联社、东方财富、人民日报、CBNData、新浪财经等）</p>
+  <p>生成时间：2026-07-06 · 基于公开信息自动生成，不构成投资建议</p>
+</div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('nav-active'));
+  document.querySelector('nav a[href="#' + id + '"]').classList.add('nav-active');
+}
+</script>
+</body>
+</html>
