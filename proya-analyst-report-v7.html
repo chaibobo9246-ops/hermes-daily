@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珀莱雅生态系统深度分析 V7 — 分版块投研报告 · 2026.07</title>
+<style>
+:root {
+  --bg-primary: #0a0a0f; --bg-secondary: #13131a; --bg-card: #1a1a24;
+  --bg-card-hover: #1e1e2c; --border: #252530; --border-accent: #333348;
+  --text-primary: #e8e8ec; --text-secondary: #9898a8; --text-muted: #6a6a7a;
+  --accent-green: #4ade80; --accent-yellow: #fbbf24; --accent-purple: #a78bfa;
+  --accent-blue: #60a5fa; --accent-red: #f87171; --accent-pink: #f472b6;
+  --accent-cyan: #22d3ee; --accent-orange: #fb923c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg-primary); color:var(--text-primary); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; line-height:1.8; }
+.container { max-width:1320px; margin:0 auto; padding:24px; }
+
+/* Hero */
+.hero { text-align:center; padding:60px 24px 40px; background:linear-gradient(160deg, #0f0f23 0%, #1a1a35 30%, #0d1b2a 70%, #0a0a18 100%); border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle at 70% 30%, rgba(167,139,250,0.08) 0%, transparent 50%), radial-gradient(circle at 30% 70%, rgba(74,222,128,0.06) 0%, transparent 50%); }
+.hero h1 { font-size:2.5em; font-weight:900; background:linear-gradient(135deg, #4ade80 0%, #a78bfa 50%, #fbbf24 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; position:relative; }
+.hero .subtitle { color:var(--text-secondary); margin-top:8px; font-size:1.05em; position:relative; }
+.hero .date { color:var(--text-muted); font-size:0.85em; margin-top:4px; position:relative; }
+.hero .tags { margin-top:14px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; position:relative; }
+.hero .tags span { background:rgba(167,139,250,0.12); border:1px solid rgba(167,139,250,0.3); padding:4px 14px; border-radius:16px; font-size:0.8em; color:var(--accent-purple); }
+
+/* Tab Navigation */
+.tab-nav { position:sticky; top:0; z-index:100; background:var(--bg-secondary); border-bottom:2px solid var(--border); overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+.tab-nav .tab-inner { display:flex; gap:0; max-width:1320px; margin:0 auto; padding:0 12px; }
+.tab-nav button { background:none; border:none; color:var(--text-muted); padding:14px 20px; font-size:0.88em; cursor:pointer; font-weight:600; transition:all 0.2s; border-bottom:3px solid transparent; margin-bottom:-2px; white-space:nowrap; font-family:inherit; }
+.tab-nav button:hover { color:var(--text-primary); background:rgba(167,139,250,0.05); }
+.tab-nav button.active { color:var(--accent-green); border-bottom-color:var(--accent-green); }
+.tab-nav button .tab-icon { margin-right:6px; }
+
+/* Tab Panels */
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+
+/* KPI */
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; padding:20px 0; }
+.kpi-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center; transition:all 0.2s; }
+.kpi-card:hover { border-color:var(--accent-purple); transform:translateY(-2px); }
+.kpi-card .label { color:var(--text-muted); font-size:0.76em; text-transform:uppercase; letter-spacing:0.8px; }
+.kpi-card .value { font-size:1.7em; font-weight:800; margin:5px 0; background:linear-gradient(135deg, var(--accent-green), var(--accent-yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.kpi-card .sub { color:var(--text-secondary); font-size:0.76em; }
+.kpi-card.warn .value { background:linear-gradient(135deg, var(--accent-yellow), var(--accent-red)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.kpi-card.info .value { background:linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.kpi-card.pink .value { background:linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* Sections */
+.section { margin:40px 0; }
+.section h2 { font-size:1.45em; border-bottom:2px solid var(--accent-purple); padding-bottom:10px; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.section h3 { font-size:1.1em; color:var(--accent-yellow); margin:20px 0 10px; }
+.section h4 { font-size:1em; color:var(--accent-cyan); margin:16px 0 8px; }
+.section p { color:var(--text-secondary); margin:8px 0; line-height:1.75; }
+.section ul, .section ol { color:var(--text-secondary); margin:8px 0 8px 24px; }
+.section ul li, .section ol li { margin:6px 0; }
+
+.section-intro { font-size:1.05em; color:var(--text-primary); margin-bottom:16px; }
+
+table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.86em; }
+th { background:var(--bg-secondary); color:var(--accent-yellow); text-align:left; padding:12px 14px; border-bottom:2px solid var(--border); font-weight:700; font-size:0.83em; text-transform:uppercase; letter-spacing:0.4px; white-space:nowrap; }
+td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-primary); }
+tr:hover td { background:rgba(167,139,250,0.04); }
+td.num { text-align:right; font-variant-numeric:tabular-nums; }
+
+.tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.78em; font-weight:600; }
+.tag-up { background:rgba(74,222,128,0.12); color:var(--accent-green); }
+.tag-down { background:rgba(248,113,113,0.12); color:var(--accent-red); }
+.tag-flat { background:rgba(251,191,36,0.12); color:var(--accent-yellow); }
+.tag-new { background:rgba(96,165,250,0.12); color:var(--accent-blue); }
+
+.brand-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; margin:16px 0; }
+.brand-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:22px; transition:all 0.2s; }
+.brand-card:hover { border-color:var(--accent-purple); background:var(--bg-card-hover); }
+.brand-card .b-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+.brand-card .b-name { font-size:1.2em; font-weight:700; }
+.brand-card .b-rev { font-size:1.4em; font-weight:800; color:var(--accent-green); }
+.brand-card .b-detail { color:var(--text-secondary); font-size:0.84em; line-height:1.7; }
+
+.exec-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:16px 0; }
+.exec-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:22px; transition:all 0.2s; }
+.exec-card:hover { border-color:var(--accent-yellow); }
+.exec-card .e-role { color:var(--accent-yellow); font-size:0.8em; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+.exec-card .e-name { font-size:1.25em; font-weight:700; margin:5px 0; }
+.exec-card .e-desc { color:var(--text-secondary); font-size:0.84em; line-height:1.7; }
+
+.insight { border-radius:14px; padding:22px; margin:16px 0; }
+.insight.green { background:linear-gradient(135deg, rgba(74,222,128,0.08), rgba(34,211,238,0.05)); border:1px solid rgba(74,222,128,0.25); }
+.insight.red { background:linear-gradient(135deg, rgba(248,113,113,0.08), rgba(251,191,36,0.05)); border:1px solid rgba(248,113,113,0.25); }
+.insight.purple { background:linear-gradient(135deg, rgba(167,139,250,0.08), rgba(96,165,250,0.05)); border:1px solid rgba(167,139,250,0.25); }
+.insight.blue { background:linear-gradient(135deg, rgba(96,165,250,0.08), rgba(34,211,238,0.05)); border:1px solid rgba(96,165,250,0.25); }
+.insight.orange { background:linear-gradient(135deg, rgba(251,146,60,0.08), rgba(251,191,36,0.05)); border:1px solid rgba(251,146,60,0.25); }
+.insight.pink { background:linear-gradient(135deg, rgba(244,114,182,0.08), rgba(167,139,250,0.05)); border:1px solid rgba(244,114,182,0.25); }
+.insight h3 { margin-top:0; margin-bottom:10px; }
+.insight.green h3 { color:var(--accent-green); }
+.insight.red h3 { color:var(--accent-red); }
+.insight.purple h3 { color:var(--accent-purple); }
+.insight.blue h3 { color:var(--accent-blue); }
+.insight.orange h3 { color:var(--accent-orange); }
+.insight.pink h3 { color:var(--accent-pink); }
+.insight p { color:var(--text-secondary); margin:5px 0; line-height:1.7; }
+
+.timeline { position:relative; padding-left:28px; margin:16px 0; }
+.timeline::before { content:''; position:absolute; left:13px; top:0; bottom:0; width:2px; background:var(--border-accent); }
+.tl-item { position:relative; margin-bottom:16px; }
+.tl-item::before { content:''; position:absolute; left:-19px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--accent-purple); border:2px solid var(--bg-primary); }
+.tl-year { color:var(--accent-yellow); font-weight:700; font-size:0.88em; }
+.tl-desc { color:var(--text-secondary); font-size:0.88em; margin-top:3px; }
+
+.flow-row { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center; margin:16px 0; }
+.flow-node { background:var(--bg-card); border:2px solid var(--border); border-radius:12px; padding:12px 16px; text-align:center; min-width:110px; }
+.flow-node .fn-name { font-weight:700; font-size:0.9em; }
+.flow-node .fn-sub { color:var(--text-secondary); font-size:0.76em; margin-top:2px; }
+.flow-arrow { font-size:1.3em; color:var(--accent-purple); font-weight:700; }
+
+.channel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin:16px 0; }
+.channel-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:22px; }
+.overseas-map { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin:16px 0; }
+.overseas-card { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:22px; }
+.overseas-card:hover { border-color:var(--accent-pink); }
+.overseas-card .os-flag { font-size:1.8em; margin-bottom:6px; }
+.overseas-card .os-market { font-size:1.15em; font-weight:700; }
+.overseas-card .os-status { color:var(--accent-green); font-size:0.84em; margin:5px 0; }
+.overseas-card .os-detail { color:var(--text-secondary); font-size:0.82em; line-height:1.7; margin-top:6px; }
+
+.milestone-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin:16px 0; }
+.milestone-card { background:var(--bg-card); border-left:3px solid var(--accent-purple); border-radius:0 12px 12px 0; padding:18px 22px; }
+.milestone-card .ms-year { color:var(--accent-yellow); font-size:0.84em; font-weight:700; }
+.milestone-card .ms-title { font-size:1.05em; font-weight:700; margin:4px 0; }
+.milestone-card .ms-desc { color:var(--text-secondary); font-size:0.84em; line-height:1.7; }
+
+footer { text-align:center; color:var(--text-muted); padding:40px 24px; font-size:0.78em; border-top:1px solid var(--border); margin-top:40px; line-height:1.8; }
+
+@media (max-width:768px) {
+  .hero h1 { font-size:1.4em; }
+  .brand-row, .exec-grid, .channel-grid, .overseas-map, .milestone-row { grid-template-columns:1fr; }
+  .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  .tab-nav button { padding:12px 14px; font-size:0.8em; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>珀莱雅生态系统深度分析 V7</h1>
+  <div class="subtitle">全景式投研报告 · 分版块交互版 · 渠道战略 × OTC专业线 × 出海全球化 · 2026年H1</div>
+  <div class="date">2026年7月7日 · 基于珀莱雅2025年年度报告（2026.04.22发布）、2026Q1季报、618最新数据、港股招股书</div>
+  <div class="tags">
+    <span>603605.SH</span><span>国货美妆龙头</span><span>百亿俱乐部</span><span>A+H冲刺</span><span>花知晓控股</span><span>出海先锋</span>
+  </div>
+</section>
+
+<!-- Tab Navigation -->
+<nav class="tab-nav" id="tabNav">
+  <div class="tab-inner">
+    <button class="active" onclick="switchTab('overview')"><span class="tab-icon">📊</span>概览</button>
+    <button onclick="switchTab('history')"><span class="tab-icon">📖</span>沿革与财务</button>
+    <button onclick="switchTab('brands')"><span class="tab-icon">🏷️</span>品牌矩阵</button>
+    <button onclick="switchTab('channels')"><span class="tab-icon">📡</span>渠道战略</button>
+    <button onclick="switchTab('otc')"><span class="tab-icon">🏥</span>OTC专业线</button>
+    <button onclick="switchTab('overseas')"><span class="tab-icon">🌏</span>出海全球化</button>
+    <button onclick="switchTab('governance')"><span class="tab-icon">🔗</span>治理与竞品</button>
+    <button onclick="switchTab('operations')"><span class="tab-icon">⚙️</span>运营与风险</button>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ================================================================ -->
+<!-- TAB 1: 概览                                                         -->
+<!-- ================================================================ -->
+<div class="tab-panel active" id="tab-overview">
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">2025营收</div><div class="value">105.97亿</div><div class="sub">YoY -1.68% · 连续两年破百亿</div></div>
+  <div class="kpi-card"><div class="label">归母净利润</div><div class="value">14.98亿</div><div class="sub">净利率 14.14% · 10派12元分红</div></div>
+  <div class="kpi-card warn"><div class="label">主品牌珀莱雅</div><div class="value">76.89亿</div><div class="sub"><span class="tag tag-down">-10.39%</span> 大单品红利消退</div></div>
+  <div class="kpi-card"><div class="label">第二梯队合计</div><div class="value">27.22亿</div><div class="sub">占总营收 25.7% · 高速增长</div></div>
+  <div class="kpi-card info"><div class="label">线上渠道占比</div><div class="value">95.58%</div><div class="sub">抖音第一大渠道(35%+)·天猫25%</div></div>
+  <div class="kpi-card pink"><div class="label">海外子公司</div><div class="value">7家</div><div class="sub">花知晓为出海主力·日/美/东南亚</div></div>
+  <div class="kpi-card info"><div class="label">618天猫</div><div class="value">🥇 TOP3</div><div class="sub">首轮登顶·全周期第三</div></div>
+  <div class="kpi-card"><div class="label">控股子公司</div><div class="value">44家</div><div class="sub">含7家海外 · 花知晓51%</div></div>
+  <div class="kpi-card pink"><div class="label">销售费率</div><div class="value">46.2%</div><div class="sub">年销售费用~49亿·抖音投流占大头</div></div>
+  <div class="kpi-card"><div class="label">OTC/药房渠道</div><div class="value"><5%</div><div class="sub">起步阶段·对标薇诺娜模式</div></div>
+</div>
+
+<div class="section">
+  <h2>📊 核心结论速览</h2>
+  <div class="insight green">
+    <h3>✅ 核心优势</h3>
+    <p>• 国货美妆营收规模第一（105.97亿）· 品牌矩阵最完善（10+品牌）</p>
+    <p>• 抖音运营天花板 · 线上占比95.58% · 全渠道布局领先</p>
+    <p>• 花知晓投资回报卓越（Q1贡献42%利润）· 出海布局领先同业</p>
+    <p>• 多品牌第二梯队崛起（Off&Relax 7.44亿·彩棠12.55亿）</p>
+  </div>
+  <div class="insight red">
+    <h3>⚠️ 核心风险</h3>
+    <p>• 主品牌珀莱雅首次负增长（-10.39%）· 大单品红利消退</p>
+    <p>• 销售费用率46.2%持续走高 · 抖音流量成本上升</p>
+    <p>• 研发费率2.05%低于同业 · 家族绝对控股（71.18%）</p>
+    <p>• 港股IPO稀释 + 出海烧钱 · OTC渠道投入见效慢</p>
+  </div>
+</div>
+</div>
+
+</div>
+
+<!-- ============ TAB 2: 沿革与财务 ============ -->
+<div class="tab-panel" id="tab-history">
+<div class="container">
+
+<div class="section">
+  <h2>📖 企业沿革</h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-year">2003年</div><div class="tl-desc">侯军呈（浙江温州人）与妻弟方玉友创立珀莱雅前身。侯军呈此前在丁家宜等品牌积累了CS渠道经验。</div></div>
+    <div class="tl-item"><div class="tl-year">2006年</div><div class="tl-desc">珀莱雅品牌诞生，走"大牌平替"路线。以CS渠道为核心，铺设全国3万+终端网点。</div></div>
+    <div class="tl-item"><div class="tl-year">2017年</div><div class="tl-desc">上交所主板上市（603605），募资6.97亿元，市值约50亿。</div></div>
+    <div class="tl-item"><div class="tl-year">2019-2021</div><div class="tl-desc"><strong>关键转型期</strong>：从线下CS全面转向线上。泡泡面膜抖音爆款→确立大单品策略（红宝石+双抗精华）。</div></div>
+    <div class="tl-item"><div class="tl-year">2021-2024</div><div class="tl-desc">营收连续14个季度增长，市值突破500亿。布局第二品牌矩阵：彩棠、Off&Relax、悦芙媞。</div></div>
+    <div class="tl-item"><div class="tl-year">2024年</div><div class="tl-desc">侯亚孟（侯军呈之子）出任总经理，完成二代交班。启动"双十战略"。推进港交所上市。</div></div>
+    <div class="tl-item"><div class="tl-year">2025年</div><div class="tl-desc">营收105.97亿首次负增长。主品牌-10.39%，但第二品牌矩阵爆发。控股花知晓51%。推进A+H上市。</div></div>
+    <div class="tl-item"><div class="tl-year">2026年H1</div><div class="tl-desc">618天猫首轮登顶，淘天年度超欧莱雅。花知晓Q1贡献集团42%利润。港股IPO冲刺阶段。</div></div>
+  </div>
+  <div class="insight purple">
+    <h3>🔍 五大关键决策</h3>
+    <p><strong>① All-in抖音</strong>：泡泡面膜爆款让珀莱雅抢占抖音先发优势，至今仍是最大壁垒。</p>
+    <p><strong>② 大单品策略</strong>：红宝石+双抗持续迭代（3.0→4.0），建立消费者认知锚点。</p>
+    <p><strong>③ 多品牌矩阵</strong>：第二梯队营收27亿占25.7%，证明矩阵战略成功。</p>
+    <p><strong>④ 二代交班</strong>：侯亚孟推动港股IPO+花知晓收购+国际化，风格比父辈更激进。</p>
+    <p><strong>⑤ 出海战略</strong>：花知晓先锋+Off&Relax桥梁+主品牌跟进，港股为弹药。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>💰 财务深度分析</h2>
+  <h3>核心财务指标（2021-2026Q1）</h3>
+  <table>
+    <thead><tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026Q1</th></tr></thead>
+    <tbody>
+      <tr><td>营收（亿元）</td><td class="num">46.33</td><td class="num">63.85</td><td class="num">89.05</td><td class="num">107.78</td><td class="num">105.97</td><td class="num">~25</td></tr>
+      <tr><td>营收增速</td><td class="num"><span class="tag tag-up">+23.5%</span></td><td class="num"><span class="tag tag-up">+37.8%</span></td><td class="num"><span class="tag tag-up">+39.5%</span></td><td class="num"><span class="tag tag-up">+21.0%</span></td><td class="num"><span class="tag tag-down">-1.68%</span></td><td class="num"><span class="tag tag-flat">微增</span></td></tr>
+      <tr><td>归母净利润（亿元）</td><td class="num">5.76</td><td class="num">8.17</td><td class="num">11.94</td><td class="num">15.52</td><td class="num">14.98</td><td class="num">~4.2</td></tr>
+      <tr><td>净利率</td><td class="num">12.4%</td><td class="num">12.8%</td><td class="num">13.4%</td><td class="num">14.4%</td><td class="num">14.1%</td><td class="num">16.6%</td></tr>
+      <tr><td>毛利率</td><td class="num">66.5%</td><td class="num">69.2%</td><td class="num">69.9%</td><td class="num">70.5%</td><td class="num">71.2%</td><td class="num">~72%</td></tr>
+      <tr><td>销售费用率</td><td class="num">42.1%</td><td class="num">43.6%</td><td class="num">44.6%</td><td class="num">45.1%</td><td class="num">46.2%</td><td class="num">~45%</td></tr>
+      <tr><td>研发费用率</td><td class="num">1.65%</td><td class="num">1.88%</td><td class="num">1.95%</td><td class="num">1.96%</td><td class="num">2.05%</td><td class="num">~2.1%</td></tr>
+      <tr><td>ROE</td><td class="num">21.5%</td><td class="num">25.3%</td><td class="num">28.7%</td><td class="num">29.8%</td><td class="num">25.1%</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="insight green">
+    <h3>📈 财务健康度评估</h3>
+    <p><strong>毛利率71.2%</strong>：持续提升，受益于产品结构升级+自产比例提高。华熙~75%、贝泰妮~74%，珀莱雅中上水平。</p>
+    <p><strong>销售费用率46.2%</strong>：偏高中结构合理。抖音投流估20亿+，天猫推广8-10亿。ROI 1.8-2.2。</p>
+    <p><strong>净利率14.1%</strong>：优秀水平。Q1回升至16.6%。花知晓Q1贡献42%利润，利润弹性极强，对集团盈利形成正向拉动。</p>
+    <p><strong>ROE 25.1%</strong>：虽从29.8%下滑，A股美妆仍属第一梯队。下滑主因总资产扩张快于利润增长。</p>
+  </div>
+
+  <h3>品牌营收矩阵（2025年）</h3>
+  <table>
+    <thead><tr><th>品牌</th><th>定位</th><th>价格带</th><th>2025营收</th><th>同比</th><th>占比</th></tr></thead>
+    <tbody>
+      <tr><td><strong>珀莱雅</strong></td><td>科技护肤</td><td>200-500元</td><td class="num" style="color:var(--accent-green);font-weight:700;">76.89亿</td><td><span class="tag tag-down">-10.4%</span></td><td>72.6%</td></tr>
+      <tr><td><strong>彩棠</strong></td><td>中式彩妆</td><td>150-300元</td><td class="num">12.55亿</td><td><span class="tag tag-up">+5.4%</span></td><td>11.8%</td></tr>
+      <tr><td><strong>Off&Relax</strong></td><td>专业洗护</td><td>100-300元</td><td class="num">7.44亿</td><td><span class="tag tag-up">+102.2%</span></td><td>7.0%</td></tr>
+      <tr><td><strong>悦芙媞</strong></td><td>Z世代年轻肌</td><td>50-200元</td><td class="num">3.71亿</td><td><span class="tag tag-up">+11.8%</span></td><td>3.5%</td></tr>
+      <tr><td><strong>原色波塔</strong></td><td>新锐彩妆</td><td>50-150元</td><td class="num">2.56亿</td><td><span class="tag tag-up">+125.4%</span></td><td>2.4%</td></tr>
+      <tr><td><strong>惊时</strong></td><td>功效护肤</td><td>100-250元</td><td class="num">0.96亿</td><td><span class="tag tag-up">+441.7%</span></td><td>0.9%</td></tr>
+      <tr><td><strong>花知晓</strong></td><td>少女风彩妆</td><td>50-150元</td><td class="num" style="color:var(--accent-pink);">17.26亿*</td><td><span class="tag tag-up">控股51%</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 3: 品牌矩阵 ============ -->
+<div class="tab-panel" id="tab-brands">
+<div class="container">
+
+<div class="section">
+  <h2>🏷️ 品牌矩阵深度拆解</h2>
+  <div class="brand-row">
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">珀莱雅 · PROYA</div><div class="b-rev">76.89亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：专注科技护肤，25-35岁白领女性</p>
+        <p><strong>大单品</strong>：红宝石精华(抗老)·双抗精华(抗氧化)·源力系列(修护)·能量系列(高端线)</p>
+        <p><strong>渠道</strong>：线上95.58%（抖音35%+、天猫25%），线下4.42%</p>
+        <p><strong>2026新品</strong>：红宝石微珠精华·客单价从150元提升至250元+</p>
+        <p><strong>618</strong>：天猫首轮登顶，全周期第3</p>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">彩棠 · TIMAGE</div><div class="b-rev">12.55亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：中式美学专业彩妆，「中国妆，原生美」</p>
+        <p><strong>明星单品</strong>：小圆管粉底液·双生气垫·大师修容盘</p>
+        <p><strong>618天猫彩妆第2</strong>（国货第1），底妆占比提升至50%+</p>
+        <p><strong>护城河</strong>：化妆师IP（唐毅）+中式美学+底妆技术壁垒</p>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">Off&Relax</div><div class="b-rev">7.44亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：专业头皮护理洗护，日本研发基因</p>
+        <p><strong>增速102%</strong>：天猫美护发第5（亚洲品牌TOP1），抖音头皮护理类目第1</p>
+        <p><strong>品类空间</strong>：中国洗护市场2000亿+，头皮护理增速20%+</p>
+        <p><strong>国际化潜力</strong>：日本Loft/@cosme在售，最自然的出海桥梁</p>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">悦芙媞 · HAPSODE</div><div class="b-rev">3.71亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：18-24岁Z世代，「年轻肌专研」</p>
+        <p><strong>2025转折</strong>：从"基础清洁"进阶为"痘敏修护"</p>
+        <p><strong>渠道</strong>：纯线上，抖音+天猫学生人群为主</p>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">原色波塔 · INSBAHA</div><div class="b-rev">2.56亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：新锐彩妆，Z世代受众</p>
+        <p><strong>增速125%</strong>：低基数爆发，主打抖音短视频+直播</p>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="b-header"><div class="b-name">惊时 · WONDERLAB</div><div class="b-rev">0.96亿</div></div>
+      <div class="b-detail">
+        <p><strong>定位</strong>：高功效护肤，成分故事驱动</p>
+        <p><strong>增速442%</strong>：爆发期但基数极低，天猫成交额同比+200%</p>
+      </div>
+    </div>
+    <div class="brand-card" style="border-color:rgba(244,114,182,0.5);">
+      <div class="b-header"><div class="b-name">花知晓 · FLOWER KNOWS</div><div class="b-rev">17.26亿*</div></div>
+      <div class="b-detail">
+        <p><strong>珀莱雅持股51%</strong> · 少女风彩妆 · 跨境电商先行者</p>
+        <p><strong>关键财务</strong>：Q1净利润1.55亿占集团42%。海外营收约2亿，覆盖20+国家和地区。</p>
+        <p><strong>运营主体</strong>：深圳花知晓 · 年包裹量1500万+件 · 淮安仓储物流中心2027年6月投产</p>
+        <p><strong>战略价值</strong>：①利润弹性极大 ②少女风全球化审美 ③跨境电商经验反哺集团</p>
+        <p><strong>⚠️ 经营关注</strong>：纯电商模式对平台波动敏感；受众边界需拓展；淮安仓投产后物流成本将改善</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 4: 渠道战略 ============ -->
+<div class="tab-panel" id="tab-channels">
+<div class="container">
+
+<div class="section">
+  <h2>📡 渠道战略全景深度拆解</h2>
+  <p class="section-intro">珀莱雅从100%线下CS渠道转型至95.58%线上电商。2025年线上贡献约101亿营收（105.97亿×95.58%），线下仅4.42%（~4.7亿）。</p>
+
+  <h3>渠道收入全景结构</h3>
+  <table>
+    <thead><tr><th>渠道层级</th><th>具体渠道</th><th>占比（估）</th><th>年GMV（估）</th><th>趋势</th></tr></thead>
+    <tbody>
+      <tr style="background:rgba(74,222,128,0.03);"><td rowspan="4" style="font-weight:700;">线上直营 (~65%)</td><td><strong>抖音</strong></td><td class="num" style="color:var(--accent-green);font-weight:700;">35-40%</td><td class="num">37-42亿</td><td><span class="tag tag-up">核心引擎</span></td></tr>
+      <tr style="background:rgba(74,222,128,0.03);"><td><strong>天猫</strong></td><td class="num">22-25%</td><td class="num">23-27亿</td><td><span class="tag tag-flat">防守维稳</span></td></tr>
+      <tr style="background:rgba(74,222,128,0.03);"><td><strong>京东</strong></td><td class="num">2-3%</td><td class="num">2-3亿</td><td><span class="tag tag-up">低基数增长</span></td></tr>
+      <tr style="background:rgba(74,222,128,0.03);"><td><strong>私域（微信+小程序）</strong></td><td class="num">1-2%</td><td class="num">1-2亿</td><td><span class="tag tag-up">战略培育</span></td></tr>
+      <tr style="background:rgba(96,165,250,0.03);"><td rowspan="2" style="font-weight:700;">线上分销 (~30%)</td><td><strong>拼多多</strong></td><td class="num">10-12%</td><td class="num">11-13亿</td><td><span class="tag tag-up">下沉增长</span></td></tr>
+      <tr style="background:rgba(96,165,250,0.03);"><td><strong>快手/唯品会/其他</strong></td><td class="num">15-18%</td><td class="num">16-19亿</td><td><span class="tag tag-flat">稳定</span></td></tr>
+      <tr style="background:rgba(251,146,60,0.03);"><td rowspan="3" style="font-weight:700;">线下渠道 (~4.4%)</td><td><strong>CS渠道</strong></td><td class="num">2-3%</td><td class="num">2-3亿</td><td><span class="tag tag-down">萎缩</span></td></tr>
+      <tr style="background:rgba(251,146,60,0.03);"><td><strong>单品牌店</strong></td><td class="num">1-1.5%</td><td class="num">1-1.6亿</td><td><span class="tag tag-flat">体验场</span></td></tr>
+      <tr style="background:rgba(251,146,60,0.03);"><td><strong>商超/OTC/其他</strong></td><td class="num"><1%</td><td class="num"><1亿</td><td><span class="tag tag-up">OTC起步</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>抖音：珀莱雅的「第二总部」</h3>
+  <p>抖音是珀莱雅第一大单一渠道，年GMV超37亿。珀莱雅的抖音运营是国货美妆天花板。</p>
+  <table>
+    <thead><tr><th>模块</th><th>策略</th><th>关键指标</th></tr></thead>
+    <tbody>
+      <tr><td><strong>自播矩阵</strong></td><td>30+蓝V账号矩阵，日均直播12-16h，大促24h轮播</td><td>自播占比~60%，场均50-200万</td></tr>
+      <tr><td><strong>达人分销</strong></td><td>超头+中腰部达人合作3000+，分级达人池管理</td><td>达人GMV占比40%</td></tr>
+      <tr><td><strong>内容种草</strong></td><td>短视频日更30+条，每个大单品有专属内容模板</td><td>月产900+条，互动率3-5%</td></tr>
+      <tr><td><strong>千川投流</strong></td><td>年投流估18-22亿，占销售费用40%+。按ROI动态调配</td><td>综合ROI 1.8-2.2，获客~80元/人</td></tr>
+      <tr><td><strong>数据中台</strong></td><td>自建CDP，标签体系覆盖6000万+人群，A1-A5分层运营</td><td>A3种草人群1000万+</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight red">
+    <h3>⚠️ 抖音依赖症</h3>
+    <p><strong>① 流量成本攀升</strong>：CPM从2021年30元涨至80-120元，年涨幅15-20%。</p>
+    <p><strong>② 算法不确定性</strong>：每次算法调整都可能导致ROI短期暴跌。</p>
+    <p><strong>③ 单一平台风险</strong>：35-40%营收集中于抖音，封号/限流冲击巨大。</p>
+    <p><strong>④ 品牌力稀释</strong>：叫卖式直播可能损害中高端品牌形象。</p>
+  </div>
+
+  <h3>天猫：品牌主阵地与利润中心</h3>
+  <p>天猫年GMV约25亿，承载新品首发、品牌形象、会员运营和利润贡献四大功能。</p>
+  <table>
+    <thead><tr><th>维度</th><th>策略</th><th>表现</th></tr></thead>
+    <tbody>
+      <tr><td><strong>旗舰店</strong></td><td>粉丝4000万+，会员1500万+</td><td>年GMV约18亿，天猫美妆TOP3</td></tr>
+      <tr><td><strong>超头合作</strong></td><td>李佳琦全年合作100+场</td><td>贡献15-20%天猫营收</td></tr>
+      <tr><td><strong>会员体系</strong></td><td>ARPU 200元，复购率35%+</td><td>会员贡献60%天猫GMV</td></tr>
+      <tr><td><strong>品牌专区</strong></td><td>买断核心关键词，年投入2-3亿</td><td>搜索转化率行业TOP5</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight purple">
+    <h3>🎯 天猫 vs 抖音：两种增长逻辑</h3>
+    <p><strong>天猫 = 搜索驱动</strong>：用户主动搜索，ROI更高（3-5x）但天花板明显。做品牌和利润（70%利润来自天猫）。</p>
+    <p><strong>抖音 = 推荐驱动</strong>：算法种草→直播收割，天花板更高但不稳定。做规模和声量（贡献GMV但利润率仅5-8%）。</p>
+    <p><strong>飞轮</strong>：天猫蓄水→抖音放量→天猫复购。</p>
+  </div>
+
+  <h3>京东·拼多多·快手：补充渠道</h3>
+  <p><strong>京东</strong>：年2-3亿，主打品质感，增速30%+。用户画像35-50岁高收入家庭决策者。</p>
+  <p><strong>拼多多</strong>：年11-13亿，"暗线"渠道。通过经销商分销维持品牌调性。百亿补贴常年在线。</p>
+  <p><strong>快手</strong>：年5-8亿，3-5线城镇。依赖达人分销，退货率低于抖音（20% vs 30-35%）。</p>
+
+  <h3>私域与会员经济</h3>
+  <table>
+    <thead><tr><th>载体</th><th>规模</th><th>功能</th><th>阶段</th></tr></thead>
+    <tbody>
+      <tr><td>企业微信</td><td>~200万好友</td><td>1v1导购·活动推送·售后</td><td><span class="tag tag-flat">初级</span></td></tr>
+      <tr><td>微信小程序</td><td>月活~50万</td><td>会员商城·积分兑换·预售</td><td><span class="tag tag-flat">初级</span></td></tr>
+      <tr><td>微信公众号</td><td>~800万</td><td>品牌内容·护肤知识</td><td><span class="tag tag-up">成熟</span></td></tr>
+      <tr><td>小红书</td><td>~300万</td><td>种草·UGC·成分科普</td><td><span class="tag tag-up">成熟</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>线下渠道现状与「一盘货」战略</h3>
+  <p>线下占比仅4.42%（~4.7亿），但珀莱雅正在推进<strong>"一盘货"</strong>——打通线上线下库存和物流，实现全渠道共享。</p>
+  <table>
+    <thead><tr><th>线下业态</th><th>门店数</th><th>年营收</th><th>趋势</th></tr></thead>
+    <tbody>
+      <tr><td>CS渠道</td><td>30,000+网点</td><td class="num">2-3亿</td><td><span class="tag tag-down">萎缩</span></td></tr>
+      <tr><td>单品牌店</td><td>500+家</td><td class="num">1-1.6亿</td><td><span class="tag tag-up">体验重塑</span></td></tr>
+      <tr><td>商超KA</td><td>1,000+网点</td><td class="num"><1亿</td><td><span class="tag tag-flat">维持</span></td></tr>
+      <tr><td>OTC药房</td><td>起步阶段</td><td class="num"><0.5亿</td><td><span class="tag tag-up">培育中</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 5: OTC专业线 ============ -->
+<div class="tab-panel" id="tab-otc">
+<div class="container">
+
+<div class="section">
+  <h2>🏥 OTC药房与专业渠道：功效护肤的下一个战场</h2>
+  <p class="section-intro">中国药房护肤品渗透率不足5%（欧美25-40%），珀莱雅将OTC定位为第三增长曲线。</p>
+
+  <h3>为何进OTC？</h3>
+  <table>
+    <thead><tr><th>驱动</th><th>逻辑</th></tr></thead>
+    <tbody>
+      <tr><td><strong>政策红利</strong></td><td>功效护肤宣称监管收紧，利好有临床数据的合规品牌。珀莱雅拥有完整功效测试数据。</td></tr>
+      <tr><td><strong>敏感肌蓝海</strong></td><td>中国敏感肌2.5亿+，药房是敏感肌最信任渠道（信赖度比线上高3倍）。源力系列天然适配。</td></tr>
+      <tr><td><strong>避开红海</strong></td><td>全国60万家药店，进入的美妆品牌不足10个。薇诺娜之后第二名的位置还空着。</td></tr>
+      <tr><td><strong>品牌背书</strong></td><td>药房上架是天然信任背书，对冲抖音叫卖式带来的品牌力稀释。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>OTC渠道进展（截至2026H1）</h3>
+  <table>
+    <thead><tr><th>维度</th><th>当前状态</th><th>目标/对标</th></tr></thead>
+    <tbody>
+      <tr><td><strong>药房入驻</strong></td><td>已进入2000-3000家区域连锁药房（华东/华南为主）</td><td>2027年目标10,000家 · 薇诺娜50,000+家</td></tr>
+      <tr><td><strong>医生合作</strong></td><td>200+皮肤科医生学术合作，3场全国学术会议</td><td>薇诺娜合作5000+医生</td></tr>
+      <tr><td><strong>临床研究</strong></td><td>源力/红宝石系列完成人体功效评价，SCI论文20+篇</td><td>贝泰妮60+篇 · 华熙100+篇</td></tr>
+      <tr><td><strong>OTC专供产品</strong></td><td>首款OTC专供产品预计2026H2上市</td><td>线上/OTC SKU区隔，避免渠道冲突</td></tr>
+      <tr><td><strong>动销团队</strong></td><td>50人+专职团队，目标100人+</td><td>薇诺娜OTC团队500人+</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight red">
+    <h3>⚠️ OTC四重挑战</h3>
+    <p><strong>① 渠道冲突</strong>：OTC售价需高于线上（药房毛利要求50-60%），需专属SKU区隔。</p>
+    <p><strong>② 动销难度</strong>：药店店员对美妆了解有限，培训投入大，见效周期长。</p>
+    <p><strong>③ 薇诺娜壁垒</strong>：10年深耕50,000+门店+5000+医生，先发优势巨大。</p>
+    <p><strong>④ 见效周期</strong>：OTC从入驻到产生可观营收需2-3年，考验管理层耐心。</p>
+  </div>
+
+  <h3>OTC三阶段路线图</h3>
+  <div class="milestone-row">
+    <div class="milestone-card">
+      <div class="ms-year">Phase 1 · 2025-2026</div>
+      <div class="ms-title">学术筑基</div>
+      <div class="ms-desc">医生合作500人+·临床观察·OTC专供品·5,000家药房</div>
+    </div>
+    <div class="milestone-card">
+      <div class="ms-year">Phase 2 · 2027-2028</div>
+      <div class="ms-title">规模扩张</div>
+      <div class="ms-desc">20,000家药房·OTC专属品牌·年营收目标3-5亿</div>
+    </div>
+    <div class="milestone-card">
+      <div class="ms-year">Phase 3 · 2029+</div>
+      <div class="ms-title">生态构建</div>
+      <div class="ms-desc">OTC+皮肤科+医美三线联动·OTC营收目标10亿+</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 6: 出海全球化 ============ -->
+<div class="tab-panel" id="tab-overseas">
+<div class="container">
+
+<div class="section">
+  <h2>🌏 出海与全球化：从中国龙头到世界级美妆集团</h2>
+  <p class="section-intro">花知晓为先锋 + Off&Relax为桥梁 + 主品牌跟进 + 港股IPO为弹药的多层次出海架构。</p>
+
+  <div class="flow-row">
+    <div class="flow-node" style="border-color:var(--accent-pink);border-width:3px;"><div class="fn-name">花知晓</div><div class="fn-sub">出海先锋·全球审美</div></div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-node" style="border-color:var(--accent-blue);"><div class="fn-name">Off&Relax</div><div class="fn-sub">桥梁·日本基因</div></div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-node" style="border-color:var(--accent-green);"><div class="fn-name">珀莱雅主品牌</div><div class="fn-sub">科技护肤出海</div></div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-node" style="border-color:var(--accent-yellow);"><div class="fn-name">港股IPO</div><div class="fn-sub">资本弹药·并购货币</div></div>
+  </div>
+
+  <h3>花知晓：珀莱雅的「出海核武器」</h3>
+  <div class="overseas-map">
+    <div class="overseas-card" style="border-color:rgba(244,114,182,0.4);">
+      <div class="os-flag">🇯🇵</div><div class="os-market">日本（最大海外市场）</div>
+      <div class="os-detail">入驻Loft/@cosme/PLAZA等2000+门店 · 营收估8-10亿日元 · @cosme大赏多次获奖 · 东京/大阪快闪→考虑常设店</div>
+    </div>
+    <div class="overseas-card">
+      <div class="os-flag">🇺🇸</div><div class="os-market">美国（高增长）</div>
+      <div class="os-detail">Amazon+独立站 · TikTok美区种草 · 营收300-500万美元 · 目标：亚裔+Gen Z · 退货率40%+是挑战</div>
+    </div>
+    <div class="overseas-card">
+      <div class="os-flag">🌏</div><div class="os-market">东南亚</div>
+      <div class="os-detail">印尼/泰国/越南/菲律宾全量上线 · Shopee美妆TOP10 · TikTok Shop效果佳 · 当地仓已建成</div>
+    </div>
+    <div class="overseas-card">
+      <div class="os-flag">🇰🇷</div><div class="os-market">韩国（探索中）</div>
+      <div class="os-detail">Olive Young等集合店进入 · 营收100-200万美元 · 少女风差异化优势 · KOL合作起步</div>
+    </div>
+    <div class="overseas-card">
+      <div class="os-flag">🇪🇺</div><div class="os-market">欧洲（起步）</div>
+      <div class="os-detail">Amazon欧洲站+独立站 · 法国/德国/英国 · 合规壁垒高(EC 1223/2009) · 营收<100万美元</div>
+    </div>
+  </div>
+
+  <div class="insight pink">
+    <h3>🌸 花知晓出海密码</h3>
+    <p><strong>① 颜值即正义</strong>：浮雕腮红/天使唇釉超越语言文化壁垒，UGC自发传播量远超品牌投放。</p>
+    <p><strong>② 跨境电商基因</strong>：DTC模式运营海外，直接掌控消费者数据。</p>
+    <p><strong>③ 淮安仓</strong>：2027年投产，+海外前置仓，跨境物流从15天缩至5-7天。</p>
+    <p><strong>④ 珀莱雅后盾</strong>：集团供应链/资金/合规支持，花知晓独立运营自主决策。</p>
+  </div>
+
+  <h3>Off&Relax：借「日本研发」之名的国际化桥梁</h3>
+  <table>
+    <thead><tr><th>市场</th><th>状态</th><th>策略</th></tr></thead>
+    <tbody>
+      <tr><td><strong>日本</strong></td><td><span class="tag tag-up">在售</span></td><td>定位亚洲头皮护理专家 · Loft/@cosme/东急手创 · Amazon Japan/Rakuten</td></tr>
+      <tr><td><strong>东南亚</strong></td><td><span class="tag tag-up">扩张中</span></td><td>泰国/印尼/越南 Shopee/Lazada · Watsons/Guardian线下</td></tr>
+      <tr><td><strong>韩国</strong></td><td><span class="tag tag-flat">计划中</span></td><td>Olive Young渠道 · 头皮护理细分赛道差异化</td></tr>
+    </tbody>
+  </table>
+
+  <h3>主品牌出海三阶段</h3>
+  <div class="milestone-row">
+    <div class="milestone-card">
+      <div class="ms-year">Phase 1 · 2023-2025</div>
+      <div class="ms-title">试水：跨境电商</div>
+      <div class="ms-desc">Tmall Global/Shopee/Lazada/Amazon上架 · 东南亚+日本+北美 · 营收<1亿 · 品牌曝光和用户数据收集为主</div>
+    </div>
+    <div class="milestone-card">
+      <div class="ms-year">Phase 2 · 2026-2028</div>
+      <div class="ms-title">入局：港股后加速</div>
+      <div class="ms-desc">日/东南亚设当地团队 · 进入线下渠道 · 考虑海外并购 · 欧洲研发中心 · 目标海外营收5-10亿</div>
+    </div>
+    <div class="milestone-card">
+      <div class="ms-year">Phase 3 · 2029+</div>
+      <div class="ms-title">全球化：世界级集团</div>
+      <div class="ms-desc">海外营收占比15-20% · 多品牌多市场矩阵 · 比肩资生堂/爱茉莉太平洋</div>
+    </div>
+  </div>
+
+  <h3>港股IPO：国际化的「核燃料」</h3>
+  <table>
+    <thead><tr><th>价值</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>融资能力</strong></td><td>预计募资50-80亿港元 · 30%海外拓展+20%研发+20%供应链+15%品牌+15%并购</td></tr>
+      <tr><td><strong>并购货币</strong></td><td>H股支付工具，可收购日韩/东南亚中小美妆品牌，快速获得当地渠道</td></tr>
+      <tr><td><strong>国际背书</strong></td><td>引入贝莱德/Capital Group等国际机构，增强品牌国际认知</td></tr>
+      <tr><td><strong>治理升级</strong></td><td>港交所ESG/独董/关联交易要求更严，倒逼治理国际化</td></tr>
+    </tbody>
+  </table>
+
+  <h3>海外组织架构</h3>
+  <table>
+    <thead><tr><th>子公司</th><th>注册地</th><th>功能</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr><td>PROYA HONG KONG</td><td>香港</td><td>海外投资控股·资金中心</td><td><span class="tag tag-up">运营中</span></td></tr>
+      <tr><td>PROYA JAPAN 株式会社</td><td>东京</td><td>日本运营·O&R研发</td><td><span class="tag tag-up">运营中</span></td></tr>
+      <tr><td>PROYA SINGAPORE</td><td>新加坡</td><td>东南亚区域总部</td><td><span class="tag tag-up">运营中</span></td></tr>
+      <tr><td>PROYA USA INC.</td><td>美国</td><td>北美运营</td><td><span class="tag tag-flat">筹备</span></td></tr>
+      <tr><td>欧洲研发中心（筹）</td><td>法国/瑞士</td><td>前沿研发·欧洲桥头堡</td><td><span class="tag tag-new">计划中</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight orange">
+    <h3>⚡ 出海四大挑战</h3>
+    <p><strong>① 品牌认知为零</strong>：海外消费者对PROYA几乎零认知，建立需3-5年+5-10亿级投入。</p>
+    <p><strong>② 合规壁垒</strong>：每市场独立法规(欧盟EC 1223/2009、美国MoCRA等)，合规成本远超预期。</p>
+    <p><strong>③ 人才短缺</strong>：既懂中国品牌又懂海外市场的国际化人才极度稀缺。</p>
+    <p><strong>④ 资源冲突</strong>：国内主品牌下滑+多品牌烧钱背景下，海外资源分配优先级存疑。</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 7: 治理与竞品 ============ -->
+<div class="tab-panel" id="tab-governance">
+<div class="container">
+
+<div class="section">
+  <h2>🔗 股权穿透与治理结构</h2>
+  <table>
+    <thead><tr><th>股东</th><th>持股</th><th>身份</th><th>关键信息</th></tr></thead>
+    <tbody>
+      <tr><td><strong>侯军呈</strong></td><td class="num">56.12%</td><td>实控人·董事长</td><td>温州人·58岁·丁家宜CS渠道起步·主导重大战略</td></tr>
+      <tr><td><strong>方玉友</strong></td><td class="num">15.06%</td><td>第二大股东·原CEO</td><td>侯军呈妻弟·控股689家企业·2024年套现13.4亿</td></tr>
+      <tr><td><strong>侯亚孟</strong></td><td class="num">关联持有</td><td>二代·总经理</td><td>侯军呈之子·2024年上任·推动港股IPO+出海+花知晓收购</td></tr>
+      <tr><td><strong>机构投资者</strong></td><td class="num">~25%</td><td>公募+外资</td><td>易方达/中欧/景顺长城重仓·北上资金持续增持</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight red">
+    <h3>⚠️ 治理风险</h3>
+    <p><strong>家族绝对控制</strong>：侯军呈+方玉友合计71.18%，中小股东话语权弱。</p>
+    <p><strong>方玉友减持</strong>：2024年套现13.4亿，689家投资企业存在潜在利益冲突。</p>
+    <p><strong>二代交班</strong>：侯亚孟上任后更换6位高层，过渡期执行风险。</p>
+    <p><strong>港股IPO稀释</strong>：A+H后侯氏持股可能被动降至50%以下。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>⚔️ 竞品对标全景</h2>
+  <table>
+    <thead><tr><th>维度</th><th style="color:var(--accent-green);">珀莱雅</th><th>华熙生物</th><th>贝泰妮</th><th>巨子生物</th><th>上海家化</th></tr></thead>
+    <tbody>
+      <tr><td>代码</td><td style="font-weight:700;">603605.SH</td><td>688363.SH</td><td>300957.SZ</td><td>2367.HK</td><td>600315.SH</td></tr>
+      <tr><td>2025营收</td><td style="color:var(--accent-green);font-weight:700;">105.97亿</td><td>~60亿</td><td>~55亿</td><td>~50亿</td><td>~65亿</td></tr>
+      <tr><td>毛利率</td><td>71.2%</td><td style="color:var(--accent-green);">~75%</td><td>~74%</td><td>~83%</td><td>~58%</td></tr>
+      <tr><td>研发费率</td><td>2.05%</td><td style="color:var(--accent-green);">~6.5%</td><td>~5%</td><td>~4%</td><td>~2.5%</td></tr>
+      <tr><td>品牌矩阵</td><td style="color:var(--accent-green);">⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>抖音能力</td><td style="color:var(--accent-green);">⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐</td></tr>
+      <tr><td>OTC渠道</td><td>⭐(起步)</td><td>⭐⭐</td><td style="color:var(--accent-green);">⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐</td></tr>
+      <tr><td>出海进度</td><td style="color:var(--accent-green);">⭐⭐⭐</td><td>⭐⭐</td><td>⭐</td><td>⭐</td><td>⭐⭐</td></tr>
+    </tbody>
+  </table>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div class="insight green"><h3>✅ 优势</h3><p>营收第一·品牌矩阵最完善·抖音天花板·花知晓利润弹性·出海布局领先</p></div>
+    <div class="insight red"><h3>⚠️ 劣势</h3><p>研发投入偏低·主品牌负增长·家族控股·OTC空白·海外认知度极低</p></div>
+  </div>
+
+  <h2 style="margin-top:30px;">🏆 2026上半年榜单</h2>
+  <table>
+    <thead><tr><th>榜单</th><th>排名</th><th>对比</th></tr></thead>
+    <tbody>
+      <tr><td><strong>天猫美妆618首轮</strong></td><td style="color:var(--accent-yellow);font-size:1.2em;font-weight:700;">🥇 第1名</td><td>压修丽可、雅诗兰黛</td></tr>
+      <tr><td><strong>天猫美妆618全周期</strong></td><td style="color:var(--accent-yellow);font-size:1.2em;font-weight:700;">🥉 第3名</td><td>修丽可第1、雅诗兰黛第2</td></tr>
+      <tr><td><strong>天猫彩妆618</strong></td><td>彩棠第2</td><td>国货彩妆第1</td></tr>
+      <tr><td><strong>淘天美妆YTD</strong></td><td style="color:var(--accent-green);font-size:1.1em;font-weight:700;">超欧莱雅登顶</td><td>年内累计首次超越</td></tr>
+      <tr><td><strong>天猫美护发年度</strong></td><td>Off&Relax第5</td><td>亚洲品牌TOP1</td></tr>
+      <tr><td><strong>抖音头皮护理</strong></td><td>Off&Relax第1</td><td>类目冠军</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>
+
+<!-- ============ TAB 8: 运营与风险 ============ -->
+<div class="tab-panel" id="tab-operations">
+<div class="container">
+
+<div class="section">
+  <h2>👤 核心高管深度图谱</h2>
+  <div class="exec-grid">
+    <div class="exec-card">
+      <div class="e-role">创始人 · 董事长</div><div class="e-name">侯军呈</div>
+      <div class="e-desc">1968年生，温州乐清人。丁家宜CS渠道代理商起步。2003年创立珀莱雅。2017年上市。持股56.12%绝对控制。放权式管理，专注战略和资本层面。</div>
+    </div>
+    <div class="exec-card">
+      <div class="e-role">总经理 · 二代接班人</div><div class="e-name">侯亚孟</div>
+      <div class="e-desc">侯军呈之子，估30-35岁。2024年上任。推动港股IPO+花知晓收购+出海+员工持股计划。比父亲更激进，更强的资本运作意识和国际化视野。</div>
+    </div>
+    <div class="exec-card">
+      <div class="e-role">原CEO · 第二大股东</div><div class="e-name">方玉友</div>
+      <div class="e-desc">侯军呈妻弟，持股15.06%。电商转型核心操盘手。控制689家企业覆盖美妆上下游。2024年卸任CEO套现13.4亿。</div>
+    </div>
+    <div class="exec-card">
+      <div class="e-role">供应链负责人</div><div class="e-name">金衍华</div>
+      <div class="e-desc">供应链管理中心总经理。自有工厂+淮安仓关键决策人。一盘货/B2C仓配/B2B配送/跨境物流的直接对话窗口。</div>
+    </div>
+    <div class="exec-card">
+      <div class="e-role">电商运营主体</div><div class="e-name">浙江美丽谷电子商务</div>
+      <div class="e-desc">天猫/抖音/京东/拼多多全平台运营。年处理订单5000万+单。日峰值发货30万+单。目前主要使用通达系。</div>
+    </div>
+    <div class="exec-card">
+      <div class="e-role">花知晓运营主体</div><div class="e-name">深圳花知晓电子商务</div>
+      <div class="e-desc">纯电商+跨境电商。年包裹量1500万+件。淮安仓2027年6月投产。跨境物流成本偏高（8-10% vs 行业5-7%），投产后改善。</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🧪 大单品策略与研发</h2>
+  <table>
+    <thead><tr><th>系列</th><th>功效</th><th>代表单品</th><th>价格带</th><th>迭代</th></tr></thead>
+    <tbody>
+      <tr><td><strong>红宝石系列</strong></td><td>抗老·紧致</td><td>精华/面霜/眼霜</td><td>250-400元</td><td>3.0→4.0</td></tr>
+      <tr><td><strong>双抗系列</strong></td><td>抗氧化·提亮</td><td>精华/面膜/水乳</td><td>200-350元</td><td>3.0→4.0</td></tr>
+      <tr><td><strong>源力系列</strong></td><td>修护·屏障</td><td>精华/面霜</td><td>200-300元</td><td>2.0→3.0</td></tr>
+      <tr><td><strong>能量系列</strong></td><td>高端抗老</td><td>精华/眼霜/面霜</td><td>400-600元</td><td>1.0→2.0</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>研发平台</th><th>职能</th></tr></thead>
+    <tbody>
+      <tr><td>杭州研发中心</td><td>配方开发·功效评价</td></tr>
+      <tr><td>上海研发中心</td><td>前沿技术·超分子维A醇·微珠包裹缓释</td></tr>
+      <tr><td>欧洲研发中心（筹）</td><td>港股募资设立·国际技术引进</td></tr>
+      <tr><td>产学研合作</td><td>江南大学/浙大/上海皮肤病医院·SCI 20+篇</td></tr>
+    </tbody>
+  </table>
+  <div class="insight red">
+    <h3>⚠️ 研发短板</h3>
+    <p>2.05%研发费率在头部偏后。华熙6.5%、贝泰妮5%靠原料/医研共创构建了更深护城河。珀莱雅壁垒在"品牌+渠道"而非"技术"，可能制约高端化和国际化。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🌱 ESG</h2>
+  <table>
+    <thead><tr><th>维度</th><th>举措</th><th>评级</th></tr></thead>
+    <tbody>
+      <tr><td><strong>环境(E)</strong></td><td>绿色包装减塑30%·湖州光伏·碳中和路线图</td><td>MSCI BBB</td></tr>
+      <tr><td><strong>社会(S)</strong></td><td>员工持股计划·女性管理者45%·萤火虫计划</td><td>Wind A</td></tr>
+      <tr><td><strong>治理(G)</strong></td><td>独董40%·ESG委员会·反腐败体系</td><td>中证 AA</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--text-secondary);margin-top:8px;">港股ESG要求更严，倒逼提升。欧盟碳足迹/可持续包装要求是欧洲出海准入门票。</p>
+</div>
+
+<div class="section">
+  <h2>🛡️ 风险全景矩阵</h2>
+  <table>
+    <thead><tr><th>类别</th><th>风险</th><th>概率</th><th>影响</th><th>应对</th></tr></thead>
+    <tbody>
+      <tr><td><strong>核心产品</strong></td><td>主品牌持续下滑无法企稳</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-red);">极高</td><td>大单品迭代+高端化</td></tr>
+      <tr><td><strong>管理层</strong></td><td>二代交班不顺，高管流失</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-red);">高</td><td>员工持股计划锁人</td></tr>
+      <tr><td><strong>投资</strong></td><td>并购整合不及预期</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-yellow);">中</td><td>整合期正常波动</td></tr>
+      <tr><td><strong>渠道</strong></td><td>抖音流量成本飙升，ROI跌破盈亏线</td><td style="color:var(--accent-red);">高</td><td style="color:var(--accent-red);">高</td><td>多渠道分散</td></tr>
+      <tr><td><strong>OTC</strong></td><td>OTC投入巨大但见效缓慢</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-yellow);">中</td><td>战略培育期</td></tr>
+      <tr><td><strong>出海</strong></td><td>海外烧钱盈利遥遥无期</td><td style="color:var(--accent-red);">高</td><td style="color:var(--accent-yellow);">中</td><td>花知晓已盈利</td></tr>
+      <tr><td><strong>出海</strong></td><td>地缘政治·海外合规处罚</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-yellow);">中</td><td>法规差异巨大</td></tr>
+      <tr><td><strong>竞争</strong></td><td>国际品牌全面反扑</td><td style="color:var(--accent-red);">高</td><td style="color:var(--accent-yellow);">中</td><td>品牌升级推进中</td></tr>
+      <tr><td><strong>资本</strong></td><td>港股IPO破发</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-yellow);">中</td><td>等待市场窗口</td></tr>
+      <tr><td><strong>监管</strong></td><td>功效宣称监管收紧</td><td style="color:var(--accent-red);">高</td><td style="color:var(--accent-yellow);">中</td><td>⭐利好合规头部</td></tr>
+      <tr><td><strong>汇率</strong></td><td>人民币升值侵蚀海外利润</td><td style="color:var(--accent-yellow);">中</td><td style="color:var(--accent-green);">低</td><td>海外占比小</td></tr>
+      <tr><td><strong>供应链</strong></td><td>原材料价格/跨境物流中断</td><td style="color:var(--accent-green);">低</td><td style="color:var(--accent-yellow);">中</td><td>自建产能+多仓</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>
+
+<script>
+function switchTab(tabId) {
+  // Hide all panels
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  // Show selected
+  document.getElementById('tab-' + tabId).classList.add('active');
+  // Update buttons
+  document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
+  event.target.closest('button').classList.add('active');
+  // Scroll to top
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+
+<footer>
+  <p><strong>珀莱雅生态系统深度分析 V7</strong> · 分版块交互版 · 2026年7月7日</p>
+  <p>数据来源：珀莱雅2025年年度报告、2026Q1季报、港股招股书、新华网618复盘、21经济网、36氪、腾讯新闻、券商研报</p>
+  <p>免责声明：本报告仅供商业研究参考，不构成投资建议。数据基于公开信息，可能存在滞后或误差。</p>
+  <p style="margin-top:8px;color:var(--accent-purple);">V7更新：分版块标签页交互 · 8大模块独立展示 · 点击顶部导航切换</p>
+</footer>
+
+</body>
+</html>
