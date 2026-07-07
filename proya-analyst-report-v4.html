@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珀莱雅深度分析报告 V4 — 品牌矩阵 × 股权穿透 × 竞品对标 × 高管图谱 × 半年榜单</title>
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #13131a;
+  --bg-card: #1a1a24;
+  --border: #252530;
+  --text-primary: #e8e8ec;
+  --text-secondary: #9898a8;
+  --accent-green: #4ade80;
+  --accent-yellow: #fbbf24;
+  --accent-purple: #a78bfa;
+  --accent-blue: #60a5fa;
+  --accent-red: #f87171;
+  --accent-pink: #f472b6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg-primary); color:var(--text-primary); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif; line-height:1.6; }
+.container { max-width:1280px; margin:0 auto; padding:24px; }
+.hero { text-align:center; padding:60px 24px 40px; background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); border-bottom:1px solid var(--border); }
+.hero h1 { font-size:2.4em; font-weight:800; background:linear-gradient(135deg, var(--accent-green), var(--accent-yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero .subtitle { color:var(--text-secondary); margin-top:8px; font-size:1.1em; }
+.hero .date { color:var(--text-secondary); font-size:0.9em; margin-top:4px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; padding:32px 0; }
+.kpi-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; }
+.kpi-card .label { color:var(--text-secondary); font-size:0.85em; text-transform:uppercase; letter-spacing:0.5px; }
+.kpi-card .value { font-size:2em; font-weight:700; margin:4px 0; background:linear-gradient(135deg, var(--accent-green), var(--accent-yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.kpi-card .sub { color:var(--text-secondary); font-size:0.8em; }
+.kpi-card.warn .value { background:linear-gradient(135deg, var(--accent-yellow), var(--accent-red)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.section { margin:40px 0; }
+.section h2 { font-size:1.6em; border-bottom:2px solid var(--accent-purple); padding-bottom:8px; margin-bottom:20px; display:flex; align-items:center; gap:8px; }
+table { width:100%; border-collapse:collapse; margin:16px 0; font-size:0.9em; }
+th { background:var(--bg-secondary); color:var(--accent-yellow); text-align:left; padding:12px 16px; border-bottom:2px solid var(--border); font-weight:600; }
+td { padding:10px 16px; border-bottom:1px solid var(--border); color:var(--text-primary); }
+tr:hover td { background:rgba(167,139,250,0.05); }
+.tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.8em; font-weight:600; }
+.tag-up { background:rgba(74,222,128,0.15); color:var(--accent-green); }
+.tag-down { background:rgba(248,113,113,0.15); color:var(--accent-red); }
+.tag-new { background:rgba(96,165,250,0.15); color:var(--accent-blue); }
+.brand-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; margin:12px 0; display:flex; gap:16px; align-items:flex-start; }
+.brand-card .rank { font-size:2em; font-weight:800; min-width:60px; color:var(--accent-purple); }
+.brand-card .info { flex:1; }
+.brand-card .name { font-size:1.2em; font-weight:700; }
+.brand-card .detail { color:var(--text-secondary); font-size:0.9em; margin-top:4px; }
+.chart-bar { height:24px; border-radius:12px; margin:6px 0; position:relative; }
+.chart-bar .fill { height:100%; border-radius:12px; background:linear-gradient(90deg, var(--accent-purple), var(--accent-pink)); }
+.chart-bar .label { position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:0.8em; font-weight:600; }
+.exec-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+.exec-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.exec-card .role { color:var(--accent-yellow); font-size:0.85em; }
+.exec-card .name { font-size:1.2em; font-weight:700; margin:4px 0; }
+.exec-card .desc { color:var(--text-secondary); font-size:0.85em; line-height:1.5; }
+.compare-table td:first-child { font-weight:600; white-space:nowrap; }
+.insight-box { background:linear-gradient(135deg, rgba(167,139,250,0.1), rgba(96,165,250,0.1)); border:1px solid var(--accent-purple); border-radius:12px; padding:20px; margin:16px 0; }
+.insight-box h3 { color:var(--accent-yellow); margin-bottom:8px; }
+.flow-chart { display:flex; flex-wrap:wrap; gap:24px; justify-content:center; padding:20px 0; }
+.flow-node { text-align:center; background:var(--bg-card); border:2px solid var(--border); border-radius:12px; padding:16px 24px; min-width:140px; }
+.flow-node.p0 { border-color:var(--accent-red); }
+.flow-node.p1 { border-color:var(--accent-yellow); }
+.flow-node.p2 { border-color:var(--accent-blue); }
+.flow-node .node-name { font-weight:700; }
+.flow-node .node-val { color:var(--text-secondary); font-size:0.8em; }
+footer { text-align:center; color:var(--text-secondary); padding:40px; font-size:0.8em; border-top:1px solid var(--border); margin-top:40px; }
+@media (max-width:768px) { .hero h1 { font-size:1.5em; } .kpi-grid { grid-template-columns:repeat(2,1fr); } }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>珀莱雅生态系统 V4</h1>
+  <div class="subtitle">深度分析报告 · 品牌矩阵 × 股权穿透 × 竞品对标 × 高管图谱 × 半年榜单排名</div>
+  <div class="date">2026年7月 · 基于2025年年报及2026年618最新数据</div>
+</section>
+
+<div class="container">
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">2025营收</div><div class="value">108.8亿</div><div class="sub">连续破百亿 · 同比微降</div></div>
+  <div class="kpi-card"><div class="label">归母净利润</div><div class="value">15.5亿</div><div class="sub">利润率 14.2%</div></div>
+  <div class="kpi-card warn"><div class="label">主品牌珀莱雅</div><div class="value">76.89亿</div><div class="sub"><span class="tag tag-down">-10.39%</span> 增长承压</div></div>
+  <div class="kpi-card"><div class="label">子品牌矩阵</div><div class="value">10+</div><div class="sub">覆盖护肤·彩妆·洗护</div></div>
+  <div class="kpi-card"><div class="label">618天猫排名</div><div class="value">🥉 TOP3</div><div class="sub">首轮登顶 · 全周期第三</div></div>
+  <div class="kpi-card"><div class="label">控股子公司</div><div class="value">44家</div><div class="sub">含7家海外</div></div>
+</div>
+
+<!-- SECTION 1: Brand Matrix -->
+<div class="section">
+  <h2>🏷️ 品牌矩阵全景</h2>
+  <p style="color:var(--text-secondary);margin-bottom:16px;">2025年珀莱雅已形成覆盖护肤、彩妆、洗护三大赛道的多品牌体系。主品牌承压调整，第二梯队品牌爆发式增长。</p>
+  
+  <table>
+    <thead>
+      <tr><th>品牌</th><th>定位</th><th>价格带</th><th>渠道</th><th>2025营收</th><th>同比</th><th>战略地位</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>珀莱雅</strong></td><td>科技护肤</td><td>200-500元</td><td>全渠道</td><td>76.89亿</td><td><span class="tag tag-down">-10.39%</span></td><td>现金牛 · 大单品迭代</td></tr>
+      <tr><td><strong>彩棠</strong></td><td>中式美学彩妆</td><td>150-300元</td><td>线上为主</td><td>12.55亿</td><td><span class="tag tag-up">+5.37%</span></td><td>618国货彩妆第1</td></tr>
+      <tr><td><strong>Off&Relax</strong></td><td>专业洗护</td><td>100-300元</td><td>线上为主</td><td>7.44亿</td><td><span class="tag tag-up">+102.19%</span></td><td>🚀 高增长引擎</td></tr>
+      <tr><td><strong>悦芙媞</strong></td><td>Z世代年轻肌</td><td>50-200元</td><td>线上为主</td><td>3.71亿</td><td><span class="tag tag-up">+11.80%</span></td><td>痘敏修护进阶</td></tr>
+      <tr><td><strong>原色波塔</strong></td><td>新锐彩妆</td><td>50-150元</td><td>线上为主</td><td>2.56亿</td><td><span class="tag tag-up">+125.38%</span></td><td>🚀 高增长</td></tr>
+      <tr><td><strong>惊时</strong></td><td>功效护肤</td><td>100-250元</td><td>线上为主</td><td>0.96亿</td><td><span class="tag tag-up">+441.66%</span></td><td>🚀 爆发期</td></tr>
+      <tr><td><strong>花知晓</strong></td><td>少女风彩妆</td><td>50-150元</td><td>纯电商</td><td>17.26亿*</td><td><span class="tag tag-up">控股51%</span></td><td>⭐ 利润引擎(Q1占集团42%)</td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--text-secondary);font-size:0.8em;">* 花知晓为2025全年营收，珀莱雅控股51% · 另含优资莱、韩雅、CORRECTORS等品牌</p>
+
+  <!-- Revenue waterfall bar chart -->
+  <div style="margin:24px 0;">
+    <div style="font-weight:600;margin-bottom:12px;">2025年各品牌营收占比 (单位:亿元)</div>
+    <div><div class="chart-bar" style="width:100%;background:rgba(255,255,255,0.03);"><div class="fill" style="width:71%"><span class="label" style="color:#fff;">珀莱雅 76.89亿</span></div></div></div>
+    <div><div class="chart-bar" style="width:100%;background:rgba(255,255,255,0.03);"><div class="fill" style="width:16%;background:linear-gradient(90deg,#f472b6,#a78bfa);"><span class="label">花知晓 17.26亿*</span></div></div></div>
+    <div><div class="chart-bar" style="width:100%;background:rgba(255,255,255,0.03);"><div class="fill" style="width:11.5%;background:linear-gradient(90deg,#60a5fa,#a78bfa);"><span class="label">彩棠 12.55亿</span></div></div></div>
+    <div><div class="chart-bar" style="width:100%;background:rgba(255,255,255,0.03);"><div class="fill" style="width:6.8%;background:linear-gradient(90deg,#4ade80,#60a5fa);"><span class="label">Off&Relax 7.44亿</span></div></div></div>
+    <div><div class="chart-bar" style="width:100%;background:rgba(255,255,255,0.03);"><div class="fill" style="width:6.7%;background:linear-gradient(90deg,#fbbf24,#4ade80);"><span class="label">悦芙媞3.7+原色2.6+惊时1.0</span></div></div></div>
+  </div>
+
+  <div class="insight-box">
+    <h3>🔍 品牌矩阵关键洞察</h3>
+    <p>• <strong>主品牌「去依赖」</strong>：珀莱雅单品牌从2021年的93%营收占比降至2025年的71%，多元矩阵效果显著</p>
+    <p>• <strong>第二曲线成型</strong>：彩棠+Off&Relax+悦芙媞三大品牌合计23.7亿，占比21.8%，且全部正增长</p>
+    <p>• <strong>超级黑马</strong>：惊时(441%)、原色波塔(125%)、Off&Relax(102%)三品牌增速均超100%</p>
+    <p>• <strong>花知晓关键变量</strong>：Q1净利润1.55亿占集团42%，但作为电商品牌受渠道波动影响大</p>
+  </div>
+</div>
+
+<!-- SECTION 2: Equity Structure -->
+<div class="section">
+  <h2>🔗 股权穿透</h2>
+
+  <table>
+    <thead><tr><th>股东</th><th>持股比例</th><th>身份</th><th>关联</th></tr></thead>
+    <tbody>
+      <tr><td><strong>侯军呈</strong></td><td>56.12%</td><td>实际控制人/董事长</td><td>创始人，公司灵魂人物</td></tr>
+      <tr><td><strong>方玉友</strong></td><td>15.06%</td><td>第二大股东/原CEO</td><td>侯军呈妻弟，689家间接投资企业</td></tr>
+      <tr><td><strong>侯亚孟</strong></td><td>关联</td><td>总经理（二代接班）</td><td>侯军呈之子，"双十战略"推动者</td></tr>
+      <tr><td><strong>香港中央结算</strong></td><td>~3%</td><td>港股通</td><td>港股IPO新增流动性</td></tr>
+      <tr><td><strong>机构投资者</strong></td><td>~25%</td><td>多只公募基金</td><td>外资+内资机构配置</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <h3>⚡ 股权结构要点</h3>
+    <p>• <strong>绝对控股</strong>：侯军呈+方玉友合计71.18%，家族控制力极强</p>
+    <p>• <strong>二代接班</strong>：2024年侯亚孟出任总经理，标志管理层代际交接完成</p>
+    <p>• <strong>方玉友生态</strong>：通过个人投资平台控股/参股689家企业，构建庞大产业生态</p>
+    <p>• <strong>港股IPO</strong>：2025年冲刺港交所，打开国际资本通道，募资用于海外并购</p>
+    <p>• <strong>花知晓控股</strong>：累计持股51%，Q1贡献集团42%净利润，成为关键利润变量</p>
+  </div>
+
+  <!-- Ownership flow -->
+  <div style="margin:20px 0;padding:24px;background:var(--bg-card);border-radius:12px;text-align:center;">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;">
+      <div class="flow-node p0"><div class="node-name">侯军呈</div><div class="node-val">56.12% · 实控人</div></div>
+      <div style="font-size:1.5em;color:var(--accent-purple);">+</div>
+      <div class="flow-node p1"><div class="node-name">方玉友</div><div class="node-val">15.06% · 原CEO</div></div>
+      <div style="font-size:1.5em;color:var(--accent-purple);">→</div>
+      <div class="flow-node" style="border-color:var(--accent-purple);border-width:3px;"><div class="node-name">珀莱雅集团</div><div class="node-val">603605.SH</div></div>
+      <div style="font-size:1.5em;color:var(--accent-purple);">→</div>
+      <div class="flow-node p0"><div class="node-name">花知晓</div><div class="node-val">控股51% · 利润引擎</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:16px;">
+      <div class="flow-node" style="border-color:var(--accent-green);"><div class="node-name">珀莱雅</div><div class="node-val">76.89亿</div></div>
+      <div class="flow-node" style="border-color:var(--accent-blue);"><div class="node-name">彩棠</div><div class="node-val">12.55亿</div></div>
+      <div class="flow-node" style="border-color:var(--accent-yellow);"><div class="node-name">Off&Relax</div><div class="node-val">7.44亿</div></div>
+      <div class="flow-node" style="border-color:var(--accent-pink);"><div class="node-name">悦芙媞</div><div class="node-val">3.71亿</div></div>
+      <div class="flow-node"><div class="node-name">原色波塔</div><div class="node-val">2.56亿</div></div>
+      <div class="flow-node"><div class="node-name">惊时</div><div class="node-val">0.96亿</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Competitive Benchmarking -->
+<div class="section">
+  <h2>⚔️ 竞品对标分析</h2>
+
+  <table class="compare-table">
+    <thead><tr><th>维度</th><th>珀莱雅</th><th>华熙生物</th><th>贝泰妮</th><th>巨子生物</th><th>上海家化</th></tr></thead>
+    <tbody>
+      <tr><td>股票代码</td><td>603605</td><td>688363</td><td>300957</td><td>2367.HK</td><td>600315</td></tr>
+      <tr><td>2025营收</td><td style="color:var(--accent-green);font-weight:700;">108.8亿</td><td>~60亿</td><td>~55亿</td><td>~50亿</td><td>~65亿</td></tr>
+      <tr><td>核心品牌</td><td>珀莱雅/彩棠/O&R</td><td>润百颜/夸迪</td><td>薇诺娜</td><td>可复美/可丽金</td><td>佰草集/玉泽</td></tr>
+      <tr><td>主品牌依赖</td><td>71%(下降中)</td><td>~45%</td><td>~95%(极高)</td><td>~70%</td><td>~35%(分散)</td></tr>
+      <tr><td>品牌矩阵</td><td style="color:var(--accent-green);">⭐⭐⭐⭐ 10+品牌</td><td>⭐⭐⭐ 功能护肤矩阵</td><td>⭐ 单一品牌依赖</td><td>⭐⭐⭐ 两大品牌</td><td>⭐⭐⭐⭐ 多品牌历史</td></tr>
+      <tr><td>线上占比</td><td>~82%</td><td>~80%</td><td>~75%</td><td>~85%</td><td>~40%</td></tr>
+      <tr><td>抖音能力</td><td style="color:var(--accent-green);">⭐⭐⭐⭐⭐ 类目TOP</td><td>⭐⭐⭐ 中等</td><td>⭐⭐ 弱</td><td>⭐⭐⭐ 中等</td><td>⭐ 弱</td></tr>
+      <tr><td>研发费率</td><td>~3.5%</td><td style="color:var(--accent-green);">~6.5%(最高)</td><td>~5%</td><td>~4%</td><td>~2.5%</td></tr>
+      <tr><td>港股上市</td><td>冲刺中</td><td>仅A股</td><td>仅A股</td><td>已上市</td><td>仅A股</td></tr>
+      <tr><td>估值(PE)</td><td>~25x</td><td>~30x</td><td>~35x</td><td>~22x</td><td>~18x</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <h3>📊 竞争优势总结</h3>
+    <p>• <strong>规模绝对领先</strong>：108.8亿营收远超竞品，是国内美妆上市公司第一</p>
+    <p>• <strong>品牌矩阵最完善</strong>：唯一实现护肤+彩妆+洗护全覆盖的国货美妆集团</p>
+    <p>• <strong>抖音渠道壁垒</strong>：抖音运营能力行业第一，年GMV超30亿，远超同行</p>
+    <p>• <strong>多元化去风险</strong>：主品牌占比从93%降至71%，抗单一品牌波动能力增强</p>
+    <p>• <strong>短板</strong>：研发费率(3.5%)低于华熙(6.5%)和贝泰妮(5%)，基础研究需加强</p>
+  </div>
+</div>
+
+<!-- SECTION 4: Rankings -->
+<div class="section">
+  <h2>🏆 2026上半年各大榜单排名</h2>
+
+  <table>
+    <thead><tr><th>榜单</th><th>时间</th><th>排名</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>天猫美妆618首轮</strong></td><td>5.21-5.30</td>
+        <td style="color:var(--accent-yellow);font-size:1.2em;font-weight:700;">🥇 第1</td>
+        <td>力压修丽可、雅诗兰黛登顶</td>
+      </tr>
+      <tr>
+        <td><strong>天猫美妆618全周期</strong></td><td>5.21-6.18</td>
+        <td style="color:var(--accent-yellow);font-size:1.2em;font-weight:700;">🥉 第3</td>
+        <td>仅次于修丽可、雅诗兰黛</td>
+      </tr>
+      <tr>
+        <td><strong>天猫彩妆618</strong></td><td>全周期</td>
+        <td>彩棠第2</td>
+        <td>国货彩妆第1</td>
+      </tr>
+      <tr>
+        <td><strong>抖音美妆品牌榜</strong></td><td>618</td>
+        <td>珀莱雅TOP10</td>
+        <td>国货美妆第1梯队</td>
+      </tr>
+      <tr>
+        <td><strong>天猫美护发行业</strong></td><td>2025年度</td>
+        <td>Off&Relax第5</td>
+        <td>亚洲品牌TOP1</td>
+      </tr>
+      <tr>
+        <td><strong>抖音头皮护理</strong></td><td>2025年度</td>
+        <td>Off&Relax第1</td>
+        <td>类目冠军</td>
+      </tr>
+      <tr>
+        <td><strong>淘天美妆年度</strong></td><td>2026YTD</td>
+        <td style="color:var(--accent-yellow);font-size:1.2em;font-weight:700;">超欧莱雅登顶</td>
+        <td>年内首次超越欧莱雅</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box">
+    <h3>📈 排名趋势判断</h3>
+    <p>• <strong>天猫稳居前三</strong>：珀莱雅品牌在天猫美妆稳居国货第1、全品类TOP3</p>
+    <p>• <strong>抖音地位稳固</strong>：抖音为第一大渠道(占比超30%)，运营壁垒深厚</p>
+    <p>• <strong>子品牌多点开花</strong>：彩棠(彩妆第2)、Off&Relax(洗护TOP5)、惊时(爆发增长)</p>
+    <p>• <strong>618信号</strong>：首轮登顶→全周期第3的走势说明爆发力强但持续力需巩固</p>
+  </div>
+</div>
+
+<!-- SECTION 5: Key Executives -->
+<div class="section">
+  <h2>👤 核心高管图谱</h2>
+
+  <div class="exec-grid">
+    <div class="exec-card">
+      <div class="role">董事长 · 实际控制人</div>
+      <div class="name">侯军呈</div>
+      <div class="desc">持股56.12%，公司创始人。从线下CS渠道起家，一手打造珀莱雅百亿帝国。推动「多品牌、多品类」战略转型，主导花知晓收购。低调务实的浙商代表。</div>
+    </div>
+    <div class="exec-card">
+      <div class="role">总经理 · 二代接班人</div>
+      <div class="name">侯亚孟</div>
+      <div class="desc">侯军呈之子，2024年出任总经理。推动「双十战略」（十品牌、十亿净利润），主导港股IPO。年轻化管理者，重视数字化和国际化布局。上任后已更换6位高层。</div>
+    </div>
+    <div class="exec-card">
+      <div class="role">原CEO · 第二大股东</div>
+      <div class="name">方玉友</div>
+      <div class="desc">持股15.06%，侯军呈妻弟。689家间接投资企业的操盘手，构建庞大产业生态。曾主导珀莱雅电商转型。现虽卸任CEO，仍是战略决策核心圈层。</div>
+    </div>
+    <div class="exec-card">
+      <div class="role">董事/副总 · 供应链负责人</div>
+      <div class="name">金衍华</div>
+      <div class="desc">供应链管理中心总经理。负责生产、物流、仓储全链路管理。与顺丰等物流服务商的直接对接人。花知晓淮安仓建设的关键决策参与者。</div>
+    </div>
+    <div class="exec-card">
+      <div class="role">电商运营主体</div>
+      <div class="name">浙江美丽谷电子商务</div>
+      <div class="desc">珀莱雅旗下电商运营公司，负责天猫/抖音/京东等全平台运营。年处理包裹量超5000万件。B2C仓配一体方案的需求方。</div>
+    </div>
+    <div class="exec-card">
+      <div class="role">花知晓运营主体</div>
+      <div class="name">深圳花知晓</div>
+      <div class="desc">花知晓品牌运营公司。纯电商模式，年包裹量1500万+。淮安仓储物流中心2027年6月投产，当前依赖外部仓配——是物流服务商切入的最佳窗口期。</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: Strategic Insights -->
+<div class="section">
+  <h2>🎯 战略洞察与风险提示</h2>
+
+  <div class="insight-box">
+    <h3>✅ 核心优势</h3>
+    <p>• 国内美妆上市公司营收第一(108.8亿)，规模壁垒稳固</p>
+    <p>• 品牌矩阵最完善：护肤+彩妆+洗护三线并进，10+品牌协同</p>
+    <p>• 抖音运营能力行业TOP，年GMV超30亿，渠道壁垒深厚</p>
+    <p>• 花知晓51%控股带来显著利润弹性(Q1占集团42%)</p>
+    <p>• 港股IPO打开估值天花板和海外并购通道</p>
+  </div>
+
+  <div class="insight-box" style="border-color:var(--accent-red);background:linear-gradient(135deg, rgba(248,113,113,0.1), rgba(251,191,36,0.1));">
+    <h3 style="color:var(--accent-red);">⚠️ 风险关注</h3>
+    <p>• <strong>主品牌下滑</strong>：珀莱雅品牌-10.39%，大单品红利消退，需关注能否企稳</p>
+    <p>• <strong>管理层变动</strong>：二代接班后已换6位高层，稳定性待观察</p>
+    <p>• <strong>花知晓波动</strong>：纯电商品牌受平台流量政策影响大，Q1高占比不可持续</p>
+    <p>• <strong>研发投入不足</strong>：3.5%研发费率在功效护肤时代偏低</p>
+    <p>• <strong>港股估值压力</strong>：A+H上市后两地价差可能影响A股估值锚</p>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  <p>珀莱雅生态系统深度分析 V4 · 2026年7月</p>
+  <p>数据来源：珀莱雅2025年年报、新华网618复盘、21经济网、36氪、东方财富、同花顺</p>
+  <p>免责声明：本报告仅供研究参考，不构成投资建议</p>
+</footer>
+
+</body>
+</html>
