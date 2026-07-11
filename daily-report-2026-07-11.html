@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ettoreal 行业日报 · 2026-07-11</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a0f;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  padding: 24px 20px 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.header {
+  text-align: center;
+  padding: 40px 20px 48px;
+  position: relative;
+}
+.header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a8e063, #f7ff00, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.header .subtitle {
+  color: #64748b;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.header::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #a8e063);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-bottom: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 20px; }
+.card {
+  background: #13131a;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.12);
+}
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.glow-card {
+  background: linear-gradient(135deg, rgba(168,224,99,0.10), rgba(247,255,0,0.04));
+  border: 1px solid rgba(168,224,99,0.15);
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.glow-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(168,224,99,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.kpi-value {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a8e063, #f7ff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 4px 0;
+}
+.kpi-label { color: #94a3b8; font-size: 12px; margin-top: 4px; }
+.kpi-change {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+.badge-up { background: rgba(239,68,68,0.12); color: #ef4444; }
+.badge-down { background: rgba(16,185,129,0.12); color: #10b981; }
+.badge-flat { background: rgba(148,163,184,0.12); color: #94a3b8; }
+.bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 140px; padding-top: 8px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.bar {
+  width: 100%;
+  max-width: 48px;
+  border-radius: 8px 8px 0 0;
+  min-height: 8px;
+  transition: all 0.3s;
+}
+.bar:hover { filter: brightness(1.3); }
+.bar-purple { background: linear-gradient(to top, #a78bfa, #c4b5fd); }
+.bar-light { background: linear-gradient(to top, #c4b5fd, #ddd6fe); }
+.bar-green { background: linear-gradient(to top, #10b981, #34d399); }
+.bar-red { background: linear-gradient(to top, #ef4444, #f87171); }
+.bar-label { font-size: 10px; color: #64748b; text-align: center; }
+.bar-val { font-size: 10px; color: #94a3b8; font-weight: 600; }
+.news-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: flex-start;
+}
+.news-item:last-child { border-bottom: none; }
+.news-num {
+  min-width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(168,224,99,0.12); color: #a8e063;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.news-content { flex: 1; }
+.news-title { font-weight: 600; margin-bottom: 4px; line-height: 1.5; }
+.news-desc { color: #94a3b8; font-size: 12px; line-height: 1.6; }
+.news-source { font-size: 11px; color: #64748b; margin-top: 4px; }
+.progress-bar {
+  width: 100%; height: 8px; background: rgba(255,255,255,0.06);
+  border-radius: 4px; overflow: hidden; margin-top: 6px;
+}
+.progress-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, #a78bfa, #c4b5fd);
+}
+.donut-wrap { display: flex; justify-content: center; align-items: center; padding: 12px 0; }
+.donut {
+  width: 160px; height: 160px; border-radius: 50%; position: relative;
+  background: conic-gradient(#a78bfa 0% 35%, #c4b5fd 35% 55%, #ddd6fe 55% 72%, #10b981 72% 85%, #f59e0b 85% 100%);
+}
+.donut::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px; height: 90px; border-radius: 50%; background: #13131a;
+}
+.risk-box {
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(239,68,68,0.04));
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+.tag-purple { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.tag-green { background: rgba(16,185,129,0.12); color: #10b981; }
+.tag-red { background: rgba(239,68,68,0.12); color: #ef4444; }
+.tag-blue { background: rgba(59,130,246,0.12); color: #3b82f6; }
+.tag-cyan { background: rgba(6,182,212,0.12); color: #06b6d4; }
+.tag-pink { background: rgba(236,72,153,0.12); color: #ec4899; }
+.section-title {
+  font-size: 18px; font-weight: 700;
+  margin: 40px 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; gap: 10px;
+}
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+th {
+  text-align: left; color: #94a3b8; font-weight: 600;
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+td {
+  padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: #e2e8f0;
+}
+tr:hover td { background: rgba(255,255,255,0.02); }
+.insight-box {
+  background: rgba(168,224,99,0.04);
+  border-left: 3px solid #10b981;
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  color: #64748b;
+  font-size: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 40px;
+}
+.footer a { color: #a78bfa; text-decoration: none; }
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .header h1 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 ettoreal 行业日报</h1>
+  <div class="subtitle">2026 年 7 月 11 日 · 星期六</div>
+</div>
+
+<!-- 今日速览 -->
+<div class="glow-card">
+  <div style="font-size:18px;font-weight:700;margin-bottom:12px;">⚡ 今日速览</div>
+  <p style="color:#94a3b8;line-height:1.8;">
+    6月制造业PMI录得<b style="color:#a8e063;">50.3%</b>，连续4个月位于荣枯线上方，经济延续温和复苏态势。
+    快递行业"反内卷"效果持续显现，圆通速递H1扣非净利预增<b style="color:#10b981;">超七成</b>；
+    韵达股份则面临改革阵痛，加盟商收缩、Q1营收增长乏力。
+    美妆行业迎来"最严监管年"，药监局印发<b style="color:#c4b5fd;">27项化妆品标准</b>立项计划，
+    新原料新规6月底发布，行业合规门槛持续抬升。
+    菜鸟国内供应链业务被曝并入阿里电商，跨境物流成新增长极。
+  </p>
+</div>
+
+<!-- KPI 指标卡片 -->
+<div class="grid-4">
+  <div class="card">
+    <div class="card-title">🏭 制造业 PMI</div>
+    <div class="kpi-value">50.3%</div>
+    <div class="kpi-label">2026年6月 · 国家统计局</div>
+    <span class="kpi-change badge-up">+0.3pp MoM</span>
+  </div>
+  <div class="card">
+    <div class="card-title">📦 快递业务量</div>
+    <div class="kpi-value">828.7亿</div>
+    <div class="kpi-label">2026年1-5月累计（件）</div>
+    <span class="kpi-change badge-up">↑ 同比高增</span>
+  </div>
+  <div class="card">
+    <div class="card-title">📋 化妆品新标准</div>
+    <div class="kpi-value">27项</div>
+    <div class="kpi-label">药监局2026年标准立项计划</div>
+    <span class="kpi-change badge-flat">监管趋严</span>
+  </div>
+  <div class="card">
+    <div class="card-title">📉 全社会物流成本</div>
+    <div class="kpi-value">创新低</div>
+    <div class="kpi-label">AI重塑快递行业格局</div>
+    <span class="kpi-change badge-down">↓ 成本优化</span>
+  </div>
+</div>
+
+<!-- PMI 趋势 + 快递行业 -->
+<div class="grid-2">
+  <!-- PMI 走势 -->
+  <div class="card">
+    <div class="card-title">📈 2026年制造业PMI走势</div>
+    <div class="bar-chart">
+      <div class="bar-col"><div class="bar-val">49.3</div><div class="bar" style="height:86px"></div><div class="bar-label">1月</div></div>
+      <div class="bar-col"><div class="bar-val">50.2</div><div class="bar" style="height:96px;background:linear-gradient(to top,#a78bfa,#c4b5fd)"></div><div class="bar-label">2月</div></div>
+      <div class="bar-col"><div class="bar-val">50.4</div><div class="bar" style="height:100px;background:linear-gradient(to top,#a78bfa,#c4b5fd)"></div><div class="bar-label">3月</div></div>
+      <div class="bar-col"><div class="bar-val">50.3</div><div class="bar" style="height:98px;background:linear-gradient(to top,#a78bfa,#c4b5fd)"></div><div class="bar-label">4月</div></div>
+      <div class="bar-col"><div class="bar-val">50.0</div><div class="bar" style="height:90px;background:linear-gradient(to top,#a78bfa,#c4b5fd)"></div><div class="bar-label">5月</div></div>
+      <div class="bar-col"><div class="bar-val">50.3</div><div class="bar" style="height:98px;background:linear-gradient(to top,#10b981,#34d399)"></div><div class="bar-label">6月</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;justify-content:center;gap:16px;font-size:11px;color:#64748b;">
+      <span><span style="color:#c4b5fd;">●</span> 一季度回暖</span>
+      <span><span style="color:#10b981;">●</span> 6月反弹</span>
+      <span style="color:#94a3b8;">荣枯线: 50%</span>
+    </div>
+  </div>
+
+  <!-- 快递景气 -->
+  <div class="card">
+    <div class="card-title">🚚 快递行业风向标</div>
+    <div class="news-item">
+      <div class="news-num">1</div>
+      <div class="news-content">
+        <div class="news-title">圆通速递 H1 扣非净利预增超七成</div>
+        <div class="news-desc">快递"反内卷"效果延续，价格竞争缓和推动盈利大幅改善。行业从"价格战"向"服务战"转型趋势明确。</div>
+        <div class="news-source">财联社 · 6月30日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">2</div>
+      <div class="news-content">
+        <div class="news-title">韵达股份改革阵痛：加盟商收缩，Q1营收乏力</div>
+        <div class="news-desc">加盟商数量持续收缩，业务量下滑，营收增长面临压力。</div>
+        <div class="news-source">新浪财经 · 7月6日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">3</div>
+      <div class="news-content">
+        <div class="news-title">中通快递 Q1 "量价利"齐升</div>
+        <div class="news-desc">2026年第一季度业绩表现亮眼，量、价、利润三大指标同步增长。</div>
+        <div class="news-source">新浪财经 · 5月20日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">4</div>
+      <div class="news-content">
+        <div class="news-title">菜鸟国内供应链并入阿里电商，跨境成主力</div>
+        <div class="news-desc">组织架构重大调整：国内供应链业务划归电商体系，跨境物流成为菜鸟独立营收支柱。</div>
+        <div class="news-source">奥一网 · 7月6日 ✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 美妆行业 -->
+<div class="section-title">💄 美妆行业动态</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">📋 监管政策风向</div>
+    <div class="news-item">
+      <div class="news-num">1</div>
+      <div class="news-content">
+        <div class="news-title">化妆品新原料新规发布</div>
+        <div class="news-desc">6月29日正式发布，对化妆品新原料的备案、安全评估提出更严格要求。</div>
+        <div class="news-source">CIRS Group · 6月29日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">2</div>
+      <div class="news-content">
+        <div class="news-title">药监局印发27项化妆品标准立项计划</div>
+        <div class="news-desc">覆盖原料、检测方法、功效评价等多个维度，行业标准化进程加速。</div>
+        <div class="news-source">CIRS Group · 4月27日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">3</div>
+      <div class="news-content">
+        <div class="news-title">2026：化妆品行业"最严"监管年</div>
+        <div class="news-desc">CBNData报告指出2026年监管力度空前，合规成本上升加速中小品牌出清。</div>
+        <div class="news-source">CBNData · 2月9日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">4</div>
+      <div class="news-content">
+        <div class="news-title">欧盟更新化妆品法规：12种原料使用要求调整</div>
+        <div class="news-desc">影响出口欧盟的中国美妆企业，需关注配方合规调整窗口期。</div>
+        <div class="news-source">CIRS Group · 5月7日 ✓</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🔬 行业趋势与市场</div>
+    <div class="news-item">
+      <div class="news-num">1</div>
+      <div class="news-content">
+        <div class="news-title">春敏赛道撑起美妆新增长极</div>
+        <div class="news-desc">敏感肌护理需求爆发，春敏相关产品线成为2026年增长最快的细分赛道之一。</div>
+        <div class="news-source">界面新闻 · 3月17日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">2</div>
+      <div class="news-content">
+        <div class="news-title">中信建投：供需重构后的美妆增长新路径</div>
+        <div class="news-desc">专题研究报告指出，功效护肤、合成生物原料、品牌出海为三大结构性机会。</div>
+        <div class="news-source">新浪财经 · 5月28日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">3</div>
+      <div class="news-content">
+        <div class="news-title">欧特丽深耕美妆供应链17年</div>
+        <div class="news-desc">构建品牌全周期代工解决方案，从OEM向ODM+品牌孵化升级。</div>
+        <div class="news-source">中华网 · 7月9日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">4</div>
+      <div class="news-content">
+        <div class="news-title">DHL发布2026美妆趋势与跨境物流实战报告</div>
+        <div class="news-desc">助力中小美妆品牌高效全球化，跨境物流成为品牌出海关键基础设施。</div>
+        <div class="news-source">DHL · 5月7日 ✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 行业标签云 -->
+<div style="text-align:center;padding:16px 0;">
+  <span class="tag tag-purple">敏感肌赛道</span>
+  <span class="tag tag-green">功效护肤</span>
+  <span class="tag tag-pink">新原料备案</span>
+  <span class="tag tag-red">监管趋严</span>
+  <span class="tag tag-blue">品牌出海</span>
+  <span class="tag tag-cyan">跨境物流</span>
+  <span class="tag tag-purple">合成生物</span>
+  <span class="tag tag-green">ODM升级</span>
+</div>
+
+<!-- 快递行业深层数据 -->
+<div class="section-title">📦 快递物流 · 行业全景</div>
+<div class="grid-3">
+  <div class="card">
+    <div class="card-title">🏆 "三通一达"分化加剧</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>公司</th><th>最新动态</th><th>趋势</th></tr>
+        <tr><td>圆通速递</td><td>H1扣非净利预增>70%</td><td><span class="badge-up">强劲增长</span></td></tr>
+        <tr><td>中通快递</td><td>Q1量价利齐升</td><td><span class="badge-up">稳中向好</span></td></tr>
+        <tr><td>韵达股份</td><td>加盟商收缩，营收承压</td><td><span class="badge-down">阵痛期</span></td></tr>
+        <tr><td>申通快递</td><td>拟2.8亿收购菜鸟旗下公司</td><td><span class="badge-flat">整合中</span></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🔀 行业结构重塑</div>
+    <div class="news-item">
+      <div class="news-num" style="background:rgba(6,182,212,0.12);color:#06b6d4;">AI</div>
+      <div class="news-content">
+        <div class="news-title">AI重塑快递：全社会物流成本创新低</div>
+        <div class="news-desc">智能分拣、路径优化、无人配送等技术推动物流效率革命。</div>
+        <div class="news-source">中华网 · 7月10日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num" style="background:rgba(239,68,68,0.12);color:#ef4444;">⚠</div>
+      <div class="news-content">
+        <div class="news-title">燃油成本上涨成隐忧</div>
+        <div class="news-desc">快递涨价显效拉动业绩，但燃油成本上升对利润形成侵蚀。</div>
+        <div class="news-source">快递圈 · 4月24日 ✓</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🌏 全球化与跨境</div>
+    <div class="news-item">
+      <div class="news-num">1</div>
+      <div class="news-content">
+        <div class="news-title">极兔速递：千亿"全球化协同"</div>
+        <div class="news-desc">增长翻倍，海外市场成为核心增长引擎。</div>
+        <div class="news-source">新浪财经 · 4月14日 ✓</div>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-num">2</div>
+      <div class="news-content">
+        <div class="news-title">联邦快递：传统包裹公司交易AI资本开支</div>
+        <div class="news-desc">毛利率创多年新高，但运营成本结构性问题仍在。</div>
+        <div class="news-source">搜狐 · 6月26日 ✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 风险提示 -->
+<div class="risk-box">
+  <div style="font-size:15px;font-weight:700;margin-bottom:8px;">⚠️ 风险关注</div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:13px;color:#cbd5e1;line-height:1.8;">
+    <div>🔸 6月PMI虽反弹至50.3%，但5月回落至临界点50%，经济复苏基础仍不牢固</div>
+    <div>🔸 美妆行业监管持续加码，中小品牌合规成本上升，行业出清可能加速</div>
+    <div>🔸 快递行业"反内卷"效果初显，但韵达等企业转型阵痛期尚未结束</div>
+    <div>🔸 燃油成本上升 + 国际贸易摩擦风险，快递物流企业利润空间承压</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>ettoreal 行业日报 · 2026年7月11日</p>
+  <p style="margin-top:4px;">数据来源：国家统计局 · 财联社 · 新浪财经 · CIRS · 中华网 · 奥一网 · 快递圈</p>
+  <p style="margin-top:4px;">标注 ✓ 为 Google News RSS 实时验证数据</p>
+</div>
+
+</body>
+</html>
