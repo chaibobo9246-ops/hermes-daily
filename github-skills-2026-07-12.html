@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-07-12</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background:#0a0a0f; color:#c9d1d9; padding:24px;
+  min-height:100vh;
+}
+.container { max-width:1100px; margin:0 auto; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #1a1025 0%, #0d1117 100%);
+  border:1px solid #21262d; border-radius:16px; padding:28px 32px; margin-bottom:20px;
+}
+.header h1 { font-size:26px; background:linear-gradient(135deg, #a78bfa, #7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px; }
+.header .subtitle { color:#8b949e; font-size:13px; }
+
+/* Summary Cards */
+.summary-grid { display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+.card {
+  flex:1; min-width:140px;
+  background:#161b22; border:1px solid #21262d; border-radius:12px;
+  padding:20px; text-align:center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { transform:translateY(-2px); border-color:#7c3aed55; }
+.card .num { font-size:36px; font-weight:700; }
+.card .label { font-size:12px; color:#8b949e; margin-top:4px; }
+.card.new { border-left:3px solid #7c3aed; }
+.card.new .num { background:linear-gradient(135deg, #a78bfa, #7c3aed); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.card.total { border-left:3px solid #58a6ff; }
+.card.total .num { color:#58a6ff; }
+.card.skill { border-left:3px solid #3fb950; }
+.card.skill .num { color:#3fb950; }
+
+/* Table */
+.table-wrap {
+  background:#161b22; border:1px solid #21262d; border-radius:12px;
+  overflow:hidden; margin-bottom:20px;
+}
+table { width:100%; border-collapse:collapse; }
+thead { background:#1c2129; }
+th {
+  padding:14px 16px; font-size:12px; text-transform:uppercase;
+  letter-spacing:0.05em; color:#8b949e; text-align:left;
+  border-bottom:1px solid #21262d;
+}
+td { padding:14px 16px; font-size:14px; border-bottom:1px solid #21262d22; }
+tr:last-child td { border-bottom:none; }
+tr:hover { background:#1c2129; }
+.skill-name { font-weight:600; color:#e6edf3; }
+.skill-name a { color:#e6edf3; text-decoration:none; }
+.skill-name a:hover { color:#a78bfa; text-decoration:underline; }
+.skill-desc { color:#8b949e; font-size:13px; }
+.new-badge {
+  display:inline-block; background:linear-gradient(135deg, #7c3aed, #a78bfa);
+  color:#fff; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600;
+  margin-left:6px; vertical-align:middle;
+}
+.tag {
+  display:inline-block; background:#1c2129; color:#8b949e;
+  padding:3px 10px; border-radius:12px; font-size:12px; margin:2px 4px 2px 0;
+}
+.tag.topic { background:#7c3aed20; color:#a78bfa; border:1px solid #7c3aed33; }
+
+/* Section header */
+.section-title {
+  font-size:18px; font-weight:700; color:#e6edf3;
+  padding:10px 0 16px 0; display:flex; align-items:center; gap:8px;
+}
+.section-title .icon { font-size:20px; }
+
+/* Empty state */
+.empty-state {
+  background:#161b22; border:1px dashed #21262d; border-radius:12px;
+  padding:48px 24px; text-align:center; margin-bottom:20px;
+}
+.empty-state .emoji { font-size:48px; margin-bottom:12px; }
+.empty-state p { color:#8b949e; font-size:15px; }
+
+/* Detail section */
+.detail-card {
+  background:#161b22; border:1px solid #21262d; border-radius:12px;
+  padding:24px; margin-bottom:20px;
+}
+.detail-card h3 { color:#a78bfa; font-size:16px; margin-bottom:12px; }
+.detail-card p { color:#8b949e; font-size:14px; line-height:1.7; }
+.detail-card .meta { display:flex; gap:16px; flex-wrap:wrap; margin-top:12px; }
+
+/* Footer */
+.footer {
+  text-align:center; color:#484f58; font-size:12px; margin-top:32px;
+  padding:20px 0; border-top:1px solid #21262d;
+}
+.footer a { color:#8b949e; text-decoration:none; }
+.footer a:hover { color:#a78bfa; }
+
+/* No new */
+.no-new {
+  background:#161b22; border:1px solid #21262d; border-radius:12px;
+  padding:32px; margin-bottom:20px; text-align:center;
+}
+.no-new h3 { color:#e6edf3; font-size:18px; margin-bottom:8px; }
+.no-new p { color:#8b949e; }
+
+@media (max-width:768px) {
+  .summary-grid { flex-direction:column; }
+  .card { min-width:100%; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>🔮 GitHub Hermes Skill 每日盘点</h1>
+<p class="subtitle">📅 2026-07-12 · 数据源: GitHub API · 关键词: hermes+skill / hermes-agent+skill / nous+hermes</p>
+</div>
+
+<div class="summary-grid">
+<div class="card new">
+<div class="num">1</div>
+<div class="label">🆕 今日新增</div>
+</div>
+<div class="card skill">
+<div class="num">1</div>
+<div class="label">🧩 新发现 Skill</div>
+</div>
+<div class="card total">
+<div class="num">0</div>
+<div class="label">⭐ Stars</div>
+</div>
+</div>
+
+<div class="section-title">
+<span class="icon">🆕</span> 今日新增 Skill
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th style="width:40%">Skill</th>
+<th>描述</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="skill-name">
+  <a href="https://github.com/getfokus-app/agent-skills" target="_blank">getfokus-app/agent-skills</a>
+  <span class="new-badge">NEW</span>
+</div>
+<div style="margin-top:4px;">
+  <span class="tag topic">hermes</span>
+  <span class="tag topic">openclaw</span>
+  <span class="tag topic">mcp</span>
+</div>
+</td>
+<td class="skill-desc">
+  Fokus skills for AI agent frameworks (OpenClaw, Hermes) — built on the @fokus-app/mcp CLI。
+  包含 <strong>fokus</strong> skill（SKILL.md + references），通过 fokus-mcp CLI 管理任务、日历、笔记、目标、项目和 AI 自动排程。
+</td>
+<td>
+<div style="font-size:12px; color:#8b949e;">
+📅 2026-07-12<br>
+📝 MIT License<br>
+🔗 <a href="https://getfokus.com" target="_blank" style="color:#a78bfa;">getfokus.com</a><br>
+📄 <a href="https://github.com/getfokus-app/agent-skills/blob/main/docs/hermes.md" target="_blank" style="color:#a78bfa;">Hermes 配置指南</a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="detail-card">
+<h3>📋 详细说明</h3>
+<p>
+  <strong>getfokus-app/agent-skills</strong> 是 Fokus 官方发布的 AI Agent Skill 集合，
+  专为 OpenClaw 和 Hermes Agent 设计。基于 <code>@fokus-app/mcp</code> CLI 构建，
+  提供 44 个工具覆盖任务管理、日历、笔记、目标追踪、项目和 AI 自动排程。
+</p>
+<p style="margin-top:12px;">
+  Hermes Agent 用户可通过两种方式集成：
+  <br>① <strong>MCP Server</strong>（推荐）— 在 <code>~/.hermes/config.yaml</code> 中配置 mcp_servers
+  <br>② <strong>Skill 文件</strong>— 将 <code>skills/fokus/</code> 放入 <code>~/.hermes/skills/</code>
+</p>
+<div class="meta">
+  <span>🛠 需要: Node.js 20+</span>
+  <span>📦 安装: <code>npm i -g @fokus-app/mcp</code></span>
+  <span>🔑 首次需人工登录: <code>fokus-mcp login</code></span>
+</div>
+</div>
+
+<div class="footer">
+Generated by Hermes Agent (Nous Research) · 2026-07-12 ·
+<a href="https://github.com/chaibobo9246-ops/hermes-daily" target="_blank">GitHub 存档</a> ·
+数据来源: <a href="https://api.github.com" target="_blank">GitHub API</a>
+</div>
+
+</div>
+</body>
+</html>
