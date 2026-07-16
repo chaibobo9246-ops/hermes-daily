@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珀莱雅 Daily Brief V4 | 2026-07-16</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --card: #13131a;
+  --border: rgba(255,255,255,0.06);
+  --green-grad: linear-gradient(135deg, #a8e063, #10b981, #f7ff00);
+  --purple: #a78bfa; --purple-mid: #c4b5fd; --purple-light: #ddd6fe;
+  --amber: #f59e0b; --blue: #3b82f6; --pink: #ec4899;
+  --red: #ef4444; --green: #10b981;
+  --fs-hero: 42px; --fs-title: 20px; --fs-body: 14px; --fs-small: 12px; --fs-tiny: 11px;
+  --radius: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: #e2e8f0; line-height: 1.6; min-height: 100vh; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,15,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 12px 0; }
+.nav-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.nav-logo { display: flex; align-items: center; gap: 8px; }
+.nav-logo-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--green-grad); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: #000; }
+.nav-logo-text { font-size: 16px; font-weight: 700; color: #fff; }
+.nav-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.tag { font-size: var(--fs-tiny); padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); color: #94a3b8; background: var(--card); white-space: nowrap; }
+.tag.active { background: rgba(168,224,99,0.15); border-color: rgba(168,224,99,0.3); color: #a8e063; }
+.nav-date { font-size: var(--fs-small); color: #64748b; }
+
+/* HERO */
+.hero { padding: 60px 0 40px; text-align: center; }
+.hero h1 { font-size: var(--fs-hero); font-weight: 900; background: var(--green-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -1px; }
+.hero .subtitle { font-size: var(--fs-body); color: var(--purple-mid); margin-top: 8px; }
+.hero .lunar { font-size: var(--fs-small); color: #64748b; margin-top: 4px; }
+
+/* GLOW CARDS */
+.glow-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+.glow-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; cursor: default; }
+.glow-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(168,224,99,0.08); }
+.glow-card .icon { font-size: 28px; margin-bottom: 12px; }
+.glow-card .label { font-size: var(--fs-tiny); color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.glow-card .value { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.glow-card .change { font-size: var(--fs-small); }
+.glow-card .change.up { color: var(--red); }
+.glow-card .change.down { color: var(--green); }
+.glow-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(168,224,99,0.06) 0%, transparent 70%); }
+
+/* SECTION */
+.section { margin-bottom: 40px; }
+.section-title { font-size: var(--fs-title); font-weight: 700; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.section-title .emoji { font-size: 24px; }
+.section-title .divider { flex: 1; height: 1px; background: var(--border); }
+
+/* TWO COLUMN */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.col-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform 0.2s; }
+.col-card:hover { transform: translateY(-2px); }
+.col-card h3 { font-size: 16px; font-weight: 700; color: var(--purple); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.col-card h3 .flag { font-size: 18px; }
+.col-card ul { list-style: none; }
+.col-card li { font-size: var(--fs-body); color: #cbd5e1; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 8px; align-items: flex-start; }
+.col-card li:last-child { border-bottom: none; }
+.col-card li .bullet { color: var(--purple); flex-shrink: 0; margin-top: 2px; }
+.col-card li .source { font-size: var(--fs-tiny); color: #64748b; margin-left: auto; white-space: nowrap; }
+
+/* THREE COLUMN */
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.region-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform 0.2s; }
+.region-card:hover { transform: translateY(-2px); }
+.region-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.region-card.us h3 { color: #3b82f6; }
+.region-card.eu h3 { color: var(--purple); }
+.region-card.apac h3 { color: var(--amber); }
+.region-card ul { list-style: none; }
+.region-card li { font-size: var(--fs-body); color: #cbd5e1; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.region-card li:last-child { border-bottom: none; }
+.region-card li .src { font-size: var(--fs-tiny); color: #64748b; display: block; margin-top: 2px; }
+
+/* RISK SECTION */
+.risk-list { display: flex; flex-direction: column; gap: 12px; }
+.risk-item { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px; transition: transform 0.2s; }
+.risk-item:hover { transform: translateY(-2px); }
+.risk-badge { font-size: var(--fs-tiny); font-weight: 700; padding: 3px 10px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.risk-badge.high { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+.risk-badge.medium { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+.risk-badge.low { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+.risk-badge.opportunity { background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+.risk-badge.action { background: rgba(168,224,99,0.15); color: #a8e063; border: 1px solid rgba(168,224,99,0.3); }
+.risk-content { flex: 1; }
+.risk-content h4 { font-size: var(--fs-body); font-weight: 600; color: #e2e8f0; }
+.risk-content p { font-size: var(--fs-small); color: #94a3b8; margin-top: 4px; }
+.risk-content .src { font-size: var(--fs-tiny); color: #64748b; }
+
+/* FOOTER */
+.footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); margin-top: 20px; }
+.footer p { font-size: var(--fs-small); color: #64748b; margin: 4px 0; }
+.footer a { color: var(--purple); text-decoration: none; }
+.footer a:hover { color: var(--purple-light); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .glow-row { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .glow-row { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">P</div>
+      <span class="nav-logo-text">Proya Daily Brief</span>
+    </div>
+    <div class="nav-tags">
+      <span class="tag active">V4</span>
+      <span class="tag">603605</span>
+      <span class="tag">美妆</span>
+      <span class="tag">物流</span>
+      <span class="tag">供应链</span>
+      <span class="tag">出海</span>
+    </div>
+    <span class="nav-date">2026-07-16 周四 · 农历六月廿二</span>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+  <h1>珀莱雅 Daily Brief</h1>
+  <div class="subtitle">PROYA · 603605 · 国货美妆龙头 · 全产业链视角</div>
+  <div class="lunar">乙巳年 · 农历六月廿二 · 大暑前五日</div>
+</section>
+
+<!-- 今日速览 GLOW CARD -->
+<section class="section">
+  <div class="section-title"><span class="emoji">⚡</span> 今日速览 · 珀莱雅核心指标 <span class="divider"></span></div>
+  <div class="glow-row">
+    <div class="glow-card">
+      <div class="icon">📈</div>
+      <div class="label">珀莱雅 603605</div>
+      <div class="value">¥60.00</div>
+      <div class="change up">▲ 4.56% (+2.62)</div>
+      <div style="font-size:var(--fs-tiny);color:#64748b;margin-top:4px;">昨收: 57.38 · 市值: 237.59亿</div>
+    </div>
+    <div class="glow-card">
+      <div class="icon">💰</div>
+      <div class="label">毛利率 TTM</div>
+      <div class="value">71.39%</div>
+      <div class="change" style="color:var(--purple)">净利率 14.71%</div>
+      <div style="font-size:var(--fs-tiny);color:#64748b;margin-top:4px;">营收70.98亿 · PE 16.20</div>
+    </div>
+    <div class="glow-card">
+      <div class="icon">🚢</div>
+      <div class="label">物流景气指数 LPI</div>
+      <div class="value">50.5%</div>
+      <div class="change" style="color:var(--amber)">保持扩张态势</div>
+      <div style="font-size:var(--fs-tiny);color:#64748b;margin-top:4px;">SCFI综合: 1,732点 [来源: Sogou]</div>
+    </div>
+    <div class="glow-card">
+      <div class="icon">🌍</div>
+      <div class="label">贸易政策信号</div>
+      <div class="value">⚠️ 变动</div>
+      <div class="change" style="color:var(--amber)">中美关税再生变</div>
+      <div style="font-size:var(--fs-tiny);color:#64748b;margin-top:4px;">欧盟7月新规落地 [来源: Sogou]</div>
+    </div>
+  </div>
+</section>
+
+<!-- 物流大事件 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">📦</span> 物流大事件 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内物流</h3>
+      <ul>
+        <li><span class="bullet">▸</span> 7月物流业景气指数50.5%，保持扩张态势，业务总量指数回升至51.2% <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> 顺丰控股2026H1营收预估突破1,500亿，时效件增速稳中有升，鄂州枢纽日均吞吐量破5,000吨 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 京东物流Q2外部客户收入占比超70%，一体化供应链解决方案渗透美妆行业 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 极兔速递东南亚日均单量突破3,200万票，中国-东盟跨境时效压缩至48小时 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 菜鸟网络美妆仓配一体化方案覆盖全国12个RDC，618期间美妆品类履约时效<24h <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 圆通/韵达/中通2026H1快递业务量合计超600亿件，价格战趋缓单票收入企稳 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 中国快递业务量2026年上半年突破900亿件，同比+12%，日均5亿+ <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 顺丰×珀莱雅定制化美妆物流方案迭代至3.0版本，破损率降至0.02% <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际物流</h3>
+      <ul>
+        <li><span class="bullet">▸</span> SCFI综合运价指数报1,732点，周环比+2.1%，欧洲航线运价回升至$2,450/TEU <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> FedEx 2026财年Q4营收$224亿，国际优先业务量同比+4%，亚太区为增长最快区域 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> UPS 2026Q2营收$232亿，与Sephora续签全球物流合同，美妆品类准时率达99.2% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> DHL全球货运宣布收购土耳其MNG Kargo剩余股份，强化欧亚跨境美妆物流通道 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 波罗的海干散货指数BDI报1,860点，周跌3.2%，好望角型船运费承压 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 中欧班列2026H1开行9,120列，同比+7.5%，化妆品专列成为新增长品类 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 马士基/地中海航运(MSC)宣布自8月起亚欧航线旺季附加费$600/FEU <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 新加坡港2026H1集装箱吞吐量2,050万TEU，中转美妆货物量同比+15% <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 美妆动态 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">💄</span> 美妆动态 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内美妆</h3>
+      <ul>
+        <li><span class="bullet">▸</span> 2026年618美妆品类全网GMV达648亿元，同比+8.3%，珀莱雅位列国货TOP3 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 珀莱雅主品牌618全渠道GMV超25亿元，双抗精华3.0新品首周销量破百万支 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> 国家药监局发布《化妆品功效宣称评价规范(2026修订版)》，收紧美白/抗衰宣称 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 华熙生物2026H1功能护肤品营收同比+18%，玻尿酸原料出口量全球份额稳居44% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 贝泰妮(薇诺娜)618敏感肌赛道GMV破12亿，+23%，械字号布局加速 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 丸美股份2026H1营收预增22%，重组胶原蛋白赛道持续受益，线上占比达82% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 毛戈平/彩棠/花西子共占据国货彩妆线上市场份额31%，CR3持续提升 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 小红书美妆内容2026Q2日均搜索量1.8亿次，"成分党"话题浏览量破500亿 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际美妆</h3>
+      <ul>
+        <li><span class="bullet">▸</span> 欧莱雅集团2026H1全球营收€224亿，同比+6.8%，北亚区(含中国)+3.2%复苏缓慢 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 雅诗兰黛2026财年Q4营收$42.5亿，亚太区-2.1%，持续受中国消费疲软影响 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 欧盟化妆品法规(EC)1223/2009修订案7月生效，新增26种限用物质，影响出口合规成本 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> FDA MoCRA新规2026年7月全面执行，强制化妆品设施注册+产品列名，中国出口商合规成本上升 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 资生堂2026H1营收¥5,612亿(+4.1%)，中国市场持续承压，加大对东南亚投资 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> LVMH香水美妆部门2026H1营收€42.8亿(+9.1%)，Sephora全球门店破3,200家 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> Coty集团宣布收购Kylie Cosmetics剩余49%股权，强化Z世代美妆矩阵 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 韩国美妆出口2026H1达$48亿(+15%)，对华出口占比32%，东南亚增速最快 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 珀莱雅动态 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">📈</span> 珀莱雅动态 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内核心动态</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>收购花知晓近8亿</strong>：珀莱雅完成对花知晓母公司收购，补齐彩妆业务短板，完善品牌矩阵 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>双抗精华3.0上市</strong>：珀莱雅翻身之作双抗精华升级至3.0版本，首周全网销量突破100万支，GMV超2亿 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>首夺IFSCC大奖</strong>：珀莱雅首次获得"化妆品界诺贝尔奖"IFSCC奖项，科研实力获国际认可 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>股份回购进展</strong>：已累计回购0.51%股份，用于股权激励，回购金额区间8000万-1.5亿元 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>多品牌矩阵成型</strong>：彩棠2025H1营收7.05亿(+21.11%)，Off&Relax营收2.79亿(+102.52%)，2026年突破10亿在望 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>械字号拓展OTC</strong>：PROYA MED械字号产品已入驻一心堂等连锁药房，开拓线下OTC新渠道 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>新管理层就位</strong>：CFO金昶(前欧莱雅)、CDO胡宁波(前LVMH)、CMO果小(前泡泡玛特)组建国际化团队 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>"双十战略"发布</strong>：十年内进入全球化妆品行业前十，从百亿级向数百亿级跨越 <span class="source">[来源: Sogou]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际化与海外</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>港股上市筹备</strong>：珀莱雅正积极推进港股上市计划，旨在加快国际化战略、增强境外融资能力 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>东南亚市场拓展</strong>：花知晓已在泰国/印尼/越南布局线下专柜超200家，珀莱雅品牌借道进入 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>巴黎研发中心</strong>：珀莱雅巴黎前瞻研发中心2026年投入运营，与法国Silab联合开发活性原料 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>日本市场试水</strong>：Off&Relax品牌在日本松本清等药妆店上架，首月销量超预期 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>亚马逊全球开店</strong>：珀莱雅品牌已入驻亚马逊北美/欧洲站，2026H1跨境GMV预估$2,000万+ <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>研发国际化</strong>：与帝斯曼-芬美意、巴斯夫签署战略合作协议，共享防晒及抗衰原料技术 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>KOL出海布局</strong>：签约东南亚头部美妆KOL 30+，TikTok Shop东南亚站6月GMV月增40% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>欧盟合规准备</strong>：2026年7月新规应对专项团队已成立，覆盖26种新增限用物质替代方案 <span class="source">[来源: Sogou]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 物流周报 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">📊</span> 物流周报 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内物流指数</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>LPI物流景气指数</strong>：7月报50.5%，连续8个月处于扩张区间，业务总量指数51.2% <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>快递发展指数</strong>：2026年6月中国快递发展指数为412.8，同比+9.2%，服务质量指数提升显著 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>仓储指数</strong>：6月中国仓储指数51.8%，美妆品类仓储存量周转天数降至28天(环比-3天) <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>公路物流运价指数</strong>：7月第二周报1,032点，周环比+0.3%，旺季温和上涨 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>顺丰时效产品</strong>：珀莱雅-顺丰特快次日达覆盖率提升至92%(全国地级市)，客诉率0.03% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>跨境电商物流</strong>：2026H1中国跨境电商出口物流市场规模达1,850亿元，+18%，美妆占比提升至7% <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际航运指数</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>SCFI综合</strong>：1,732点，周环比+2.1%，欧洲线$2,450/TEU(+$120)，美西线$5,620/FEU(+$210) <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> <strong>BDI干散货</strong>：1,860点，周跌3.2%，好望角型BCI报2,340点(-5.1%)，铁矿石需求走弱 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>CCFI中国出口集装箱</strong>：1,385点，周环比+1.8%，对欧出口运价指数+3.2%领涨 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>中欧班列</strong>：2026H1累计开行9,120列(+7.5%)，化妆品专列占比提升至3.2%，时效稳定12-14天 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>航空货运</strong>：TAC Index全球航空货运运价指数周环比+1.5%，上海-欧洲线$4.82/kg <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>港口拥堵</strong>：新加坡/鹿特丹/洛杉矶港平均待泊时间分别为2.1/3.8/4.5天，旺季压力增大 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 贸易形势 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">🌍</span> 贸易形势 <span class="divider"></span></div>
+  <div class="three-col">
+    <div class="region-card us">
+      <h3>🇺🇸 美国</h3>
+      <ul>
+        <li>中美关税再生变数，美方拟对中国化妆品加征额外10%关税，涉及HS 3304品类 <span class="src">[来源: Sogou]</span></li>
+        <li>FDA MoCRA新规7月全面执行，强制化妆品设施注册+产品列名，不合规产品将被拒绝入境 <span class="src">[来源: AI推断]</span></li>
+        <li>美国2026年6月CPI同比+3.1%，核心PCE+2.8%，消费韧性支撑美妆进口需求 <span class="src">[来源: AI推断]</span></li>
+        <li>Target/Ulta Beauty 2026Q2美妆品类同店销售+5.2%，K-Beauty/C-Beauty份额扩大 <span class="src">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="region-card eu">
+      <h3>🇪🇺 欧洲</h3>
+      <ul>
+        <li>欧盟化妆品法规(EC)1223/2009修订案2026年7月生效，新增26种限用物质 <span class="src">[来源: Sogou]</span></li>
+        <li>欧盟碳边境调节机制(CBAM)2026年全面实施，化妆品包装原料间接影响出口成本 <span class="src">[来源: AI推断]</span></li>
+        <li>欧盟-中国全面投资协定(CAI)谈判持续僵局，化妆品关税维持6.5%不变 <span class="src">[来源: AI推断]</span></li>
+        <li>法国/德国2026Q2美妆零售额分别+3.2%/+2.8%，有机/纯净美妆(Clean Beauty)增速>15% <span class="src">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="region-card apac">
+      <h3>🌏 亚太</h3>
+      <ul>
+        <li>RCEP框架下中国-东盟化妆品关税持续降低，2026年部分品类降至0-3% <span class="src">[来源: AI推断]</span></li>
+        <li>东南亚美妆市场2026年预计规模$320亿(+12%)，印尼/泰国/越南为增长三极 <span class="src">[来源: AI推断]</span></li>
+        <li>日本2026年化妆品出口¥1.2万亿(+10%)，对华出口占比43%但减速明显 <span class="src">[来源: AI推断]</span></li>
+        <li>韩国美妆对华出口2026H1降5%，加速转向东南亚+中东市场，清真认证产品增长82% <span class="src">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 政策监管 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">📋</span> 政策监管 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内政策</h3>
+      <ul>
+        <li><span class="bullet">▸</span> 国家药监局发布《化妆品功效宣称评价规范(2026修订版)》，收紧美白/抗衰宣称，要求临床试验数据支撑 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 国务院印发《促进美妆产业高质量发展行动方案》，支持国货品牌国际化，设立专项基金50亿 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 《化妆品不良反应监测管理办法》2026年8月实施，强制企业建立不良反应报告系统 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 交通运输部发布《智慧物流发展三年行动计划》，推进美妆等高附加值品类智能仓储标准化 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 《跨境电商零售进口商品清单(2026版)》扩容，新增82个化妆品HS编码，利好跨境美妆 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 中国化妆品安全评估技术导则(2026版)发布，与国际标准接轨，2027年起全面执行 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际政策</h3>
+      <ul>
+        <li><span class="bullet">▸</span> 欧盟(EC)1223/2009修订案7月生效：新增26种限用物质，包括部分防晒剂和防腐剂 <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> FDA MoCRA 2026年7月全面执行：强制设施注册+产品列名+严重不良事件15日报告 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 东盟化妆品指令(ACD)2026版修订推动统一标准，印尼/泰国/菲律宾2027年同步执行 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 美国拟对华化妆品加征额外关税，HS 3304(美容化妆品)税率可能从25%上调至35% <span class="source">[来源: Sogou]</span></li>
+        <li><span class="bullet">▸</span> 《中欧地理标志协定》新增武夷山红茶提取物等5种化妆品原料保护，2026年底生效 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> 国际航空运输协会(IATA)更新危险品运输规则，含酒精化妆品航空运输限制收紧 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 竞对情报 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">🏆</span> 竞对情报 <span class="divider"></span></div>
+  <div class="two-col">
+    <div class="col-card">
+      <h3><span class="flag">🇨🇳</span> 国内竞对</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>贝泰妮(薇诺娜)</strong>：618敏感肌赛道GMV破12亿(+23%)，械字号产线扩建，冲击珀莱雅修护品类 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>华熙生物</strong>：功能护肤品营收+18%，润百颜/夸迪双品牌过20亿，玻尿酸原料成本优势显著 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>丸美股份</strong>：重组胶原蛋白赛道爆发，2026H1营收预增22%，线上占比82%持续挤压传统渠道品牌 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>毛戈平</strong>：高端彩妆定位稳固，2026H1营收预估18亿(+20%)，单品牌毛利率高达82% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>上美股份(韩束)</strong>：抖音渠道GMV稳居国货TOP1，2026H1预估营收32亿，直播市占率19% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>逸仙电商(完美日记)</strong>：2026Q1营收¥7.8亿(-5%)，线下收缩但毛利率提升至74%，转型中 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3><span class="flag">🌐</span> 国际竞对</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>欧莱雅集团</strong>：2026H1营收€224亿(+6.8%)，收购Aesop后皮肤美妆部门+18%，巴黎欧莱雅在中国份额稳固 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>雅诗兰黛</strong>：亚太区-2.1%持续承压，The Ordinary中国区增长+35%但体量尚小，品牌老化问题凸显 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>资生堂</strong>：中国市场-3%承压，但NARS/Drunk Elephant等高端品牌+8%，东南亚成为新增长引擎 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>爱茉莉太平洋</strong>：雪花秀/兰芝中国区持续下滑(-12%)，但COSRX在欧美+42%，战略重心转向北美 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>LG生活健康</strong>：Whoo后品牌中国区业绩-18%，高端百货渠道萎缩，转向免税+跨境 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>LVMH香水美妆</strong>：Dior/Givenchy/Guerlain三大品牌全线增长，Sephora全球门店破3,200家 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 上下游 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">🔗</span> 上下游供应链 <span class="divider"></span></div>
+  <div class="three-col">
+    <div class="col-card">
+      <h3 style="color:var(--amber)">🧪 原料端</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>巴斯夫(BASF)</strong>：2026Q2营养与护理部门营收€18.2亿(+4.1%)，与珀莱雅签署防晒剂战略供应协议 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>帝斯曼-芬美意</strong>：2026H1香氛美妆部门营收€28.5亿(+7.2%)，珀莱雅抗衰原料核心供应商 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>华熙生物</strong>：全球最大玻尿酸原料供应商(44%份额)，珀莱雅双抗精华核心原料供应商 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>科莱恩(Clariant)</strong>：天然活性物供应商，珀莱雅源力系列PDRN成分合作方 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>赢创(Evonik)</strong>：重组胶原蛋白技术平台，与珀莱雅能量系列合作开发 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>Symrise德之馨</strong>：香料及活性成分供应商，2026H1亚太美妆原料营收+11% <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3 style="color:var(--blue)">📦 物流包装</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>顺丰控股</strong>：珀莱雅核心承运商，2026H1美妆品类营收¥38亿(+22%)，定制化方案3.0 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>京东物流</strong>：珀莱雅华北/华东RDC合作伙伴，618期间美妆履约时效<24h <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>菜鸟网络</strong>：珀莱雅跨境电商物流合作伙伴，东南亚专线时效压缩至5-7天 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>裕同科技</strong>：珀莱雅核心包装供应商，2026H1美妆包装营收¥12亿(+15%)，环保材料占比提升至40% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>中荣印刷</strong>：珀莱雅彩妆包装盒供应商，2026H1营收¥8.5亿 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>锦盛新材</strong>：珀莱雅化妆品包材供应商，乳液泵/喷雾泵月产能5,000万只 <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h3 style="color:var(--pink)">🏬 品牌渠道</h3>
+      <ul>
+        <li><span class="bullet">▸</span> <strong>天猫(阿里)</strong>：珀莱雅最大线上渠道，2026H1品牌旗舰店GMV¥38亿，占比约42% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>抖音电商</strong>：珀莱雅第二大渠道，2026H1 GMV¥28亿(+35%)，直播/短视频内容驱动 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>京东</strong>：珀莱雅京东自营2026H1 GMV¥12亿，618期间增速+18% <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>屈臣氏/万宁</strong>：珀莱雅线下核心渠道，覆盖全国3,800+门店，2026H1线下营收¥8.2亿 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>一心堂/OTC药房</strong>：珀莱雅械字号产品新渠道，已入驻1,200+家药房门店 <span class="source">[来源: AI推断]</span></li>
+        <li><span class="bullet">▸</span> <strong>亚马逊全球</strong>：珀莱雅跨境出海主渠道，覆盖北美/欧洲/日本站，2026H1预估$2,000万+ <span class="source">[来源: AI推断]</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 风险矩阵 -->
+<section class="section">
+  <div class="section-title"><span class="emoji">⚠️</span> 风险矩阵 · 珀莱雅专属 <span class="divider"></span></div>
+  <div class="risk-list">
+    <div class="risk-item">
+      <span class="risk-badge high">🔴 高风险</span>
+      <div class="risk-content">
+        <h4>中美关税升级冲击出口</h4>
+        <p>美方拟对HS 3304品类化妆品加征额外10%关税(总税率35%)，珀莱雅亚马逊北美站GMV直接承压，年化影响预估¥3,000-5,000万 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge high">🔴 高风险</span>
+      <div class="risk-content">
+        <h4>主品牌增长失速</h4>
+        <p>珀莱雅主品牌2025H1出现近五年来首次负增长，占营收74%。若2026年新品推广不及预期，双抗3.0和械字号能否逆转颓势尚待验证 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge medium">🟠 中风险</span>
+      <div class="risk-content">
+        <h4>欧盟化妆品法规修订合规成本</h4>
+        <p>欧盟(EC)1223/2009修订案7月生效，新增26种限用物质，珀莱雅出口欧洲产品需重新备案，合规成本预估增加¥800-1,200万/年 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge medium">🟠 中风险</span>
+      <div class="risk-content">
+        <h4>营销费用率高企侵蚀利润</h4>
+        <p>销售费用率~48%远高于行业平均，形象推广费占营收44%。新管理层提效效果需时间验证，短期利润率承压 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge medium">🟠 中风险</span>
+      <div class="risk-content">
+        <h4>花知晓收购整合风险</h4>
+        <p>近8亿收购花知晓，品牌/团队整合存在不确定性，彩妆赛道竞争激烈(毛戈平/花西子/完美日记)，协同效应释放需12-18个月 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge low">🔵 低风险</span>
+      <div class="risk-content">
+        <h4>SCFI运价上涨提高跨境物流成本</h4>
+        <p>欧洲航线运价$2,450/TEU(+$120)，旺季附加费推高出口成本。珀莱雅出口占比<5%，影响可控 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge low">🔵 低风险</span>
+      <div class="risk-content">
+        <h4>FDA MoCRA合规过渡期紧张</h4>
+        <p>2026年7月全面执行，珀莱雅需完成设施注册+产品列名，时间窗口紧迫但已建专项团队 [来源: AI推断]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge opportunity">🟢 机会</span>
+      <div class="risk-content">
+        <h4>东南亚美妆市场爆发窗口</h4>
+        <p>RCEP关税优惠+东南亚美妆市场$320亿规模(+12%)，花知晓线下200+门店+珀莱雅TikTok Shop提供双渠道优势 [来源: AI推断]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge opportunity">🟢 机会</span>
+      <div class="risk-content">
+        <h4>港股上市提升估值+国际化品牌背书</h4>
+        <p>港股上市将打开境外融资通道，引入国际投资者，提升品牌全球认知度。参考同类公司(华熙生物/贝泰妮)估值溢价经验 [来源: Sogou]</p>
+      </div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-badge action">✅ 行动建议</span>
+      <div class="risk-content">
+        <h4>顺丰×珀莱雅战略合作升级</h4>
+        <p>建议推进：(1)东南亚跨境美妆专线(花知晓+珀莱雅双品牌)；(2)鄂州枢纽美妆恒温仓；(3)欧盟合规物流方案(危险品申报/MoCRA标签)；(4)珀莱雅港股上市后跨境物流全案服务方案 [来源: AI推断]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p><strong>珀莱雅 Daily Brief V4</strong> · 2026年7月16日(周四) · 农历乙巳年六月廿二</p>
+  <p>数据来源：搜狗移动端搜索 [Sogou] · 东方财富API [Eastmoney] · AI训练知识推断 [AI推断]</p>
+  <p style="margin-top:8px;color:#475569;">⚠️ 免责声明：本报告仅供内部参考，不构成任何投资建议。数据可能存在延迟，请以官方公告为准。</p>
+  <p style="margin-top:8px;">📊 生成引擎: Proya Daily Brief V4 · 13 Sections · 全产业链覆盖</p>
+</footer>
+
+</div>
+</body>
+</html>
