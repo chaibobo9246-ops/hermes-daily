@@ -1,0 +1,925 @@
+{
+  "date": "2026-07-17",
+  "counts": {
+    "topic": 193,
+    "search": 3817,
+    "agent": 2208
+  },
+  "repos": [
+    {
+      "full_name": "anbeime/skill",
+      "stars": 3787,
+      "language": "Python",
+      "description": "收录最全、更新最快的技能Skills 商店，涵盖文档处理、内容创作、编程开发、机器学习、自动化工作流等多个领域的 72 个精选技能包。所有技能已打包完成，可直接安装使用！ 该商店中自动抓取了 Github 上的所有的 Skills 项目，并按照分类、更新时间、Star 数量等标签进行整理。",
+      "url": "https://github.com/anbeime/skill",
+      "created": "2026-02-02",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "eugeniughelbur/obsidian-second-brain",
+      "stars": 3315,
+      "language": "Python",
+      "description": "Cross-CLI skill for Obsidian: turn your vault into a living AI-first second brain across Claude Code, Codex, Gemini, OpenCode, Hermes, and Pi. 44 comm",
+      "url": "https://github.com/eugeniughelbur/obsidian-second-brain",
+      "created": "2026-03-24",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "conorbronsdon/avoid-ai-writing",
+      "stars": 2408,
+      "language": "JavaScript",
+      "description": "Skill that audits and rewrites content to remove AI writing patterns. Use it with your favorite agents including Claude Code, OpenClaw, and Hermes.",
+      "url": "https://github.com/conorbronsdon/avoid-ai-writing",
+      "created": "2026-03-06",
+      "updated": "2026-07-17",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "wondelai/skills",
+      "stars": 1648,
+      "language": "Shell",
+      "description": "Agent skills for Claude, Claude Code, Claude Cowork, Codex, Cursor, OpenClaw, Hermes Agent and other agentskills.io-compatible agents. See https://dev",
+      "url": "https://github.com/wondelai/skills",
+      "created": "2026-01-29",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "ksimback/hermes-ecosystem",
+      "stars": 1150,
+      "language": "HTML",
+      "description": "🗺️ Hermes Atlas — the community map of every tool, skill, and integration for Hermes Agent by Nous Research. Live at hermesatlas.com",
+      "url": "https://github.com/ksimback/hermes-ecosystem",
+      "created": "2026-04-08",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "prompt-security/clawsec",
+      "stars": 1066,
+      "language": "JavaScript",
+      "description": "A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents (and variants). Protect your SOUL.md (etc') with drift detection, l",
+      "url": "https://github.com/prompt-security/clawsec",
+      "created": "2026-02-05",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "Orkas-AI/Orkas",
+      "stars": 327,
+      "language": "TypeScript",
+      "description": "Open-source multi-agent AI desktop client — build and command your AI agent team through conversation. A commander LLM dispatches sub-agents in parall",
+      "url": "https://github.com/Orkas-AI/Orkas",
+      "created": "2026-04-29",
+      "updated": "2026-07-17",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Sakshxm1/hermes-agency-orchestrator",
+      "stars": 155,
+      "language": "HTML",
+      "description": "Claude Code Agent Workflows Guide 2026: Skills vs Teams vs Cost Analysis",
+      "url": "https://github.com/Sakshxm1/hermes-agency-orchestrator",
+      "created": "2026-06-28",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "zcweah1981/awesome-hermes-agent-zh",
+      "stars": 37,
+      "language": "Python",
+      "description": "Hermes Agent中文站- 中文实战入口：上手路径、国内落地、OpenClaw 共存迁移、排障参考与可下载方案包。",
+      "url": "https://github.com/zcweah1981/awesome-hermes-agent-zh",
+      "created": "2026-04-07",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "konglong87/superPM",
+      "stars": 36,
+      "language": "JavaScript",
+      "description": "专为产品经理设计的 AI工具 Skills技能，一键实现全生命周期的产品管理工作流。skills frame for superPM！",
+      "url": "https://github.com/konglong87/superPM",
+      "created": "2026-03-25",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "yun520-1/mark-heartflow-skill",
+      "stars": 35,
+      "language": "JavaScript",
+      "description": "HeartFlow — AI cognitive engine: multi-path judgment, self-correcting RL, 3-layer memory, U/D/A/H field tracking, self-introspection with dream consol",
+      "url": "https://github.com/yun520-1/mark-heartflow-skill",
+      "created": "2026-03-28",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "edonadei/caliper",
+      "stars": 33,
+      "language": "Python",
+      "description": "Know if your agent skill actually works. A lightweight evaluation harness that tracks a success rate across Claude Code, Codex, Pi, and Hermes.",
+      "url": "https://github.com/edonadei/caliper",
+      "created": "2026-05-13",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "chefroger/smart-trade-ai",
+      "stars": 30,
+      "language": "Python",
+      "description": "AI assistant for international trade — 32 B2B skills (lead gen, OSINT, email, docs, compliance). End-to-end customer development pipeline. Runs locall",
+      "url": "https://github.com/chefroger/smart-trade-ai",
+      "created": "2026-05-13",
+      "updated": "2026-07-17",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "nicolasmelo1/logion",
+      "stars": 28,
+      "language": "Python",
+      "description": "Agent-native course marketplace and skill registry for executable AI-agent curricula",
+      "url": "https://github.com/nicolasmelo1/logion",
+      "created": "2026-05-13",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "iPythoning/b2b-sdr-hermes-skill",
+      "stars": 26,
+      "language": "-",
+      "description": "Autonomous AI SDR skill for Hermes Agent — finds buyers, qualifies leads, sends outreach, manages CRM across WhatsApp/Email/Telegram for B2B export bu",
+      "url": "https://github.com/iPythoning/b2b-sdr-hermes-skill",
+      "created": "2026-04-10",
+      "updated": "2026-07-10",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "danieljustus/symaira-vault",
+      "stars": 22,
+      "language": "Go",
+      "description": "🔐 The password manager for terminal users and AI agents. Age-encrypted, keyring-cached, MCP-ready. Zero telemetry.",
+      "url": "https://github.com/danieljustus/symaira-vault",
+      "created": "2026-04-22",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "Zhonghao1995/agentic-swmm-workflow",
+      "stars": 20,
+      "language": "Python",
+      "description": "Agentic SWMM is an automated, auditable, and memory-informed framework for reproducible stormwater modelling, integrating QGIS and EPA SWMM through th",
+      "url": "https://github.com/Zhonghao1995/agentic-swmm-workflow",
+      "created": "2026-02-26",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "galyarderlabs/galyarder-framework",
+      "stars": 15,
+      "language": "Python",
+      "description": "The framework that powers your Agentic Company",
+      "url": "https://github.com/galyarderlabs/galyarder-framework",
+      "created": "2026-04-04",
+      "updated": "2026-07-10",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "mosesman831/PolyGnosis",
+      "stars": 13,
+      "language": "Python",
+      "description": "Adversarial multi-model consensus protocol for Hermes Agent. Independent solve. Adversarial critique. Formal scoring. Verified synthesis.",
+      "url": "https://github.com/mosesman831/PolyGnosis",
+      "created": "2026-05-30",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "clowlove/Hermes-House",
+      "stars": 12,
+      "language": "HTML",
+      "description": "🤖 Self-Evolving Multi-Agent AI System | 116+ Skills | TrendRadar · Reviewer | Learn, Build & Evolve",
+      "url": "https://github.com/clowlove/Hermes-House",
+      "created": "2026-05-03",
+      "updated": "2026-07-17",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "woqianfu/hermes-skill-short-drama-master",
+      "stars": 8,
+      "language": "HTML",
+      "description": "🎬 短剧大师™ v6.2.4 — 微短剧全流程一体化创作技能 | 二十一位大师四军团+进化总督察 | 研究军团案例驱动创作 | 进化大师KPI监督 | 从一句话创意到小云雀成片 | Short Drama Master™ — All-in-one micro-drama creation skill",
+      "url": "https://github.com/woqianfu/hermes-skill-short-drama-master",
+      "created": "2026-06-14",
+      "updated": "2026-07-15",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "woqianfu/duanju-master",
+      "stars": 7,
+      "language": "HTML",
+      "description": "🎬 短剧大师™ v6.2.4 — 微短剧全流程一体化创作技能 | 二十一位大师四军团+进化总督察 | 研究军团案例驱动创作 | 进化大师KPI监督 | 从一句话创意到小云雀成片 | Short Drama Master™ — All-in-one micro-drama creation skill",
+      "url": "https://github.com/woqianfu/duanju-master",
+      "created": "2026-06-14",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "j5onrf/local-ai",
+      "stars": 5,
+      "language": "Python",
+      "description": "Local-Ai Agent with custom integrated tools & skills. Ultra-light built for Hyprland, Omarchy, Odysseus, and Hermes.",
+      "url": "https://github.com/j5onrf/local-ai",
+      "created": "2026-05-25",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Ephesian-kingpost533/hermes-agent-self-evolution",
+      "stars": 5,
+      "language": "Python",
+      "description": "Automate the evolution and optimization of Hermes Agent’s prompts, skills, and code using genetic algorithms without GPU training.",
+      "url": "https://github.com/Ephesian-kingpost533/hermes-agent-self-evolution",
+      "created": "2026-03-21",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "S3YED/appie-kit",
+      "stars": 5,
+      "language": "Python",
+      "description": "Build Your Own AI Employee. The complete starter kit for OpenClaw + Hermes Agent. 155 deduplicated skills, drag-and-drop workspace, case studies, inst",
+      "url": "https://github.com/S3YED/appie-kit",
+      "created": "2026-03-26",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "openclawby/openclawby-skills",
+      "stars": 4,
+      "language": "CSS",
+      "description": "Official Clawby skills for AI agents — live market, on-chain & social data plus trade execution. One API key, any agent.",
+      "url": "https://github.com/openclawby/openclawby-skills",
+      "created": "2026-07-05",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "Ashutosh2M/ExpertLens",
+      "stars": 4,
+      "language": "HTML",
+      "description": "AI skill that forces expert-level thinking on any task. Activates structured reasoning, domain expertise, honest self-audit, and multi-model swarm col",
+      "url": "https://github.com/Ashutosh2M/ExpertLens",
+      "created": "2026-04-20",
+      "updated": "2026-07-14",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "fastrevmd-lab/fwskillsshare",
+      "stars": 4,
+      "language": "Shell",
+      "description": "Agent skills for firewall work — parsing, auditing, converting, and running SRX. Works with Claude Code, Codex, and Hermes so far.",
+      "url": "https://github.com/fastrevmd-lab/fwskillsshare",
+      "created": "2026-03-07",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "lukemcqueen/hermes-cortex",
+      "stars": 4,
+      "language": "Python",
+      "description": "Config, skills, memory, and observability layer for my personal AI agent. Persistent knowledge base, ClawMetry dashboard, and self-improving workflow ",
+      "url": "https://github.com/lukemcqueen/hermes-cortex",
+      "created": "2026-06-03",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "danieljustus/symaira-eraseme",
+      "stars": 3,
+      "language": "Python",
+      "description": "Automated data broker removal tool ⌫ close your accounts, erase your data.",
+      "url": "https://github.com/danieljustus/symaira-eraseme",
+      "created": "2026-05-19",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "GipityAI/skills",
+      "stars": 3,
+      "language": "JavaScript",
+      "description": "Agent skills and the Claude Code plugin for Gipity. Teach any AI coding agent (Claude Code, Hermes, OpenClaw, or anything that reads SKILL.md) to buil",
+      "url": "https://github.com/GipityAI/skills",
+      "created": "2026-06-10",
+      "updated": "2026-07-17",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "Alex663028/pulse-agent",
+      "stars": 3,
+      "language": "Python",
+      "description": "Pulse — Hermes-style self-improving AI agent. Reliability-first rebuild with evaluated skill self-evolution, multi-agent team orchestration, dialectic",
+      "url": "https://github.com/Alex663028/pulse-agent",
+      "created": "2026-07-13",
+      "updated": "2026-07-17",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "Guilhermepelido/hermes-optimization-guide",
+      "stars": 3,
+      "language": "Shell",
+      "description": "Optimize Hermes Agent performance with structured guides, installable skills, tailored configuration templates, and automated VPS deployment scripts.",
+      "url": "https://github.com/Guilhermepelido/hermes-optimization-guide",
+      "created": "2026-05-02",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "karlorz/llm-wiki",
+      "stars": 3,
+      "language": "TypeScript",
+      "description": "Multi-skill Claude Code plugin for Karpathy-style interlinked markdown knowledge bases. Hermes Agent llm-wiki wire-compatible.",
+      "url": "https://github.com/karlorz/llm-wiki",
+      "created": "2026-05-02",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "reymondmeking-dot/nuwa-selfhosted",
+      "stars": 2,
+      "language": "Python",
+      "description": "Hermes skill for self-hosted software discovery using the awesome-selfhosted-data dataset",
+      "url": "https://github.com/reymondmeking-dot/nuwa-selfhosted",
+      "created": "2026-06-30",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "reymondmeking-dot/nuwa-ppt-generation",
+      "stars": 2,
+      "language": "Python",
+      "description": "Agentic SVG-first presentation generation system with cross-platform nuwa-ppt CLI",
+      "url": "https://github.com/reymondmeking-dot/nuwa-ppt-generation",
+      "created": "2026-06-30",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "Arseni6361/hermes-CCC",
+      "stars": 2,
+      "language": "-",
+      "description": "Integrate Hermes Agent skills directly into Claude Code for native agentic operations without external processes or locking.",
+      "url": "https://github.com/Arseni6361/hermes-CCC",
+      "created": "2026-05-01",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Abderrahm7167/hermes-ui",
+      "stars": 2,
+      "language": "-",
+      "description": "Control Hermes Agent with a single-file React UI for chat, file browsing, skill management, logs, and memory inspection",
+      "url": "https://github.com/Abderrahm7167/hermes-ui",
+      "created": "2026-04-28",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Lucasdjs22/hermes-hud",
+      "stars": 2,
+      "language": "Python",
+      "description": "Monitor AI agent memory, skills, and behavior in a live terminal HUD for Hermes.",
+      "url": "https://github.com/Lucasdjs22/hermes-hud",
+      "created": "2026-04-26",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Markwayneclarkgeorgesbraque941/Ankh.md",
+      "stars": 2,
+      "language": "-",
+      "description": "Enable multiple scoped Hermes Agents per project to create tailored AI workflows with local configs, skills, and tools for better agent control.",
+      "url": "https://github.com/Markwayneclarkgeorgesbraque941/Ankh.md",
+      "created": "2026-03-28",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "heshuren371/math-textbook-skills",
+      "stars": 2,
+      "language": "-",
+      "description": "Math textbook authoring skill — turns a syllabus into structured LaTeX with domain-specific audits. Works with Hermes, Claude Code, and Codex CLI.",
+      "url": "https://github.com/heshuren371/math-textbook-skills",
+      "created": "2026-07-13",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "drippy-passport968/agent-supervision-skills",
+      "stars": 2,
+      "language": "PowerShell",
+      "description": "Delegate coding tasks to agents, collect artifacts, and verify results locally with standalone supervision skills for Claude, Codex, and Kimi automati",
+      "url": "https://github.com/drippy-passport968/agent-supervision-skills",
+      "created": "2026-05-24",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "LatestPlayz/awesome-persona-skills",
+      "stars": 2,
+      "language": "-",
+      "description": "Distill human behaviors, roles, and personality traits into reusable AI agent skills for your projects.",
+      "url": "https://github.com/LatestPlayz/awesome-persona-skills",
+      "created": "2026-04-30",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "GoSlowPoke168/hermes-crawl4searxng",
+      "stars": 1,
+      "language": "Shell",
+      "description": "Hermes plugin to allow the agent to use Crawl4AI and SearXNG when searching the web. ",
+      "url": "https://github.com/GoSlowPoke168/hermes-crawl4searxng",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "thousandcents/hermes-blogwatcher-skill",
+      "stars": 1,
+      "language": "Python",
+      "description": "Hermes Agent skill for monitoring 10 financial news RSS sources with 5-section curated output. 3x daily cron-powered financial news push.",
+      "url": "https://github.com/thousandcents/hermes-blogwatcher-skill",
+      "created": "2026-06-01",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "currentslab/news-api-skills",
+      "stars": 1,
+      "language": "Shell",
+      "description": "Install-ready Currents News API skills for AI agents (OpenAI Codex, Hermes, OpenClaw, OpenCode, Mistral Vibe, Goose, OpenHands), with secure server-si",
+      "url": "https://github.com/currentslab/news-api-skills",
+      "created": "2026-04-09",
+      "updated": "2026-07-12",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "SchoolOfFreelancing/Hermes-Agent-Training",
+      "stars": 1,
+      "language": "-",
+      "description": "Hermes Agent Training — Design by School of Freelancing",
+      "url": "https://github.com/SchoolOfFreelancing/Hermes-Agent-Training",
+      "created": "2026-06-29",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "shivang2000/personal-hermes-agent-setup",
+      "stars": 1,
+      "language": "TypeScript",
+      "description": "Sanitized Hermes Agent config, skills, setup backup",
+      "url": "https://github.com/shivang2000/personal-hermes-agent-setup",
+      "created": "2026-06-21",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "wesleysimplicio/simplicio-agent",
+      "stars": 1,
+      "language": "Python",
+      "description": "Local-first autonomous agent: Hermes speed plus Rust determinism, gated actions, checkpoints, evidence receipts, MCP, skills, and multi-model freedom.",
+      "url": "https://github.com/wesleysimplicio/simplicio-agent",
+      "created": "2026-07-01",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "shira022/loop-engineering-template",
+      "stars": 1,
+      "language": "Python",
+      "description": "Loop Engineering template — AI-agent-assisted development with agentskills.io skills. Work → Learn → Improve cycle.",
+      "url": "https://github.com/shira022/loop-engineering-template",
+      "created": "2026-07-10",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "Deriest/aic-skill",
+      "stars": 1,
+      "language": "Shell",
+      "description": "Turn natural language into engineering deliverables through an AI Engineering Organization powered by Hermes Agent.",
+      "url": "https://github.com/Deriest/aic-skill",
+      "created": "2026-07-06",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "JackReis/hermes-skills",
+      "stars": 1,
+      "language": "Python",
+      "description": "Custom and agent-created Hermes Agent skills",
+      "url": "https://github.com/JackReis/hermes-skills",
+      "created": "2026-07-08",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "fn2ai/fn2-hermes-skill",
+      "stars": 1,
+      "language": "Python",
+      "description": "FN2 skill for Hermes Agent — grounded stock/market research and schedulable research agents (agentskills.io, zero-dependency)",
+      "url": "https://github.com/fn2ai/fn2-hermes-skill",
+      "created": "2026-06-19",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "xinyo/media-fan",
+      "stars": 0,
+      "language": "Python",
+      "description": "a bunch of media organise skills and scripts for Agent",
+      "url": "https://github.com/xinyo/media-fan",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "CodeSigils/repo-health-and-sync-skill",
+      "stars": 0,
+      "language": "Python",
+      "description": "Repository health audit methodology for AI coding agents. Runs discover → infer → report on any git repository — no hardcoded checklists, no shipped s",
+      "url": "https://github.com/CodeSigils/repo-health-and-sync-skill",
+      "created": "2026-06-26",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "tbdavid2019/hermes-agent-docs-skill",
+      "stars": 0,
+      "language": "MDX",
+      "description": "skill系列 - 讓你的LLM 有 hermes agent 的維護知識(自動更新)",
+      "url": "https://github.com/tbdavid2019/hermes-agent-docs-skill",
+      "created": "2026-04-15",
+      "updated": "2026-07-16",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "catursetyo/Cali",
+      "stars": 0,
+      "language": "Python",
+      "description": "A local-first personal finance ledger for Hermes Agent, featuring transaction tracking, budgets, bills, debts, reports, imports, and encrypted backups",
+      "url": "https://github.com/catursetyo/Cali",
+      "created": "2026-07-13",
+      "updated": "2026-07-14",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "RKelln/hermes_skills",
+      "stars": 0,
+      "language": "Python",
+      "description": "Hermes Agent skills",
+      "url": "https://github.com/RKelln/hermes_skills",
+      "created": "2026-06-25",
+      "updated": "2026-07-12",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "GACN/codebase-forensics",
+      "stars": 0,
+      "language": "-",
+      "description": "代码考古诊断：在读代码之前，先用文件系统取证分析项目的健康度。5个维度：变更热点、巴士因子、故障聚类、项目活力、救火频率。",
+      "url": "https://github.com/GACN/codebase-forensics",
+      "created": "2026-07-12",
+      "updated": "2026-07-12",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "raydatalab/hermes-smart-router",
+      "stars": 0,
+      "language": "Python",
+      "description": "Semantic model tier router for Hermes Agent ",
+      "url": "https://github.com/raydatalab/hermes-smart-router",
+      "created": "2026-07-09",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "fengjunlu618/watch-video",
+      "stars": 0,
+      "language": "Python",
+      "description": "给 Agent 装上视频的眼睛和耳朵 🎬 Hermes 技能：yt-dlp 下载 + ffmpeg 抽帧 + Whisper 转写，让 AI 真正'看'懂视频。claude-video 的 Hermes 移植版。",
+      "url": "https://github.com/fengjunlu618/watch-video",
+      "created": "2026-07-11",
+      "updated": "2026-07-11",
+      "sources": [
+        "topic"
+      ]
+    },
+    {
+      "full_name": "dakshgodara2001/hermes-agent-data",
+      "stars": 0,
+      "language": "Python",
+      "description": "Nightly sync of Hermes agent data — skills, cron jobs, config, and memories",
+      "url": "https://github.com/dakshgodara2001/hermes-agent-data",
+      "created": "2026-05-13",
+      "updated": "2026-07-17",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "liunina/hermes-skills",
+      "stars": 0,
+      "language": "JavaScript",
+      "description": "hermes-skills",
+      "url": "https://github.com/liunina/hermes-skills",
+      "created": "2026-07-01",
+      "updated": "2026-07-17",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "miqui/d3-hermes-skill-corpus",
+      "stars": 0,
+      "language": "TypeScript",
+      "description": "Local Dockerized D3 hierarchy explorer for the Hermes skill corpus",
+      "url": "https://github.com/miqui/d3-hermes-skill-corpus",
+      "created": "2026-06-15",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "jorinyang/awesome-skills",
+      "stars": 0,
+      "language": "Python",
+      "description": "Curated collection of Agent Skills — answer, feishu, zhike, travel, and methodology skills for Hermes Agent.",
+      "url": "https://github.com/jorinyang/awesome-skills",
+      "created": "2026-06-04",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "vystartasv/skills",
+      "stars": 0,
+      "language": "Python",
+      "description": "Hermes skills: correction-steering-capture, intent-clarification, hermes-skillopt",
+      "url": "https://github.com/vystartasv/skills",
+      "created": "2026-07-05",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "ConductionNL/hermiq",
+      "stars": 0,
+      "language": "PHP",
+      "description": "Hermiq is a nextclout implementation of the Hermes AI framework an open-source AI agent from Nous Research that can remember context, use tools, learn",
+      "url": "https://github.com/ConductionNL/hermiq",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "unsigned-gg/agentic",
+      "stars": 0,
+      "language": "TypeScript",
+      "description": "Agent-harness monorepo — pi.dev + hermes-agent configs, extensions, shared skills, local-model bootstrap",
+      "url": "https://github.com/unsigned-gg/agentic",
+      "created": "2026-07-04",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "zzhzhangzhihao/hermes-skill-system",
+      "stars": 0,
+      "language": "Python",
+      "description": "Enterprise-Grade AI Agent Skill Architecture — 92+ skills, 20+ categories, battle-tested through 28+ iteration cycles",
+      "url": "https://github.com/zzhzhangzhihao/hermes-skill-system",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "dryvist/nix-hermes",
+      "stars": 0,
+      "language": "Python",
+      "description": "Shared content bundle (skills + SOUL persona) for the Hermes autonomous agent",
+      "url": "https://github.com/dryvist/nix-hermes",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "shing26/hermes-feishu-setup-skill",
+      "stars": 0,
+      "language": "-",
+      "description": "Hermes Agent skill: configure the Feishu/Lark multi-profile messaging gateway (isolated cron delivery, Windows startup, event-subscription pitfalls).",
+      "url": "https://github.com/shing26/hermes-feishu-setup-skill",
+      "created": "2026-07-16",
+      "updated": "2026-07-16",
+      "sources": [
+        "search",
+        "agent"
+      ]
+    },
+    {
+      "full_name": "SleepGod8/hermes-skills",
+      "stars": 0,
+      "language": "TeX",
+      "description": "-",
+      "url": "https://github.com/SleepGod8/hermes-skills",
+      "created": "2026-07-10",
+      "updated": "2026-07-16",
+      "sources": [
+        "search"
+      ]
+    },
+    {
+      "full_name": "myoodu8447/blink-skill",
+      "stars": 0,
+      "language": "JavaScript",
+      "description": "Enable AI to monitor your screen and provide proactive assistance based on your current activity using Claude Vision.",
+      "url": "https://github.com/myoodu8447/blink-skill",
+      "created": "2026-05-02",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "gingerninja85/askhermie.dev",
+      "stars": 0,
+      "language": "Astro",
+      "description": "Hermie skill catalog, tools lab, and AI systems assistant homepage",
+      "url": "https://github.com/gingerninja85/askhermie.dev",
+      "created": "2026-06-30",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    },
+    {
+      "full_name": "JackReis/shared-agent-skills",
+      "stars": 0,
+      "language": "TypeScript",
+      "description": "Skills shared across Hermes Agent and Claude Code",
+      "url": "https://github.com/JackReis/shared-agent-skills",
+      "created": "2026-07-08",
+      "updated": "2026-07-16",
+      "sources": [
+        "agent"
+      ]
+    }
+  ]
+}

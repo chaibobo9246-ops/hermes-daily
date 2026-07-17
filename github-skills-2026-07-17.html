@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-07-17</title>
+<style>
+:root {
+  --bg-primary: #0d0d12;
+  --bg-card: #13131a;
+  --bg-hover: #1a1a24;
+  --border: #1e1e2e;
+  --text-primary: #e2e2f0;
+  --text-secondary: #8888a0;
+  --text-muted: #5a5a72;
+  --accent: #a78bfa;
+  --accent-glow: #7c3aed;
+  --green: #4ade80;
+  --blue: #60a5fa;
+  --orange: #fb923c;
+  --red: #f87171;
+  --radius: 14px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 28px 20px;
+  min-height:100vh;
+  line-height:1.5;
+}
+
+.container { max-width:1200px; margin:0 auto; }
+
+/* --- Header --- */
+.header {
+  background: linear-gradient(160deg, #13111f 0%, #0d0d17 50%, #0f0f1a 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c4b5fd, #8b5cf6, #6d28d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+.header .subtitle {
+  color: var(--text-secondary);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.header .subtitle span {
+  background: rgba(124,58,237,0.10);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* --- Stats Row --- */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 18px;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124,58,237,0.35);
+  box-shadow: 0 8px 30px rgba(124,58,237,0.08);
+}
+.stat-card .num {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.stat-card .label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.stat-card.new { border-left: 3px solid var(--accent); }
+.stat-card.new .num { background: linear-gradient(135deg, #c4b5fd, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-card.updated { border-left: 3px solid var(--blue); }
+.stat-card.updated .num { color: var(--blue); }
+.stat-card.star { border-left: 3px solid var(--green); }
+.stat-card.star .num { color: var(--green); }
+.stat-card.total { border-left: 3px solid var(--orange); }
+.stat-card.total .num { color: var(--orange); }
+
+/* --- Section --- */
+.section {
+  margin-bottom: 24px;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon { font-size: 22px; }
+.section-title .count {
+  font-size: 12px;
+  background: rgba(124,58,237,0.15);
+  color: var(--accent);
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* --- Table --- */
+.table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+table { width: 100%; border-collapse: collapse; }
+thead { background: rgba(124,58,237,0.06); }
+th {
+  padding: 14px 16px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-weight: 700;
+}
+td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(30,30,46,0.5);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover { background: var(--bg-hover); }
+.skill-name { font-weight: 700; color: var(--text-primary); }
+.skill-name a { color: var(--text-primary); text-decoration: none; transition: color 0.15s; }
+.skill-name a:hover { color: var(--accent); }
+.skill-desc { color: var(--text-secondary); font-size: 13px; line-height: 1.6; }
+.new-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+.updated-badge {
+  display: inline-block;
+  background: rgba(96,165,250,0.15);
+  color: var(--blue);
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.stars-cell { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--green); white-space: nowrap; }
+.lang-tag {
+  display: inline-block;
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag.hermes { background: rgba(124,58,237,0.12); color: var(--accent); }
+.tag.skill  { background: rgba(74,222,128,0.10); color: var(--green); }
+.tag.cn     { background: rgba(251,146,60,0.10); color: var(--orange); }
+
+/* --- Detail Card --- */
+.detail-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.detail-card h3 {
+  color: var(--accent);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.detail-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* --- Empty State --- */
+.empty-state {
+  background: var(--bg-card);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.empty-state .emoji { font-size: 40px; margin-bottom: 10px; }
+.empty-state p { color: var(--text-secondary); font-size: 14px; }
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 36px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.footer a { color: var(--text-secondary); text-decoration: none; transition: color 0.15s; }
+.footer a:hover { color: var(--accent); }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  body { padding: 14px; }
+  .header { padding: 22px 20px; }
+  .header h1 { font-size: 22px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  th:nth-child(2), td:nth-child(2) { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ====== HEADER ====== -->
+<div class="header">
+<h1>🔮 GitHub Hermes Skill 每日盘点</h1>
+<div class="subtitle">
+  📅 2026-07-17 (周五)
+  <span>GitHub API</span>
+  <span>topic:hermes-skill + search</span>
+  <span>75 repos indexed</span>
+</div>
+</div>
+
+<!-- ====== STATS ====== -->
+<div class="stats-row">
+  <div class="stat-card new">
+    <div class="num">9</div>
+    <div class="label">🆕 本周新增</div>
+  </div>
+  <div class="stat-card updated">
+    <div class="num">7</div>
+    <div class="label">📝 今日更新</div>
+  </div>
+  <div class="stat-card star">
+    <div class="num">75</div>
+    <div class="label">📦 生态总计</div>
+  </div>
+  <div class="stat-card total">
+    <div class="num">17,276</div>
+    <div class="label">⭐ 总 Stars</div>
+  </div>
+</div>
+
+<!-- ====== TODAY'S NEW SKILLS ====== -->
+<div class="section">
+<div class="section-title">
+  <span class="icon">🆕</span> 本周新增 Skill
+  <span class="count">9 repos</span>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th style="width:30%">Skill / 仓库</th>
+  <th>描述</th>
+  <th style="width:12%;text-align:right">⭐ Stars</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/zzhzhangzhihao/hermes-skill-system" target="_blank">hermes-skill-system</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+      <span class="tag cn">中文</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    企业级 AI Agent 技能架构 — 92+ 技能、20+ 分类、经过 28+ 项目实战验证的生产级技能管理体系。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/shing26/hermes-feishu-setup-skill" target="_blank">hermes-feishu-setup-skill</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+      <span class="tag cn">飞书</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Hermes Agent 飞书/Lark 多 Profile 消息网关配置技能 — 支持隔离式 Cron 投递通道。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/Alex663028/pulse-agent" target="_blank">pulse-agent</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+      <span class="tag skill">self-evolution</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Pulse — Hermes 风格的自进化 AI Agent。可靠性优先重构，支持评估驱动的技能自进化。
+  </td>
+  <td class="stars-cell">⭐ 3</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/heshuren371/math-textbook-skills" target="_blank">math-textbook-skills</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag skill">education</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    数学教材创作技能 — 将教学大纲转化为结构化 LaTeX，含领域专项审计。
+  </td>
+  <td class="stars-cell">⭐ 2</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/catursetyo/Cali" target="_blank">Cali</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag skill">finance</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    本地优先的个人财务账本 — 专为 Hermes Agent 设计，支持交易追踪、预算、账单管理。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/GoSlowPoke168/hermes-crawl4searxng" target="_blank">hermes-crawl4searxng</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+      <span class="tag skill">search</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Hermes 插件 — 让 Agent 使用 Crawl4AI + SearXNG 进行增强网络搜索。
+  </td>
+  <td class="stars-cell">⭐ 1</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/dryvist/nix-hermes" target="_blank">nix-hermes</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Nix 驱动的 Hermes 共享内容包 — skills + SOUL persona，面向自主 Agent。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/xinyo/media-fan" target="_blank">media-fan</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag skill">media</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    媒体文件组织 Skills 和脚本 — 面向 AI Agent 的媒体管理工具集。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/ConductionNL/hermiq" target="_blank">hermiq</a>
+      <span class="new-badge">NEW</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag hermes">hermes</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Hermiq — Nextcloud 上的 Hermes AI 框架实现，开源 AI Agent 集成方案。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ====== TODAY'S UPDATES ====== -->
+<div class="section">
+<div class="section-title">
+  <span class="icon">📝</span> 今日活跃更新
+  <span class="count">7 repos</span>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th style="width:30%">仓库</th>
+  <th>描述</th>
+  <th style="width:12%;text-align:right">⭐ Stars</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/conorbronsdon/avoid-ai-writing" target="_blank">avoid-ai-writing</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    审计并改写内容以消除 AI 写作痕迹的 Skill，支持所有主流 Agent 框架。
+  </td>
+  <td class="stars-cell">⭐ 2,408</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/Orkas-AI/Orkas" target="_blank">Orkas</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    开源多 Agent 桌面客户端 — 通过对话构建和指挥你的 AI Agent 团队。
+  </td>
+  <td class="stars-cell">⭐ 327</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/chefroger/smart-trade-ai" target="_blank">smart-trade-ai</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    国际贸易 AI 助手 — 32 个 B2B 技能（线索生成、OSINT、邮件、文档、合规）。
+  </td>
+  <td class="stars-cell">⭐ 30</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/clowlove/Hermes-House" target="_blank">Hermes-House</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    自进化多 Agent AI 系统 — 116+ Skills，含 TrendRadar·Reviewer·学习构建进化引擎。
+  </td>
+  <td class="stars-cell">⭐ 12</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/GipityAI/skills" target="_blank">GipityAI/skills</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    Gipity 的 Agent Skills 和 Claude Code 插件，兼容 Claude Code、Hermes 等。
+  </td>
+  <td class="stars-cell">⭐ 3</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/dakshgodara2001/hermes-agent-data" target="_blank">hermes-agent-data</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    每夜同步 Hermes Agent 数据 — skills、cron jobs、config、memories。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+<tr>
+  <td>
+    <div class="skill-name">
+      <a href="https://github.com/liunina/hermes-skills" target="_blank">liunina/hermes-skills</a>
+      <span class="updated-badge">UPD</span>
+    </div>
+  </td>
+  <td class="skill-desc">
+    个人 Hermes Skills 集合。
+  </td>
+  <td class="stars-cell">⭐ 0</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ====== ECOSYSTEM DETAILS ====== -->
+<div class="detail-card">
+<h3>📊 生态全景分析</h3>
+<p>
+  截至 2026-07-17，Hermes Agent 生态总计 <strong>75 个</strong> 已索引仓库，累计 <strong>17,276 Stars</strong>。
+  本周（07/13 — 07/17）新增 <strong>9 个</strong> 仓库，涵盖企业级技能架构、飞书集成、自进化 Agent、Crawl4AI 搜索增强等方向。
+</p>
+<p style="margin-top:12px;">
+  <strong>🔥 生态亮点：</strong><br>
+  · <strong>anbeime/skill</strong> (3,787★) — 最大的技能商店，72+ 精选技能包<br>
+  · <strong>eugeniughelbur/obsidian-second-brain</strong> (3,315★) — Obsidian 第二大脑，跨 CLI 命令<br>
+  · <strong>conorbronsdon/avoid-ai-writing</strong> (2,408★) — AI 写作检测与改写（今日更新）<br>
+  · <strong>wondelai/skills</strong> (1,648★) — 跨平台 Agent Skills 集合<br>
+  · <strong>ksimback/hermes-ecosystem</strong> (1,150★) — Hermes Atlas 生态地图<br>
+</p>
+<p style="margin-top:12px;">
+  <strong>🔍 本周趋势：</strong>中文生态持续扩展（hermes-skill-system、feishu-setup）、自进化 Agent 方向活跃（pulse-agent）、企业生产力工具增长（Cali 财务、math-textbook 教育）。
+</p>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="footer">
+  🤖 Generated by Hermes Agent (Nous Research) · 2026-07-17 · 
+  <a href="https://github.com/chaibobo9246-ops/hermes-daily" target="_blank">GitHub 存档</a> · 
+  数据来源: <a href="https://api.github.com" target="_blank">GitHub API</a> · 
+  <a href="https://hermes-daily-1443003958.cos-website.ap-guangzhou.myqcloud.com/github-skills-2026-07-17.html" target="_blank">COS 静态站</a>
+</div>
+
+</div>
+</body>
+</html>
