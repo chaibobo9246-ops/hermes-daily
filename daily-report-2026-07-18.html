@@ -3,334 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ettoreal 行业日报 · 2026-07-18</title>
+<title>Ettoreal 行业日报 — 2026年7月18日</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #0a0a0f; color: #e2e8f0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  line-height: 1.7; padding: 24px;
+:root {
+  --bg: #0a0a0f; --card: #13131a; --border: #1e1e2e; --hover: #1a1a24;
+  --text: #e2e8f0; --sub: #94a3b8; --muted: #64748b;
+  --green: #10b981; --amber: #f59e0b; --red: #ef4444; --purple: #a78bfa;
+  --blue: #3b82f6; --pink: #ec4899;
+  --radius: 14px;
 }
-.container { max-width: 1200px; margin: 0 auto; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;padding:20px;line-height:1.6}
+.container{max-width:1300px;margin:0 auto}
 
 /* Header */
-.header {
-  text-align: center; padding: 40px 0 32px;
-  position: relative;
-}
-.header h1 {
-  font-size: 42px; font-weight: 800;
-  background: linear-gradient(135deg, #a8e063, #f7ff00, #10b981);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; letter-spacing: 2px;
-}
-.header .sub { color: #64748b; font-size: 14px; margin-top: 6px; }
-.header .date {
-  display: inline-block; margin-top: 10px; padding: 4px 16px;
-  border: 1px solid rgba(168,224,99,0.2); border-radius: 20px;
-  font-size: 13px; color: #a8e063;
-}
+.header{text-align:center;padding:36px 0 28px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:28px}
+.header h1{font-size:30px;font-weight:800;background:linear-gradient(135deg,#a8e063,#f7ff00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.header .date{color:var(--muted);font-size:13px}
+.header .meta{color:var(--sub);font-size:12px;margin-top:4px}
 
-/* Glow Card */
-.glow-card {
-  background: linear-gradient(135deg, rgba(168,224,99,0.10), rgba(247,255,0,0.04));
-  border: 1px solid rgba(168,224,99,0.15); border-radius: 24px;
-  padding: 28px 32px; margin-bottom: 28px;
-  position: relative; overflow: hidden;
-}
-.glow-card::before {
-  content: ''; position: absolute; top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle at 30% 20%, rgba(168,224,99,0.04) 0%, transparent 50%);
-  pointer-events: none;
-}
-.glow-card h2 { font-size: 16px; color: #a8e063; margin-bottom: 14px; }
-.glow-card .metrics { display: flex; gap: 32px; flex-wrap: wrap; }
-.glow-card .metric { text-align: center; }
-.glow-card .metric .val { font-size: 28px; font-weight: 800; color: #f7ff00; }
-.glow-card .metric .lbl { font-size: 12px; color: #64748b; margin-top: 2px; }
+/* Alert banner */
+.alert{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;display:flex;gap:10px;align-items:flex-start}
+.alert .icon{font-size:22px;flex-shrink:0}
+.alert .title{color:var(--red);font-weight:700;margin-bottom:2px;font-size:13px}
+.alert .body{color:#fca5a5;font-size:12px}
 
-/* Sections */
-.section { margin-bottom: 32px; }
-.section-title {
-  font-size: 18px; font-weight: 700; margin-bottom: 18px;
-  padding-left: 14px; border-left: 3px solid #10b981;
-  display: flex; align-items: center; gap: 8px;
-}
+/* KPI Cards */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 16px;transition:transform .2s}
+.kpi:hover{transform:translateY(-2px);border-color:rgba(168,224,99,0.2)}
+.kpi .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.kpi .value{font-size:26px;font-weight:800;line-height:1.1}
+.kpi .sub{font-size:11px;color:var(--sub);margin-top:4px}
+.kpi .value.up{color:var(--green)}.kpi .value.down{color:var(--red)}.kpi .value.warn{color:var(--amber)}
 
-/* Cards Grid */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+/* Section */
+.section{margin-bottom:32px}
+.section-title{font-size:18px;font-weight:700;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(168,224,99,0.25);display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:22px}
 
-.card {
-  background: #13131a; border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 18px; padding: 22px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.12); }
-.card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: #a8e063; }
+/* News Grid */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:14px}
+.news{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:all .2s}
+.news:hover{transform:translateY(-2px);border-color:rgba(168,224,99,0.15)}
+.news .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.news .tag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600}
+.tag-log{background:rgba(16,185,129,0.15);color:var(--green)}
+.tag-exp{background:rgba(59,130,246,0.15);color:var(--blue)}
+.tag-reg{background:rgba(239,68,68,0.15);color:var(--red)}
+.tag-tech{background:rgba(168,85,247,0.15);color:var(--purple)}
+.tag-beauty{background:rgba(236,72,153,0.15);color:var(--pink)}
+.tag-macro{background:rgba(251,191,36,0.15);color:var(--amber)}
+.news .source{font-size:11px;color:var(--muted);margin-bottom:4px}
+.news h4{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.news p{font-size:13px;color:var(--sub);line-height:1.7}
+.news .date-badge{font-size:10px;color:var(--muted);float:right;margin-top:-4px}
 
-/* News Items */
-.news-item {
-  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
-}
-.news-item:last-child { border-bottom: none; }
-.news-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 24px; height: 24px; border-radius: 50%;
-  background: rgba(168,224,99,0.12); color: #a8e063;
-  font-size: 11px; font-weight: 700; margin-right: 8px;
-  flex-shrink: 0;
-}
-.news-title { font-size: 14px; font-weight: 600; color: #e2e8f0; }
-.news-desc { font-size: 13px; color: #94a3b8; margin-top: 3px; margin-left: 32px; }
-.news-source { font-size: 11px; color: #64748b; margin-top: 2px; margin-left: 32px; }
-.tag {
-  display: inline-block; padding: 2px 8px; border-radius: 4px;
-  font-size: 10px; font-weight: 600; margin-right: 4px;
-}
-.tag-hot { background: rgba(239,68,68,0.12); color: #ef4444; }
-.tag-new { background: rgba(168,224,99,0.12); color: #a8e063; }
-.tag-purple { background: rgba(167,139,250,0.12); color: #a78bfa; }
-.tag-blue { background: rgba(59,130,246,0.12); color: #3b82f6; }
+/* Insight box */
+.insight{background:linear-gradient(135deg,rgba(168,85,247,0.08),rgba(59,130,246,0.04));border:1px solid rgba(168,85,247,0.15);border-radius:var(--radius);padding:18px 22px;margin-bottom:20px}
+.insight h4{color:var(--purple);font-size:14px;margin-bottom:6px}
+.insight p{font-size:13px;color:#c4b5fd;line-height:1.7}
 
-/* Data Table */
-.data-table { width: 100%; border-collapse: separate; border-spacing: 0; }
-.data-table th {
-  text-align: left; padding: 10px 14px; font-size: 12px;
-  color: #64748b; font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.data-table td {
-  padding: 10px 14px; font-size: 13px;
-  border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-.data-table .val-up { color: #ef4444; }
-.data-table .val-down { color: #10b981; }
+/* Tables */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+th{background:rgba(168,224,99,0.04);padding:12px 14px;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:10px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.04)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.02)}
+.pos{color:var(--green)}.neg{color:var(--red)}.neut{color:var(--amber)}
+.company{font-weight:600;color:var(--text)}
 
-/* Footer */
-.footer {
-  text-align: center; padding: 32px 0 16px;
-  color: #64748b; font-size: 12px;
-}
-.footer a { color: #a78bfa; text-decoration: none; }
+/* Charts */
+.chart-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.chart-label{font-size:12px;color:var(--sub);width:130px;text-align:right;flex-shrink:0}
+.chart-track{flex:1;height:16px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+.chart-fill{height:100%;border-radius:8px;transition:width .6s}
+.chart-val{font-size:12px;color:var(--muted);width:140px;flex-shrink:0;text-align:left}
+.fill-green{background:linear-gradient(90deg,#10b981,#a8e063)}
+.fill-purple{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+.fill-blue{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.fill-pink{background:linear-gradient(90deg,#ec4899,#f472b6)}
 
-/* Bar Chart */
-.bar-group { display: flex; align-items: flex-end; gap: 12px; height: 120px; padding-top: 4px; }
-.bar-item { display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; }
-.bar {
-  width: 100%; max-width: 48px; border-radius: 8px 8px 0 0;
-  min-height: 8px;
-}
-.bar-p { background: linear-gradient(to top, #a78bfa, #c4b5fd); }
-.bar-g { background: linear-gradient(to top, #10b981, #34d399); }
-.bar-label { font-size: 10px; color: #94a3b8; text-align: center; }
+/* Stock row */
+.stock-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px}
 
-/* Donut */
-.donut-wrap { display: flex; align-items: center; gap: 24px; }
-.donut {
-  width: 120px; height: 120px; border-radius: 50%; position: relative;
-  background: conic-gradient(#a78bfa 0% 42%, #c4b5fd 42% 62%, #ddd6fe 62% 78%, #10b981 78% 90%, #f59e0b 90% 100%);
-  flex-shrink: 0;
-}
-.donut::after {
-  content: '5家'; position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%); color: #f7ff00;
-  font-size: 14px; font-weight: 800; width: 64px; height: 64px;
-  border-radius: 50%; background: #13131a;
-  display: flex; align-items: center; justify-content: center;
-}
-.legend { font-size: 12px; }
-.legend-item { display: flex; align-items: center; gap: 6px; margin: 4px 0; }
-.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.footer{text-align:center;padding:24px 0;border-top:1px solid rgba(255,255,255,0.06);margin-top:32px;color:var(--muted);font-size:12px}
+.footer a{color:var(--green);text-decoration:none}
+
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- Header -->
+<!-- HEADER -->
 <div class="header">
-  <h1>ettoreal 行业日报</h1>
-  <div class="sub">物流 & 美妆 — 2026年7月18日 · 周六</div>
-  <div class="date">📅 丙午年 · 农历六月初四</div>
+  <h1>Ettoreal 行业日报</h1>
+  <div class="date">2026年7月18日 周六 · 丙午年五月廿四</div>
+  <div class="meta">📦 物流 & 快递 · 💄 美妆 & 消费 · 数据驱动决策</div>
 </div>
 
-<!-- Glow Overview -->
-<div class="glow-card">
-  <h2>⚡ 今日速览</h2>
-  <div class="metrics">
-    <div class="metric"><div class="val">42条</div><div class="lbl">物流相关新闻</div></div>
-    <div class="metric"><div class="val">12条</div><div class="lbl">美妆相关新闻</div></div>
-    <div class="metric"><div class="val">5/7</div><div class="lbl">快递巨头动态</div></div>
-    <div class="metric"><div class="val">3家</div><div class="lbl">拟/已IPO企业</div></div>
-  </div>
+<!-- KPI CARDS -->
+<div class="kpi-grid">
+  <div class="kpi"><div class="label">📦 社会物流总额 (1-5月)</div><div class="value up">146.6万亿</div><div class="sub">同比 +5.2% · 稳健增长</div></div>
+  <div class="kpi"><div class="label">📊 物流景气指数 (6月)</div><div class="value up">50.6%</div><div class="sub">↑0.3pp · 连续2月扩张</div></div>
+  <div class="kpi"><div class="label">🏢 快递满意度 Q2</div><div class="value up">85.0分</div><div class="sub">顺丰·京东前二 · 连续17年</div></div>
+  <div class="kpi"><div class="label">🚀 快递单票收入</div><div class="value up">+3.61%</div><div class="sub">反内卷下价格理性回升</div></div>
+  <div class="kpi"><div class="label">💄 珀莱雅(603605)</div><div class="value warn">23.05亿</div><div class="sub">Q1营收·港股IPO·花知晓42%净利</div></div>
+  <div class="kpi"><div class="label">🤖 无人配送</div><div class="value up">加速爆发</div><div class="sub">深圳331条路线·L4重卡落地</div></div>
 </div>
 
-<!-- Logistics Section -->
+<!-- INSIGHT -->
+<div class="insight">
+  <h4>🔮 本周核心洞察</h4>
+  <p>2026年7月快递行业进入「反内卷」深化期——四家头部公司上半年净利预增普遍70%+，圆通69-86%、申通109-134%、韵达71-99%，单票收入同比转正。无人配送从末端延伸至干线（L4重卡载货），绿色包装强制国标7月1日实施。美妆板块珀莱雅冲刺港股IPO成焦点，花知晓贡献42%集团净利润，国货美妆正从「流量驱动」转向「研发+品牌+出海」三轮驱动。</p>
+</div>
+
+<!-- ====== LOGISTICS ====== -->
 <div class="section">
-  <div class="section-title">📦 物流板块</div>
-  <div class="grid-2">
-    <div class="card">
-      <h3>🔥 热点聚焦</h3>
-      <div class="news-item">
-        <span class="news-num">1</span>
-        <span class="tag tag-hot">涨价</span>
-        <span class="news-title">中国快递行业结束价格战，头部公司单票收入全线上涨</span>
-        <div class="news-desc">反内卷政策落地一年后，顺丰、中通、圆通等头部快递企业单票收入普涨。行业从"以价换量"转向"以质换价"，服务质量成新竞争焦点。</div>
-        <div class="news-source">虎嗅 · 界面 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">2</span>
-        <span class="tag tag-new">无人车</span>
-        <span class="news-title">无人车加速普及，变身快递行业"标配"</span>
-        <div class="news-desc">新石器X6自装卸车首发，支持无人配送+自动装卸。广东万余建制村实现多快递品牌覆盖，无人车从园区试点走向规模化乡村配送。</div>
-        <div class="news-source">封面新闻 · 中华网 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">3</span>
-        <span class="tag tag-purple">调 查</span>
-        <span class="news-title">国家邮政局Q2满意度：顺丰、京东物流前二</span>
-        <div class="news-desc">2026年第二季度快递服务满意度调查公布，顺丰、京东物流继续领跑，中通、韵达紧随其后。服务体验成差异化竞争关键。</div>
-        <div class="news-source">新浪 · 中新网 · 7月</div>
-      </div>
-    </div>
-    <div class="card">
-      <h3>📰 行业动向</h3>
-      <div class="news-item">
-        <span class="news-num">4</span>
-        <span class="tag tag-blue">资本</span>
-        <span class="news-title">菜鸟港股IPO传闻重启，阿里急转向快递大变局</span>
-        <div class="news-desc">市场传闻菜鸟将重启港股IPO，阿里物流战略持续调整。圆通、申通、韵达、中通、顺丰已全部退出蜂网投资，行业格局加速重塑。</div>
-        <div class="news-source">36氪 · 电商派 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">5</span>
-        <span class="tag tag-new">监管</span>
-        <span class="news-title">快递包装不合规最高可罚2万</span>
-        <div class="news-desc">快递包装绿色化新规落地，不合规包装将面临最高2万元罚款。政策推动行业从过度包装向可循环、可降解转型。</div>
-        <div class="news-source">物流指闻 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">6</span>
-        <span class="tag tag-purple">盘点</span>
-        <span class="news-title">物流科技月刊6月出炉，上半年物流投诉榜：闪送居首</span>
-        <div class="news-desc">2026上半年物流科技投诉榜发布，闪送、菜鸟裹裹、货拉拉、申通等13家上榜。近8000家企业关注行业合规趋势。</div>
-        <div class="news-source">风闻 · 物流指闻 · 7月</div>
-      </div>
-    </div>
-  </div>
-</div>
+  <div class="section-title"><span class="icon">📦</span> 物流 & 快递板块</div>
 
-<!-- Express Giants -->
-<div class="section">
-  <div class="section-title">🚚 快递巨头动态一览</div>
-  <table class="data-table">
-    <thead>
-      <tr><th>公司</th><th>关键动态</th><th>趋势</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>顺丰</td><td>Q2满意度蝉联第一；单票收入上涨；退出蜂网投资</td><td class="val-up">↑ 价值升级</td></tr>
-      <tr><td>京东物流</td><td>Q2满意度第二；无人车配送布局扩大</td><td class="val-up">↑ 科技驱动</td></tr>
-      <tr><td>中通</td><td>胡润中国500强上榜；Q2满意度前十；单票收入上涨</td><td class="val-up">↑ 稳中向好</td></tr>
-      <tr><td>圆通</td><td>退出蜂网投资；单票收入上涨；上半年业绩稳健</td><td class="val-up">↑ 独立发展</td></tr>
-      <tr><td>韵达</td><td>退出蜂网投资；Q2满意度前十；单票收入上涨</td><td class="val-up">↑ 去阿里化</td></tr>
-      <tr><td>申通</td><td>退出蜂网投资；半年投诉上榜</td><td>→ 转型阵痛</td></tr>
-      <tr><td>极兔</td><td>上半年表现盘点；国内市场份额稳定</td><td>→ 稳步扩张</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Beauty Section -->
-<div class="section">
-  <div class="section-title">💄 美妆板块</div>
-  <div class="grid-2">
-    <div class="card">
-      <h3>🔥 珀莱雅（603605）专题</h3>
-      <div class="news-item">
-        <span class="news-num">1</span>
-        <span class="tag tag-hot">港股</span>
-        <span class="news-title">珀莱雅冲刺港股IPO，3年烧119亿广告费</span>
-        <div class="news-desc">珀莱雅再度赴港上市，"温商二代"接班后两个季度从"狂飙"变"失速"。近3年广告费119亿，研发投入不到6亿，73%毛利率靠营销驱动引争议。</div>
-        <div class="news-source">证券时报 · 新浪财经 · 中金在线 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">2</span>
-        <span class="tag tag-purple">收购</span>
-        <span class="news-title">7.79亿吞下"少女风顶流"花知晓，想做"美妆界安踏"</span>
-        <div class="news-desc">杭州百亿美妆巨头以7.79亿收购花知晓，冲击港股IPO。花知晓对集团利润贡献显著，但单一品牌依赖引发关注。</div>
-        <div class="news-source">亿邦动力 · 网易 · 7月</div>
-      </div>
+  <div class="news-grid">
+    <!-- 1 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-exp">头部业绩</span><span class="tag tag-reg">反内卷</span></div>
+      <span class="date-badge">7月14-17日</span>
+      <h4>四家快递公司上半年净利预增70%+，反内卷成效显著</h4>
+      <div class="source">📰 澎湃新闻 · 财联社 · 新浪财经</div>
+      <p>圆通预增69%-86%（31-34亿）、申通预增109%-134%（9.5-10.6亿）、韵达预增71%-99%（9.05-10.5亿），顺丰6月营收278.8亿(+6.19%)，单票收入连续4个月同比回升。国家邮政局副局长6月底带队赴上海调研五家快递总部，推进反内卷。行业从「以价换量」正式转向「以质换价」。</p>
     </div>
-    <div class="card">
-      <h3>📰 行业全景</h3>
-      <div class="news-item">
-        <span class="news-num">3</span>
-        <span class="tag tag-new">出海</span>
-        <span class="news-title">国货美妆出海日本，从"中国制造"到"中国品牌"</span>
-        <div class="news-desc">花知晓、彩棠等国货品牌加速日本市场布局。花知晓日本年销已破10亿，国货美妆海外认知度持续提升。</div>
-        <div class="news-source">新浪财经 · 21财经 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">4</span>
-        <span class="tag tag-hot">洗牌</span>
-        <span class="news-title">美妆市场加速洗牌：估值腰斩、IPO失效，资本退潮</span>
-        <div class="news-desc">一级市场美妆估值普遍腰斩，多个IPO项目失效。科学驱动、场景细分与全球化成为"下半场"关键词，资本更青睐有研发壁垒的企业。</div>
-        <div class="news-source">新华网 · 澎湃 · 7月</div>
-      </div>
-      <div class="news-item">
-        <span class="news-num">5</span>
-        <span class="tag tag-blue">上市</span>
-        <span class="news-title">毛戈平8年长跑终上市，市值超贝泰妮、敷尔佳</span>
-        <div class="news-desc">彩妆品牌毛戈平历时8年IPO终获批，上市首日市值超越贝泰妮和敷尔佳，成为国货彩妆新标杆。</div>
-        <div class="news-source">第一财经 · 7月</div>
-      </div>
+    <!-- 2 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-exp">申通</span><span class="tag tag-exp">圆通</span></div>
+      <span class="date-badge">7月17日</span>
+      <h4>圆通6月收入58.83亿(+6.44%)，申通6月收入54.75亿(+26.13%)</h4>
+      <div class="source">📰 财联社 · 公司公告</div>
+      <p>圆通速递6月快递产品收入58.83亿元，同比增长6.44%。申通快递6月业务量25.9亿票(+18.58%)，单票收入2.11元(+6.0%)，连续多月量价齐升。申通「丹鸟」并表效应持续释放，营收增速领先「通达系」。</p>
+    </div>
+    <!-- 3 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-tech">无人配送</span><span class="tag tag-exp">京东</span></div>
+      <span class="date-badge">7月3-14日</span>
+      <h4>京东物流联手嬴彻科技启动L4自动驾驶重卡载货，无人机参与广西救灾</h4>
+      <div class="source">📰 IT之家 · 京东物流</div>
+      <p>快递行业首个L4级自动驾驶重卡载货示范启动，干线无人化取得突破。7月12-14日台风「美莎克」致广西洪涝，京东调集多架应急无人机投送物资。深圳无人车夜间配送线路增长至331条，大湾区无人机物流航线已达1695条，单日可送货2万单。刘强东宣布「涅槃计划」称快递未来全部机器人配送。</p>
+    </div>
+    <!-- 4 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-exp">极兔</span><span class="tag tag-macro">全球</span></div>
+      <span class="date-badge">7月8-10日</span>
+      <h4>极兔Q2全球包裹量91.77亿件，日均首破1亿件</h4>
+      <div class="source">📰 新京报 · 格隆汇</div>
+      <p>极兔速递2026年Q2全球包裹处理总量91.77亿件，同比增长24.2%，日均包裹量首次突破1亿件。东南亚包裹量27.55亿件(+63.2%)，日均3030万件。中国市场缩减约百家合作伙伴，战略重心向拉美等新兴市场倾斜。与宁德时代签约5000台重卡换电，3-5分钟完成补能。</p>
+    </div>
+    <!-- 5 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-log">满意度</span><span class="tag tag-exp">顺丰</span></div>
+      <span class="date-badge">7月16日</span>
+      <h4>Q2快递满意度85.0分：顺丰连续17年第一，京东物流第二</h4>
+      <div class="source">📰 国家邮政局 · 海报新闻</div>
+      <p>2026年第二季度快递服务公众满意度得分85.0分，较Q1稳中有升。9大品牌中顺丰速运、京东快递分列前二。上半年邮政行业寄递业务量累计1088.9亿件(+4.2%)。顺丰持续回购港股，7月初连续6日回购耗资超1.4亿港元。</p>
+    </div>
+    <!-- 6 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-reg">政策</span><span class="tag tag-exp">菜鸟</span></div>
+      <span class="date-badge">7月1-10日</span>
+      <h4>快递过度包装强制国标7月1日实施，菜鸟战略转向跨境</h4>
+      <div class="source">📰 人民日报 · 财联社</div>
+      <p>我国首部快递过度包装强制性国家标准7月1日正式实施，明确包装箱适配、层数、胶带使用量3项硬指标。菜鸟国内供应链业务正式并入阿里中国电商事业群，战略重心全面转向跨境物流。菜鸟GT 2026无人车亮相亚双展，载重1780kg、续航230km。</p>
     </div>
   </div>
 </div>
 
-<!-- Key Data -->
+<!-- ====== FINANCIAL TABLE ====== -->
 <div class="section">
-  <div class="section-title">📊 数据速览</div>
-  <table class="data-table">
-    <thead>
-      <tr><th>指标</th><th>数据</th><th>口径</th><th>来源</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>快递满意度TOP2</td><td>顺丰第一、京东物流第二</td><td>2026年Q2</td><td>国家邮政局 ✓</td></tr>
-      <tr><td>快递价格趋势</td><td>头部企业单票收入全线上涨</td><td>2026上半年</td><td>虎嗅/界面 ✓</td></tr>
-      <tr><td>无人车配送</td><td>广东超1万建制村覆盖多品牌快递</td><td>截至2026年7月</td><td>封面新闻 ✓</td></tr>
-      <tr><td>珀莱雅广告费</td><td>3年119亿，研发不足6亿</td><td>2023-2025</td><td>证券时报 ✓</td></tr>
-      <tr><td>花知晓收购价</td><td>7.79亿元</td><td>2026年</td><td>亿邦动力 ✓</td></tr>
-      <tr><td>毛戈平上市市值</td><td>超越贝泰妮+敷尔佳</td><td>2026年7月</td><td>第一财经 ✓</td></tr>
-      <tr><td>蜂网投资退出</td><td>圆通/申通/韵达/中通/顺丰全部退出</td><td>2026年</td><td>电商派 ✓</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Risk & Outlook -->
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
-<div class="card" style="border-color: rgba(245,158,11,0.2); background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(239,68,68,0.02));">
-  <h3 style="color:#f59e0b;">⚠️ 风险提示</h3>
-  <div style="font-size:13px; color:#94a3b8;">
-    <p>• 快递涨价可能引发电商商家成本压力，部分中小商家或转向低价服务商</p>
-    <p>• 珀莱雅"重营销轻研发"模式在资本市场遇冷，港股IPO估值承压</p>
-    <p>• 国货美妆一级市场估值腰斩，融资难度加大，行业进入淘汰赛</p>
+  <div class="section-title"><span class="icon">📊</span> 快递头部企业关键指标</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>公司</th><th>最新营收/业绩</th><th>同比</th><th>单票收入</th><th>核心看点</th></tr>
+      <tr><td class="company">顺丰控股</td><td>6月营收278.8亿</td><td class="pos">+6.19%</td><td class="pos">↑ 连4月回升</td><td>鄂州花湖枢纽·港股回购·国际+25%</td></tr>
+      <tr><td class="company">京东物流</td><td>Q1总营收605.8亿</td><td class="pos">+29%</td><td>—</td><td>净利+40.1%·L4重卡·无人机救灾</td></tr>
+      <tr><td class="company">中通快递</td><td>Q1收入132.82亿</td><td class="pos">+22%</td><td class="pos">↑ 明显增长</td><td>净利21.56亿·市占率第一</td></tr>
+      <tr><td class="company">圆通速递</td><td>H1预增31-34亿</td><td class="pos">+69~86%</td><td class="pos">↑ 合理修复</td><td>股价涨停·降本显著</td></tr>
+      <tr><td class="company">申通快递</td><td>H1预增9.5-10.6亿</td><td class="pos">+109~134%</td><td class="pos">↑ 6.0%</td><td>丹鸟并表·量价齐升</td></tr>
+      <tr><td class="company">韵达股份</td><td>H1预增9.05-10.5亿</td><td class="pos">+71~99%</td><td class="pos">↑ 稳步修复</td><td>AI+物流配送·减员增效</td></tr>
+      <tr><td class="company">极兔速递</td><td>Q2包裹91.77亿件</td><td class="pos">+24.2%</td><td class="neut">→ 承压</td><td>日均破亿·5000台重卡换电</td></tr>
+    </table>
   </div>
 </div>
-<div class="card" style="border-color: rgba(16,185,129,0.2); background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(168,224,99,0.02));">
-  <h3>🔮 趋势展望</h3>
-  <div style="font-size:13px; color:#94a3b8;">
-    <p>• 无人配送：2026下半年规模化落地加速，末端配送成本有望降低30%+</p>
-    <p>• 快递反内卷：服务质量取代价格成为核心竞争力，行业利润率有望修复</p>
-    <p>• 美妆出海：日本、东南亚成国货美妆第二增长曲线，花知晓模式可复制</p>
+
+<!-- ====== BEAUTY ====== -->
+<div class="section">
+  <div class="section-title"><span class="icon">💄</span> 美妆 & 消费板块</div>
+
+  <div class="news-grid">
+    <!-- 1 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">珀莱雅</span></div>
+      <span class="date-badge">7月</span>
+      <h4>珀莱雅冲刺港股IPO：3年广告烧119亿 vs 研发不足6亿</h4>
+      <div class="source">📰 证券时报 · 中金在线</div>
+      <p>珀莱雅(603605)再度赴港上市引发争议。近3年广告营销砸119亿，研发不足6亿——73%毛利率靠明星代言和流量驱动。2025年营收105.97亿(-1.68%)，终止八年双增。Q1营收23.05亿(-2.29%)。东吴证券维持「买入」称调整期已过，但港股IPO半年无进展。以7.79亿控股花知晓51%，是2026年国货美妆最大投资。</p>
+    </div>
+    <!-- 2 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">花知晓</span><span class="tag tag-exp">出海</span></div>
+      <span class="date-badge">7月</span>
+      <h4>花知晓Q1净利1.55亿占集团42%，日本年销破10亿</h4>
+      <div class="source">📰 亿邦动力 · 新浪财经 · 21财经</div>
+      <p>花知晓2026年Q1营收6.75亿、净利润1.55亿，已占珀莱雅集团净利润42%，成「第二增长极」。在日本市场年销售额突破10亿元，东南亚加速扩张。珀莱雅2025年9月首入股38.45%(1.76亿)，2026年5月再以3.51亿拿下12.55%至控股51%。被市场视为「美妆界安踏」的多品牌战略布局，但利润集中度过高成隐忧。</p>
+    </div>
+    <!-- 3 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">毛戈平</span><span class="tag tag-exp">上市</span></div>
+      <span class="date-badge">7月</span>
+      <h4>毛戈平8年长跑上市：市值超贝泰妮+敷尔佳</h4>
+      <div class="source">📰 第一财经 · 搜狐</div>
+      <p>专业彩妆品牌毛戈平历时8年IPO终获批，上市首日市值力压贝泰妮（薇诺娜母公司）和敷尔佳。专业彩妆师品牌的差异化路线获资本市场认可。CBE联合胡润发布中国彩妆TOP10：毛戈平、花西子、彩棠（珀莱雅旗下）、方里上榜，中国彩妆从「性价比」走向「品牌化」。</p>
+    </div>
+    <!-- 4 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">华熙生物</span><span class="tag tag-tech">研发</span></div>
+      <span class="date-badge">7月</span>
+      <h4>华熙生物红景天苷获FDA认证，全球首次合成PDRN</h4>
+      <div class="source">📰 快资讯 · 网易</div>
+      <p>AI酶工程专利落地，全球首次合成PDRN（与人体基因组相似度超99%）。红景天苷完成化妆品新原料备案，获FDA Self-GRAS认证。华熙荟「ECM再青春中心」首店落子西宁。上半年营收承压但Q2净利润同比+20.89%，调整见效。</p>
+    </div>
+    <!-- 5 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">贝泰妮</span><span class="tag tag-beauty">巨子生物</span></div>
+      <span class="date-badge">7月</span>
+      <h4>贝泰妮陷医保新政冲击，巨子生物毛利率82%领跑</h4>
+      <div class="source">📰 品观网 · 花旗</div>
+      <p>医保新政9月底前全面剔除面膜/化妆品，贝泰妮医美跨界自救受阻，但薇诺娜已进驻多哈高端商场（与LV、Hermès为邻）。巨子生物陷争议但毛利率82%领跑，重组胶原蛋白市场预计2026年突破489亿（弗若斯特沙利文），花旗看好其为「护肤医疗化」核心受益者。</p>
+    </div>
+    <!-- 6 -->
+    <div class="news">
+      <div class="tags"><span class="tag tag-beauty">行业</span><span class="tag tag-macro">洗牌</span></div>
+      <span class="date-badge">7月</span>
+      <h4>美妆估值腰斩、IPO失效：资本退潮加速行业洗牌</h4>
+      <div class="source">📰 澎湃新闻 · 新华网</div>
+      <p>一级市场国货美妆估值从10-15倍PS骤降至3-5倍PS，多家IPO项目失效。新原料备案新规（59号公告）7月15日实施，高风险功效原料从10类缩减至5类。超50家国货美妆扎堆出海东南亚，TikTok Shop成出海必选项。化妆品出口总额369.05亿元(+14.11%)。</p>
+    </div>
   </div>
 </div>
+
+<!-- ====== BEAUTY TABLE ====== -->
+<div class="section">
+  <div class="section-title"><span class="icon">💄</span> 重点美妆企业一览</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>公司</th><th>核心品牌</th><th>赛道</th><th>关键数据</th></tr>
+      <tr><td class="company">珀莱雅(603605)</td><td>珀莱雅·彩棠·花知晓</td><td>护肤+彩妆</td><td>2025营收105.97亿(-1.68%)·港股IPO·花知晓占42%净利</td></tr>
+      <tr><td class="company">花知晓(珀莱雅子)</td><td>花知晓</td><td>少女彩妆·出海</td><td>Q1净利1.55亿·日本年销破10亿·东南亚扩张中</td></tr>
+      <tr><td class="company">华熙生物</td><td>润百颜·夸迪</td><td>功能性护肤</td><td>红景天苷FDA·PDRN全球首创·Q2净利+20.89%</td></tr>
+      <tr><td class="company">贝泰妮</td><td>薇诺娜</td><td>敏感肌护肤</td><td>医保新政冲击·中东高端商场·市值被毛戈平超越</td></tr>
+      <tr><td class="company">巨子生物</td><td>可复美</td><td>重组胶原蛋白</td><td>毛利率82%·胶原市场489亿(2026E)·花旗看好</td></tr>
+      <tr><td class="company">毛戈平</td><td>MAOGEPING</td><td>高端专业彩妆</td><td>8年上市·市值超贝泰妮+敷尔佳·TOP10彩妆品牌</td></tr>
+    </table>
+  </div>
 </div>
 
-<!-- Footer -->
+<!-- ====== CHARTS ====== -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔭</span> 趋势观察</div>
+
+  <div class="news" style="margin-bottom:14px">
+    <h4 style="color:#a78bfa;margin-bottom:12px">🤖 无人配送：从末端到干线全场景覆盖</h4>
+    <div class="chart-row"><span class="chart-label">末端配送(乡村)</span><div class="chart-track"><div class="chart-fill fill-green" style="width:75%"></div></div><span class="chart-val">深圳331线路·大湾区1695航线</span></div>
+    <div class="chart-row"><span class="chart-label">干线货运(L4)</span><div class="chart-track"><div class="chart-fill fill-blue" style="width:40%"></div></div><span class="chart-val">京东×嬴彻·首例载货示范</span></div>
+    <div class="chart-row"><span class="chart-label">重卡换电</span><div class="chart-track"><div class="chart-fill fill-purple" style="width:35%"></div></div><span class="chart-val">极兔×宁德·5000台·3-5分钟补能</span></div>
+    <p style="font-size:12px;color:var(--sub);margin-top:8px">刘强东宣布快递未来全部机器人配送，70万快递员将转岗。艾瑞预测2026年无人城配车年销8.9万辆，2030年近150万辆。</p>
+  </div>
+
+  <div class="news" style="margin-bottom:14px">
+    <h4 style="color:#a78bfa;margin-bottom:12px">📈 反内卷成效：快递单票收入历史性转正</h4>
+    <div class="chart-row"><span class="chart-label">2024年</span><div class="chart-track"><div class="chart-fill fill-green" style="width:30%"></div></div><span class="chart-val">价格战激烈·单票持续下滑</span></div>
+    <div class="chart-row"><span class="chart-label">2025年</span><div class="chart-track"><div class="chart-fill fill-green" style="width:55%"></div></div><span class="chart-val">反内卷启动·8家首次全面盈利</span></div>
+    <div class="chart-row"><span class="chart-label">2026年H1</span><div class="chart-track"><div class="chart-fill fill-green" style="width:85%"></div></div><span class="chart-val">单票+3.61%·四家净利预增70%+</span></div>
+    <p style="font-size:12px;color:var(--sub);margin-top:8px">国家邮政局副局长带队调研五家快递总部推进反内卷，江西五家快递集体上调操作费0.10元/票。收入增速(7.9%)反超业务量增速(7.1%)。</p>
+  </div>
+
+  <div class="news">
+    <h4 style="color:#a78bfa;margin-bottom:12px">🌏 国货美妆出海：从「性价比」到「品牌溢价」</h4>
+    <div class="chart-row"><span class="chart-label">日本(花知晓)</span><div class="chart-track"><div class="chart-fill fill-pink" style="width:75%"></div></div><span class="chart-val">年销破10亿·少女风顶流</span></div>
+    <div class="chart-row"><span class="chart-label">东南亚</span><div class="chart-track"><div class="chart-fill fill-pink" style="width:50%"></div></div><span class="chart-val">50+品牌扎堆·TikTok Shop主战场</span></div>
+    <div class="chart-row"><span class="chart-label">中东(薇诺娜)</span><div class="chart-track"><div class="chart-fill fill-pink" style="width:20%"></div></div><span class="chart-val">多哈LV·Hermès同场竞技</span></div>
+    <p style="font-size:12px;color:var(--sub);margin-top:8px">2024年化妆品出口369.05亿元(+14.11%)。花知晓日本破10亿成标杆，国货从「中国制造」升级为「中国品牌」。</p>
+  </div>
+</div>
+
+<!-- ====== DATA SNAPSHOT ====== -->
+<div class="section">
+  <div class="section-title"><span class="icon">📋</span> 数据速览</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>指标</th><th>最新数值</th><th>趋势</th><th>来源</th></tr>
+      <tr><td>6月物流景气指数(LPI)</td><td>50.6%</td><td class="pos">↑0.3pp·扩张</td><td>中物联</td></tr>
+      <tr><td>6月制造业PMI</td><td>50.3%</td><td class="pos">↑0.4pp</td><td>国家统计局</td></tr>
+      <tr><td>1-5月社会物流总额</td><td>146.6万亿</td><td class="pos">+5.2%</td><td>中物联</td></tr>
+      <tr><td>Q2快递满意度</td><td>85.0分</td><td class="pos">↑</td><td>国家邮政局</td></tr>
+      <tr><td>5月快递单票收入</td><td>+3.61%</td><td class="pos">↑ 转正</td><td>光大证券</td></tr>
+      <tr><td>圆通H1预增</td><td>31-34亿</td><td class="pos">+69~86%</td><td>公司公告</td></tr>
+      <tr><td>申通H1预增</td><td>9.5-10.6亿</td><td class="pos">+109~134%</td><td>公司公告</td></tr>
+      <tr><td>韵达H1预增</td><td>9.05-10.5亿</td><td class="pos">+71~99%</td><td>公司公告</td></tr>
+      <tr><td>极兔Q2包裹量</td><td>91.77亿件</td><td class="pos">+24.2%·日均破亿</td><td>公司公告</td></tr>
+      <tr><td>顺丰6月营收</td><td>278.8亿</td><td class="pos">+6.19%</td><td>公司公告</td></tr>
+      <tr><td>珀莱雅Q1营收</td><td>23.05亿</td><td class="neg">-2.29%</td><td>财报</td></tr>
+      <tr><td>花知晓Q1净利</td><td>1.55亿</td><td class="pos">占集团42%</td><td>财报</td></tr>
+      <tr><td>重组胶原蛋白市场(2026E)</td><td>489亿</td><td class="pos">高增长</td><td>弗若斯特沙利文</td></tr>
+    </table>
+  </div>
+</div>
+
 <div class="footer">
-  <p>数据来源：Google News RSS · 多源交叉验证 ✓ | 生成时间：2026-07-18</p>
-  <p>ettoreal 行业日报 · 自动生成 | 存档：<a href="https://chaibobo9246-ops.github.io/hermes-daily/daily-report-2026-07-18.html">GitHub Pages</a></p>
+  <p>📊 Ettoreal 行业日报 · 2026-07-18 · 物流数据来自中物联/国家邮政局/公司公告 · 美妆数据来自证券时报/澎湃/亿邦动力/新浪财经</p>
+  <p style="color:#475569;margin-top:4px">⚠️ 本日报为信息聚合，不构成投资建议</p>
 </div>
 
 </div>
