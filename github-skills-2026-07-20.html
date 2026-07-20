@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 盘点 — 2026-07-20</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-purple: #a371f7;
+    --tag-new: #238636;
+    --tag-today: #1f6feb;
+    --danger: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-title .icon {
+    font-size: 1.5rem;
+  }
+  .section-title .badge {
+    font-size: 0.75rem;
+    background: var(--tag-new);
+    color: #fff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .repo-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .repo-card:hover {
+    border-color: var(--accent);
+  }
+  .repo-card .repo-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .repo-card .repo-name a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .repo-card .repo-name a:hover {
+    text-decoration: underline;
+  }
+  .repo-card .repo-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .repo-card .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .repo-card .meta .tag {
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .tag-new { background: rgba(35,134,54,0.2); color: var(--accent-green); }
+  .tag-star { background: rgba(210,153,29,0.2); color: var(--accent-orange); }
+  .tag-lang { background: var(--bg-tertiary); color: var(--text-secondary); }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+  .links-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+  }
+  .links-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  .links-section a {
+    color: var(--accent-purple);
+    display: block;
+    margin: 0.3rem 0;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>🔮 GitHub Hermes Skill 每日盘点</h1>
+  <p class="subtitle">📅 2026-07-20 · 自动抓取 GitHub 最新 Hermes 生态项目 · 三路交叉搜索 (topic:hermes-skill + in:name + in:description)</p>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">1</div>
+    <div class="label">📌 今日新增 (07-20)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">26</div>
+    <div class="label">📅 昨日补充 (07-19)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">27</div>
+    <div class="label">🔍 总计发现</div>
+  </div>
+</div>
+
+<div class="section-title"><span class="icon">📌</span> 今日新增 <span class="badge">07-20</span></div>
+
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/fificito/hermes-skills" target="_blank">fificito/hermes-skills</a></div>
+    <div class="repo-desc">—</div>
+    <div class="meta">
+      <span>📅 2026-07-20</span>
+    </div>
+  </div>
+<div class="section-title"><span class="icon">📅</span> 昨日补充 <span class="badge">07-19</span></div>
+
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/faizalardhi16/palskills" target="_blank">faizalardhi16/palskills</a></div>
+    <div class="repo-desc">AI-powered development pipeline — 5 Hermes Agent skills: Astralym, Lyleen, Jetdragon, Anubis, Panthalus</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/NyxFoundation/skills" target="_blank">NyxFoundation/skills</a></div>
+    <div class="repo-desc">Single source of truth for Nyx Foundation agent skills (hermes / Claude Code / workspace agents)</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/mxjxn/hermes-logseq" target="_blank">mxjxn/hermes-logseq</a></div>
+    <div class="repo-desc">Template repo: Hermes Agent + Logseq knowledge graph stack — logseqd, viewer, inotify, skills, installer</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      <span class="tag tag-star">⭐ 1</span>
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/Agent-Lumi/ai-agent-skills" target="_blank">Agent-Lumi/ai-agent-skills</a></div>
+    <div class="repo-desc">Custom Hermes AI Agent skills and frameworks</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/matdev83/hermes-cursor-dispatcher" target="_blank">matdev83/hermes-cursor-dispatcher</a></div>
+    <div class="repo-desc">Hermes Agent skill for safely delegating repository work to Cursor CLI (agent), utilizing the newest Grok models.</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      <span class="tag tag-star">⭐ 1</span>
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/peditx/research-methodology-academic-writing" target="_blank">peditx/research-methodology-academic-writing</a></div>
+    <div class="repo-desc">Comprehensive Research Methodology & Academic Writing Skill for Hermes Agent - bilingual (Persian/English)</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      <span class="tag tag-star">⭐ 1</span>
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/aaronatchley6123-lab/hermes-obsidian-n8n-stack" target="_blank">aaronatchley6123-lab/hermes-obsidian-n8n-stack</a></div>
+    <div class="repo-desc">Hermes agent (Ollama) + Obsidian memory + Claude Code CLI + n8n multi-agent dev-team stack</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/peditx/openwrt-luci-complete-developer-guide" target="_blank">peditx/openwrt-luci-complete-developer-guide</a></div>
+    <div class="repo-desc">Complete engineering reference for OpenWrt/ImmortalWrt LuCI development + SKILL.md for Hermes Agent</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/Amirth24/cloudify-hermes" target="_blank">Amirth24/cloudify-hermes</a></div>
+    <div class="repo-desc">Cloud sync for Hermes Agent — skills, cron, memory, and config to S3. Mem0 bridge for central knowledge.</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/Gleinkaa/Blender_MCP" target="_blank">Gleinkaa/Blender_MCP</a></div>
+    <div class="repo-desc">Blender MCP addon + Hermes skill for controlling Blender via JSON-over-TCP</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/peditx/hermes-dog-vet" target="_blank">peditx/hermes-dog-vet</a></div>
+    <div class="repo-desc">Dog Veterinary Consultant Skill for Hermes Agent (Persian)</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/PeDitXOS/hermes-dog-vet" target="_blank">PeDitXOS/hermes-dog-vet</a></div>
+    <div class="repo-desc">Dog Veterinary Consultant Skill for Hermes Agent (Persian)</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/FerrisStorke/ticket-dag-orchestrator-thin" target="_blank">FerrisStorke/ticket-dag-orchestrator-thin</a></div>
+    <div class="repo-desc">Thin coordinator skill for reviewed ticket-DAG orchestration — Hermes-native</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/rrtramel/op1-field-skill" target="_blank">rrtramel/op1-field-skill</a></div>
+    <div class="repo-desc">Hermes Agent skill for Teenage Engineering OP-1 Field — sound dial recipes + harmony guide</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/D-kart/gazette-skill" target="_blank">D-kart/gazette-skill</a></div>
+    <div class="repo-desc">公报.skill · Classical gazette / financial broadsheet web design style. FT/Economist/Monocle/WSJ style. 兼容 Claude/WorkBuddy/OpenClaw/Hermes</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/fengjunlu618/llm_wiki_skill" target="_blank">fengjunlu618/llm_wiki_skill</a></div>
+    <div class="repo-desc">LLM Wiki Agent Skill for Hermes/Claude Code/Codex</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/lbhkobe/hermesSkills" target="_blank">lbhkobe/hermesSkills</a></div>
+    <div class="repo-desc">—</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/mmusa/second-nature" target="_blank">mmusa/second-nature</a></div>
+    <div class="repo-desc">🌱 Claude Code that grows with you — mines session history into skill proposals, Hermes-style self-improvement</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/melletanatole-droid/presentation-alimentation" target="_blank">melletanatole-droid/presentation-alimentation</a></div>
+    <div class="repo-desc">🍎 Présentation interactive sur l'importance de l'alimentation pour les ados — créée avec Hermes</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/mrev-lab/skills" target="_blank">mrev-lab/skills</a></div>
+    <div class="repo-desc">Hermes Agent skills by mrev-lab — pd-patching (Pure Data dynamic patching)</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/qingcheng66/knowledge-management" target="_blank">qingcheng66/knowledge-management</a></div>
+    <div class="repo-desc">Hermes Agent skill: 将零散笔记/对话整理为 Agent 可读的结构化 Wiki（LLM Wiki 规范 + Obsidian）</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/LaansDole/hermes-covidence-screening" target="_blank">LaansDole/hermes-covidence-screening</a></div>
+    <div class="repo-desc">Hermes Agent skill: autonomous Covidence title & abstract screening via CDP</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/lucadominguez/hermes-skills" target="_blank">lucadominguez/hermes-skills</a></div>
+    <div class="repo-desc">106 Hermes Agent skills exported for Codex CLI and other coding agents</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/rizkynindra/thalia-hermes" target="_blank">rizkynindra/thalia-hermes</a></div>
+    <div class="repo-desc">A Skill for Hermes Agent to generate their Selfie</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/hqpo/hermes-presentation-skill" target="_blank">hqpo/hermes-presentation-skill</a></div>
+    <div class="repo-desc">Hermes Agent skill: JSON → AI layout → PptxGenJS → editable PPTX</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="repo-card">
+    <div class="repo-name"><a href="https://github.com/s4w3d0ff/agent-skills" target="_blank">s4w3d0ff/agent-skills</a></div>
+    <div class="repo-desc">Curated agent skills based around hermes</div>
+    <div class="meta">
+      <span>📅 2026-07-19</span>
+      
+      
+    </div>
+  </div>
+<div class="section-title"><span class="icon">🌟</span> 本期亮点推荐</div>
+<div class="repo-card">
+    <div class="repo-desc" style="line-height:2;">
+    🔥 <strong>mxjxn/hermes-logseq</strong> — Hermes + Logseq 知识图谱集成栈，含 logseqd、viewer、inotify、installer，知识管理神器<br>
+    🔥 <strong>matdev83/hermes-cursor-dispatcher</strong> — 将 Cursor CLI 安全委派给 Hermes，Grok 模型驱动，开发效率↑<br>
+    🔥 <strong>Amirth24/cloudify-hermes</strong> — Hermes 云同步方案：skills/cron/memory/config → S3 + Mem0 知识桥<br>
+    🔥 <strong>D-kart/gazette-skill</strong> — 公报/财经报刊风格 Skill，FT/Economist/WSJ 排版，兼容 Hermes/Claude/Codex<br>
+    🔥 <strong>qingcheng66/knowledge-management</strong> — 中文知识管理 Skill：零散笔记 → 结构化 Wiki（Obsidian 集成）<br>
+    🔥 <strong>lucadominguez/hermes-skills</strong> — 106 个 Hermes Skills 导出合集，适配 Codex CLI<br>
+    🔥 <strong>Gleinkaa/Blender_MCP</strong> — Blender JSON-over-TCP 远程控制 Skill<br>
+    🔥 <strong>hqpo/hermes-presentation-skill</strong> — JSON → AI 布局 → PptxGenJS → 可编辑 PPTX<br>
+    </div>
+  </div>
+<div class="links-section">
+  <h3>🔗 在线访问</h3>
+  <p style="margin-bottom:0.5rem;color:var(--text-secondary);">📦 COS 国内直连（推荐）：</p>
+  <a href="https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-20.html" target="_blank">https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-20.html</a>
+  <p style="margin-top:1rem;margin-bottom:0.5rem;color:var(--text-secondary);">🌐 GitHub Pages（需代理）：</p>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-20.html" target="_blank">https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-20.html</a>
+</div>
+
+<footer>
+  <p>🤖 Generated by Hermes Agent Cron · 2026-07-20 · Data: GitHub API (topic:hermes-skill + in:name + in:description)</p>
+  <p>Archived at <a href="https://github.com/chaibobo9246-ops/hermes-daily">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+</div>
+</body>
+</html>
