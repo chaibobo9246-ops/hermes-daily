@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 盘点 — 2026-07-21</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-purple: #a371f7;
+    --tag-new: #238636;
+    --tag-today: #1f6feb;
+    --danger: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-title .icon {
+    font-size: 1.5rem;
+  }
+  .section-title .badge {
+    font-size: 0.75rem;
+    background: var(--tag-new);
+    color: #fff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .repo-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .repo-card:hover {
+    border-color: var(--accent);
+  }
+  .repo-card .repo-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .repo-card .repo-name a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .repo-card .repo-name a:hover {
+    text-decoration: underline;
+  }
+  .repo-card .repo-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .repo-card .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .repo-card .meta .tag {
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .tag-new { background: rgba(35,134,54,0.2); color: var(--accent-green); }
+  .tag-star { background: rgba(210,153,29,0.2); color: var(--accent-orange); }
+  .tag-lang { background: var(--bg-tertiary); color: var(--text-secondary); }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+  .links-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+  }
+  .links-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  .links-section a {
+    color: var(--accent-purple);
+    display: block;
+    margin: 0.3rem 0;
+    word-break: break-all;
+  }
+  .empty-state {
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  .empty-state .emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .highlight-box {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .highlight-box h3 { color: var(--accent); margin-bottom: 0.5rem; }
+  .highlight-box p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>🔮 GitHub Hermes Skill 每日盘点</h1>
+  <p class="subtitle">📅 2026-07-21 · 自动抓取 GitHub 最新 Hermes 生态项目 · 三路交叉搜索 (topic:hermes-skill + 中文关键词 + in:name/description)</p>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">0</div>
+    <div class="label">📌 今日新增 (07-21)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">120</div>
+    <div class="label">📦 生态仓库总数</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">60</div>
+    <div class="label">🏷️ topic:hermes-skill</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">60</div>
+    <div class="label">🔍 中文关键词补充</div>
+  </div>
+</div>
+
+<div class="section-title"><span class="icon">📌</span> 今日新增 <span class="badge">07-21</span></div>
+
+<div class="empty-state">
+  <div class="emoji">😴</div>
+  <p>今日无新增 Hermes Skill 仓库</p>
+  <p style="font-size:0.85rem;margin-top:0.5rem;">GitHub 上 2026-07-21 无新建或推送的 hermes-skill 相关仓库</p>
+</div>
+
+<div class="highlight-box">
+  <h3>📊 今日分析</h3>
+  <p>
+    🔍 今日 GitHub Hermes 生态无新增仓库，社区处于相对平静期。<br>
+    📦 当前生态追踪约 <strong>120</strong> 个 Hermes 相关仓库（topic + 中文关键词去重），覆盖编程、教育、金融、视频、安全等多领域。<br>
+    🔥 头部项目 stars 稳定增长：superpowers-zh (7,066⭐)、hermes-workspace (6,202⭐)、awesome-hermes-agent (4,876⭐)。<br>
+    💡 中文生态持续活跃：中文技能商店、教育包、短剧大师、TVC 广告流水线等垂直场景不断涌现。<br>
+  </p>
+</div>
+
+<div class="section-title"><span class="icon">🌟</span> 生态亮点回顾</div>
+<div class="repo-card">
+  <div class="repo-desc" style="line-height:2;">
+  🥇 <strong>jnMetaCode/superpowers-zh</strong> ⭐7,066 — AI 编程超能力中文增强版，覆盖 16 款 AI 工具<br>
+  🥈 <strong>outsourc-e/hermes-workspace</strong> ⭐6,202 — Hermes Agent 原生 Web 工作区<br>
+  🥉 <strong>0xNyk/awesome-hermes-agent</strong> ⭐4,876 — 最全面的 Hermes 生态资源列表<br>
+  🔥 <strong>anbeime/skill</strong> ⭐3,943 — 最大中文技能商店，72+ 技能包<br>
+  🔥 <strong>eugeniughelbur/obsidian-second-brain</strong> ⭐3,435 — Obsidian 第二大脑，跨 CLI 命令<br>
+  🔥 <strong>conorbronsdon/avoid-ai-writing</strong> ⭐2,498 — AI 写作检测与改写<br>
+  🔥 <strong>codejunkie99/agentic-stack</strong> ⭐2,192 — 可移植 Agent 配置栈<br>
+  🔥 <strong>ksimback/hermes-ecosystem</strong> ⭐1,151 — Hermes Atlas 生态地图<br>
+  🔥 <strong>prompt-security/clawsec</strong> ⭐1,067 — 安全技能套件<br>
+  🆕 <strong>liminjun813/xinyuan-agent-skills</strong> (07-18) — 203个 Hermes 技能集合<br>
+  🆕 <strong>honghulong/hermes-config</strong> (07-17) — 配置与技能备份<br>
+  🆕 <strong>guochongjun/RAIN-agent</strong> (07-15) — Windows 桌面应用，19个技能<br>
+  </div>
+</div>
+
+<div class="links-section">
+  <h3>🔗 在线访问</h3>
+  <p style="margin-bottom:0.5rem;color:var(--text-secondary);">📦 COS 国内直连（推荐）：</p>
+  <a href="https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-21.html" target="_blank">https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-21.html</a>
+  <p style="margin-top:1rem;margin-bottom:0.5rem;color:var(--text-secondary);">🌐 GitHub Pages（需代理）：</p>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-21.html" target="_blank">https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-21.html</a>
+</div>
+
+<footer>
+  <p>🤖 Generated by Hermes Agent Cron · 2026-07-21 · Data: GitHub API (topic:hermes-skill + 中文关键词)</p>
+  <p>Archived at <a href="https://github.com/chaibobo9246-ops/hermes-daily">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+</div>
+</body>
+</html>
