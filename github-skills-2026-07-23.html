@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill Report — 2026-07-23</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-purple: #a371f7;
+    --tag-new: #238636;
+    --tag-today: #1f6feb;
+    --danger: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-title .icon {
+    font-size: 1.5rem;
+  }
+  .section-title .badge {
+    font-size: 0.75rem;
+    background: var(--tag-new);
+    color: #fff;
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .repo-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .repo-card:hover {
+    border-color: var(--accent);
+  }
+  .repo-card .repo-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .repo-card .repo-name a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .repo-card .repo-name a:hover {
+    text-decoration: underline;
+  }
+  .repo-card .repo-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .repo-card .meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .repo-card .meta .tag {
+    padding: 0.1rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .tag-new { background: rgba(35,134,54,0.2); color: var(--accent-green); }
+  .tag-star { background: rgba(210,153,29,0.2); color: var(--accent-orange); }
+  .tag-lang { background: var(--bg-tertiary); color: var(--text-secondary); }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+  .links-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+  }
+  .links-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  .links-section a {
+    color: var(--accent-purple);
+    display: block;
+    margin: 0.3rem 0;
+    word-break: break-all;
+  }
+  .empty-state {
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+  .empty-state .emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .highlight-box {
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .highlight-box h3 { color: var(--accent); margin-bottom: 0.5rem; }
+  .highlight-box p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>🔍 GitHub Hermes Skill Daily Report</h1>
+  <p class="subtitle">📅 2026-07-23 | Auto-crawled via GitHub API | Multi-query cross-search (hermes+skill + hermes-agent + topic:hermes-skill)</p>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="number">3</div>
+    <div class="label">🆕 New Today (07-23)</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">11</div>
+    <div class="label">📦 Total Tracked</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">155</div>
+    <div class="label">⭐ Max Stars Today</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">4</div>
+    <div class="label">📈 Active Pushed</div>
+  </div>
+</div>
+
+<div class="section-title"><span class="icon">🆕</span> Today's New Repos <span class="badge">07-23</span></div>
+
+<div class="repo-card">
+  <div class="repo-name"><a href="https://github.com/Femi-Ronvue/feishu-bot-ops" target="_blank">Femi-Ronvue/feishu-bot-ops</a></div>
+  <div class="repo-desc">飞书（Feishu/Lark）机器人运维大全 — Hermes Agent 社区 Skill。覆盖 @mention、bot 间通信、消息丢失、会话串线等 20+ 故障场景。</div>
+  <div class="meta">
+    <span class="tag tag-new">NEW</span>
+    <span>⭐ 1</span>
+    <span class="tag tag-lang">Shell</span>
+    <span>Created 2026-05-09 | Pushed 2026-07-23</span>
+  </div>
+</div>
+<div class="repo-card">
+  <div class="repo-name"><a href="https://github.com/SathiaAI/graphsmith" target="_blank">SathiaAI/graphsmith</a></div>
+  <div class="repo-desc">Build AI agent workflows that survive crashes, never duplicate work, and don't make things up — one durable execution graph at a time.</div>
+  <div class="meta">
+    <span class="tag tag-new">NEW</span>
+    <span>⭐ 1</span>
+    <span class="tag tag-lang">JavaScript</span>
+    <span>Created 2026-07-20 | Pushed 2026-07-23</span>
+  </div>
+</div>
+<div class="repo-card">
+  <div class="repo-name"><a href="https://github.com/sixgodgit/thalamus" target="_blank">sixgodgit/thalamus</a></div>
+  <div class="repo-desc">Hermes 模型调度中枢 — 瀑布式路由 + 大脑分区架构</div>
+  <div class="meta">
+    <span class="tag tag-new">NEW</span>
+    <span>⭐ 1</span>
+    <span class="tag tag-lang">Python</span>
+    <span>Created 2026-06-17 | Pushed 2026-07-23</span>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <h3>📊 Today's Analysis</h3>
+  <p>
+    今日新增 <strong>3</strong> 个 Hermes 相关仓库进入追踪视野。<br>
+    🏆 <strong>Femi-Ronvue/feishu-bot-ops</strong> — 飞书机器人运维 Skill，国内开发者友好，覆盖 20+ 飞书故障场景。<br>
+    🔧 <strong>SathiaAI/graphsmith</strong> — 耐久性 Agent 工作流引擎，防崩溃、防重复执行。<br>
+    🧠 <strong>sixgodgit/thalamus</strong> — 模型调度中枢，瀑布式路由 + 大脑分区架构。<br>
+    另注：<strong>NousResearch/hermes-e2e-evidence</strong>（0 stars）为 CI 证据仓库，非功能性 Skill，不计入新增。<br>
+    整体生态活跃：主仓库 NousResearch/hermes-agent (218k+ stars) 持续高频更新，garrytan/gbrain (26k+ stars) 等热门项目今日有推送。
+  </p>
+</div>
+
+<div class="section-title"><span class="icon">🔥</span> Ecosystem Highlights (Active Today)</div>
+<div class="repo-card">
+  <div class="repo-desc" style="line-height:2;">
+    🥇 <strong>NousResearch/hermes-agent</strong> ⭐218,968 — The agent that grows with you<br>
+    🥈 <strong>thedotmack/claude-mem</strong> ⭐88,262 — Persistent Context Across Sessions for Every Agent<br>
+    🥉 <strong>garrytan/gbrain</strong> ⭐26,865 — Garry's Opinionated OpenClaw/Hermes Agent Brain<br>
+    🔥 <strong>screenpipe/screenpipe</strong> ⭐20,392 — Record your screen 24/7 and plug into your agents<br>
+    🔥 <strong>awizemann/scarf</strong> ⭐749 — Native macOS/iOS App for Hermes AI agent<br>
+    🔥 <strong>Sakshxm1/hermes-agency-orchestrator</strong> ⭐155 — Claude Code Agent Workflows Guide 2026<br>
+    🔥 <strong>icoretech/codex-pooler</strong> ⭐125 — Self-hosted Codex gateway for teams & agents<br>
+    🆕 <strong>Femi-Ronvue/feishu-bot-ops</strong> ⭐1 — 飞书机器人运维大全 (Hermes Skill)<br>
+    🆕 <strong>SathiaAI/graphsmith</strong> ⭐1 — Durable agent workflow graphs<br>
+  </div>
+</div>
+
+<div class="links-section">
+  <h3>🔗 Online Access</h3>
+  <p style="margin-bottom:0.5rem;color:var(--text-secondary);">COS (China direct access, recommended):</p>
+  <a href="https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-23.html" target="_blank">https://hermes-daily-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-23.html</a>
+  <p style="margin-top:1rem;margin-bottom:0.5rem;color:var(--text-secondary);">GitHub Pages (proxy required):</p>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-23.html" target="_blank">https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-23.html</a>
+</div>
+
+<footer>
+  <p>🤖 Generated by Hermes Agent Cron | 2026-07-23 | Data: GitHub API (hermes+skill + hermes-agent + topic:hermes-skill)</p>
+  <p>📁 Archived at <a href="https://github.com/chaibobo9246-ops/hermes-daily">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+</div>
+</body>
+</html>
