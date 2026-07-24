@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ettoreal 行业日报 | 2026年7月24日</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card-bg: #12121a;
+    --card-hover: #1a1a24;
+    --text: #e0e0e0;
+    --text-muted: #8a8a9a;
+    --accent: #a8e063;
+    --accent2: #f7ff00;
+    --border: #1e1e2e;
+    --tag-bg: rgba(168,224,99,0.1);
+    --tag-text: #a8e063;
+    --red: #ff6b6b;
+    --blue: #5b9bd5;
+    --purple: #c084fc;
+    --orange: #fb923c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width:1400px; margin:0 auto; padding:20px 32px; }
+  
+  /* Header */
+  .header { padding:40px 0 20px; border-bottom:1px solid var(--border); margin-bottom:32px; }
+  .header h1 { 
+    font-size:2.4rem; font-weight:800; letter-spacing:-0.5px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .header .subtitle { color:var(--text-muted); font-size:0.95rem; margin-top:8px; }
+  
+  /* KPI Cards */
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:16px; margin-bottom:32px; }
+  .kpi-card {
+    background:var(--card-bg); border:1px solid var(--border); border-radius:12px;
+    padding:20px; position:relative; overflow:hidden; transition:all 0.3s;
+  }
+  .kpi-card:hover { background:var(--card-hover); transform:translateY(-2px); box-shadow:0 8px 32px rgba(168,224,99,0.08); }
+  .kpi-card .label { font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
+  .kpi-card .value { font-size:1.8rem; font-weight:700; margin:6px 0; color:#fff; }
+  .kpi-card .change { font-size:0.85rem; }
+  .kpi-card .change.up { color:var(--accent); }
+  .kpi-card .change.down { color:var(--red); }
+  .kpi-card::before {
+    content:''; position:absolute; top:-50%; left:-50%; width:100%; height:100%;
+    background:radial-gradient(circle, rgba(168,224,99,0.03) 0%, transparent 70%);
+  }
+  
+  /* Section */
+  .section { margin-bottom:40px; }
+  .section-title {
+    font-size:1.3rem; font-weight:700; margin-bottom:20px; padding-left:14px;
+    border-left:3px solid var(--accent); color:#fff;
+  }
+  
+  /* Insight */
+  .insight-box {
+    background:linear-gradient(135deg, rgba(168,224,99,0.06), rgba(247,255,0,0.03));
+    border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:32px;
+  }
+  .insight-box p { font-size:0.95rem; color:var(--text); line-height:1.8; }
+  .insight-box .highlight { color:var(--accent); font-weight:600; }
+  
+  /* News Cards */
+  .news-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(420px,1fr)); gap:16px; }
+  .news-card {
+    background:var(--card-bg); border:1px solid var(--border); border-radius:12px;
+    padding:20px; transition:all 0.3s;
+  }
+  .news-card:hover { background:var(--card-hover); box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+  .news-card .tags { display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+  .news-card .tag {
+    font-size:0.75rem; padding:3px 10px; border-radius:20px;
+    background:var(--tag-bg); color:var(--tag-text);
+  }
+  .news-card .tag.urgent { background:rgba(255,107,107,0.1); color:var(--red); }
+  .news-card .tag.data { background:rgba(91,155,213,0.1); color:var(--blue); }
+  .news-card h3 { font-size:1.05rem; font-weight:600; margin:8px 0; color:#fff; }
+  .news-card p { font-size:0.88rem; color:var(--text-muted); line-height:1.7; }
+  .news-card .meta { font-size:0.78rem; color:var(--text-muted); margin-top:12px; display:flex; justify-content:space-between; }
+  
+  /* Tables */
+  .table-wrap { overflow-x:auto; background:var(--card-bg); border:1px solid var(--border); border-radius:12px; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  th { background:rgba(168,224,99,0.06); color:var(--accent); padding:12px 16px; text-align:left; font-weight:600; white-space:nowrap; }
+  td { padding:12px 16px; border-top:1px solid var(--border); color:var(--text); }
+  tr:hover td { background:rgba(255,255,255,0.02); }
+  .num { font-family:'SF Mono','Fira Code',monospace; font-weight:600; }
+  .up { color:var(--accent); }
+  .down { color:var(--red); }
+  
+  /* Charts */
+  .chart-group { display:grid; grid-template-columns:repeat(auto-fit, minmax(500px,1fr)); gap:24px; margin-bottom:24px; }
+  .chart-box {
+    background:var(--card-bg); border:1px solid var(--border); border-radius:12px; padding:24px;
+  }
+  .chart-box h3 { color:#fff; font-size:0.95rem; margin-bottom:20px; }
+  .bar-chart { display:flex; flex-direction:column; gap:10px; }
+  .bar-row { display:flex; align-items:center; gap:12px; }
+  .bar-label { width:100px; font-size:0.8rem; color:var(--text-muted); text-align:right; flex-shrink:0; }
+  .bar-track { flex:1; background:rgba(255,255,255,0.04); border-radius:6px; height:28px; overflow:hidden; position:relative; }
+  .bar-fill { height:100%; border-radius:6px; transition:width 0.8s; display:flex; align-items:center; padding-left:10px; }
+  .bar-fill span { font-size:0.78rem; font-weight:600; color:#fff; }
+  .bar-fill.green { background:linear-gradient(90deg, #a8e063, #7ec84e); }
+  .bar-fill.yellow { background:linear-gradient(90deg, #f7ff00, #c4cc00); }
+  .bar-fill.blue { background:linear-gradient(90deg, #5b9bd5, #3d7ab5); }
+  .bar-fill.purple { background:linear-gradient(90deg, #c084fc, #9b5de5); }
+  .bar-fill.orange { background:linear-gradient(90deg, #fb923c, #e07b20); }
+  
+  /* Summary Table */
+  .summary-table { margin-bottom:32px; }
+  
+  /* Footer */
+  .footer {
+    border-top:1px solid var(--border); padding:24px 0; margin-top:40px;
+    color:var(--text-muted); font-size:0.8rem; text-align:center;
+  }
+  .footer a { color:var(--accent); text-decoration:none; }
+  
+  @media (max-width:768px) {
+    .container { padding:12px 16px; }
+    .news-grid { grid-template-columns:1fr; }
+    .chart-group { grid-template-columns:1fr; }
+    .kpi-grid { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<header class="header">
+  <h1>📊 Ettoreal 行业日报</h1>
+  <div class="subtitle">2026年7月24日 · 物流快递 & 美妆护肤 · 双赛道深度追踪</div>
+</header>
+
+<!-- ===== MODULE 1: KPI Cards ===== -->
+<section class="section">
+  <h2 class="section-title">📈 顶部KPI指标</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">H1 快递业务量</div>
+      <div class="value">1003.8亿</div>
+      <div class="change up">↑ +5.0% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">H1 快递收入</div>
+      <div class="value">7714亿</div>
+      <div class="change up">↑ +7.3% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">6月行业单票收入</div>
+      <div class="value">7.77元</div>
+      <div class="change up">↑ +3.8% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">极兔Q2日均包裹</div>
+      <div class="value">1.01亿</div>
+      <div class="change up">↑ +24.2% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">珀莱雅Q1营收</div>
+      <div class="value">23.05亿</div>
+      <div class="change down">↓ -2.29% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">美妆Q1 TOP5合计营收</div>
+      <div class="value">111.65亿</div>
+      <div class="change up">13家同比正增长</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">通达系H1净利润合计</div>
+      <div class="value">≥49.55亿</div>
+      <div class="change up">↑ 70%-134%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">花知晓Q1净利</div>
+      <div class="value">1.55亿</div>
+      <div class="change up">被珀莱雅控股</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULE 2: 核心洞察 ===== -->
+<section class="section">
+  <h2 class="section-title">💡 核心洞察</h2>
+  <div class="insight-box">
+    <p>
+      2026年上半年，<span class="highlight">快递行业"反内卷"政策效果持续显效</span>。H1全国快递业务量达1003.8亿件（+5.0%），收入7714亿元（+7.3%），收入增速反超业务量增速，单价企稳回升。通达系三大企业H1合计净利润不低于49.55亿元，<span class="highlight">圆通以31-34亿元利润领跑</span>，申通凭借并购与AI战略实现净利翻倍增长（+110%-134%）。顺丰单票收入连续四个月同比回升至14.41元，供应链及国际业务同比+25%成为第二增长极。极兔Q2日均包裹量突破1亿件，非中国市场占比升至32.3%。
+    </p>
+    <p style="margin-top:12px;">
+      美妆赛道呈现<span class="highlight">"冰火两重天"格局</span>。珀莱雅以Q1营收23.05亿稳居行业第一，但主品牌增速放缓，集团以累计7.79亿元控股花知晓（2025年营收17.26亿/净利2.80亿），构建"A+H"上市+多品牌+国际化三重战略。巨子生物凭借可复美品牌80%+毛利率实现19.15亿年净利，碾压贝泰妮的5.06亿。华熙生物进入战略性重构阵痛期，Q1营收下滑23%，但经营现金流转正释放积极信号。贝泰妮Q1净利同比+133%触底反弹。毛戈平以31%+营收增速成为高增长明星。
+    </p>
+  </div>
+</section>
+
+<!-- ===== MODULE 3: 物流新闻卡片 ===== -->
+<section class="section">
+  <h2 class="section-title">🚚 物流快递新闻</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="tags"><span class="tag urgent">业绩快报</span><span class="tag data">数据</span></div>
+      <h3>申通快递6月营收54.75亿领跑增速，H1净利翻倍</h3>
+      <p>申通6月快递收入54.75亿元（+26.13%），业务量25.90亿票（+18.58%），单票2.11元（+6.03%），三项指标增速均居四家A股快递企业之首。H1预计归母净利润9.5-10.6亿元，同比增长109.59%-133.85%。副董事长王文彬发布行业首个智能体平台"SClaw"，明确物理AI战略方向。</p>
+      <div class="meta"><span>每经网 / 证券时报</span><span>2026-07-20</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag urgent">业绩快报</span><span class="tag data">数据</span></div>
+      <h3>圆通H1净利31-34亿规模利润双冠，单票净利行业领先</h3>
+      <p>圆通6月快递收入58.83亿元（+6.44%），业务量28.53亿票（+8.57%），市占率16.3%居通达系首位。H1预计归母净利润31-34亿元（+69.34%-85.73%），其中Q2单票归母净利约0.217元，环比提升0.036元。长江证券指出其品牌溢价与成本传导能力在同行中领先。</p>
+      <div class="meta"><span>每经网 / 华创交运</span><span>2026-07-20</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag urgent">业绩快报</span></div>
+      <h3>顺丰6月营收278.8亿，供应链及国际业务+24.97%成增长引擎</h3>
+      <p>顺丰6月合计收入278.80亿元（+6.19%），速运业务200.17亿元（+0.28%），单票14.41元连续四个月同比回升（+5.41%）。供应链及国际业务营收78.63亿元（+24.97%），坚定推进"亚洲唯一、全球覆盖"战略。速运业务量13.89亿票（-4.86%），"以价换量"策略逆转，转向价值驱动。</p>
+      <div class="meta"><span>上海证券报 / Reportify</span><span>2026-07-18</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">国际化</span><span class="tag data">数据</span></div>
+      <h3>极兔Q2日均包裹突破1亿件，东南亚+63.2%增速领跑全球</h3>
+      <p>极兔Q2总包裹量91.77亿件（+24.2%），日均突破1亿件里程碑。东南亚包裹27.55亿件（+63.2%），中国62.11亿件（+10.6%），其他市场2.11亿件（+136.5%）。H1总包裹量175.03亿件（+25.1%），非中国市场占比升至33.6%。6月被纳入恒生指数成分股。</p>
+      <div class="meta"><span>美通社 / TechNow</span><span>2026-07-08</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">AI/机器人</span><span class="tag">无人配送</span></div>
+      <h3>京东物流×智元WAIC首发具身机器人精灵G2 Max，首次真实仓储部署</h3>
+      <p>7月17日WAIC上，京东物流与智元联合推出重载具身机器人精灵G2 Max，应用于智狼仓。该机器人配备重载力控系统，可24小时不间断搬运码垛。京东"狼族"机器人矩阵覆盖"存拣搬运送"全链条，未来5年计划采购300万台机器人、100万台无人车和10万架无人机。智狼仓拣选效率提升300%。</p>
+      <div class="meta"><span>新浪财经 / 凤凰网</span><span>2026-07-17</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">反内卷</span><span class="tag data">数据</span></div>
+      <h3>反内卷政策持续深化，快递行业单价企稳、盈利弹性加速释放</h3>
+      <p>国盛证券研报指出，6月行业单票收入7.77元（+3.8%），申通、韵达单票同比分别+6.0%和+10.5%。CR8收入端87.0，业务量端96.1。广东锁盘延长至8月底，监管近期数次强调整治"内卷式"竞争。下半年旺季涨价及社保成本传导将为价格提供持续支撑，全年通达系业绩高增确定性强。</p>
+      <div class="meta"><span>国盛证券 / 华创交运</span><span>2026-07-20</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">AI战略</span><span class="tag">行业趋势</span></div>
+      <h3>京东、顺丰、菜鸟、抖音四巨头抢滩AI物流机器人"黄金试验场"</h3>
+      <p>京东以"全链路自研+生态化投资"领跑，投资智元、千寻等6家机器人企业，启动"涅槃计划"培训70万蓝领员工。顺丰成立智联科技专攻AI机器人，菜鸟以云计算+AI赋能全球仓网，字节跳动自研轮式机器人累计超1000台。中通、圆通、韵达等聚焦末端应用场景落地。</p>
+      <div class="meta"><span>澎湃新闻 / 36氪</span><span>2026-07-22</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULE 4: 美妆新闻卡片 ===== -->
+<section class="section">
+  <h2 class="section-title">💄 美妆护肤新闻</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="tags"><span class="tag urgent">并购整合</span></div>
+      <h3>珀莱雅7.79亿控股花知晓，侯亚孟出任董事长启动深度整合</h3>
+      <p>珀莱雅累计出资7.79亿元取得花知晓51%股权，总经理侯亚孟出任花知晓董事长，创始人杨子枫卸任董事长、继续任总经理。花知晓2025年营收17.26亿/净利2.80亿（连续三年50%+增长），2026Q1营收6.75亿/净利1.55亿，海外营收突破2亿。此次整合补齐珀莱雅15-25岁少女彩妆赛道空白。</p>
+      <div class="meta"><span>新华网 / 北京商报</span><span>2026-07-22</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag data">数据</span><span class="tag">业绩排名</span></div>
+      <h3>美妆Q1营收排名：珀莱雅23.05亿居首，敷尔佳+82%领涨</h3>
+      <p>2026Q1化妆品行业TOP15合计营收111.65亿元。珀莱雅23.05亿（-2.29%）居首，上海家化17.95亿（+5.38%），水羊股份11.98亿（+10.34%），贝泰妮11.18亿（+17.84%），福瑞达9.00亿（+2.78%）。敷尔佳以82.12%营收增速领涨行业，净利+87.73%同步高增。</p>
+      <div class="meta"><span>金融界 / 交易所数据</span><span>2026-07-17</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">战略转型</span></div>
+      <h3>华熙生物Q1营收降23%进入战略重构期，经营现金流转正释放积极信号</h3>
+      <p>华熙生物Q1营收8.29亿（-23.06%），净利0.65亿（-36.55%），主因皮肤科学创新转化业务调整。经营现金流由负转正至1.31亿，销售费用率优化至31.76%，研发投入强度10.34%。创始人赵燕重返一线推动ECM体系重构，润百颜品牌全面升级，冠名双奥场馆"ECM中心"提升品牌势能。</p>
+      <div class="meta"><span>华熙生物Q1报告 / 36氪</span><span>2026-04-22</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag data">数据</span><span class="tag">触底反弹</span></div>
+      <h3>贝泰妮Q1净利+133%触底反弹，但2025年被巨子生物全面反超</h3>
+      <p>贝泰妮Q1营收11.18亿（+17.84%），归母净利0.66亿（+132.76%），经营现金流由负转正至0.43亿。但2025年全年营收53.59亿（-6.58%），被巨子生物（55.19亿）反超。核心品牌薇诺娜收入44.32亿（-9.73%），销售费用率高达54.2%严重挤压利润。巨子生物以80.34%毛利率和19.15亿净利拉开差距。</p>
+      <div class="meta"><span>CBNData / 36氪</span><span>2026-07-18</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">高增长</span><span class="tag">IPO</span></div>
+      <h3>珀莱雅赴港IPO加速国际化，多品牌矩阵战略进入兑现期</h3>
+      <p>珀莱雅公告拟发行H股赴港上市，加快国际化战略。2025年总营收105.97亿，但主品牌珀莱雅营收同比降超10%。第二曲线品牌表现亮眼：彩棠2025H1营收7.05亿（+21.11%），原色波塔、Off&Relax等高速扩张。控股花知晓后集团拥有超7个品牌，覆盖护肤、彩妆、洗护三大品类，目标"未来十年跻身全球化妆品前十"。</p>
+      <div class="meta"><span>36氪 / 新浪财经</span><span>2026-07-23</span></div>
+    </div>
+    <div class="news-card">
+      <div class="tags"><span class="tag">明星企业</span><span class="tag data">数据</span></div>
+      <h3>巨子生物净利19.15亿碾压同行，可复美单品牌撑起81%营收</h3>
+      <p>巨子生物2025年营收55.19亿（-0.4%），归母净利19.15亿（-7.2%），毛利率80.34%。核心品牌可复美收入44.7亿占比81%，通过1700家公立医院、3000家私立诊所和13万家药店铺设专业渠道护城河。销售费用率34%远低于贝泰妮的54%，净利率37.9%行业最高。</p>
+      <div class="meta"><span>新浪科技 / 36氪</span><span>2026-06-07</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULE 5: 快递企业对比表 ===== -->
+<section class="section">
+  <h2 class="section-title">📊 快递头部企业对比（2026年6月 / H1）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>企业</th>
+          <th>6月营收（亿）</th>
+          <th>营收同比</th>
+          <th>6月业务量（亿票）</th>
+          <th>量同比</th>
+          <th>单票收入（元）</th>
+          <th>单票同比</th>
+          <th>H1净利预估（亿）</th>
+          <th>核心看点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>顺丰控股</strong></td>
+          <td class="num">278.80</td>
+          <td class="up">+6.19%</td>
+          <td class="num">13.89</td>
+          <td class="down">-4.86%</td>
+          <td class="num">14.41</td>
+          <td class="up">+5.41%</td>
+          <td class="num">—</td>
+          <td>单票连续4月回升；国际+25%第二引擎</td>
+        </tr>
+        <tr>
+          <td><strong>圆通速递</strong></td>
+          <td class="num">58.83</td>
+          <td class="up">+6.44%</td>
+          <td class="num">28.53</td>
+          <td class="up">+8.57%</td>
+          <td class="num">2.06</td>
+          <td class="down">-1.96%</td>
+          <td class="num">31-34</td>
+          <td>规模利润双冠；单票净利0.217元领先</td>
+        </tr>
+        <tr>
+          <td><strong>申通快递</strong></td>
+          <td class="num">54.75</td>
+          <td class="up">+26.13%</td>
+          <td class="num">25.90</td>
+          <td class="up">+18.58%</td>
+          <td class="num">2.11</td>
+          <td class="up">+6.03%</td>
+          <td class="num">9.5-10.6</td>
+          <td>增速领跑；SClaw智能体平台；并购+AI</td>
+        </tr>
+        <tr>
+          <td><strong>韵达股份</strong></td>
+          <td class="num">45.78</td>
+          <td class="up">+10.34%</td>
+          <td class="num">21.72</td>
+          <td class="down">-0.05%</td>
+          <td class="num">2.11</td>
+          <td class="up">+10.47%</td>
+          <td class="num">9.05-10.5</td>
+          <td>单票涨幅最大；量价博弈中；低基数</td>
+        </tr>
+        <tr>
+          <td><strong>极兔速递</strong></td>
+          <td class="num">—（Q2）</td>
+          <td class="up">+24.2%</td>
+          <td class="num">91.77（Q2）</td>
+          <td class="up">+24.2%</td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>日均破1亿件；恒生成分股；出海高增</td>
+        </tr>
+        <tr>
+          <td><strong>中通快递</strong></td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>行业龙头；估值11xPE，看涨至15x+</td>
+        </tr>
+        <tr>
+          <td><strong>京东物流</strong></td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>—</td>
+          <td class="num">—</td>
+          <td>精灵G2 Max具身机器人；5年300万台</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== MODULE 6: 美妆企业一览表 ===== -->
+<section class="section">
+  <h2 class="section-title">💎 美妆企业一览（最新可用数据）</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>企业</th>
+          <th>最新营收（亿）</th>
+          <th>营收同比</th>
+          <th>最新净利（亿）</th>
+          <th>净利同比</th>
+          <th>核心品牌</th>
+          <th>战略看点</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>珀莱雅</strong></td>
+          <td class="num">23.05（Q1）</td>
+          <td class="down">-2.29%</td>
+          <td class="num">3.67（Q1）</td>
+          <td class="down">-6.05%</td>
+          <td>珀莱雅/彩棠/花知晓</td>
+          <td>赴港IPO；7.79亿控股花知晓；多品牌平台化</td>
+        </tr>
+        <tr>
+          <td><strong>华熙生物</strong></td>
+          <td class="num">8.29（Q1）</td>
+          <td class="down">-23.06%</td>
+          <td class="num">0.65（Q1）</td>
+          <td class="down">-36.55%</td>
+          <td>润百颜/夸迪</td>
+          <td>ECM体系重构；经营现金流转正；研发10.34%</td>
+        </tr>
+        <tr>
+          <td><strong>贝泰妮</strong></td>
+          <td class="num">11.18（Q1）</td>
+          <td class="up">+17.84%</td>
+          <td class="num">0.66（Q1）</td>
+          <td class="up">+132.76%</td>
+          <td>薇诺娜</td>
+          <td>Q1触底反弹；销售费用率54%仍高企</td>
+        </tr>
+        <tr>
+          <td><strong>巨子生物</strong></td>
+          <td class="num">55.19（2025）</td>
+          <td class="down">-0.4%</td>
+          <td class="num">19.15（2025）</td>
+          <td class="down">-7.2%</td>
+          <td>可复美/可丽金</td>
+          <td>净利率37.9%行业最高；专业渠道壁垒深厚</td>
+        </tr>
+        <tr>
+          <td><strong>毛戈平</strong></td>
+          <td class="num">25.88（2025H1）</td>
+          <td class="up">+31.3%</td>
+          <td class="num">6.70（2025H1）</td>
+          <td class="up">+36.1%</td>
+          <td>毛戈平/至爱终生</td>
+          <td>化妆师品牌稀缺性；增速领跑行业</td>
+        </tr>
+        <tr>
+          <td><strong>花知晓</strong></td>
+          <td class="num">6.75（Q1）</td>
+          <td class="up">+50%+</td>
+          <td class="num">1.55（Q1）</td>
+          <td class="up">高增</td>
+          <td>花知晓</td>
+          <td>被珀莱雅控股；海外2亿+营收；25个原创系列</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== MODULE 7: 趋势可视化 ===== -->
+<section class="section">
+  <h2 class="section-title">📈 趋势可视化</h2>
+  <div class="chart-group">
+    <div class="chart-box">
+      <h3>📦 6月快递业务量增速对比（YoY %）</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">行业均值</div>
+          <div class="bar-track"><div class="bar-fill blue" style="width:23%"><span>+3.8%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">申通快递</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%"><span>+18.58%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">圆通速递</div>
+          <div class="bar-track"><div class="bar-fill yellow" style="width:57%"><span>+8.57%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">韵达股份</div>
+          <div class="bar-track"><div class="bar-fill orange" style="width:10%"><span>-0.05%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">顺丰控股</div>
+          <div class="bar-track"><div class="bar-fill purple" style="width:10%"><span>-4.86%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">极兔Q2</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%"><span>+24.2%</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <h3>💄 美妆企业2025年全年营收对比（亿元）</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">珀莱雅</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%"><span>105.97亿</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">巨子生物</div>
+          <div class="bar-track"><div class="bar-fill yellow" style="width:52%"><span>55.19亿</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">贝泰妮</div>
+          <div class="bar-track"><div class="bar-fill blue" style="width:51%"><span>53.59亿</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">毛戈平</div>
+          <div class="bar-track"><div class="bar-fill purple" style="width:36%"><span>~37.8亿*</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">华熙生物</div>
+          <div class="bar-track"><div class="bar-fill orange" style="width:25%"><span>~26.2亿*</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">花知晓</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:16%"><span>17.26亿</span></div></div>
+        </div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:12px;">*毛戈平/华熙生物为推算值（H1翻倍），其余为已披露全年数据</p>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-box">
+      <h3>🚀 H1快递净利增速对比（YoY %，按中值）</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">申通快递</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%"><span>+121.7%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">韵达股份</div>
+          <div class="bar-track"><div class="bar-fill yellow" style="width:70%"><span>+84.9%</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">圆通速递</div>
+          <div class="bar-track"><div class="bar-fill blue" style="width:64%"><span>+77.5%</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <h3>📊 单票收入环比变化（6月 vs 5月，元）</h3>
+      <div class="bar-chart">
+        <div class="bar-row">
+          <div class="bar-label">顺丰控股</div>
+          <div class="bar-track"><div class="bar-fill green" style="width:100%"><span>14.41元 (+4.8%)</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">韵达股份</div>
+          <div class="bar-track"><div class="bar-fill yellow" style="width:52%"><span>2.11元 (+2.4%)</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">圆通速递</div>
+          <div class="bar-track"><div class="bar-fill blue" style="width:48%"><span>2.06元 (+1.0%)</span></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">申通快递</div>
+          <div class="bar-track"><div class="bar-fill orange" style="width:45%"><span>2.11元 (-1.4%)</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULE 8: 数据速览总表 ===== -->
+<section class="section">
+  <h2 class="section-title">🗂️ 数据速览总表</h2>
+  <div class="table-wrap summary-table">
+    <table>
+      <thead>
+        <tr><th>指标</th><th>数值</th><th>同比变化</th><th>来源/时间</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>H1快递业务量</td><td class="num">1003.8亿件</td><td class="up">+5.0%</td><td>国家邮政局 / 2026H1</td></tr>
+        <tr><td>H1快递收入</td><td class="num">7714.1亿元</td><td class="up">+7.3%</td><td>国家邮政局 / 2026H1</td></tr>
+        <tr><td>6月行业快递量</td><td class="num">175.1亿件</td><td class="up">+3.8%</td><td>国家邮政局 / 2026.06</td></tr>
+        <tr><td>6月行业单票收入</td><td class="num">7.77元</td><td class="up">+3.8%</td><td>华创交运 / 2026.06</td></tr>
+        <tr><td>行业CR8（业务量）</td><td class="num">96.1</td><td>环比持平</td><td>国盛证券 / 2026.06</td></tr>
+        <tr><td>圆通市占率</td><td class="num">16.3%</td><td class="up">+0.7pct</td><td>国盛证券 / 2026.06</td></tr>
+        <tr><td>极兔Q2日均包裹</td><td class="num">1.01亿件</td><td class="up">+24.2%</td><td>极兔公告 / 2026Q2</td></tr>
+        <tr><td>极兔东南亚Q2</td><td class="num">27.55亿件</td><td class="up">+63.2%</td><td>极兔公告 / 2026Q2</td></tr>
+        <tr><td>珀莱雅2025全年营收</td><td class="num">105.97亿元</td><td>微降</td><td>珀莱雅年报 / 2025</td></tr>
+        <tr><td>珀莱雅Q1营收</td><td class="num">23.05亿元</td><td class="down">-2.29%</td><td>珀莱雅Q1报告 / 2026</td></tr>
+        <tr><td>花知晓2025营收</td><td class="num">17.26亿元</td><td class="up">+50%+（连续三年）</td><td>新华网 / 2025</td></tr>
+        <tr><td>贝泰妮Q1营收</td><td class="num">11.18亿元</td><td class="up">+17.84%</td><td>贝泰妮Q1报告 / 2026</td></tr>
+        <tr><td>巨子生物2025净利</td><td class="num">19.15亿元</td><td class="down">-7.2%</td><td>巨子生物年报 / 2025</td></tr>
+        <tr><td>华熙生物Q1营收</td><td class="num">8.29亿元</td><td class="down">-23.06%</td><td>华熙生物Q1报告 / 2026</td></tr>
+        <tr><td>京东物流机器人计划</td><td class="num">300万台/5年</td><td>新增</td><td>京东物流公告 / 2025-2030</td></tr>
+        <tr><td>申通H1净利增速</td><td class="num">+109.6%~133.9%</td><td class="up">翻倍</td><td>申通业绩预告 / 2026H1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== MODULE 9: 页脚 ===== -->
+<footer class="footer">
+  <p><strong>📬 Ettoreal 行业日报</strong> · 2026年7月24日生成</p>
+  <p style="margin-top:6px;">
+    数据来源：国家邮政局 · 各公司公告（顺丰/圆通/申通/韵达/极兔/珀莱雅/华熙生物/贝泰妮/巨子生物/毛戈平） ·
+    每经网 · 新华网 · 上海证券报 · 国盛证券 · 华创交运 · 36氪 · 新浪财经 · 金融界 · CBNData
+  </p>
+  <p style="margin-top:6px;font-size:0.72rem;color:var(--text-muted)">
+    免责声明：本报告仅供行业研究参考，不构成投资建议。数据来源于公开信息，可能存在时间差。
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
