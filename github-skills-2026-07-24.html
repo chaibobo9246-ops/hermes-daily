@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-07-24</title>
+<style>
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #1c2129;
+    --border: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent: #58a6ff;
+    --accent-glow: #1f6feb;
+    --tag-bg: #1a2332;
+    --tag-text: #79c0ff;
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+  header {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-size: 0.95em;
+    color: var(--text-secondary);
+  }
+  header .date-badge {
+    display: inline-block;
+    background: var(--accent-glow);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 28px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-item .number {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-item .label {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+  .section-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 36px 0 20px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    color: var(--text-primary);
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover {
+    border-color: var(--accent-glow);
+    transform: translateY(-2px);
+  }
+  .skill-card .repo-name {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .skill-card .repo-name:hover { text-decoration: underline; }
+  .skill-card .description {
+    margin: 10px 0 12px;
+    color: var(--text-secondary);
+    font-size: 0.93em;
+    line-height: 1.7;
+  }
+  .skill-card .meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+  .skill-card .meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 500;
+  }
+  .links-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 40px;
+  }
+  .links-section h3 {
+    font-size: 1.1em;
+    margin-bottom: 16px;
+  }
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-item a {
+    color: var(--accent);
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 0.9em;
+  }
+  .link-item a:hover { text-decoration: underline; }
+  .link-item .badge {
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .badge-cos { background: #1a3a2a; color: var(--success); }
+  .badge-gh { background: #1a2332; color: var(--accent); }
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    color: var(--text-secondary);
+    font-size: 0.8em;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+  }
+  .empty-state .icon { font-size: 3em; margin-bottom: 16px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+  }
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td a { color: var(--accent); text-decoration: none; }
+  td a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>🔍 GitHub Hermes Skill 每日盘点</h1>
+    <p class="subtitle">自动扫描 GitHub 上新增的 Hermes Agent Skill 仓库</p>
+    <div class="date-badge">📅 2026-07-24</div>
+  </header>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="number">6</div>
+      <div class="label">📦 24h 新增 Skill</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">4,123+</div>
+      <div class="label">📊 历史总量</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">3</div>
+      <div class="label">🌐 平台兼容</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">📊 今日新增 Hermes Skill</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Skill 名称</th>
+        <th>描述</th>
+        <th>作者</th>
+        <th>创建时间</th>
+        <th>链接</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>baituzhan</strong><br><span class="tag">今日新增</span></td>
+        <td>百图斩 · 风格无关插图复刻技能：从 1–3 张参考图提取风格，为任意文章生成插图。兼容 Claude Code / Codex / Kimi / Hermes</td>
+        <td>serenashenn3-art</td>
+        <td>2026-07-24</td>
+        <td><a href="https://github.com/serenashenn3-art/baituzhan" target="_blank">🔗 查看</a></td>
+      </tr>
+      <tr>
+        <td><strong>jay-skill-pack</strong></td>
+        <td>Jay 智能体技能包 — Tekion DMS 专家代理，American Motors Group 使用的 Hermes Agent 技能集，按使用频率排序，自动同步</td>
+        <td>joecastelino</td>
+        <td>2026-07-23</td>
+        <td><a href="https://github.com/joecastelino/jay-skill-pack" target="_blank">🔗 查看</a></td>
+      </tr>
+      <tr>
+        <td><strong>Baoanmobile</strong></td>
+        <td>深圳宝安一线业务技能集 — 面向电信/通信行业 OA 办公场景的 WorkBuddy/Hermes 智能体技能（退单回捞日报 + OA邮件简报 + 团队Skill同步）</td>
+        <td>sz-zzp</td>
+        <td>2026-07-23</td>
+        <td><a href="https://github.com/sz-zzp/Baoanmobile" target="_blank">🔗 查看</a></td>
+      </tr>
+      <tr>
+        <td><strong>hermes-trip-com</strong></td>
+        <td>Trip.com 技能 for Hermes Agent — 酒店、机票、火车票和景点门票一站式查询预订</td>
+        <td>theKOman</td>
+        <td>2026-07-23</td>
+        <td><a href="https://github.com/theKOman/hermes-trip-com" target="_blank">🔗 查看</a></td>
+      </tr>
+      <tr>
+        <td><strong>itpay-skill-hermes</strong></td>
+        <td>Official ItPay Skill for Hermes Agent — 带固定单文件 CLI 绑定的智能体支付技能</td>
+        <td>itpay-ai</td>
+        <td>2026-07-23</td>
+        <td><a href="https://github.com/itpay-ai/itpay-skill-hermes" target="_blank">🔗 查看</a></td>
+      </tr>
+      <tr>
+        <td><strong>lah-stack-skills</strong></td>
+        <td>Hermes Agent skills for LAH Stack — 门控编排、操作员测试和受管控的交付工作流</td>
+        <td>leanframeworklab</td>
+        <td>2026-07-23</td>
+        <td><a href="https://github.com/leanframeworklab/lah-stack-skills" target="_blank">🔗 查看</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">🔬 亮点分析</h2>
+
+  <div class="skill-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <span style="font-size:1.5em;">🎨</span>
+      <span style="font-weight:700;font-size:1.1em;">百图斩 (baituzhan)</span>
+      <span class="tag" style="background:#2ea043;color:#fff;">NEW</span>
+    </div>
+    <p class="description">
+      本日唯一真正"今天"新增的 Hermes Skill。这是一个风格无关的插图复刻系统，能从少量参考图（1-3张）中提取风格，然后为任何文章内容生成匹配风格的插图。产品设计巧妙，支持 Claude Code / Codex / Kimi / Hermes 四大 AI 编程/代理平台，跨平台兼容性强。
+    </p>
+  </div>
+
+  <div class="skill-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <span style="font-size:1.5em;">🏢</span>
+      <span style="font-weight:700;font-size:1.1em;">Baoanmobile — 企业实战落地</span>
+    </div>
+    <p class="description">
+      深圳宝安的一线业务技能集展示了 Hermes Agent 在国内电信行业的真实落地案例。涵盖了退单回捞日报、OA邮件简报和团队Skill同步等实用的 OA 办公场景，是企业级 WorkBuddy/Hermes 智能体应用的良好示范。
+    </p>
+  </div>
+
+  <div class="skill-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <span style="font-size:1.5em;">✈️</span>
+      <span style="font-weight:700;font-size:1.1em;">生态拓展：出行 & 支付</span>
+    </div>
+    <p class="description">
+      hermes-trip-com 和 itpay-skill-hermes 标志着 Hermes Skill 生态向垂直行业拓展：Trip.com 差旅预订技能和 ItPay 智能体支付技能，让 Hermes Agent 具备实际消费场景的服务能力。这是 Agent 从"写代码"走向"做实事"的关键一步。
+    </p>
+  </div>
+
+  <div class="links-section">
+    <h3>🔗 在线链接</h3>
+    <div class="link-item">
+      <span class="badge badge-cos">COS 国内</span>
+      <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-24.html" target="_blank">
+        https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-24.html
+      </a>
+    </div>
+    <div class="link-item">
+      <span class="badge badge-gh">GitHub Pages</span>
+      <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-24.html" target="_blank">
+        https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-24.html
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>🤖 Generated by Hermes Agent · Ettoreal Dark Theme · 自动化每日盘点</p>
+    <p style="margin-top:4px;">数据来源: GitHub Search API · 扫描时间: 2026-07-24 UTC</p>
+  </footer>
+</div>
+
+</body>
+</html>
