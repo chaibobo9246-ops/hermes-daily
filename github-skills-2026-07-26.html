@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-07-26</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-purple: #a371f7;
+    --tag-bg: #1a2332;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+  header {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .subtitle { color: var(--text-muted); font-size: 1em; }
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 32px 0;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { color: var(--text-muted); font-size: 0.85em; margin-top: 4px; }
+  .stat-card .num.new { color: var(--accent-green); }
+  .stat-card .num.total { color: var(--accent); }
+  .section-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 36px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent-green);
+    color: var(--accent-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent-green);
+    color: #000;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+  .skill-card.new-item { border-left: 3px solid var(--accent-green); }
+  .skill-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .skill-name {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .skill-name a { color: inherit; text-decoration: none; }
+  .skill-name a:hover { text-decoration: underline; }
+  .skill-desc { color: var(--text); margin-bottom: 10px; font-size: 0.95em; }
+  .skill-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8em;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .skill-meta .star { color: var(--accent-orange); }
+  .skill-meta .author { color: var(--accent-purple); }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.75em;
+    color: var(--text-muted);
+  }
+  .no-new {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border-radius: 10px;
+    border: 1px dashed var(--border);
+  }
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85em;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .links-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+  }
+  .links-section h3 { color: var(--accent-orange); margin-bottom: 12px; }
+  .links-section a {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 0;
+    font-size: 0.9em;
+  }
+  .links-section a:hover { text-decoration: underline; }
+  .link-cos::before { content: '🇨🇳 '; }
+  .link-gh::before { content: '🐙 '; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Skill 每日盘点</h1>
+  <p class="subtitle">2026-07-26 · GitHub 开源生态扫描</p>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num new">2</div>
+    <div class="label">🆕 今日新增</div>
+  </div>
+  <div class="stat-card">
+    <div class="num total">19</div>
+    <div class="label">📦 本周累计</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:var(--accent-orange)">108</div>
+    <div class="label">⭐ 本周 Stars</div>
+  </div>
+</div>
+
+<div class="section-title">🆕 今日新增 <span class="badge">2</span></div>
+
+<div class="skill-card new-item">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/rinchen/hermes-radicle" target="_blank">hermes-radicle</a></span>
+    <span class="tag">2026-07-25</span>
+  </div>
+  <div class="skill-desc">Hermes Radicle skill, workflow, and local tools</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">rinchen</span></span>
+    <span class="star">⭐ 1</span>
+    <span class="date">📅 2026-07-25</span>
+  </div>
+</div>
+<div class="skill-card new-item">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/bj9421/hermes-skills" target="_blank">hermes-skills</a></span>
+    <span class="tag">2026-07-25</span>
+  </div>
+  <div class="skill-desc">Hermes Agent skills backup</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">bj9421</span></span>
+    <span class="star">⭐ 1</span>
+    <span class="date">📅 2026-07-25</span>
+  </div>
+</div>
+<div class="section-title" style="border-color:var(--accent);color:var(--accent);">📋 本周全部 (19)</div>
+
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/rinchen/hermes-radicle" target="_blank">hermes-radicle</a></span>
+    <span class="tag">2026-07-25</span>
+  </div>
+  <div class="skill-desc">Hermes Radicle skill, workflow, and local tools</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">rinchen</span></span>
+    <span class="star">⭐ 1</span>
+    <span class="date">📅 2026-07-25</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/bj9421/hermes-skills" target="_blank">hermes-skills</a></span>
+    <span class="tag">2026-07-25</span>
+  </div>
+  <div class="skill-desc">Hermes Agent skills backup</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">bj9421</span></span>
+    <span class="star">⭐ 1</span>
+    <span class="date">📅 2026-07-25</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/serenashenn3-art/baituzhan" target="_blank">baituzhan</a></span>
+    <span class="tag">2026-07-24</span>
+  </div>
+  <div class="skill-desc">百图斩 · A style-agnostic illustration-replication skill: harvest any style from 1–3 reference images, then illustrate any article</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">serenashenn3-art</span></span>
+    <span class="star">⭐ 2</span>
+    <span class="date">📅 2026-07-24</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/ddinch/amc-seat-watch" target="_blank">amc-seat-watch</a></span>
+    <span class="tag">2026-07-24</span>
+  </div>
+  <div class="skill-desc">Hermes skill for deterministic AMC seat-availability monitoring</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">ddinch</span></span>
+    <span class="star">⭐ 3</span>
+    <span class="date">📅 2026-07-24</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/gitcommit90/1Helm" target="_blank">1Helm</a></span>
+    <span class="tag">2026-07-23</span>
+  </div>
+  <div class="skill-desc">Self-hosted home for durable AI employees: one resident, one private computer, compounding memory and skills</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">gitcommit90</span></span>
+    <span class="star">⭐ 3</span>
+    <span class="date">📅 2026-07-23</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/thursdaycapital/heritage-architecture-studio" target="_blank">heritage-architecture-studio</a></span>
+    <span class="tag">2026-07-23</span>
+  </div>
+  <div class="skill-desc">Hermes skill: historic building analysis → reference-sheet → multi-view board → verified procedural Three.js exhibit</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">thursdaycapital</span></span>
+    <span class="star">⭐ 6</span>
+    <span class="date">📅 2026-07-23</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/Littlemiro/muse" target="_blank">muse</a></span>
+    <span class="tag">2026-07-23</span>
+  </div>
+  <div class="skill-desc">MUSE — MUlti-purpose Skill Ecosystem: open skill format, 12-category classification system, MCP bridge, format enforcer</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">Littlemiro</span></span>
+    <span class="star">⭐ 0</span>
+    <span class="date">📅 2026-07-23</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/radial-hks/ai-tools-tutorial" target="_blank">ai-tools-tutorial</a></span>
+    <span class="tag">2026-07-23</span>
+  </div>
+  <div class="skill-desc">AI 工具入门到进阶分享。本期：VS Code Copilot，后续：Skill、Hermes、Pi 等</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">radial-hks</span></span>
+    <span class="star">⭐ 5</span>
+    <span class="date">📅 2026-07-23</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/smfworks/hermes-skill-forge" target="_blank">hermes-skill-forge</a></span>
+    <span class="tag">2026-07-22</span>
+  </div>
+  <div class="skill-desc">Visual studio for observing, understanding, editing, and steering Hermes skill evolution</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">smfworks</span></span>
+    <span class="star">⭐ 2</span>
+    <span class="date">📅 2026-07-22</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/kursadpolat/machine-ssh-mesh" target="_blank">machine-ssh-mesh</a></span>
+    <span class="tag">2026-07-22</span>
+  </div>
+  <div class="skill-desc">Connect two machines over SSH and coordinate two Hermes bots from a Telegram group</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">kursadpolat</span></span>
+    <span class="star">⭐ 2</span>
+    <span class="date">📅 2026-07-22</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/PabloTheThinker/hermespace" target="_blank">hermespace</a></span>
+    <span class="tag">2026-07-22</span>
+  </div>
+  <div class="skill-desc">Pocket workbench for Hermes Agent — limited FOA desk, dual decode, skills+MEMORY fabric, neural FOA</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">PabloTheThinker</span></span>
+    <span class="star">⭐ 5</span>
+    <span class="date">📅 2026-07-22</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/Perseon-Lab/agent-console" target="_blank">agent-console</a></span>
+    <span class="tag">2026-07-22</span>
+  </div>
+  <div class="skill-desc">A lightweight browser mission control for one Hermes agent: chat, sessions, cron jobs, skills, voice and read-only missions</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">Perseon-Lab</span></span>
+    <span class="star">⭐ 3</span>
+    <span class="date">📅 2026-07-22</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/JustinGastby/Hermes-Mind-Skill" target="_blank">Hermes-Mind-Skill</a></span>
+    <span class="tag">2026-07-21</span>
+  </div>
+  <div class="skill-desc">Port Hermes Agent&#x27;s self-improving skill loop to Cursor &amp; Claude Code via native Hooks + Skills</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">JustinGastby</span></span>
+    <span class="star">⭐ 3</span>
+    <span class="date">📅 2026-07-21</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/Theorvane/type-mcp-api-agent-skill" target="_blank">type-mcp-api-agent-skill</a></span>
+    <span class="tag">2026-07-21</span>
+  </div>
+  <div class="skill-desc">Hermes skill and generator harness for turning API specifications into TypeMCP MCP repositories</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">Theorvane</span></span>
+    <span class="star">⭐ 0</span>
+    <span class="date">📅 2026-07-21</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/awesome-edu/video-to-skill" target="_blank">video-to-skill</a></span>
+    <span class="tag">2026-07-21</span>
+  </div>
+  <div class="skill-desc">Convert any video → a queryable SKILL.md. The video cousin of book-to-skill</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">awesome-edu</span></span>
+    <span class="star">⭐ 3</span>
+    <span class="date">📅 2026-07-21</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/jeffprestes/all-jeffprestes-ai-skills" target="_blank">all-jeffprestes-ai-skills</a></span>
+    <span class="tag">2026-07-20</span>
+  </div>
+  <div class="skill-desc">Catalog of AI Skills using on Hermes Agents</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">jeffprestes</span></span>
+    <span class="star">⭐ 5</span>
+    <span class="date">📅 2026-07-20</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/SathiaAI/graphsmith" target="_blank">graphsmith</a></span>
+    <span class="tag">2026-07-20</span>
+  </div>
+  <div class="skill-desc">Build AI agent workflows that survive crashes, never duplicate work, and don&#x27;t make things up</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">SathiaAI</span></span>
+    <span class="star">⭐ 2</span>
+    <span class="date">📅 2026-07-20</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/Rishflips/OpenShip-Hermes-Agent" target="_blank">OpenShip-Hermes-Agent</a></span>
+    <span class="tag">2026-07-20</span>
+  </div>
+  <div class="skill-desc">OpenShip Skill for Hermes - Autonomous Deployment &amp; Infrastructure Management</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">Rishflips</span></span>
+    <span class="star">⭐ 9</span>
+    <span class="date">📅 2026-07-20</span>
+  </div>
+</div>
+<div class="skill-card">
+  <div class="skill-header">
+    <span class="skill-name"><a href="https://github.com/asimons81/hermes-field-kit" target="_blank">hermes-field-kit</a></span>
+    <span class="tag">2026-07-20</span>
+  </div>
+  <div class="skill-desc">Field-tested, open-source skills for Hermes Agent</div>
+  <div class="skill-meta">
+    <span>👤 <span class="author">asimons81</span></span>
+    <span class="star">⭐ 53</span>
+    <span class="date">📅 2026-07-20</span>
+  </div>
+</div>
+<div class="links-section">
+  <h3>🔗 在线访问</h3>
+  <a class="link-cos" href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-26.html" target="_blank">COS 国内直连（推荐打开）🇨🇳</a>
+  <a class="link-gh" href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-26.html" target="_blank">GitHub Pages（需代理）🐙</a>
+</div>
+
+<footer>
+  <p>🤖 由 Hermes Agent 自动生成 · 2026-07-26</p>
+  <p style="margin-top:4px;">Powered by <a href="https://github.com/NousResearch/Hermes-Function-Calling" target="_blank">Nous Research Hermes</a></p>
+</footer>
+
+</div>
+</body>
+</html>
