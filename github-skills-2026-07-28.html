@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Hermes Skill 每日盘点 — 2026-07-28</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-red: #f85149;
+    --tag-bg: #1f2937;
+    --tag-text: #9ca3af;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+  header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #bc8cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .date {
+    color: var(--text-muted);
+    font-size: 0.95em;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .stat-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .stat-label {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-top: 4px;
+  }
+  .section {
+    margin-bottom: 40px;
+  }
+  .section h2 {
+    font-size: 1.3em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .repo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+  }
+  .repo-card:hover { border-color: var(--accent); }
+  .repo-name {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.05em;
+    text-decoration: none;
+  }
+  .repo-name:hover { text-decoration: underline; }
+  .repo-desc {
+    color: var(--text);
+    margin: 8px 0;
+    font-size: 0.95em;
+  }
+  .repo-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .tag-new { background: #23863622; color: var(--accent-green); border: 1px solid #23863644; }
+  .tag-skill { background: #1f6feb22; color: var(--accent); border: 1px solid #1f6feb44; }
+  .tag-hot { background: #d2991d22; color: var(--accent-orange); border: 1px solid #d2991d44; }
+  .tag-plugin { background: #bc8cff22; color: #bc8cff; border: 1px solid #bc8cff44; }
+  .star-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .links-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 40px;
+  }
+  .links-section h2 { margin-bottom: 12px; }
+  .links-section a {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 6px 0;
+    font-size: 0.95em;
+  }
+  .links-section a:hover { text-decoration: underline; }
+  .link-label {
+    color: var(--text-muted);
+    font-size: 0.8em;
+    margin-left: 8px;
+  }
+  footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .no-new {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 1.1em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔍 GitHub Hermes Skill 每日盘点</h1>
+  <div class="date">📅 2026年7月28日 · 星期二</div>
+</header>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-value">7</div>
+    <div class="stat-label">📦 今日新增</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">191</div>
+    <div class="stat-label">⭐ 最热项目</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">4</div>
+    <div class="stat-label">🐍 Python</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">3</div>
+    <div class="stat-label">⚡ 其他语言</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🆕 今日新增 Skill (2026-07-28)</h2>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/Sakshxm1/hermes-agency-orchestrator" target="_blank">Sakshxm1/hermes-agency-orchestrator</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <span class="tag tag-hot">🔥 HOT</span>
+  <div class="repo-desc">Claude Code Agent Workflows Guide 2026: Skills vs Teams vs Cost Analysis — 全面的 Hermes Agent 编排指南，含技能管理、团队协作与成本分析</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span class="star-badge">⭐ 155</span>
+    <span>🏷️ HTML</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/yun520-1/mark-heartflow-skill" target="_blank">yun520-1/mark-heartflow-skill</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <span class="tag tag-hot">🔥 HOT</span>
+  <div class="repo-desc">HeartFlow — AI 认知引擎：多路径判断、自纠正 RL、3层记忆系统、U/D/A/H 五维度评估过滤，Hermes Agent 高级认知技能</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span class="star-badge">⭐ 36</span>
+    <span>🏷️ JavaScript</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/codenote-net/oh-my-hermes" target="_blank">codenote-net/oh-my-hermes</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <span class="tag tag-plugin">Plugin</span>
+  <div class="repo-desc">Hermes Agent 个人定制集合：skills、plugins、hooks、config 模板 — 一站式 Hermes 配置管理工具</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span>⭐ 0</span>
+    <span>🐍 Python</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/sloemo01/hermes-skills-bundle" target="_blank">sloemo01/hermes-skills-bundle</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <div class="repo-desc">研究自动化 Skill 套装：kimi-webbridge、deep-web-research、job-search-automation，面向 Hermes Agent 的一站式研究工具箱</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span>⭐ 0</span>
+    <span>🏷️ PowerShell</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/joecastelino/jay-skill-pack" target="_blank">joecastelino/jay-skill-pack</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <div class="repo-desc">Jay 专属 Skill Pack — Tekion DMS 专家 Agent，American Motors Group 定制的 Hermes Agent 技能集合</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span>⭐ 0</span>
+    <span>🏷️ TeX</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/agudanv/hermes-nemo-skills" target="_blank">agudanv/hermes-nemo-skills</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <div class="repo-desc">Hermes Nemo Skills — 面向 Hermes Agent 的技能集合（描述待补充）</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span>⭐ 0</span>
+    <span>🐍 Python</span>
+  </div>
+</div>
+
+<div class="repo-card">
+  <a class="repo-name" href="https://github.com/denglong450921-oss/hermes-custom-skills" target="_blank">denglong450921-oss/hermes-custom-skills</a>
+  <span class="tag tag-new">NEW</span>
+  <span class="tag tag-skill">Skill</span>
+  <div class="repo-desc">Hermes Agent 自定义技能：html-output v4.0 + skill-harness（含反馈循环），高级输出与控制技能</div>
+  <div class="repo-meta">
+    <span>📅 2026-07-28</span>
+    <span>⭐ 0</span>
+    <span>🐍 Python</span>
+  </div>
+</div>
+
+</div>
+
+<div class="links-section">
+  <h2>🔗 在线访问</h2>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-07-28.html" target="_blank">
+    🇨🇳 COS 国内直连（推荐）
+    <span class="link-label">hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com</span>
+  </a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-07-28.html" target="_blank">
+    🌐 GitHub Pages（需代理）
+    <span class="link-label">chaibobo9246-ops.github.io/hermes-daily</span>
+  </a>
+</div>
+
+<footer>
+  <p>🤖 由 Hermes Agent 自动生成 · 数据来源：GitHub API</p>
+  <p>Generated at 2026-07-28T00:00:00+08:00</p>
+</footer>
+
+</div>
+</body>
+</html>
