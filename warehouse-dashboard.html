@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仓配项目进度仪表盘 | 新仓启动</title>
+<style>
+:root {
+  --bg: #080c14;
+  --card: #111827;
+  --border: rgba(255,255,255,0.06);
+  --green: #10b981;
+  --green-light: #a8e063;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --purple: #a78bfa;
+  --red: #ef4444;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 28px;
+}
+.header h1 { font-size: 28px; background: linear-gradient(135deg, var(--green-light), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.header .badge { background: var(--card); border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px; font-size: 13px; color: var(--text-dim); }
+.header .badge span { color: var(--green); font-weight: 700; }
+
+/* KPI Row */
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.kpi-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 20px 24px; position: relative; overflow: hidden;
+}
+.kpi-card::before {
+  content: ''; position: absolute; top:0; left:0; width: 4px; height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+.kpi-card:nth-child(1)::before { background: var(--green); }
+.kpi-card:nth-child(2)::before { background: var(--blue); }
+.kpi-card:nth-child(3)::before { background: var(--amber); }
+.kpi-card:nth-child(4)::before { background: var(--purple); }
+.kpi-label { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+.kpi-value { font-size: 42px; font-weight: 800; letter-spacing: -1px; }
+.kpi-value.green { color: var(--green); }
+.kpi-value.blue { color: var(--blue); }
+.kpi-value.amber { color: var(--amber); }
+.kpi-value.purple { color: var(--purple); }
+.kpi-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+/* Main Grid */
+.main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.panel {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 24px;
+}
+.panel-title {
+  font-size: 15px; font-weight: 700; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-title .icon { font-size: 18px; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--green), var(--purple));
+}
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -23px; top: 2px;
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid;
+}
+.tl-dot.done { background: var(--green); border-color: var(--green); }
+.tl-dot.active { background: var(--card); border-color: var(--blue); }
+.tl-dot.upcoming { background: var(--card); border-color: var(--text-dim); }
+.tl-item.done .tl-dot { box-shadow: 0 0 8px rgba(16,185,129,0.4); }
+.tl-item.active .tl-dot { box-shadow: 0 0 8px rgba(59,130,246,0.4); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 4px rgba(59,130,246,0.3)} 50%{box-shadow:0 0 12px rgba(59,130,246,0.6)} }
+
+.tl-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.tl-tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.tl-tag.done { background: rgba(16,185,129,0.15); color: var(--green); }
+.tl-tag.active { background: rgba(59,130,246,0.15); color: var(--blue); }
+.tl-tag.upcoming { background: rgba(148,163,184,0.1); color: var(--text-dim); }
+.tl-date { font-size: 12px; color: var(--text-dim); }
+.tl-title { font-size: 14px; font-weight: 600; margin: 6px 0 4px; }
+.tl-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+.tl-owner { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--purple); margin-top: 4px; }
+
+/* Gantt */
+.gantt-chart { margin-top: 4px; }
+.gantt-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
+.gantt-label {
+  width: 100px; font-size: 12px; font-weight: 600; text-align: right;
+  flex-shrink: 0; color: var(--text);
+}
+.gantt-bar-container { flex:1; height: 26px; background: rgba(255,255,255,0.03); border-radius: 13px; position: relative; overflow: hidden; }
+.gantt-bar {
+  position: absolute; top:0; height: 100%; border-radius: 13px;
+  display: flex; align-items: center; padding-left: 12px;
+  font-size: 11px; font-weight: 600; white-space: nowrap;
+}
+.gantt-bar.green { background: linear-gradient(90deg, rgba(16,185,129,0.3), rgba(16,185,129,0.6)); color: var(--green); }
+.gantt-bar.blue { background: linear-gradient(90deg, rgba(59,130,246,0.3), rgba(59,130,246,0.6)); color: var(--blue); }
+.gantt-bar.amber { background: linear-gradient(90deg, rgba(245,158,11,0.3), rgba(245,158,11,0.6)); color: var(--amber); }
+.gantt-bar.purple { background: linear-gradient(90deg, rgba(167,139,250,0.3), rgba(167,139,250,0.6)); color: var(--purple); }
+.gantt-marker {
+  position: absolute; top:-4px; bottom:-4px; width: 2px;
+  background: rgba(255,255,255,0.3);
+}
+.gantt-marker.now { background: var(--red); width: 2px; }
+.gantt-today {
+  font-size: 10px; color: var(--red); margin-top: 4px; margin-left: 112px;
+}
+
+/* Bottom Grid */
+.bottom-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px; }
+
+/* Risk */
+.risk-item {
+  display: flex; align-items: flex-start; gap: 12px; padding: 14px;
+  border-radius: 12px; margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+.risk-item.high { border-left: 3px solid var(--red); background: rgba(239,68,68,0.06); }
+.risk-item.med { border-left: 3px solid var(--amber); background: rgba(245,158,11,0.05); }
+.risk-item.low { border-left: 3px solid var(--blue); background: rgba(59,130,246,0.05); }
+.risk-icon { font-size: 20px; flex-shrink: 0; }
+.risk-content { flex:1; }
+.risk-content .risk-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.risk-content .risk-desc { font-size: 11px; color: var(--text-dim); }
+.risk-action { font-size: 11px; color: var(--green); margin-top: 4px; }
+
+/* Commercial focus card */
+.focus-card {
+  background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08));
+  border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; padding: 24px;
+}
+.focus-card .focus-title { font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--green-light); }
+.focus-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.focus-row:last-child { border-bottom: none; }
+.focus-label { font-size: 13px; color: var(--text-dim); }
+.focus-value { font-size: 13px; font-weight: 700; }
+.focus-value.on-track { color: var(--green); }
+.focus-value.at-risk { color: var(--amber); }
+.focus-value.delayed { color: var(--red); }
+
+/* Footer */
+.footer { text-align: center; font-size: 11px; color: var(--text-dim); padding: 16px; border-top: 1px solid var(--border); }
+.footer .update { color: var(--green); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div>
+    <h1>🚀 仓配新仓启动 · 项目进度仪表盘</h1>
+    <div style="font-size:13px; color:var(--text-dim); margin-top:4px;">项目代号：WHP-2026 · 华东区域仓 · 总工期 18 周</div>
+  </div>
+  <div class="badge">📅 更新：<span>2026-07-29</span> &nbsp;|&nbsp; 进度：<span>42%</span></div>
+</div>
+
+<!-- KPI -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">📦 总里程碑</div>
+    <div class="kpi-value green">12</div>
+    <div class="kpi-sub">已完成 5 · 进行中 3 · 待启动 4</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">📅 距上线还有</div>
+    <div class="kpi-value blue">97</div>
+    <div class="kpi-sub">天 · 目标上线 2026.11.01</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">⚠️ 风险项</div>
+    <div class="kpi-value amber">4</div>
+    <div class="kpi-sub">高风险 1 · 中风险 3</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">💰 预算消耗</div>
+    <div class="kpi-value purple">38%</div>
+    <div class="kpi-sub">已支出 ¥2,860万 / 总预算 ¥7,500万</div>
+  </div>
+</div>
+
+<!-- Main Grid: Timeline + Gantt -->
+<div class="main-grid">
+  <!-- Left: Milestones -->
+  <div class="panel">
+    <div class="panel-title"><span class="icon">🏁</span> 关键里程碑</div>
+    <div class="timeline">
+      <div class="tl-item done">
+        <div class="tl-dot done"></div>
+        <div class="tl-header"><span class="tl-tag done">✅ 已完成</span><span class="tl-date">W1-W3 · 6/15 – 7/5</span></div>
+        <div class="tl-title">M1 · 项目立项 & 选址签约</div>
+        <div class="tl-desc">完成 3 个候选仓实地考察，确认华东仓选址 12,000㎡，签署租赁协议</div>
+        <div class="tl-owner">👤 商务总监 王磊</div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-dot done"></div>
+        <div class="tl-header"><span class="tl-tag done">✅ 已完成</span><span class="tl-date">W3-W5 · 6/28 – 7/15</span></div>
+        <div class="tl-title">M2 · 合同签署 & 商务条款锁定</div>
+        <div class="tl-desc">租赁合同、设备采购合同、系统服务合同全部签署完毕</div>
+        <div class="tl-owner">👤 商务经理 陈婷</div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-dot done"></div>
+        <div class="tl-header"><span class="tl-tag done">✅ 已完成</span><span class="tl-date">W4-W6 · 7/5 – 7/20</span></div>
+        <div class="tl-title">M3 · 仓库设计 & 图纸审批</div>
+        <div class="tl-desc">功能分区设计完成，通过消防/安监预审，获施工许可</div>
+        <div class="tl-owner">👤 工程经理 李明辉</div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-dot done"></div>
+        <div class="tl-header"><span class="tl-tag done">✅ 已完成</span><span class="tl-date">W5-W8 · 7/10 – 8/5</span></div>
+        <div class="tl-title">M4 · 设备采购招标定标</div>
+        <div class="tl-desc">货架/叉车/分拣线/WMS 系统集采完成，供应商全部定标</div>
+        <div class="tl-owner">👤 采购经理 张伟</div>
+      </div>
+      <div class="tl-item done">
+        <div class="tl-dot done"></div>
+        <div class="tl-header"><span class="tl-tag done">✅ 已完成</span><span class="tl-date">W6-W9 · 7/18 – 8/10</span></div>
+        <div class="tl-title">M5 · 施工进场 & 基础改造</div>
+        <div class="tl-desc">地面硬化、强弱电布设、消防改造启动，目前施工进度 60%</div>
+        <div class="tl-owner">👤 工程经理 李明辉</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-dot active"></div>
+        <div class="tl-header"><span class="tl-tag active">🔄 进行中</span><span class="tl-date">W8-W12 · 8/1 – 9/1</span></div>
+        <div class="tl-title">M6 · 设备到货安装 & 联调 ⚡</div>
+        <div class="tl-desc">货架进场安装完成 80%，分拣线到货待装，WMS 系统部署中</div>
+        <div class="tl-owner">👤 IT 经理 赵然</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-dot active"></div>
+        <div class="tl-header"><span class="tl-tag active">🔄 进行中</span><span class="tl-date">W10-W14 · 8/15 – 9/20</span></div>
+        <div class="tl-title">M7 · 人员招聘 & 培训</div>
+        <div class="tl-desc">仓管 8 人、操作工 45 人招聘中，预计 9 月初封闭培训</div>
+        <div class="tl-owner">👤 HR 经理 刘芳</div>
+      </div>
+      <div class="tl-item active">
+        <div class="tl-dot active"></div>
+        <div class="tl-header"><span class="tl-tag active">🔄 进行中</span><span class="tl-date">W12-W16 · 8/28 – 10/5</span></div>
+        <div class="tl-title">M8 · 系统联调 & 试运行 🎯</div>
+        <div class="tl-desc">WMS + TMS + 分拣系统全链路联调，模拟 500 单/天压力测试</div>
+        <div class="tl-owner">👤 IT 经理 赵然</div>
+      </div>
+      <div class="tl-item upcoming">
+        <div class="tl-dot upcoming"></div>
+        <div class="tl-header"><span class="tl-tag upcoming">⏳ 待启动</span><span class="tl-date">W14-W15 · 10/1 – 10/15</span></div>
+        <div class="tl-title">M9 · 客户入驻 & 首单测试</div>
+        <div class="tl-desc">首批客户货物入仓，完成真实订单全流程测试</div>
+      </div>
+      <div class="tl-item upcoming">
+        <div class="tl-dot upcoming"></div>
+        <div class="tl-header"><span class="tl-tag upcoming">⏳ 待启动</span><span class="tl-date">W15-W16 · 10/10 – 10/25</span></div>
+        <div class="tl-title">M10 · 消防 & 安全验收</div>
+        <div class="tl-desc">消防验收、安监验收、环保验收全部通过</div>
+      </div>
+      <div class="tl-item upcoming">
+        <div class="tl-dot upcoming"></div>
+        <div class="tl-header"><span class="tl-tag upcoming">⏳ 待启动</span><span class="tl-date">W16-W17 · 10/20 – 11/1</span></div>
+        <div class="tl-title">M11 · 正式上线 🎉</div>
+        <div class="tl-desc">全仓正式运营，日均处理能力 5,000+ 单</div>
+      </div>
+      <div class="tl-item upcoming">
+        <div class="tl-dot upcoming"></div>
+        <div class="tl-header"><span class="tl-tag upcoming">⏳ 待启动</span><span class="tl-date">W18+ · 11/1+</span></div>
+        <div class="tl-title">M12 · 运营稳定期 & 复盘</div>
+        <div class="tl-desc">首月运营数据追踪，问题闭环，项目总结复</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Gantt + Commercial -->
+  <div style="display:flex; flex-direction:column; gap:20px;">
+    <!-- Gantt -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">📊</span> 甘特图 · 阶段性进度</div>
+      <div class="gantt-chart">
+        <div class="gantt-row">
+          <div class="gantt-label">选址签约</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar green" style="left:0%;width:17%">W1-3</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">合同商务</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar green" style="left:6%;width:17%">W3-5</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">图纸审批</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar green" style="left:12%;width:17%">W4-6</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">设备采购</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar green" style="left:18%;width:22%">W5-8</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">施工改造</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar blue" style="left:24%;width:28%">W6-10</div>
+            <div class="gantt-marker now" style="left:45%"></div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">设备联调</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar amber" style="left:36%;width:22%">W8-12</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">人员培训</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar amber" style="left:44%;width:22%">W10-14</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">试运行</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar purple" style="left:56%;width:22%">W12-16</div>
+          </div>
+        </div>
+        <div class="gantt-row">
+          <div class="gantt-label">验收上线</div>
+          <div class="gantt-bar-container">
+            <div class="gantt-bar purple" style="left:72%;width:17%">W16-17</div>
+          </div>
+        </div>
+      </div>
+      <div class="gantt-today">🔴 今日（W7 · 完成 42%）</div>
+    </div>
+
+    <!-- Commercial Focus -->
+    <div class="focus-card">
+      <div class="focus-title">💼 商务关注 · 上线倒计时</div>
+      <div class="focus-row">
+        <span class="focus-label">🎯 合同里程碑</span>
+        <span class="focus-value on-track">✅ 100% 完成（5/5）</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">📅 目标上线日</span>
+        <span class="focus-value">2026.11.01</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">📋 下个商务节点</span>
+        <span class="focus-value on-track">设备验收确认书（8/15）</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">💰 付款节点</span>
+        <span class="focus-value">M6 设备到货款 ¥850万（8/20）</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">🏗️ 施工进度</span>
+        <span class="focus-value on-track">60% · 按计划推进</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">⚠️ 商务风险</span>
+        <span class="focus-value at-risk">分拣线供应商产能紧张 ⚠️</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">🔑 关键依赖</span>
+        <span class="focus-value">消防验收 → 上线前置条件</span>
+      </div>
+      <div class="focus-row">
+        <span class="focus-label">📞 本周行动</span>
+        <span class="focus-value" style="color:var(--blue);">催办分拣线交付 + 确认培训方案</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom -->
+<div class="bottom-grid">
+  <!-- Risk Panel -->
+  <div class="panel">
+    <div class="panel-title"><span class="icon">⚠️</span> 风险跟踪</div>
+    <div class="risk-item high">
+      <div class="risk-icon">🔴</div>
+      <div class="risk-content">
+        <div class="risk-title">分拣线供应商交付延迟风险</div>
+        <div class="risk-desc">供应商 A 产能紧张，原定 8/10 到货可能推迟至 8/25，影响 M6 联调 15 天</div>
+        <div class="risk-action">✅ 应对：已启动备选供应商 B 询价，同步催办原厂加急</div>
+      </div>
+    </div>
+    <div class="risk-item med">
+      <div class="risk-icon">🟠</div>
+      <div class="risk-content">
+        <div class="risk-title">仓管人员招聘进度滞后</div>
+        <div class="risk-desc">目标 8 人，目前已入职 4 人，缺口 50%。旺季招聘竞争激烈</div>
+        <div class="risk-action">✅ 应对：HR 已启动猎头渠道，同步调高薪资预算 15%</div>
+      </div>
+    </div>
+    <div class="risk-item med">
+      <div class="risk-icon">🟠</div>
+      <div class="risk-content">
+        <div class="risk-title">消防验收潜在整改项</div>
+        <div class="risk-desc">预审提出 2 项整改建议，若正式验收不过将推迟上线 7-14 天</div>
+        <div class="risk-action">✅ 应对：已纳入施工范围，计划 9 月中旬提前自检</div>
+      </div>
+    </div>
+    <div class="risk-item med">
+      <div class="risk-icon">🟠</div>
+      <div class="risk-content">
+        <div class="risk-title">WMS 系统对接延期</div>
+        <div class="risk-desc">与客户 TMS 系统 API 对接需额外 10 个工作日，原定排期偏紧</div>
+        <div class="risk-action">✅ 应对：IT 增加 2 人支援，压缩内部测试周期</div>
+      </div>
+    </div>
+    <div class="risk-item low">
+      <div class="risk-icon">🔵</div>
+      <div class="risk-content">
+        <div class="risk-title">季节性用工成本波动</div>
+        <div class="risk-desc">Q4 旺季临时工日薪预计上浮 20%，增加运营成本约 ¥30 万/月</div>
+        <div class="risk-action">📌 持续监控，已预留弹性预算</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Next Steps -->
+  <div class="panel">
+    <div class="panel-title"><span class="icon">📋</span> 本周待办 · 商务侧</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(16,185,129,0.06);border-radius:10px;border:1px solid rgba(16,185,129,0.1);">
+        <span style="font-size:20px;">🔴</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;">催办分拣线交付排期</div>
+          <div style="font-size:11px;color:var(--text-dim);">供应商 A · 8/1 前确认到货时间</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(245,158,11,0.06);border-radius:10px;border:1px solid rgba(245,158,11,0.1);">
+        <span style="font-size:20px;">🟠</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;">审核设备验收确认书</div>
+          <div style="font-size:11px;color:var(--text-dim);">货架部分 · 8/5 前签署</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(59,130,246,0.06);border-radius:10px;border:1px solid rgba(59,130,246,0.1);">
+        <span style="font-size:20px;">🔵</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;">确认培训场地 & 讲师</div>
+          <div style="font-size:11px;color:var(--text-dim);">9 月初封闭培训 · 本周确认方案</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(167,139,250,0.06);border-radius:10px;border:1px solid rgba(167,139,250,0.1);">
+        <span style="font-size:20px;">🟣</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;">更新客户沟通进度表</div>
+          <div style="font-size:11px;color:var(--text-dim);">首批入驻客户名单确认 · 8/8 前</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(16,185,129,0.06);border-radius:10px;border:1px solid rgba(16,185,129,0.1);">
+        <span style="font-size:20px;">🟢</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;">准备 M8 里程碑汇报</div>
+          <div style="font-size:11px;color:var(--text-dim);">8/20 项目组合议 · PPT 本周完成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  仓配新仓项目管理仪表盘 · <span class="update">最后更新：2026-07-29 14:30</span> · 项目商务：Bobby · 下次节点：设备验收确认书（8/15）
+</div>
+
+</body>
+</html>
