@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 · 2026年08月03日</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #7ee787;
+    --tag-bg: #1f2937;
+    --star: #e3b341;
+    --warn: #d2991d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #58a6ff, #7ee787);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+  header .subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  .summary {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .summary-item {
+    text-align: center;
+  }
+  .summary-item .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .summary-item .label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
+  .card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .card h3 a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .card h3 a:hover {
+    text-decoration: underline;
+  }
+  .card .desc {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .card .meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+  .card .meta .star { color: var(--star); }
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+    margin: 0 2px 4px 0;
+  }
+  .badge-new { border-color: var(--accent2); color: var(--accent2); }
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-dim);
+  }
+  .note-box {
+    background: rgba(210, 153, 29, 0.1);
+    border: 1px solid var(--warn);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--warn);
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  .links-section {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .links-section h3 {
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+  .links-section a {
+    color: var(--accent);
+    display: block;
+    margin: 0.25rem 0;
+    word-break: break-all;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.85rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--text-dim);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  tr:hover td {
+    background: rgba(88, 166, 255, 0.04);
+  }
+  td a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  td a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔮 Hermes Skill 每日盘点</h1>
+  <div class="subtitle">2026年08月03日 · GitHub Hermes Agent 技能仓库自动扫描</div>
+</header>
+<div class="container">
+  <div class="summary">
+    <div class="summary-item">
+      <div class="number">20+</div>
+      <div class="label">📦 昨日新增仓库</div>
+    </div>
+    <div class="summary-item">
+      <div class="number">0</div>
+      <div class="label">🆕 今日新增仓库</div>
+    </div>
+    <div class="summary-item">
+      <div class="number">⭐ 13</div>
+      <div class="label">昨日总 Stars</div>
+    </div>
+  </div>
+
+  <div class="section-title">🆕 今日新增 (2026年08月03日)</div>
+
+  <div class="empty-state">
+    <p>😴 今日暂无新增 Hermes Skill 仓库</p>
+    <p style="font-size:0.85rem;margin-top:0.5rem">扫描时间较早，GitHub 索引可能有延迟，后续扫描将补充</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section-title">📋 昨日新增回顾 (2026年08月02日)</div>
+  <div class="note-box">
+    ⚠️ 以下为昨日（8月2日）创建的新仓库，供参考。昨日扫描可能未完全覆盖。
+  </div>
+
+  <!-- Yesterday's new repos: key highlights -->
+  <div class="card">
+    <h3>
+      <a href="https://github.com/ykoh42/async-hermes-agent" target="_blank">ykoh42/async-hermes-agent</a>
+    </h3>
+    <div class="desc">Async-first Hermes agent core for training, trajectories, tools, skills, MCP, and service integration</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 23:28</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/reezex0-ux/hermes-web-ui-msg" target="_blank">reezex0-ux/hermes-web-ui-msg</a>
+    </h3>
+    <div class="desc">Self-hosted modern Web UI for Hermes Agent Dashboard with demo mode, PWA support, profiles, sessions, tools, MCP, skills and cron management.</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 TypeScript</span>
+      <span>🕐 2026-08-02 16:42</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/Experiment4/hermes-contribution-skills" target="_blank">Experiment4/hermes-contribution-skills</a>
+    </h3>
+    <div class="desc">Hermes Agent contribution lifecycle skills: bug/feature reports, contributing check, assurance gate, open PR, feedback loop.</div>
+    <div class="meta">
+      <span class="star">⭐ 1</span>
+      <span>🔧 —</span>
+      <span>🕐 2026-08-02 15:53</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/xWebt/chinese-erotic-fiction-writing" target="_blank">xWebt/chinese-erotic-fiction-writing</a>
+    </h3>
+    <div class="desc">中文成人向(H)小说创作通用技能(Hermes Agent skill) - 需求勘察+通用写作规范+批量扩写工程</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 14:06</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/562624176-sudo/negotiation-skill" target="_blank">562624176-sudo/negotiation-skill</a>
+    </h3>
+    <div class="desc">Business Negotiation AI Agent Skill v4.0 — BATNA, Chinese, hermes-agent compatible</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 13:37</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/erikgqp8645/serenity-a" target="_blank">erikgqp8645/serenity-a</a>
+    </h3>
+    <div class="desc">A-share focused industry chain mining skill (harrischen 9-step + Serenity chokepoint + akshare). Hermes/Claude Code/Codex compatible.</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 13:23</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/joshpalerlin/research-superpowers" target="_blank">joshpalerlin/research-superpowers</a>
+    </h3>
+    <div class="desc">Portable evidence-backed research skill for Codex, Claude Code, and Hermes</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 12:14</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/thanhtantran/agent-reach-hermes" target="_blank">thanhtantran/agent-reach-hermes</a>
+    </h3>
+    <div class="desc">Skill agent-reach thiết kế lại để sử dụng với Hermes</div>
+    <div class="meta">
+      <span class="star">⭐ 10</span>
+      <span>🔧 —</span>
+      <span>🕐 2026-08-02 08:11</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/On-mission96/janaabg-operations" target="_blank">On-mission96/janaabg-operations</a>
+    </h3>
+    <div class="desc">Growth-operations skills for local service businesses, agencies and B2B. 20 skills plus industry playbooks for Claude Code and Hermes Agent.</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 —</span>
+      <span>🕐 2026-08-02 07:48</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/qdivan/qingdao-housing-provident-fund-skill" target="_blank">qdivan/qingdao-housing-provident-fund-skill</a>
+    </h3>
+    <div class="desc">青岛住房公积金官方资料索引与 Hermes Skill</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 HTML</span>
+      <span>🕐 2026-08-02 07:19</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/Lyzd1/skills" target="_blank">Lyzd1/skills</a>
+    </h3>
+    <div class="desc">Hermes skills 集合：memos / search-scraping / youbili，零依赖</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 06:26</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/liaozt160/ai-skills" target="_blank">liaozt160/ai-skills</a>
+    </h3>
+    <div class="desc">Custom AI skills and development guidelines for Hermes Agent, Cursor, and other AI coding assistants.</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 —</span>
+      <span>🕐 2026-08-02 03:33</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>
+      <a href="https://github.com/gitdotkon/hermes-skills" target="_blank">gitdotkon/hermes-skills</a>
+    </h3>
+    <div class="desc">Personal Hermes Agent skills collection - 96 skills organized by category</div>
+    <div class="meta">
+      <span class="star">⭐ 0</span>
+      <span>🔧 Python</span>
+      <span>🕐 2026-08-02 01:08</span>
+    </div>
+  </div>
+
+  <!-- More repos from 8/2 in compact form -->
+  <div class="section-title" style="margin-top:1.5rem">📋 更多昨日新增（8月2日）</div>
+  <table>
+    <thead>
+      <tr><th>仓库</th><th>描述</th><th>⭐</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/lucadominguez/hermes-skill-acevedo-modern-poker" target="_blank">lucadominguez/hermes-skill-acevedo-modern-poker</a></td>
+        <td>Hermes Agent skill: Modern Poker Theory by Michael Acevedo — GTO strategy, ranges, equity</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/lucadominguez/hermes-skill-west-scale" target="_blank">lucadominguez/hermes-skill-west-scale</a></td>
+        <td>Hermes Agent skill: Scale by Geoffrey West — scaling laws, growth, sustainability</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/chengrongjie0311-creator/hermes-skills-dashboard" target="_blank">chengrongjie0311-creator/hermes-skills-dashboard</a></td>
+        <td>Hermes skills dashboard (HTML)</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/12365448949845/miniHermes" target="_blank">12365448949845/miniHermes</a></td>
+        <td>轻量级 AI 编程助手 CLI，支持 DeepSeek 等模型，Skills 系统</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/LavyaTandel/option-b-pr" target="_blank">LavyaTandel/option-b-pr</a></td>
+        <td>Structured open-source contribution skill for AI agents — PR template, onboarding checklist</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/JackHONGhy/hermes-skills" target="_blank">JackHONGhy/hermes-skills</a></td>
+        <td>Hermes skill collection: Relay/Landing TCP tuning</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/VecKna/my-skills" target="_blank">VecKna/my-skills</a></td>
+        <td>Repo of all Claude Code, Codex, Hermes, etc. skills for streamlining workflow</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/lincwang123-bot/hermes-telegram-inbox" target="_blank">lincwang123-bot/hermes-telegram-inbox</a></td>
+        <td>Hermes skill: Telegram materials group → queue → Obsidian archive</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/ananta888/hermes-nacked" target="_blank">ananta888/hermes-nacked</a></td>
+        <td>Hermes als komplett isolierte orchestrierungs kontrolle</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="links-section">
+    <h3>🔗 在线访问</h3>
+    <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-08-03.html" target="_blank">📦 COS 直链（国内快速访问）</a>
+    <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-08-03.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+  </div>
+</div>
+<footer>
+  <p>🤖 由 <a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a> 自动生成 · Powered by <a href="https://github.com" target="_blank">GitHub API</a></p>
+  <p style="margin-top:0.5rem">扫描时间: 2026-08-03 UTC</p>
+</footer>
+</body>
+</html>
