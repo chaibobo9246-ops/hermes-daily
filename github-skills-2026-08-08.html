@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-08-08</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text2: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --orange: #d2991d;
+  --red: #f85149;
+  --purple: #a371f7;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+header h1 { font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; }
+header .date { color: var(--text2); font-size: 1rem; }
+header .stats {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+header .stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .75rem 1.5rem;
+  text-align: center;
+}
+header .stat .num { font-size: 1.6rem; font-weight: 700; }
+header .stat .label { font-size: .8rem; color: var(--text2); margin-top: .2rem; }
+.stat.today .num { color: var(--red); }
+.stat.week .num { color: var(--accent); }
+.stat.total .num { color: var(--green); }
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-title .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: .75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: .5rem;
+  vertical-align: middle;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem;
+  font-size: .9rem;
+}
+thead { background: var(--bg2); }
+th {
+  text-align: left;
+  padding: .75rem 1rem;
+  color: var(--text2);
+  font-weight: 600;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-bottom: 2px solid var(--border);
+}
+td {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:hover { background: rgba(88,166,255,.04); }
+.skill-name { font-weight: 600; color: var(--accent); }
+.skill-name a { color: inherit; text-decoration: none; }
+.skill-name a:hover { text-decoration: underline; }
+.desc { color: var(--text); font-size: .85rem; }
+.stars { color: var(--orange); font-weight: 600; white-space: nowrap; }
+.date-col { color: var(--text2); white-space: nowrap; font-size: .85rem; }
+.lang {
+  display: inline-block;
+  font-size: .75rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+.new-badge {
+  display: inline-block;
+  font-size: .7rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(248,81,73,.15);
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-weight: 600;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text2);
+}
+.empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state p { font-size: 1rem; }
+.links {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.links h3 { color: var(--accent); margin-bottom: 1rem; }
+.links a {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  padding: .4rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: .3rem .5rem .3rem 0;
+  font-size: .85rem;
+  transition: all .2s;
+}
+.links a:hover { background: rgba(88,166,255,.1); border-color: var(--accent); }
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text2);
+  font-size: .8rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Skill 每日盘点</h1>
+  <div class="date">📅 2026年8月8日 星期六</div>
+  <div class="stats">
+    <div class="stat today">
+      <div class="num">8</div>
+      <div class="label">今日新增</div>
+    </div>
+    <div class="stat week">
+      <div class="num">51</div>
+      <div class="label">今日活跃 (pushed)</div>
+    </div>
+    <div class="stat total">
+      <div class="num">4,600+</div>
+      <div class="label">GitHub 总计 "hermes skill"</div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="section-title">🆕 今日新增 Skills <span class="badge">8 repos</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Skill 名称</th>
+        <th>描述</th>
+        <th>语言</th>
+        <th>⭐</th>
+        <th>创建时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/Pessidjo-Germann/voxaframe-hermes-skills" target="_blank">Pessidjo-Germann/voxaframe-hermes-skills</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">VoxaFrame: open-source audio and video understanding skills for Hermes Agent — Whisper + Groq + Telegram integration</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/famatyyk/hermes-skills-collection" target="_blank">famatyyk/hermes-skills-collection</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Własna kolekcja zweryfikowanych skilli Hermes Agent (z RA-Skills registry)</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/mattgshepard-prog/icloud-mail-skill" target="_blank">mattgshepard-prog/icloud-mail-skill</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">iCloud Mail skill for Hermes bots — IMAP/SMTP via app-specific password, stdlib only, fail-loud design</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/quique1996/hermes-skills-oss" target="_blank">quique1996/hermes-skills-oss</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Reusable Hermes Agent skills: fleet ops, grounded citations, local RAG</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/adigb6170/kunpeng-skill" target="_blank">adigb6170/kunpeng-skill</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Distill websites, repos, videos, and images into actionable methodologies, tech stacks, UI insights, and product specs</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/DrDavid31/ultron-hermes" target="_blank">DrDavid31/ultron-hermes</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Chatbot RAG con Hermes local que aprende de sus propias interacciones exitosas (memoria episódica + skills destilados)</td>
+        <td><span class="lang">TypeScript</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/aisolveme-bot/aisolve-skills" target="_blank">aisolveme-bot/aisolve-skills</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Local archive of Hermes Agent skills (GSAP scroll animation stack + web motion design)</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/wcpaka-lgtm/minis-skills" target="_blank">wcpaka-lgtm/minis-skills</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Personal skills for Open Minis — SKILL.md collection (Hermes Agent export)</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-07</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-title">🔥 今日热门活跃 <span class="badge">10 repos</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Skill 名称</th>
+        <th>描述</th>
+        <th>语言</th>
+        <th>⭐</th>
+        <th>更新时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/jnMetaCode/superpowers-zh" target="_blank">jnMetaCode/superpowers-zh</a></td>
+        <td class="desc">🦸 AI 编程超能力 · 中文增强版 — 完整汉化 + 6 个中国原创 skills，支持 Hermes / Claude Code / Cursor 等 16+ 平台</td>
+        <td><span class="lang">JavaScript</span></td>
+        <td class="stars">⭐ 7,544</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/outsourc-e/hermes-workspace" target="_blank">outsourc-e/hermes-workspace</a></td>
+        <td class="desc">Native web workspace for Hermes Agent — chat, terminal, memory, skills, inspector</td>
+        <td><span class="lang">TypeScript</span></td>
+        <td class="stars">⭐ 6,366</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/0xNyk/awesome-hermes-agent" target="_blank">0xNyk/awesome-hermes-agent</a></td>
+        <td class="desc">Independent directory of useful skills, plugins, memory providers, tools, surfaces, and guides for Hermes</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 5,227</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/ksimback/hermes-ecosystem" target="_blank">ksimback/hermes-ecosystem</a></td>
+        <td class="desc">🗺️ Hermes Atlas — the community map of every tool, skill, and integration for Hermes Agent</td>
+        <td><span class="lang">TypeScript</span></td>
+        <td class="stars">⭐ 1,186</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/ZeroPointRepo/awesome-hermes-skills" target="_blank">ZeroPointRepo/awesome-hermes-skills</a></td>
+        <td class="desc">Curated, install-ready skills for Hermes Agent — 72 built-in + 101 optional bundled skills</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 380</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/JPeetz/Hermes-Studio" target="_blank">JPeetz/Hermes-Studio</a></td>
+        <td class="desc">Web UI & dashboard for Hermes Agent — chat, memory, skills, terminal, approvals, multi-agent orchestration</td>
+        <td><span class="lang">TypeScript</span></td>
+        <td class="stars">⭐ 302</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/Sakshxm1/hermes-agency-orchestrator" target="_blank">Sakshxm1/hermes-agency-orchestrator</a></td>
+        <td class="desc">Claude Code Agent Workflows Guide 2026: Skills vs Teams vs Cost Analysis</td>
+        <td><span class="lang">HTML</span></td>
+        <td class="stars">⭐ 157</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/Hermes-brasil/hermes-brasil" target="_blank">Hermes-brasil/hermes-brasil</a></td>
+        <td class="desc">Comunidade brasileira de Hermes Agent — skills, guias e integrações em português</td>
+        <td><span class="lang">TypeScript</span></td>
+        <td class="stars">⭐ 107</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/munch2u-a11y/Helix-AGI" target="_blank">munch2u-a11y/Helix-AGI</a></td>
+        <td class="desc">Helix-AGI is an Agentic AI System that uses a spatial-graph memory retrieval system</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 56</td>
+        <td class="date-col">08-07</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/magnus919/hermes-council" target="_blank">magnus919/hermes-council</a></td>
+        <td class="desc">Multi-agent debate system for Hermes Agent — spawn custom-composed expert agents to debate any question</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 51</td>
+        <td class="date-col">08-07</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-title">📝 今日总结</div>
+  <div class="empty-state">
+    <div class="icon">🚀</div>
+    <p><strong>今日（2026-08-08）新增 8 个 Hermes Skill 仓库！</strong></p>
+    <p style="margin-top:.5rem;">亮点包括：<strong>voxaframe-hermes-skills</strong>（音视频理解）、<strong>icloud-mail-skill</strong>（iCloud 邮件集成）、<strong>kunpeng-skill</strong>（知识蒸馏+产品规划）、<strong>hermes-skills-oss</strong>（Fleet Ops + RAG）等。</p>
+    <p style="margin-top:.5rem;">今日共有 <strong>51</strong> 个仓库有代码推送活动，生态持续活跃 🔥。热门仓库 <strong>superpowers-zh</strong> 已突破 <strong>7.5K ⭐</strong>！</p>
+    <p style="margin-top:.5rem;color:var(--text2);">本周（8/2–8/8）累计新增 20+ 个相关仓库，Hermes 生态持续高速增长 📈</p>
+  </div>
+</section>
+
+<div class="links">
+  <h3>🔗 在线链接</h3>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-08-08.html" target="_blank">🇨🇳 COS 国内直连</a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-08-08.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+  <a href="https://github.com/search?q=hermes+skill+created%3A%3E2026-08-07&type=repositories" target="_blank">🔍 GitHub 搜索</a>
+</div>
+
+<footer>
+  <p>Generated by Hermes Agent Cron · Bobby 的技术顾问 · 2026-08-08</p>
+  <p>未使用任何第三方库 | Ettoreal 深色风格 | GitHub API v3 | 纯 HTML</p>
+</footer>
+
+</div>
+</body>
+</html>
