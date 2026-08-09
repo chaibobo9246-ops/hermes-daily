@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-08-09</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text2: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --orange: #d2991d;
+  --red: #f85149;
+  --purple: #a371f7;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+header h1 { font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; }
+header .date { color: var(--text2); font-size: 1rem; }
+header .stats {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+header .stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .75rem 1.5rem;
+  text-align: center;
+}
+header .stat .num { font-size: 1.6rem; font-weight: 700; }
+header .stat .label { font-size: .8rem; color: var(--text2); margin-top: .2rem; }
+.stat.today .num { color: var(--red); }
+.stat.week .num { color: var(--accent); }
+.stat.total .num { color: var(--green); }
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 2rem 0 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-title .badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: .75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: .5rem;
+  vertical-align: middle;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 2rem;
+  font-size: .9rem;
+}
+thead { background: var(--bg2); }
+th {
+  text-align: left;
+  padding: .75rem 1rem;
+  color: var(--text2);
+  font-weight: 600;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-bottom: 2px solid var(--border);
+}
+td {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:hover { background: rgba(88,166,255,.04); }
+.skill-name { font-weight: 600; color: var(--accent); }
+.skill-name a { color: inherit; text-decoration: none; }
+.skill-name a:hover { text-decoration: underline; }
+.desc { color: var(--text); font-size: .85rem; }
+.stars { color: var(--orange); font-weight: 600; white-space: nowrap; }
+.date-col { color: var(--text2); white-space: nowrap; font-size: .85rem; }
+.lang {
+  display: inline-block;
+  font-size: .75rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+.new-badge {
+  display: inline-block;
+  font-size: .7rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(248,81,73,.15);
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-weight: 600;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text2);
+}
+.empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state p { font-size: 1rem; }
+.links {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.links h3 { color: var(--accent); margin-bottom: 1rem; }
+.links a {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  padding: .4rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: .3rem .5rem .3rem 0;
+  font-size: .85rem;
+  transition: all .2s;
+}
+.links a:hover { background: rgba(88,166,255,.1); border-color: var(--accent); }
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text2);
+  font-size: .8rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Skill 每日盘点</h1>
+  <div class="date">📅 2026年8月9日 星期日</div>
+  <div class="stats">
+    <div class="stat today">
+      <div class="num">2</div>
+      <div class="label">今日新增</div>
+    </div>
+    <div class="stat week">
+      <div class="num">5</div>
+      <div class="label">今日活跃 (pushed)</div>
+    </div>
+    <div class="stat total">
+      <div class="num">4,600+</div>
+      <div class="label">GitHub 总计 "hermes skill"</div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="section-title">🆕 今日新增 Skills <span class="badge">2 repos</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Skill 名称</th>
+        <th>描述</th>
+        <th>语言</th>
+        <th>⭐</th>
+        <th>创建时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/ChasClogston/teaching-course-generator" target="_blank">ChasClogston/teaching-course-generator</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Hermes skill: turn any topic into a self-paced course (lessons + verified YouTube + quizzes)</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/p-d-force/pcf-skills" target="_blank">p-d-force/pcf-skills</a> <span class="new-badge">NEW</span></td>
+        <td class="desc">Hermes agent skills for PublicCommentFinder workflows</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-title">🔥 今日热门活跃 <span class="badge">5 repos</span></div>
+  <table>
+    <thead>
+      <tr>
+        <th>Skill 名称</th>
+        <th>描述</th>
+        <th>语言</th>
+        <th>⭐</th>
+        <th>更新时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/zhanglpg/HermesSkills" target="_blank">zhanglpg/HermesSkills</a></td>
+        <td class="desc">Custom Hermes agent skills</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/joecastelino/jay-skill-pack" target="_blank">joecastelino/jay-skill-pack</a></td>
+        <td class="desc">Skill pack for Jay, the Tekion DMS specialist agent at American Motors Group. Hermes Agent skills, sorted by usage, secrets redacted, auto-synced.</td>
+        <td><span class="lang">TeX</span></td>
+        <td class="stars">⭐ 1</td>
+        <td class="date-col">08-09</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/ykoh42/async-hermes-agent" target="_blank">ykoh42/async-hermes-agent</a></td>
+        <td class="desc">Async-first Hermes agent core for training, trajectories, tools, skills, MCP, and service integration</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/ChasClogston/teaching-course-generator" target="_blank">ChasClogston/teaching-course-generator</a></td>
+        <td class="desc">Hermes skill: turn any topic into a self-paced course (lessons + verified YouTube + quizzes)</td>
+        <td><span class="lang">Python</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+      <tr>
+        <td class="skill-name"><a href="https://github.com/p-d-force/pcf-skills" target="_blank">p-d-force/pcf-skills</a></td>
+        <td class="desc">Hermes agent skills for PublicCommentFinder workflows</td>
+        <td><span class="lang">—</span></td>
+        <td class="stars">⭐ 0</td>
+        <td class="date-col">08-09</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-title">📝 今日总结</div>
+  <div class="empty-state">
+    <div class="icon">☀️</div>
+    <p><strong>今日（2026-08-09）新增 2 个 Hermes Skill 仓库！</strong></p>
+    <p style="margin-top:.5rem;">亮点包括：<strong>teaching-course-generator</strong>（课程自动生成器 — 将任意主题转为自学课程+YouTube视频+测验）、<strong>pcf-skills</strong>（PublicCommentFinder 工作流技能集）。</p>
+    <p style="margin-top:.5rem;">今日共有 <strong>5</strong> 个仓库有代码推送活动。周日生态相对平静 ☀️，本周（8/3–8/9）累计新增 10+ 个相关仓库。</p>
+    <p style="margin-top:.5rem;color:var(--text2);">热门关注：<strong>jay-skill-pack</strong>（Tekion DMS 专家代理技能包）、<strong>async-hermes-agent</strong>（异步优先的 Hermes agent 核心框架）📈</p>
+  </div>
+</section>
+
+<div class="links">
+  <h3>🔗 在线链接</h3>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-08-09.html" target="_blank">🇨🇳 COS 国内直连</a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-08-09.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+  <a href="https://github.com/search?q=hermes+skill+created%3A%3E2026-08-08&type=repositories" target="_blank">🔍 GitHub 搜索</a>
+</div>
+
+<footer>
+  <p>Generated by Hermes Agent Cron · Bobby 的技术顾问 · 2026-08-09</p>
+  <p>未使用任何第三方库 | Ettoreal 深色风格 | GitHub API v3 | 纯 HTML</p>
+</footer>
+
+</div>
+</body>
+</html>
