@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-08-12</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d2991d;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  header {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .date {
+    color: var(--text-dim);
+    font-size: 1.1em;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .stats {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { color: var(--text-dim); font-size: 0.85em; margin-top: 4px; }
+  .num.green { color: var(--green); }
+  .num.orange { color: var(--orange); }
+  .num.accent { color: var(--accent); }
+  .num.red { color: var(--red); }
+  .section-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 36px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); }
+  .skill-card h3 { font-size: 1.05em; margin-bottom: 6px; }
+  .skill-card h3 a { color: var(--accent); text-decoration: none; }
+  .skill-card h3 a:hover { text-decoration: underline; }
+  .skill-card .desc { color: var(--text-dim); font-size: 0.92em; margin-bottom: 10px; }
+  .skill-card .meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 0.82em;
+    color: var(--text-dim);
+  }
+  .skill-card .meta span { display: flex; align-items: center; gap: 4px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.75em;
+    font-weight: 600;
+  }
+  .badge-new { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-updated { background: rgba(210,153,29,0.15); color: var(--orange); }
+  .badge-lang { background: rgba(88,166,255,0.12); color: var(--accent); }
+  .badge-license { background: rgba(188,140,255,0.12); color: var(--purple); }
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-dim);
+  }
+  .empty-state .icon { font-size: 3em; margin-bottom: 12px; }
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    color: var(--text-dim);
+    font-size: 0.85em;
+  }
+  footer a { color: var(--accent); }
+  .links-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+  .links-section h3 { margin-bottom: 12px; }
+  .links-section a {
+    display: block;
+    color: var(--accent);
+    margin: 6px 0;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Agent Skill 每日盘点</h1>
+  <div class="date">📅 2026-08-12（周三）</div>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num red">0</div>
+    <div class="label">今日新增 Repo</div>
+  </div>
+  <div class="stat-card">
+    <div class="num orange">4</div>
+    <div class="label">今日有推送的 Repo</div>
+  </div>
+  <div class="stat-card">
+    <div class="num accent">39</div>
+    <div class="label">昨日新增 (Aug 11)</div>
+  </div>
+</div>
+
+<div class="section-title">🆕 今日新增 Skill Repo（2026-08-12 UTC）</div>
+
+<div class="empty-state">
+  <div class="icon">😴</div>
+  <p>今日暂无新创建的 Hermes Skill 仓库</p>
+  <p style="margin-top:8px;font-size:0.85em">截至盘点时间，GitHub 上今日（Aug 12 UTC）尚未出现新的 Hermes skill 仓库</p>
+</div>
+
+<div class="section-title">🔥 今日有推送活动的 Repo（2026-08-12 UTC）</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/zhenkun26/EquiRebuild" target="_blank">zhenkun26/EquiRebuild</a> <span class="badge badge-updated">今日推送</span></h3>
+  <div class="desc">Hermes 生态的代码加固审查 skill：5 维扫描、P0/P1 分级、修复验证闭环 | A reusable Hermes code-hardening review skill</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-06</span>
+    <span>🔄 推送: 2026-08-12</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/joecastelino/jay-skill-pack" target="_blank">joecastelino/jay-skill-pack</a> <span class="badge badge-updated">今日推送</span></h3>
+  <div class="desc">Skill pack for Jay, the Tekion DMS specialist agent at American Motors Group. Hermes Agent skills, sorted by usage, secrets redacted, auto-synced.</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-07-23</span>
+    <span>🔄 推送: 2026-08-12</span>
+    <span class="badge badge-lang">TeX</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/ConductionNL/hermiq" target="_blank">ConductionNL/hermiq</a> <span class="badge badge-updated">今日推送</span></h3>
+  <div class="desc">Hermiq is a nextclout implementation of the Hermes AI framework — an open-source AI agent from Nous Research that can remember, learn, and use skills.</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-07-16</span>
+    <span>🔄 推送: 2026-08-12</span>
+    <span class="badge badge-lang">PHP</span>
+    <span class="badge badge-license">EUPL-1.2</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/aurokin/skills-manager" target="_blank">aurokin/skills-manager</a> <span class="badge badge-updated">今日推送</span></h3>
+  <div class="desc">skm — declarative skills + agent-definition manager for coding agents (Claude Code, Codex, OpenCode, Gemini CLI, Copilot, Hermes)</div>
+  <div class="meta">
+    <span>⭐ 2</span>
+    <span>📅 创建: 2026-01-19</span>
+    <span>🔄 推送: 2026-08-12</span>
+    <span class="badge badge-lang">TypeScript</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="section-title">📦 昨日新增回顾（2026-08-11 创建，Top 20）</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/jcosxgb/graphe" target="_blank">jcosxgb/graphe</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Evidence-graph skill for Hermes: plan, parallel research, skeptic, merge, human gate.</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/lawmight/hermes-cursor" target="_blank">lawmight/hermes-cursor</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Standalone Hermes plugin: Cursor SDK CLI + skill (not an in-tree provider)</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/HermesZum/hermes-tool-forge" target="_blank">HermesZum/hermes-tool-forge</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Runtime tool forging plugin for Hermes Agent — LLM judge + sandbox + auto-promote to skills</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/MrMerkus/github-pusher-hermes" target="_blank">MrMerkus/github-pusher-hermes</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes Agent adaptation of the GitHub publishing safety skill</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/MoaiMoaiOS/moai-skills" target="_blank">MoaiMoaiOS/moai-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Shared Hermes skills for MOAI development and review</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">JavaScript</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/KushBeaverTTV/kbp-hermes-skills" target="_blank">KushBeaverTTV/kbp-hermes-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Curated, sanitized, and verified KBP Hermes skills collection.</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/DawnFolk/Hermes-Agent-Skills-Library" target="_blank">DawnFolk/Hermes-Agent-Skills-Library</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes Agent Skills Library</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">JavaScript</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/pmb2/hermes-starter" target="_blank">pmb2/hermes-starter</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes Agent starter kit — sanitized multi-agent setup: gateway, Discord, Buzz bridge, skills, scripts, cron.</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/genzxproject/mission-control" target="_blank">genzxproject/mission-control</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Mission Control Android — Hermes stack telemetry (gateway, sessions, memory, skills, cron, services)</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Kotlin</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/xXLODXx/hermes-skill-router" target="_blank">xXLODXx/hermes-skill-router</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes skill router</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/treydoe1/hermes-video-agent-skills" target="_blank">treydoe1/hermes-video-agent-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Brand-neutral Hermes skills for podcast editing, captions, social video, transcription, QA, and footage VFX briefs</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/alertxsto/hermes-agentic-setup" target="_blank">alertxsto/hermes-agentic-setup</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Production-grade self-improving Hermes agent: SOUL, event hooks, self-improving cron, model routing, skill curation</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">Apache-2.0</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/Wang200935/security-agent-skills" target="_blank">Wang200935/security-agent-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">79 security skills across 9 domains — installable into Claude Code, Codex, Cursor, Gemini CLI, Windsurf, GitHub Copilot, Hermes</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/qinthqod/flight-monitor-skill" target="_blank">qinthqod/flight-monitor-skill</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes skill: track China domestic flight prices (Ctrip / China Southern), alert on threshold breach.</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/maximally0/x-engagement-skill" target="_blank">maximally0/x-engagement-skill</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Human-paced X (Twitter) engagement through your own logged-in browser — comment, like, post, scout. Hermes skill. No API keys.</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">JavaScript</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/SuperGODOG/interview-mock-skill" target="_blank">SuperGODOG/interview-mock-skill</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">项目面试拷问引擎 Hermes skill：240 道大厂面试题库 × GitHub 项目路由匹配 × 三维点评 × 复盘沉淀</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/aipp-key/hermes-aipp-skill" target="_blank">aipp-key/hermes-aipp-skill</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Official AIPP Bitcoin Lightning (L402) & Base USDC Micro-Payment Skill for Nous Research Hermes Agent</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/KoenradusXLVIII/hermes-skills" target="_blank">KoenradusXLVIII/hermes-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">A Hermes Agent skills tap — self-hosted service integrations (Radicale calendar, more to come).</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Python</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/fengfe1125/agent-dispatch-skill" target="_blank">fengfe1125/agent-dispatch-skill</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">跨 Claude Code / Codex / Hermes 的多 agent 派发决策 skill：什么时候该并行、怎么派、怎么验收。</div>
+  <div class="meta">
+    <span>⭐ 1</span>
+    <span>📅 创建: 2026-08-11</span>
+    <span class="badge badge-lang">Shell</span>
+    <span class="badge badge-license">MIT</span>
+  </div>
+</div>
+
+<div class="skill-card">
+  <h3><a href="https://github.com/xiezixka/hermes-wechat-skills" target="_blank">xiezixka/hermes-wechat-skills</a> <span class="badge badge-new">NEW</span></h3>
+  <div class="desc">Hermes Agent 微信公众号全流程技能包：写作+封面+发布</div>
+  <div class="meta">
+    <span>⭐ 0</span>
+    <span>📅 创建: 2026-08-11</span>
+  </div>
+</div>
+
+<div class="links-section">
+  <h3>🔗 在线链接</h3>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-08-12.html" target="_blank">🇨🇳 COS 国内直达（快速）</a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-08-12.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+</div>
+
+<footer>
+  <p>Generated by Hermes Agent Cron · Powered by GitHub API & Nous Research</p>
+  <p>📬 <a href="https://github.com/chaibobo9246-ops/hermes-daily" target="_blank">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+
+</div>
+</body>
+</html>
