@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-08-20</title>
+<style>
+
+
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d2991d;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  header {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  header .date { color: var(--text-dim); font-size: 1.1em; font-family: 'SF Mono', 'Fira Code', monospace; }
+  header .note { color: var(--orange); font-size: 0.9em; margin-top: 10px; }
+  .stats { display: flex; gap: 16px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+    min-width: 120px;
+  }
+  .stat-card .num { font-size: 2em; font-weight: 700; }
+  .stat-card .label { color: var(--text-dim); font-size: 0.85em; margin-top: 4px; }
+  .num.green { color: var(--green); }
+  .num.orange { color: var(--orange); }
+  .num.accent { color: var(--accent); }
+  .num.red { color: var(--red); }
+  .section-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 36px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); }
+  .skill-card h3 { font-size: 1.05em; margin-bottom: 6px; }
+  .skill-card h3 a { color: var(--accent); text-decoration: none; }
+  .skill-card h3 a:hover { text-decoration: underline; }
+  .skill-card .desc { color: var(--text-dim); font-size: 0.92em; margin-bottom: 6px; }
+  .skill-card .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.82em; color: var(--text-dim); margin-top: 6px; }
+  .skill-card .meta span { display: flex; align-items: center; gap: 4px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.75em; font-weight: 600; }
+  .badge-new { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-updated { background: rgba(210,153,29,0.15); color: var(--orange); }
+  .badge-lang { background: rgba(88,166,255,0.12); color: var(--accent); }
+  .badge-license { background: rgba(188,140,255,0.12); color: var(--purple); }
+  .links-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+  }
+  .links-section h3 { margin-bottom: 12px; }
+  .links-section a { display: block; color: var(--accent); margin: 6px 0; word-break: break-all; }
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    color: var(--text-dim);
+    font-size: 0.85em;
+  }
+  footer a { color: var(--accent); }
+
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Agent Skill 每日盘点</h1>
+  <div class="date">📅 2026-08-20（周四）</div>
+  <div class="note">📌 本次覆盖 2026-08-19 UTC 全天新增，去重后 141 个 Hermes 生态仓库（另排除 5 个弱相关/重复）</div>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num green">55</div>
+    <div class="label">今日新增 Skill</div>
+  </div>
+  <div class="stat-card">
+    <div class="num accent">13</div>
+    <div class="label">今日新增 Plugin</div>
+  </div>
+  <div class="stat-card">
+    <div class="num accent">26</div>
+    <div class="label">客户端 / 部署</div>
+  </div>
+  <div class="stat-card">
+    <div class="num orange">47</div>
+    <div class="label">生态 / 工具</div>
+  </div>
+  <div class="stat-card">
+    <div class="num orange">141</div>
+    <div class="label">Hermes 生态新增合计</div>
+  </div>
+</div>
+
+
+<div class="section-title">🧩 今日新增 · 技能 Skills（2026-08-20 · 55 个）</div>
+<div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/psthi/browseros-skill" target="_blank">psthi/browseros-skill</a></h3>
+  <div class="desc">BrowserOS 浏览器自动化 + 40+ SaaS 集成技能（Streamable HTTP MCP，多 Agent 通用）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Universal AI Agent Skill for BrowserOS browser automation and 40+ SaaS integrations via Streamable HTTP MCP (Antigravity, Claude Code, Gemini CLI, PicoClaw, Nanobot, Hermes)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">NOASSERTION</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/christopher-s/hermes-superpowers-gate" target="_blank">christopher-s/hermes-superpowers-gate</a></h3>
+  <div class="desc">Compaction 后重新注入 skill 纪律的 superpowers 配套门禁</div><div class="desc" style="color:#8b949e;font-size:0.85em">Compaction-proof companion gate for obra/superpowers on Hermes Agent: re-injects skill discipline after context compaction strips the official plugin bootstrap</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/TomassonJW/agentic-reliability-skills" target="_blank">TomassonJW/agentic-reliability-skills</a></h3>
+  <div class="desc">Agentic 工作流可靠性技能集（代码审查/契约测试/状态调试/UI 调试等）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Battle-tested reliability skills for agentic workflows: fail-closed code review, contract seam testing, stateful client debugging, web UI debugging, gate/editor/proofreader protoco</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/satan9394/dsh-x-twitter-research" target="_blank">satan9394/dsh-x-twitter-research</a></h3>
+  <div class="desc">DSH skill：X/Twitter 研究、社交倾听与受控发帖</div><div class="desc" style="color:#8b949e;font-size:0.85em">DSH skill: X/Twitter 研究, 社交倾听与受控发帖（受 wshobson/agents hermes-tweet 启发）</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/israelsaba/ntfy-skill" target="_blank">israelsaba/ntfy-skill</a></h3>
+  <div class="desc">ntfy 时长门控任务通知技能（ntfy.sh / 自建 HTTPS）</div><div class="desc" style="color:#8b949e;font-size:0.85em">ntfy is an Agent Skill for duration-gated task notifications through ntfy.sh or approved self-hosted HTTPS servers. It forecasts work over 30 seconds, stores tokens in OS credentia</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/israelsaba/agent-skills" target="_blank">israelsaba/agent-skills</a></h3>
+  <div class="desc">便携 AI Agent 技能精选索引（写作/字数/网页抓取/通知/知识结构化）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Curated index of portable AI agent skills for writing quality, text limits, web capture, notifications, and structured knowledge.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/israelsaba/html-to-pdf-skill" target="_blank">israelsaba/html-to-pdf-skill</a></h3>
+  <div class="desc">HTML→PDF 技能（Playwright 截图，来源标注高保真）</div><div class="desc" style="color:#8b949e;font-size:0.85em">HTML to PDF is an Agent Skill for creating high-fidelity, provenance-labelled PDF from authorized public web pages. It uses Playwright browser screenshots, handles consent and lazy</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/unleashed-nick/microsoft-graph-readonly" target="_blank">unleashed-nick/microsoft-graph-readonly</a></h3>
+  <div class="desc">只读 Microsoft Graph（Outlook+日历）技能（设备码 OAuth）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill: read-only Microsoft Graph (Outlook + Calendar) via delegated device-code OAuth</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/israelsaba/okf-skill" target="_blank">israelsaba/okf-skill</a></h3>
+  <div class="desc">开放知识格式（OKF）技能：带来源链接的 Markdown 知识包</div><div class="desc" style="color:#8b949e;font-size:0.85em">Open Knowledge Format is an Agent Skill for creating source-linked Markdown knowledge bundles. It helps OpenCode, Hermes, Claude Code, Codex, and other AI agents structure metadata</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Erfix404/social-recon" target="_blank">Erfix404/social-recon</a></h3>
+  <div class="desc">Eagle-eye OSINT 社交侦查技能（用户名/邮箱/电话/姓名链式侦查）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Eagle-eye OSINT skill — username/email/phone/name recon with chaining. Built for Hermes Agent.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/dbillion/hermes-skills-public" target="_blank">dbillion/hermes-skills-public</a></h3>
+  <div class="desc">公开、去 PII 的 Hermes 技能集 + 安装配置</div><div class="desc" style="color:#8b949e;font-size:0.85em">Public, PII-free Hermes Agent skills + setup (single clean history). Fork of hermes-setup with email-bearing files excluded.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/israelsaba/text-counter-skill" target="_blank">israelsaba/text-counter-skill</a></h3>
+  <div class="desc">文本计数技能（字符/词/短语/句/段落/UTF-8 字节精确统计）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Text Counter is an Agent Skill for exact character, word, phrase, sentence, paragraph, line, grapheme, and UTF-8 byte counts. It helps OpenCode, Hermes, Claude Code, Codex, writers</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sharbelxyz/skill-audit" target="_blank">sharbelxyz/skill-audit</a></h3>
+  <div class="desc">Skill 审计：找出永不触发的技能、测算每条消息成本</div><div class="desc" style="color:#8b949e;font-size:0.85em">Audit every skill installed on your agent. Finds the ones that can never fire, measures what they cost you on every message, and flags any shipping runnable code.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/onchainlu/onchainlu-skills" target="_blank">onchainlu/onchainlu-skills</a></h3>
+  <div class="desc">本地编码 Agent 与 Hermes Cloud 的私有共享技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Private shared skills for local coding agents and Hermes Cloud</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/hamza426-ahm/argus" target="_blank">hamza426-ahm/argus</a></h3>
+  <div class="desc">五 Agent 研究+外联工作流（技能+提示词+运营规范）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Five-agent research and outreach workflow configured on the Hermes agent framework. Skills, prompts and operating spec. No application code.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/nikolasdehor/free-models-monitor" target="_blank">nikolasdehor/free-models-monitor</a></h3>
+  <div class="desc">免费额度 LLM 模型监控技能（OpenRouter/Groq 变更告警+回退建议）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Tracks free-tier LLM models on OpenRouter and Groq, alerts on changes, suggests fallbacks. Portable agent skill: OpenClaw, Hermes, Claude Code, Codex, plain cron.</div>
+  <div class="meta"><span>⭐ 2</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/underwoo/mcp-server-servicedesk-plus" target="_blank">underwoo/mcp-server-servicedesk-plus</a></h3>
+  <div class="desc">ManageEngine ServiceDesk Plus MCP 服务 + Hermes 技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">ManageEngine ServiceDesk Plus MCP server for Hermes Agent — multi-instance, systemd-ready, with install script and Hermes skill</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/stevenke1981/minimax-h3-comedy-sketch" target="_blank">stevenke1981/minimax-h3-comedy-sketch</a></h3>
+  <div class="desc">MiniMax H3 T8 喜剧语音段子技能（hook/setup/punch + ComfyUI）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill: MiniMax H3 T8 comedy voice sketches (hook/setup/punch + ComfyUI)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/fnature/hermes-shared-skills" target="_blank">fnature/hermes-shared-skills</a></h3>
+  <div class="desc">跨 profile 共享的 AI 技能集</div><div class="desc" style="color:#8b949e;font-size:0.85em">Set of AI skills shared amongst all hermes profiles</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/schr3b3r/fulcra-community-projects" target="_blank">schr3b3r/fulcra-community-projects</a></h3>
+  <div class="desc">基于 Fulcra 数据平台的开源项目与 Hermes 技能合集</div><div class="desc" style="color:#8b949e;font-size:0.85em">A collection of open-source projects and Hermes skills built on top of the Fulcra data platform.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">HTML</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sophiaelowyn/yandex-dzen-auto-publisher" target="_blank">sophiaelowyn/yandex-dzen-auto-publisher</a></h3>
+  <div class="desc">Yandex.Zen 自动发文技能（Chrome CDP，处理验证码）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Автопубликация статей в Яндекс.Дзен через Chrome CDP: блоки, фото, расписание, обработка капчи. Для любого канала. Работает как скилл Hermes Agent.</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sophiaelowyn/image-finder-cdp" target="_blank">sophiaelowyn/image-finder-cdp</a></h3>
+  <div class="desc">图片搜索下载技能（Yandex 图片 + Gemini Vision，自动选最佳帧）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Поиск и скачивание картинок для контента: Яндекс.Картинки + AI Vision (Gemini) через Chrome CDP. Автовыбор лучшего кадра. Работает как скилл Hermes Agent.</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sophiaelowyn/yandex-wordstat-parser" target="_blank">sophiaelowyn/yandex-wordstat-parser</a></h3>
+  <div class="desc">Yandex Wordstat + Google Trends 关键词解析技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Яндекс Вордстат парсер + Google Trends: сбор и анализ поисковых запросов для SEO-контента. Работает как скилл Hermes Agent.</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/vaferkhanom/mobile-app" target="_blank">vaferkhanom/mobile-app</a></h3>
+  <div class="desc">移动 App 技能集（React Native/Expo/Flutter/SwiftUI/测试/发布）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Mobile app agent skills: React Native, Expo, Flutter, SwiftUI/iOS, testing, publishing. Installable via /learn or hermes skills.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ChrisShen-github/mistakemate-hermes" target="_blank">ChrisShen-github/mistakemate-hermes</a></h3>
+  <div class="desc">mistakemate 技能 + MCP</div><div class="desc" style="color:#8b949e;font-size:0.85em">mistakemate-hermes skill and mcp</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">GPL-2.0</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/cnyet/conversation-accuracy-skill" target="_blank">cnyet/conversation-accuracy-skill</a></h3>
+  <div class="desc">项目级会话记忆技能（LOAD 恢复 + PERSIST 决策，跨平台通用）</div><div class="desc" style="color:#8b949e;font-size:0.85em">管理项目级会话记忆（.agent/memory/）：LOAD 按需恢复历史 + PERSIST 保存关键决策，保持长会话与跨会话上下文准确率。跨平台 Agent Skill（Claude Code / Codex / OpenClaw / Hermes）</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/jimmywangpro-gif/hermes-codex-orchestration" target="_blank">jimmywangpro-gif/hermes-codex-orchestration</a></h3>
+  <div class="desc">Hermes 编排 + Codex 写码 + Hermes 校验的便携技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes orchestrate + Codex code + Hermes verify — portable Hermes Agent skill</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/bkarthik2299/socialsuite-agent-tools" target="_blank">bkarthik2299/socialsuite-agent-tools</a></h3>
+  <div class="desc">SocialSuite MCP 连接器 + Hermes 技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">SocialSuite MCP connector and Hermes skill for agent integrations</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">NOASSERTION</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/scavio-ai/hermes-agent" target="_blank">scavio-ai/hermes-agent</a></h3>
+  <div class="desc">Scavio 结构化网络数据（31 平台 MCP）+ 5 个工作流技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Scavio for Hermes Agent - structured web data across 31 platforms via the hosted MCP server, plus 5 ready-to-use workflow skills.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Nagacash/naga-codex-real-engineers" target="_blank">Nagacash/naga-codex-real-engineers</a></h3>
+  <div class="desc">8 个工程纪律技能（对齐/上下文/TDD/双轴审查/验证/调试/交付）</div><div class="desc" style="color:#8b949e;font-size:0.85em">8 original agent skills for disciplined engineering — align, context, TDD, dual-axis review, verify (L1/L2/L3), debug, ship. Hermes-safe. Not vibe coding</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/duaanakmuda/Linkedinsearching" target="_blank">duaanakmuda/Linkedinsearching</a></h3>
+  <div class="desc">LinkedIn 搜索技能（测试）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Testing Hermes Skill Linkedin Searching</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/mrmixx-max/claude-text-washer" target="_blank">mrmixx-max/claude-text-washer</a></h3>
+  <div class="desc">去 AI 味文本清洗技能（检测规则 + 改写规则）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Strip Claude/AI text markers — detection patterns, rewrite rules, Hermes skill.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/steinszzh/hermes-agent-skills" target="_blank">steinszzh/hermes-agent-skills</a></h3>
+  <div class="desc">Hermes Agent 实战踩坑：Gateway 免审核 &amp; 自重启补丁</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/makocult/hermes-research-skill" target="_blank">makocult/hermes-research-skill</a></h3>
+  <div class="desc">Hermes 研究技能</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Topxl/auto-jailbreak-hermes" target="_blank">Topxl/auto-jailbreak-hermes</a></h3>
+  <div class="desc">Auto-Jailbreak：PyRIT 红队引擎技能（安全研究）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Auto-Jailbreak: PyRIT red-team engine as an installable Hermes skill. Configurable target/attacker, auto-detects your OpenRouter setup. Security research only.</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sudopimp/HBlobs" target="_blank">sudopimp/HBlobs</a></h3>
+  <div class="desc">2D blob 宠物 + /blob 技能（SDF 配方）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Make a living 2D blob and adopt it as a Hermes pet. SDF recipe, springs, /blob skill.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/news" target="_blank">freemangemmy/news</a></h3>
+  <div class="desc">News 技能：RSS 聚合 + 中文翻译 + HTML 简报</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: News · RSS 新闻聚合 + 中文翻译 + HTML 简报</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/hermes-provider-setup" target="_blank">freemangemmy/hermes-provider-setup</a></h3>
+  <div class="desc">Provider 配置调试技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Hermes-Provider-Setup · LLM Provider 配置调试</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/local-agent" target="_blank">freemangemmy/local-agent</a></h3>
+  <div class="desc">本地模型命名 Agent 技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Local-Agent · 本地模型命名 Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/named-agent" target="_blank">freemangemmy/named-agent</a></h3>
+  <div class="desc">命名独立 Agent 技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Named-Agent · 命名独立 Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/hermes-remote-config" target="_blank">freemangemmy/hermes-remote-config</a></h3>
+  <div class="desc">远程主机 Hermes 配置技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Hermes-Remote-Config · 远程主机 Hermes 配置</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/v2rayn-headless" target="_blank">freemangemmy/v2rayn-headless</a></h3>
+  <div class="desc">v2rayN 无头 Linux 代理配置技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: v2rayN-Headless · 无头 Linux 代理配置</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/spotify" target="_blank">freemangemmy/spotify</a></h3>
+  <div class="desc">Spotify 音乐控制技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Spotify · 音乐控制技能</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/sort-photos" target="_blank">freemangemmy/sort-photos</a></h3>
+  <div class="desc">按 EXIF 日期整理照片技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Sort-Photos · 按 EXIF 日期整理照片</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/tts" target="_blank">freemangemmy/tts</a></h3>
+  <div class="desc">本机文本转语音技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: TTS · 本机文本转语音</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/bilibili-cli" target="_blank">freemangemmy/bilibili-cli</a></h3>
+  <div class="desc">B站 CLI 工具开发指南技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Bilibili-CLI · B站 CLI 工具开发指南</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/bili-tools" target="_blank">freemangemmy/bili-tools</a></h3>
+  <div class="desc">B站视频批量下载技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: Bili-Tools · B站视频批量下载工具</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freemangemmy/inkos-workflow" target="_blank">freemangemmy/inkos-workflow</a></h3>
+  <div class="desc">InkOS 小说创作工作流技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent skill: InkOS Workflow · InkOS 小说创作工作流</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/rahlquist/hermes-skills" target="_blank">rahlquist/hermes-skills</a></h3>
+  <div class="desc">Hermes 技能集（个人）</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ninggui/guining-task-queue-protocol" target="_blank">ninggui/guining-task-queue-protocol</a></h3>
+  <div class="desc">guining 任务队列协议技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill: guining-task-queue-protocol</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ninggui/session-task-audit" target="_blank">ninggui/session-task-audit</a></h3>
+  <div class="desc">会话任务审计技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill: session-task-audit</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ninggui/guining-rules-audit" target="_blank">ninggui/guining-rules-audit</a></h3>
+  <div class="desc">guining 规则审计技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill: guining-rules-audit</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/123mikeyd/palworld-blender-model-workspace-skill" target="_blank">123mikeyd/palworld-blender-model-workspace-skill</a></h3>
+  <div class="desc">Palworld 模型提取到 Blender 纹理绘制工作区技能</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes skill for extracting personal Palworld models into Blender texture-paint workspaces.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Hasban-Fardani/canva-hermes-skills" target="_blank">Hasban-Fardani/canva-hermes-skills</a></h3>
+  <div class="desc">Canva 设计技能集</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/mateusdka/think-tank-research-skill" target="_blank">mateusdka/think-tank-research-skill</a></h3>
+  <div class="desc">多角色 think tank 研究技能（证据综合）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Skill Hermes Agent para pesquisa think tank multi-persona com síntese por evidências</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div>
+<div class="section-title">🔌 今日新增 · 插件 Plugins（2026-08-20 · 13 个）</div>
+<div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/mikeotoole/hermes-session-cron-plugin" target="_blank">mikeotoole/hermes-session-cron-plugin</a></h3>
+  <div class="desc">持久会话定时任务插件（恢复 Desktop/TUI 会话）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Durable scheduled turns that resume persisted Hermes Desktop/TUI sessions.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/TomassonJW/hermes-context-compactions" target="_blank">TomassonJW/hermes-context-compactions</a></h3>
+  <div class="desc">状态栏显示会话 compaction 计数插件</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Desktop status-bar plugin showing the active session&#x27;s context compaction count. Read-only, uses only the session.usage gateway method.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/mintychochip/token-usage" target="_blank">mintychochip/token-usage</a></h3>
+  <div class="desc">跨 harness 用量存储（Rust API，同步多编码 Agent）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Cross-harness token-usage store. Plugins sync Claude Code, Codex, Grok, Hermes, and other coding agents into a Rust API.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Rust</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/xukrutdonut/hermes-google-antigravity-plugin" target="_blank">xukrutdonut/hermes-google-antigravity-plugin</a></h3>
+  <div class="desc">Google Antigravity 插件（适配当前 Hermes 版本）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Google Antigravity plugin for Hermes Agent (adapted patch for current Hermes version)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ivcained/surp-hermes-x402-llm" target="_blank">ivcained/surp-hermes-x402-llm</a></h3>
+  <div class="desc">Surp x402 LLM 路由插件（缓存感知）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Cache-aware Surp x402 LLM routing plugin for Hermes Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Unjuno/hermes-adaptive-evolution" target="_blank">Unjuno/hermes-adaptive-evolution</a></h3>
+  <div class="desc">自适应多 Agent 组织/自修复/技能演化研究插件</div><div class="desc" style="color:#8b949e;font-size:0.85em">Research framework and Hermes Agent plugin for adaptive multi-agent organization, probabilistic interaction modeling, self-repair, skill evolution, and model specialization.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">Apache-2.0</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/YinsenW/feishu-card-progress-hook" target="_blank">YinsenW/feishu-card-progress-hook</a></h3>
+  <div class="desc">飞书长任务系统级进度卡片 hook</div><div class="desc" style="color:#8b949e;font-size:0.85em">System-level interactive progress cards for long-running Feishu tasks (Hermes Agent hook, MIT)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/pyrelio88-afk/hermes-trajectory" target="_blank">pyrelio88-afk/hermes-trajectory</a></h3>
+  <div class="desc">Desktop 轨迹面板（3 泳道 4 视图）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Desktop trajectory pane: 3 lanes, 4 views, per-chat layout</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/shanelord01/hermes-ucg" target="_blank">shanelord01/hermes-ucg</a></h3>
+  <div class="desc">unraid-compose-gateway 插件（Docker Compose 控制）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent plugin for unraid-compose-gateway - Docker Compose control, container logs, and Unraid plugin update detection. Generated mirror of unraid-compose-gateway&#x27;s hermes-plu</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/tim-toothed/hermes-browser-harness" target="_blank">tim-toothed/hermes-browser-harness</a></h3>
+  <div class="desc">基于 Browser Harness 的 browser_exec 插件</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent browser_exec plugin backed by Browser Harness</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/shanelord01/hermes-mail-janitor" target="_blank">shanelord01/hermes-mail-janitor</a></h3>
+  <div class="desc">收件箱自动归档插件</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent plugin for inbox auto-archive - reuses an already-configured himalaya or Google Workspace connection (or manual IMAP), learns a per-domain archive cache, dry-run by de</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/makpapad/hermes-model-router-ui" target="_blank">makpapad/hermes-model-router-ui</a></h3>
+  <div class="desc">时间模型路由可视化编辑器（侧边栏）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Visual editor for time-based model routing in Hermes Agent — sidebar page + status chip</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">JavaScript</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/gwyntel/audio-analyze-plugin" target="_blank">gwyntel/audio-analyze-plugin</a></h3>
+  <div class="desc">多模态 LLM 音频分析插件（Plexus 网关）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent plugin: audio analysis via multimodal LLMs through a Plexus gateway (raw-passthrough ladder, music + IVR prompt profiles)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div>
+<div class="section-title">🖥️ 今日新增 · 客户端 / 部署 / 环境（2026-08-20 · 26 个）</div>
+<div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/tushar-alt/hermes_companion" target="_blank">tushar-alt/hermes_companion</a></h3>
+  <div class="desc">Hermes Companion：AI Agent 私有聊天 App（Flutter 客户端 + 参考中继）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Companion — private chat app for your AI agent (Flutter client + reference relay)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-20</span><span class="badge badge-lang">Dart</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/brichardson1/hermes-dashboard-linear-theme" target="_blank">brichardson1/hermes-dashboard-linear-theme</a></h3>
+  <div class="desc">Linear 风格暗色主题（Hermes 控制台）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Unofficial Linear-inspired dark theme for the Hermes Agent dashboard</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/klebertiko/hermes-openclaw-voice-agent" target="_blank">klebertiko/hermes-openclaw-voice-agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/yousefhafed2222-gif/hermes-agent" target="_blank">yousefhafed2222-gif/hermes-agent</a></h3>
+  <div class="desc">Railway 部署版 Hermes Agent</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent for Railway</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/dystewart/hermes-openshell" target="_blank">dystewart/hermes-openshell</a></h3>
+  <div class="desc">OpenShift/OpenShell 部署 Hermes + OpenAI key 指南</div><div class="desc" style="color:#8b949e;font-size:0.85em">This repository contains resources and instructions for deploying hermes agent with a openai api key in OpenShell, running in OpenShift</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/xbrxr03/abrxr-os" target="_blank">xbrxr03/abrxr-os</a></h3>
+  <div class="desc">8-Agent 指挥中心（FounderOS 风仪表盘 + 技能浏览器）</div><div class="desc" style="color:#8b949e;font-size:0.85em">@abrxr OS — 8-agent command center powered by Hermes. FounderOS-style dashboard with live brain graph, agent roster, cron dashboard, and skill browser.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">TypeScript</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sahinmehemood/hermex-android" target="_blank">sahinmehemood/hermex-android</a></h3>
+  <div class="desc">hermes-webui 原生 Android 客户端</div><div class="desc" style="color:#8b949e;font-size:0.85em">Native Android client for hermes-webui - AI agent remote control</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Kotlin</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Amz34/selfhosted-agent-stack" target="_blank">Amz34/selfhosted-agent-stack</a></h3>
+  <div class="desc">Oracle Always-Free 24/7 Agent 栈配方（Hermes + Telegram + WhatsApp）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Production-tested recipes for running a 24/7 AI agent stack (Hermes + Telegram + WhatsApp bridge) on Oracle Always-Free — scripts, patterns, and hard-won operational lessons</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/MaliceHermes/symbiote-os" target="_blank">MaliceHermes/symbiote-os</a></h3>
+  <div class="desc">本地优先便携 agentic OS（Debian + Tor + Android）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Local-first portable agentic OS. Venom (Debian 13 SSD) + Tendril (Tor) + Toxin (Android). Hermes + Codex + Ollama + OpenAI + Grok</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Ardmst/hermes-agent-telegram" target="_blank">Ardmst/hermes-agent-telegram</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Dockerfile</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/meghamshb2006/Clearance" target="_blank">meghamshb2006/Clearance</a></h3>
+  <div class="desc">Clearance：Agent 联网前审批门禁</div><div class="desc" style="color:#8b949e;font-size:0.85em">Clearance : approve before agents reach the internet.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Go</span><span class="badge badge-license">Apache-2.0</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/jiri-cermak/hermes_agentic_template" target="_blank">jiri-cermak/hermes_agentic_template</a></h3>
+  <div class="desc">Hermes 编排 overlay 模板（agentic_dev_template）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes-specific orchestration overlay for agentic_dev_template</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/justincc/hobserver" target="_blank">justincc/hobserver</a></h3>
+  <div class="desc">Hermes 活动观察 Web UI（实时/历史会话）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Web UI for observing Hermes Agent activity in live and recent sessions (e.g. assistant conversations)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/dmantipinai-hash/hermes-agent" target="_blank">dmantipinai-hash/hermes-agent</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Architecture 2.0 fork of Nous Research Hermes Agent — cognitive memory system, multi-agent orchestration, Codex subscription auth</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/kzhou003/HermesAgentStack" target="_blank">kzhou003/HermesAgentStack</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">An agent stack running Hermes agent on local commercial GPU</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Uginucala854/kir-auto" target="_blank">Uginucala854/kir-auto</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Permanent Linux SSH Server + Auto Hermes Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Yomisana/hermes-agent-desktop" target="_blank">Yomisana/hermes-agent-desktop</a></h3>
+  <div class="desc">Hermes Agent 纯桌面 App</div><div class="desc" style="color:#8b949e;font-size:0.85em">Only Desktop app hermes agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">TypeScript</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/zmactep/hermesses" target="_blank">zmactep/hermesses</a></h3>
+  <div class="desc">Rokid 智能眼镜接入 Hermes Agent</div><div class="desc" style="color:#8b949e;font-size:0.85em">Use Rokid Glasses with your Hermes Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Kotlin</span><span class="badge badge-license">AGPL-3.0</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/zaindroid/hermes-sglang-wrapper" target="_blank">zaindroid/hermes-sglang-wrapper</a></h3>
+  <div class="desc">zorc-agent（Jetson Thor）SGLang Hermes-4 封装</div><div class="desc" style="color:#8b949e;font-size:0.85em">SGLang serving Hermes-4 wrapper for zorc-agent (jetson-thor)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/zaindroid/hermes-agent-wrapper" target="_blank">zaindroid/hermes-agent-wrapper</a></h3>
+  <div class="desc">Hermes Agent 网关封装（Coolify）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent gateway wrapper for zorc (Coolify, servingz)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/LensHawthorne/hermes-android-guide" target="_blank">LensHawthorne/hermes-android-guide</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Panduan Lengkap Instalasi Hermes Agent di Termux oleh Lens Hawthorne</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">HTML</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Freecode100Year/hermes-deps" target="_blank">Freecode100Year/hermes-deps</a></h3>
+  <div class="desc">Debian/Ubuntu 依赖预检预装脚本 + 上游版本看板</div><div class="desc" style="color:#8b949e;font-size:0.85em">在 Debian 11/12/13、Ubuntu 上安装 Hermes Agent 前的依赖预检与预装脚本，附每日核对上游版本的看板</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ryanbr2020/hermes-agent" target="_blank">ryanbr2020/hermes-agent</a></h3>
+  <div class="desc">Cloudflare Containers 自托管 Hermes（R2 持久会话）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Self-hosted Hermes Agent on Cloudflare Containers — 24/7 AI agent with R2 durable sessions, dashboard auth, provider-flexible</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/jbellsolutions/revenue-partner-agent" target="_blank">jbellsolutions/revenue-partner-agent</a></h3>
+  <div class="desc">源证据 GTM 运营 Agent（统一 Money Desk + 审批门禁活动）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Source-grounded Hermes/Orgo GTM operator with a unified Money Desk and approval-gated campaigns</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Advikagarwal/hermes-mission-control" target="_blank">Advikagarwal/hermes-mission-control</a></h3>
+  <div class="desc">Hermes 任务控制仪表盘（Vercel 部署）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent mission control dashboard deployed on Vercel</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">TypeScript</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/nayeshiluo/lemon-starter" target="_blank">nayeshiluo/lemon-starter</a></h3>
+  <div class="desc">Hermes Agent 一键安装部署套件（含完整技能树）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent 自动化一键安装部署套件（含完整技能树与交互式配置）</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span></div>
+</div>
+<div class="section-title">🌐 今日新增 · 生态 / 工具 / 其他（2026-08-20 · 47 个）</div>
+<div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/plluviera/hermes-agent-portal" target="_blank">plluviera/hermes-agent-portal</a></h3>
+  <div class="desc">可复用、受限的 Hermes Agent 终端 Web 门户（FastAPI + CF Access）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Reusable, restricted end-user web portal for Hermes Agent profiles</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/vadim-a-yegorov/principle-try-again" target="_blank">vadim-a-yegorov/principle-try-again</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/envrs/hermes-security" target="_blank">envrs/hermes-security</a></h3>
+  <div class="desc">Hermes 原生安全编排平台（任务级、基于能力授权）</div><div class="desc" style="color:#8b949e;font-size:0.85em">AI-native security orchestration platform built around Hermes Agent (mission-scoped, capability-based authorization)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/miketaylorrealtybot/hermes-config-backup" target="_blank">miketaylorrealtybot/hermes-config-backup</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Sanitized Hermes Agent configuration for recovery reference. See README for what is and isn&#x27;t backed up here.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/rcdenes777/hermes-agent-bridge" target="_blank">rcdenes777/hermes-agent-bridge</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Camada de integração para agentes Hermes com execução de tarefas via profiles separados, handoff estruturado e rastreabilidade.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Xmaster-69/backup" target="_blank">Xmaster-69/backup</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Rama Framework v1.0 + System Backup - Autonomous Engineering OS (Phases 0-26) + Hermes Agent state, skills, memories, and workspace artifacts</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/2867203296/hermes-agent" target="_blank">2867203296/hermes-agent</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">核心定位</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/tipen009/hermes-agent" target="_blank">tipen009/hermes-agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/luxhere/lux-nudge" target="_blank">luxhere/lux-nudge</a></h3>
+  <div class="desc">Hermes 持久化系统（让数字心智自我唤醒）</div><div class="desc" style="color:#8b949e;font-size:0.85em">A persistence system for Hermes Agent that allows a digital mind to wake itself up</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/lyxtera/hermes-tencent-relay" target="_blank">lyxtera/hermes-tencent-relay</a></h3>
+  <div class="desc">Hermes 接入腾讯云共享 Agent 记忆中枢（CF Access 中继）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Connect any Hermes instance to a shared TencentDB Agent Memory hub via CF Access-authenticated relay</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/sanikacentric/hermes_agent" target="_blank">sanikacentric/hermes_agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Jupyter Notebook</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Krustington/KrustyBot" target="_blank">Krustington/KrustyBot</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Self-improving multi-agent wrapper inspired by Hermes Agent — memory, skills, gateway, and team architecture research.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/bibotai/pollen-data" target="_blank">bibotai/pollen-data</a></h3>
+  <div class="desc">北京花粉日报（Hermes Agent 自动推送）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Beijing Pollen Daily Report - auto pushed by Hermes Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/vcruz305/Ornith-1.5-35B-A3B-DGX-Spark" target="_blank">vcruz305/Ornith-1.5-35B-A3B-DGX-Spark</a></h3>
+  <div class="desc">DGX Spark 单机跑 Ornith-1.5-35B（vLLM NVFP4）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Ornith-1.5-35B-A3B on one DGX Spark (GB10). NVFP4 via vLLM: ~78 tok/s decode, sixcat 85.0, hermes-agentic-bench 14/20.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Nek-11/Proteus-creations" target="_blank">Nek-11/Proteus-creations</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">My Hermes agent Proteus creations</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/haroonahmad256/hermes-agent-host" target="_blank">haroonahmad256/hermes-agent-host</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Zyrexnn/Cybermes" target="_blank">Zyrexnn/Cybermes</a></h3>
+  <div class="desc">自主攻防/漏洞赏金/红队 Agent 框架（多模型编排）⭐14</div><div class="desc" style="color:#8b949e;font-size:0.85em">Autonomous Offensive Security, Bug Bounty &amp; Red Teaming Agent Framework powered by Hermes Agent, specialized reasoning skills, and multi-model LLM orchestration.</div>
+  <div class="meta"><span>⭐ 14</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">NOASSERTION</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/JPeetz/hermes-repo-scanner" target="_blank">JPeetz/hermes-repo-scanner</a></h3>
+  <div class="desc">Skill 预装安全扫描器（68 模式 / 10 类 / OWASP ASI 映射）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Pre-install security scanner for Hermes Agent skills — 68 patterns across 10 categories, OWASP ASI-mapped</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/jsballarini/Hermes-Agent" target="_blank">jsballarini/Hermes-Agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/kakomimasu/hermemasu" target="_blank">kakomimasu/hermemasu</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">囲みマス Hermes Agent</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/kandotrun/dgx-spark-deepseek-v4-flash" target="_blank">kandotrun/dgx-spark-deepseek-v4-flash</a></h3>
+  <div class="desc">DGX Spark DeepSeek-V4-Flash 服务配置（vLLM-Moet）</div><div class="desc" style="color:#8b949e;font-size:0.85em">DGX Spark(GB10) serving config for DeepSeek-V4-Flash-0731 via vLLM-Moet-GB10 + DSML streaming patch</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Dockerfile</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/assu157/hermes-agent" target="_blank">assu157/hermes-agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/scarnyc/hermes-prime-agent" target="_blank">scarnyc/hermes-prime-agent</a></h3>
+  <div class="desc">Hermes ↔ Prime Agent 委派桥（A2A + 一次性 worktree）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Delegate real work from Hermes to Prime Agent — read-only analysis, implementation in a throwaway worktree, and an A2A bridge — with verification and training assets.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/anamtb/hermes_agent" target="_blank">anamtb/hermes_agent</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/MasuPhan/hermes-bot-mode-docs" target="_blank">MasuPhan/hermes-bot-mode-docs</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Tài liệu kiến thức Hermes Bot Mode — biến agent profiles thành đội bot (tiếng Việt)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Ruby</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/akonPAPA/PENdS" target="_blank">akonPAPA/PENdS</a></h3>
+  <div class="desc">受监督渗透测试员 Hermes profile</div><div class="desc" style="color:#8b949e;font-size:0.85em">Pends is a Hermes-native profile that turns an agent into a supervised penetration tester.</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/julian-najas/hermes-agent-companion" target="_blank">julian-najas/hermes-agent-companion</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Companion del libro Sistema Operativo Agéntico con Hermes Agent. Plantillas, checklists y procedimientos verificados contra el CLI. No afiliado a Nous Research.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">NOASSERTION</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/innocentmayisela-blip/hermes-trader" target="_blank">innocentmayisela-blip/hermes-trader</a></h3>
+  <div class="desc">Hermes MT4 交易 Agent（DeepSeek AI）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes MT4 Trading Agent with DeepSeek AI</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Dadmin88/hermes-agent-downstream" target="_blank">Dadmin88/hermes-agent-downstream</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Maintained downstream of NousResearch/hermes-agent with gated upstream integrations and tested local customizations</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ZLHAOOO/fuyao-agent-recall" target="_blank">ZLHAOOO/fuyao-agent-recall</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Zero-cost local associative engine — let AI suddenly remember what it wrote. By Fuyao, ZLHAOOO&#x27;s AI digital companion.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/reqlez/wsl-sglang-hermes" target="_blank">reqlez/wsl-sglang-hermes</a></h3>
+  <div class="desc">WSL 上 SGLang + Qwen3.8-27B-NVFP4 + Hermes</div><div class="desc" style="color:#8b949e;font-size:0.85em">Qwen3.8-27B-NVFP4 on SGLang + Hermes Agent ( WSL )</div>
+  <div class="meta"><span>⭐ 1</span><span>📅 2026-08-19</span><span class="badge badge-lang">Shell</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/swelack/hermes-local-agents" target="_blank">swelack/hermes-local-agents</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/KrisnaSantosa15/hermes-orchestrator" target="_blank">KrisnaSantosa15/hermes-orchestrator</a></h3>
+  <div class="desc">Kanban 编排 + 技术负责人 profile（目标拆解路由）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes profile: Kanban Orchestrator &amp; Technical Lead — decomposes goals and routes work to specialized agents.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/vutranquangminh/ai-agent-configs" target="_blank">vutranquangminh/ai-agent-configs</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Optimized configuration files for OpenCode and Hermes AI coding agents with token optimization, environment variable support, and MCP server integration</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/ethernet8023/hermes-pr-assets" target="_blank">ethernet8023/hermes-pr-assets</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Screenshots for hermes-agent PRs</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/freecrazy-xiaoli/pi-bridge" target="_blank">freecrazy-xiaoli/pi-bridge</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Hermes-style LAN HTTP API bridge for the pi coding agent (OpenAI-compatible)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">TypeScript</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/zhuhai-zhongtian-network/hermes-agent-guide" target="_blank">zhuhai-zhongtian-network/hermes-agent-guide</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Hermes 教程</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/hendragon4637/conductor" target="_blank">hendragon4637/conductor</a></h3>
+  <div class="desc">本地优先多 CLI Agent 编排（仓库=项目、分支=会话）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Local-first multi-CLI agent orchestration. Projects are git repos, sessions are branches, work is plan DAGs in isolated worktrees. Spawns OpenCode/Hermes agents, watches via polled</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/MikeSCCGOV/AIM2-AgentRegistry-Prototype" target="_blank">MikeSCCGOV/AIM2-AgentRegistry-Prototype</a></h3>
+  <div class="desc">SCC Agent 注册表治理的 Hermes Bot Mode 原型</div><div class="desc" style="color:#8b949e;font-size:0.85em">Public static review prototype for SCC Agent Registry governed Hermes Bot Mode</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">HTML</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/rubenurbano/hermes-agent-manual" target="_blank">rubenurbano/hermes-agent-manual</a></h3>
+  
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">HTML</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/821mark-dotcom/Hermes-Agent-Training" target="_blank">821mark-dotcom/Hermes-Agent-Training</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent and Workspace Training material</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">HTML</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/xiaoyangkunkun/ai-studio-system" target="_blank">xiaoyangkunkun/ai-studio-system</a></h3>
+  <div class="desc">AI 工作室系统：基于 Hermes 的全自动数字员工运营体系</div><div class="desc" style="color:#8b949e;font-size:0.85em">AI工作室系统 · 基于Hermes Agent的全自动数字员工运营体系</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/Ujeeg/my-hermes" target="_blank">Ujeeg/my-hermes</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Hermes-agent-personal</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/LsM97/hermernetes" target="_blank">LsM97/hermernetes</a></h3>
+  <div class="desc">Kubernetes Operator（HermesAgent/HermesProvider CRD 弹性起停）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Kubernetes operator for spawning/despawning Hermes Agent instances via HermesAgent and HermesProvider CRDs</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Go</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/adgardelis/hermes-harness" target="_blank">adgardelis/hermes-harness</a></h3>
+  <div class="desc">DeepSeek Harness 改良版（适配 Hermes 原生能力）</div><div class="desc" style="color:#8b949e;font-size:0.85em">An improved adaptation of DeepSeek Harness, designed specifically to take advantage of capabilities native to Hermes.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-license">MIT</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/rosc-bot/hermes-core-backup" target="_blank">rosc-bot/hermes-core-backup</a></h3>
+  <div class="desc">Hermes 核心资产包（95 技能 + 长期记忆 + 灵魂设定）</div><div class="desc" style="color:#8b949e;font-size:0.85em">Hermes Agent 核心资产包 (95技能 + 长期记忆 + 灵魂设定 + 别名映射)</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span></div>
+</div><div class="skill-card">
+  <h3><span class="badge badge-new">NEW</span> <a href="https://github.com/DropShock-Digital/hermes-live-roadmaps" target="_blank">DropShock-Digital/hermes-live-roadmaps</a></h3>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Live, editable checklist cards for Hermes Discord work.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-08-19</span><span class="badge badge-lang">Python</span><span class="badge badge-license">MIT</span></div>
+</div>
+
+<div class="links-section">
+  <h3>🔗 在线链接</h3>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-08-20.html" target="_blank">🇨🇳 COS 国内直达（快速）</a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-08-20.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+</div>
+
+<footer>
+  <p>Generated by Hermes Agent Cron · Powered by GitHub API &amp; Nous Research</p>
+  <p>📬 <a href="https://github.com/chaibobo9246-ops/hermes-daily" target="_blank">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+
+</div>
+</body>
+</html>
