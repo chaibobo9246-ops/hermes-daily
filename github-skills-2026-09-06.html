@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 — 2026-09-06</title>
+<style>
+  :root {
+    --bg: #0d1117; --bg-card: #161b22; --border: #30363d; --text: #c9d1d9;
+    --text-dim: #8b949e; --accent: #58a6ff; --green: #3fb950; --orange: #d2991d;
+    --red: #f85149; --purple: #bc8cff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--bg); color: var(--text); line-height:1.6; min-height:100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif; }
+  .container { max-width:960px; margin:0 auto; padding:40px 24px; }
+  header { text-align:center; padding:60px 0 40px; border-bottom:1px solid var(--border); margin-bottom:40px; }
+  header h1 { font-size:2.2em; font-weight:700;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; }
+  header .date { color:var(--text-dim); font-size:1.1em; font-family:'SF Mono','Fira Code',monospace; }
+  header .note { color:var(--orange); font-size:0.9em; margin-top:10px; }
+  .stats { display:flex; gap:16px; justify-content:center; margin-bottom:40px; flex-wrap:wrap; }
+  .stat-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px 28px; text-align:center; min-width:120px; }
+  .stat-card .num { font-size:2em; font-weight:700; }
+  .stat-card .label { color:var(--text-dim); font-size:0.85em; margin-top:4px; }
+  .num.green { color:var(--green); } .num.accent { color:var(--accent); } .num.orange { color:var(--orange); } .num.red { color:var(--red); }
+  .section-title { font-size:1.3em; font-weight:600; margin:36px 0 16px; padding-bottom:8px;
+    border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+  .empty-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px 24px; margin-bottom:16px; text-align:center; }
+  .empty-card .big { font-size:1.3em; font-weight:700; color:var(--green); margin-bottom:8px; }
+  .empty-card .sub { color:var(--text-dim); font-size:0.92em; }
+  .skill-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:16px; transition:border-color .2s; }
+  .skill-card:hover { border-color:var(--accent); }
+  .skill-card h3 { font-size:1.05em; margin-bottom:6px; }
+  .skill-card h3 a { color:var(--accent); text-decoration:none; }
+  .skill-card h3 a:hover { text-decoration:underline; }
+  .skill-card .desc { color:var(--text-dim); font-size:0.92em; margin-bottom:6px; }
+  .skill-card .meta { display:flex; gap:16px; flex-wrap:wrap; font-size:0.82em; color:var(--text-dim); margin-top:6px; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:0.75em; font-weight:600; }
+  .badge-new { background:rgba(63,185,80,0.15); color:var(--green); }
+  .badge-lang { background:rgba(88,166,255,0.12); color:var(--accent); }
+  .badge-noskill { background:rgba(210,153,29,0.15); color:var(--orange); }
+  .links-section { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:24px; }
+  .links-section h3 { margin-bottom:12px; }
+  .links-section a { display:block; color:var(--accent); margin:6px 0; word-break:break-all; }
+  footer { text-align:center; padding:40px 0; border-top:1px solid var(--border); margin-top:40px; color:var(--text-dim); font-size:0.85em; }
+  footer a { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔮 Hermes Agent Skill 每日盘点</h1>
+  <div class="date">📅 2026-09-06（周日）</div>
+  <div class="note">📌 本次覆盖 2026-09-05 UTC 全天新增，已排除 render 模板/备份/占位/空仓库/无关仓库</div>
+</header>
+
+<div class="stats">
+  <div class="stat-card"><div class="num green">0</div><div class="label">今日新增正式 Skill</div></div>
+  <div class="stat-card"><div class="num accent">2</div><div class="label">Hermes 相关新建仓库</div></div>
+  <div class="stat-card"><div class="num orange">2</div><div class="label">Hermes 生态新增合计</div></div>
+</div>
+
+<div class="section-title">🧩 今日新增 · 技能 Skills（2026-09-06 · 0 个）</div>
+<div class="empty-card">
+  <div class="big">✅ 今日无新增正式 Hermes Skill</div>
+  <div class="sub">GitHub API 多组关键词（hermes+skill / hermes-agent+skill / topic:hermes-agent 等）均无 2026-09-06 新建的 SKILL.md 格式 Hermes 技能仓库。</div>
+</div>
+
+<div class="section-title">🌱 附：今日 Hermes 相关新建仓库（非正式 skill）</div>
+<div class="skill-card">
+  <h3><span class="badge badge-noskill">相关</span> <a href="https://github.com/mattreya/hermes_to_obsidian" target="_blank">mattreya/hermes_to_obsidian</a></h3>
+  <div class="desc">将 Hermes bot 从本地 Docker 镜像学到的新知识映射到 Obsidian，图形化展示每日学习内容</div>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">to map out what exactly a hermes bot is learning from a local docker image; ports to an Obsidian instance showing graphically what the bot learned today.</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-09-06</span><span class="badge badge-lang">空仓库</span></div>
+</div>
+<div class="skill-card">
+  <h3><span class="badge badge-noskill">相关</span> <a href="https://github.com/Vedang-P/rote-session-handoff" target="_blank">Vedang-P/rote-session-handoff</a></h3>
+  <div class="desc">一键跨 harness 会话交接（Claude Code / Codex / OpenCode / Hermes）— Rote Playoffs Hackathon 作品</div>
+  <div class="desc" style="color:#8b949e;font-size:0.85em">Rote Play: one-command cross-harness session handoff (Claude Code, Codex, OpenCode, Hermes).</div>
+  <div class="meta"><span>⭐ 0</span><span>📅 2026-09-06</span><span class="badge badge-lang">TypeScript</span></div>
+</div>
+
+<div class="links-section">
+  <h3>🔗 在线链接</h3>
+  <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-09-06.html" target="_blank">🇨🇳 COS 国内直达（快速）</a>
+  <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-09-06.html" target="_blank">🌐 GitHub Pages（需代理）</a>
+</div>
+
+<footer>
+  <p>Generated by Hermes Agent Cron · Powered by GitHub API &amp; Nous Research</p>
+  <p>📬 <a href="https://github.com/chaibobo9246-ops/hermes-daily" target="_blank">chaibobo9246-ops/hermes-daily</a></p>
+</footer>
+
+</div>
+</body>
+</html>
