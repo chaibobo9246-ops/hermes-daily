@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珀莱雅日报 V4 · 2026-09-06 · Bobby 的顺丰销售作战</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --card: #13131a;
+  --card-hl: #1a1a24;
+  --border: rgba(255,255,255,0.06);
+  --border-strong: rgba(255,255,255,0.12);
+  --text: #e8e8f0;
+  --text-mute: #8b8b9a;
+  --text-dim: #5a5a68;
+  --green-1: #a8e063;
+  --green-2: #10b981;
+  --green-3: #f7ff00;
+  --purple: #a78bfa;
+  --purple-2: #c4b5fd;
+  --purple-3: #ddd6fe;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --pink: #ec4899;
+  --red: #ef4444;
+  --orange: #fb923c;
+  --cyan: #22d3ee;
+  --fs-hero: 42px;
+  --fs-title: 20px;
+  --fs-body: 14px;
+  --fs-small: 12px;
+  --fs-tiny: 11px;
+  --radius: 24px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background: var(--bg); color: var(--text); scroll-behavior:smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6; min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(168,224,99,0.08), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(167,139,250,0.06), transparent 42%),
+    radial-gradient(circle at 50% 100%, rgba(34,211,238,0.05), transparent 45%),
+    var(--bg);
+}
+a { color: var(--purple-2); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.container { max-width: 1400px; margin: 0 auto; padding: 24px 24px 80px; }
+
+/* ============ Section 1: Nav ============ */
+nav {
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  padding: 14px 22px; border:1px solid var(--border); border-radius: 40px;
+  background: rgba(19,19,26,0.8); backdrop-filter: blur(14px);
+  position: sticky; top: 12px; z-index: 100; margin-bottom: 8px;
+}
+.brand { font-weight:800; background:linear-gradient(135deg, var(--green-1), var(--green-2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-size: 18px; letter-spacing:-0.5px; }
+.nav-pills { display:flex; gap:8px; flex-wrap:wrap; }
+.pill { font-size: var(--fs-small); color: var(--text-mute); background: var(--card-hl); border:1px solid var(--border); padding: 5px 12px; border-radius: 20px; white-space:nowrap; }
+.pill:hover { color: var(--green-1); border-color: rgba(168,224,99,0.4); }
+.nav-meta { font-size: var(--fs-small); color: var(--text-dim); }
+
+/* ============ Section 2: Hero ============ */
+.hero { text-align:center; padding: 56px 24px 44px; }
+.hero h1 {
+  font-size: var(--fs-hero); font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 14px;
+  background: linear-gradient(135deg, var(--green-1) 0%, var(--green-2) 55%, var(--green-3) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero .sub { font-size: var(--fs-body); color: var(--text-mute); margin-bottom: 8px; }
+.hero .lunar { font-size: var(--fs-small); color: var(--purple-2); margin-bottom: 18px; }
+.hero .meta { font-size: var(--fs-small); color: var(--text-dim); }
+.hero-badge {
+  display:inline-block; font-size: var(--fs-tiny); letter-spacing:1px; text-transform:uppercase;
+  color: var(--green-1); border:1px solid rgba(168,224,99,0.3); background: rgba(168,224,99,0.08);
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 18px;
+}
+
+/* ============ Section headers ============ */
+section { margin-bottom: 60px; scroll-margin-top: 90px; }
+.section-head { display:flex; align-items:baseline; gap:12px; margin-bottom: 18px; }
+.section-head h2 { font-size: var(--fs-title); font-weight: 700; letter-spacing:-0.3px; }
+.section-head .rule { flex:1; height:1px; background: linear-gradient(90deg, var(--border-strong), transparent); }
+.section-head .cnt { font-size: var(--fs-tiny); color: var(--text-dim); }
+
+/* ============ Section 3: 今日速览 glow cards ============ */
+.glow-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+.glow-card {
+  background: var(--card); border:1px solid var(--border); border-radius: 18px; padding: 18px 18px 16px;
+  position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s;
+}
+.glow-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(168,224,99,0.10); }
+.glow-card::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 80% 0%, rgba(168,224,99,0.10), transparent 60%); pointer-events:none; }
+.glow-card .lbl { font-size: var(--fs-tiny); color: var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+.glow-card .val { font-size: 24px; font-weight: 800; margin-bottom:2px; }
+.glow-card .val.up { color: var(--red); }
+.glow-card .val.down { color: var(--green-2); }
+.glow-card .val.grad { background: linear-gradient(135deg, var(--green-1), var(--cyan)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.glow-card .delta { font-size: var(--fs-small); color: var(--text-mute); }
+.glow-card .tag { display:inline-block; font-size: var(--fs-tiny); color: var(--purple-2); margin-top:4px; }
+
+/* ============ dual-column layout ============ */
+.dual { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+.col { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.col-head { font-size: var(--fs-body); font-weight:700; margin-bottom: 14px; display:flex; align-items:center; gap:8px; }
+.col-head .flag { font-size: 18px; }
+.col-head .geo { font-size: var(--fs-tiny); color: var(--text-dim); font-weight:400; }
+.item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+.item:last-child { border-bottom: none; }
+.item .t { font-size: var(--fs-body); color: var(--text); margin-bottom: 3px; }
+.item .t b { color: var(--green-1); }
+.item .d { font-size: var(--fs-small); color: var(--text-mute); line-height: 1.55; }
+.item .src { font-size: var(--fs-tiny); color: var(--text-dim); margin-top: 4px; }
+.src-tag { color: var(--purple-2); }
+
+/* ============ 3-col layout (trade / supply chain) ============ */
+.triple { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+.region-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.region-card h3 { font-size: var(--fs-body); font-weight:700; margin-bottom: 14px; display:flex; align-items:center; gap:8px; }
+.region-card h3 .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+/* ============ Section 12: risk ============ */
+.risk-list { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+.risk-group { margin-bottom: 18px; }
+.risk-group:last-child { margin-bottom: 0; }
+.risk-group h3 { font-size: var(--fs-body); font-weight:700; margin-bottom: 10px; }
+.risk-item { display:flex; gap:10px; padding: 8px 0; border-bottom:1px solid var(--border); font-size: var(--fs-body); }
+.risk-item:last-child { border-bottom:none; }
+.risk-item .lv { flex-shrink:0; font-size: var(--fs-small); margin-top:1px; }
+.risk-item .desc { color: var(--text); }
+.risk-item .src { font-size: var(--fs-tiny); color: var(--text-dim); margin-left:auto; flex-shrink:0; }
+
+/* ============ Footer ============ */
+footer { text-align:center; padding: 36px 20px 20px; border-top:1px solid var(--border); margin-top: 20px; }
+footer .src-note { font-size: var(--fs-small); color: var(--text-mute); margin-bottom: 8px; }
+footer .disclaimer { font-size: var(--fs-tiny); color: var(--text-dim); line-height:1.7; max-width: 720px; margin:0 auto; }
+footer .sign { margin-top: 14px; font-size: var(--fs-tiny); color: var(--text-dim); }
+
+@media (max-width: 960px) {
+  .glow-grid { grid-template-columns: repeat(2, 1fr); }
+  .dual, .triple { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ Section 1: Nav ============ -->
+<nav>
+  <div class="brand">🗄️ Proya DB</div>
+  <div class="nav-pills">
+    <a class="pill" href="#sec3">⚡速览</a>
+    <a class="pill" href="#sec4">📦物流</a>
+    <a class="pill" href="#sec5">💄美妆</a>
+    <a class="pill" href="#sec6">📈珀莱雅</a>
+    <a class="pill" href="#sec7">📊周报</a>
+    <a class="pill" href="#sec8">🌍贸易</a>
+    <a class="pill" href="#sec9">📋政策</a>
+    <a class="pill" href="#sec10">🏆竞对</a>
+    <a class="pill" href="#sec11">🔗上下游</a>
+    <a class="pill" href="#sec12">⚠️风险</a>
+  </div>
+  <div class="nav-meta">2026-09-06 · 周日</div>
+</nav>
+
+<!-- ============ Section 2: Hero ============ -->
+<div class="hero">
+  <span class="hero-badge">Proya Daily Brief · V4</span>
+  <h1>珀莱雅 603605 日报</h1>
+  <div class="sub">美妆 × 物流 × 贸易 全景作战仪表盘</div>
+  <div class="lunar">农历丙午马年 · 七月廿五 · 处女座 · 丙申月癸未日</div>
+  <div class="meta">数据截至 2026-09-04 收盘 · 覆盖 13 个板块 · 国内 + 国际双视角</div>
+</div>
+
+<!-- ============ Section 3: 今日速览 ============ -->
+<section id="sec3">
+  <div class="section-head"><h2>⚡ 今日速览</h2><div class="rule"></div><div class="cnt">仅珀莱雅核心数据</div></div>
+  <div class="glow-grid">
+    <div class="glow-card">
+      <div class="lbl">最新股价</div>
+      <div class="val up">63.04 元</div>
+      <div class="delta">▲ +0.51% · +0.32 元</div>
+      <span class="tag">9月4日收盘</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">总市值</div>
+      <div class="val grad">249.62 亿</div>
+      <div class="delta">流通市值 249.62 亿 · 全流通</div>
+      <span class="tag">PE(动) 10.69x</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">2026 中报营收</div>
+      <div class="val grad">53.75 亿</div>
+      <div class="delta">8月25日披露 · 同比稳健</div>
+      <span class="tag">归母净利 11.68 亿</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">花知晓收购</div>
+      <div class="val grad">7.79 亿</div>
+      <div class="delta">分两次取得 51% 控股权</div>
+      <span class="tag">花知晓2025营收17.26亿</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">估值</div>
+      <div class="val">10.69x / 3.75x</div>
+      <div class="delta">PE(动态) / PB(市净)</div>
+      <span class="tag">换手率 1.02%</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">经营现金流</div>
+      <div class="val down">9.51 亿</div>
+      <div class="delta">▼ 同比 -26.48%</div>
+      <span class="tag">资产负债率 33.66%</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">物流景气指数</div>
+      <div class="val up">53.5%</div>
+      <div class="delta">▲ 环比 +3.2 个百分点</div>
+      <span class="tag">9月份 · 活跃势头向好</span>
+    </div>
+    <div class="glow-card">
+      <div class="lbl">SCFI 运价</div>
+      <div class="val up">3205.97</div>
+      <div class="delta">▲ +143.02 点（7/31）</div>
+      <span class="tag">集运指数期货已获批</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 4: 物流大事件 ============ -->
+<section id="sec4">
+  <div class="section-head"><h2>📦 物流大事件</h2><div class="rule"></div><div class="cnt">国内 + 国际</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内物流 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t">9月<b>物流业景气指数 53.5%</b>，环比回升 3.2 个百分点</div><div class="d">数说经济口径，物流活跃势头向好，景气重回扩张区间上方。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>顺丰控股</b> 2026H1 营收 1555 亿元（+5.9%），扣非净利 50 亿（+9.3%）</div><div class="d">8月28日晚披露半年报，扣非归母净利率 3.2%，盈利质量稳步提升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">快递业<b>"内卷"</b>加剧，行业竞逐 <b>171 亿美元</b>海外增量市场</div><div class="d">国内增量见顶，物流业务外溢成为头部玩家持续增长的重要渠道。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">中欧班列累计开行<b>超 9 万列</b>，运送货物近 800 万标箱</div><div class="d">横跨欧亚的"钢铁驼队"，2026年面临线路选择与通关政策新变局。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>集装箱运价指数期货</b>获批，航运业迎来避险利器</div><div class="d">为货主与航运企业提供运价对冲工具，降低运价波动风险。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>菜鸟</b>成阿里"1+6+N"拆分后首个启动 IPO 流程的物流板块</div><div class="d">已向港交所递交招股书，加速资本市场进程。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际物流 <span class="geo">Global</span></div>
+      <div class="item"><div class="t"><b>FedEx</b> Q4 FY2026 营收 <b>$250.1 亿</b>（+13%），毛利率 30% 创多年新高</div><div class="d">6月23日财报，营收超华尔街预期逾 9.6 亿美元，B2B 高端化转型见效。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t"><b>FedEx Freight</b> 于 6月1日 分拆独立上市</div><div class="d">剥离零担货运业务，聚焦更高毛利的快递核心 FEC 板块。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">FedEx 全年 FY2026 营收 <b>$947 亿</b>（+8%），营业利润 $54.6 亿（+5%）</div><div class="d">超额完成 $10 亿转型成本节约目标，成本结构优化。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">毛利率分化：<b>FedEx 30% vs UPS 21% vs DHL 17%</b></div><div class="d">FedEx 与 UPS 差距从 4pct 扩大至 9pct，B2B 定价能力凸显。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">FedEx 国际出口包裹营收 <b>+15%</b>，国际优先/经济货运 +14%</div><div class="d">跨境航空货运需求旺盛，对冲美国本土地面件量收缩。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 5: 美妆动态 ============ -->
+<section id="sec5">
+  <div class="section-head"><h2>💄 美妆动态</h2><div class="rule"></div><div class="cnt">国内 + 国际</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内美妆 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t">药监局通报<b>2024年化妆品抽样检验</b>不合格产品</div><div class="d">妙龄妍亮喵喵亮肤面膜等产品标签不合规被点名，监管持续高压。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">化妆品<b>网络经营监管</b>进一步强化</div><div class="d">依《化妆品监督管理条例》规范网络经营行为，保障质量安全。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>华熙生物</b> 2026中报营收 17.56 亿（<span style="color:var(--green-2)">-22.32%</span>），净利 1.53 亿（<span style="color:var(--green-2)">-30.82%</span>）</div><div class="d">8月28日披露，营收净利双降，但经营现金流大增 140.08%。</div><div class="src"><span class="src-tag">[来源: Sogou / Web]</span></div></div>
+      <div class="item"><div class="t">华熙生物<b>原料业务占比 36.38%</b> 升至第一大业务</div><div class="d">透明质酸原料重回主引擎，战略从"终端产品"转向"原料+医疗终端"。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">华熙生物综合毛利率 <b>67.96%</b>，研发投入占比 12.07%</div><div class="d">PDRN 步入增长轨道，医美梯队建设稳步推进。</div><div class="src"><span class="src-tag">[来源: Sogou / Web]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际美妆 <span class="geo">Global</span></div>
+      <div class="item"><div class="t"><b>雅诗兰黛</b> 在华业绩全面回暖，中国市场重回核心增长引擎</div><div class="d">增长高度集中于高端化、专业化赛道，本土化策略见效。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">雅诗兰黛完成对 <b>DECIEM（The Ordinary 母公司）</b>收购</div><div class="d">以功效护肤平价款补位，完善高端+功效双线布局。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">欧盟推进<b>化妆品致敏原标注</b>新规</div><div class="d">(EC) No 1223/2009 修订，2026年7月31日新品强制合规，2028年存量整改。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">美国 <b>MoCRA</b>（2023年颁布）重塑化妆品监管格局</div><div class="d">FDA 首次获得强制监管权，上市后监管从"自行评估"转向"安全问责"。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>花知晓 Flower Knows</b> 日本入驻近千家线下药妆店</div><div class="d">"少女心"美妆全球扩张，欧美日韩多渠道开花。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 6: 珀莱雅动态 ============ -->
+<section id="sec6">
+  <div class="section-head"><h2>📈 珀莱雅动态</h2><div class="rule"></div><div class="cnt">国内 + 国际</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内经营 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t">珀莱雅 2026 中报：营收 <b>53.75 亿</b>，归母净利 <b>11.68 亿</b></div><div class="d">8月25日披露，主业稳健，盈利能力在同业中排名前列。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">经营活动现金净流入 9.51 亿，<span style="color:var(--green-2)">同比 -26.48%</span></div><div class="d">较去年同期减少 3.42 亿，需关注回款节奏与备货占用。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">资产负债率 <b>33.66%</b>，同业排名第 6</div><div class="d">较上季度 +7.14pct，较去年同期 +4.12pct，杠杆仍属健康。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">分两次合计 <b>7.79 亿</b> 取得花知晓 51% 股权，实现控股</div><div class="d">5月21日公告 3.51 亿收购 12.5479%，持股升至 51% 并表。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">花知晓 2025 年营收 <b>17.26 亿</b>，净利润 <b>2.80 亿</b></div><div class="d">彩妆品类补强，为珀莱雅第二增长曲线注入品牌资产。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">近 <b>6 倍溢价</b>、<b>不设业绩对赌</b>，产生商誉 9.24 亿</div><div class="d">会计层面 4.45 亿投资收益 + 9.24 亿商誉，减值风险需跟踪。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际出海 <span class="geo">Global</span></div>
+      <div class="item"><div class="t">花知晓海外年营收<b>超 1 亿元</b>，美国、日本为两大核心市场</div><div class="d">2019年首站日本，现已布局欧美日韩多渠道，年销破亿。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">Amazon 近 30 天前 200 ASIN 销量 <b>21.2 万单</b>，销售额 <b>635.6 万美元</b></div><div class="d">卖家精灵数据，多款热销产品父体销量达 2000+ 单。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">美国入驻 <b>Urban Outfitters</b>，4 个月卖出 1000 万</div><div class="d">借潮流零售渠道打入北美年轻消费圈层。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">韩国<b>圣水洞</b>开快闪店，排队按小时计</div><div class="d">潮流地标快闪引爆话题，为东南亚及亚太扩张造势。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">珀莱雅设<b>巴黎欧洲科创中心</b>，加码研发出海</div><div class="d">供应链体系覆盖杭州龙坞、上海、巴黎三大研发中心。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 7: 物流周报 ============ -->
+<section id="sec7">
+  <div class="section-head"><h2>📊 物流周报</h2><div class="rule"></div><div class="cnt">运价 + 指数 + 班列</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内运价与班列 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t"><b>SCFI</b> 上海出口集装箱运价指数 7/31 报 <b>3205.97 点</b>（+143.02）</div><div class="d">上海航运交易所数据，运价指数止跌回升，终止九连跌。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">中美关税互降，<b>集运指数飙升超 10%</b></div><div class="d">货柜轮业者齐呼利好，市场情绪显著提振。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">中欧班列<b>南通道</b>开行量同比增超 80%，迈入规模运营</div><div class="d">绕行里海/跨里海线路提速，多元通道对冲地缘风险。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">辽宁中欧班列上半年开行 <b>280 列</b>（+169.2%），货物 29222 标箱（+162.2%）</div><div class="d">东北多式联运"1610N"体系发力，量质齐升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">中欧班列（郑州）累计开行<b>突破 2200 列</b>，西安超 3000 列</div><div class="d">内陆枢纽城市班列网络持续加密，发运频次提升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际航线运价 <span class="geo">Global</span></div>
+      <div class="item"><div class="t">分航线运价：欧洲 2481.69（<span style="color:var(--green-2)">-2.6%</span>）、美西 1532.94（<span style="color:var(--green-2)">-2.5%</span>）、美东 1757.91</div><div class="d">欧美主干线小幅回落，日本航线 932.45（+1.0%）逆势微涨。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">FedEx CY2026 营收指引 <b>+11%</b>，调整后 EPS <b>$16.90–18.10</b></div><div class="d">分拆后 6–12 月过渡期隐含 20% 增长，市场关注分拆遗留成本。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">FedEx 国际优先/经济货运营收 <b>+14%</b></div><div class="d">航空跨境货运量价齐升，美国本土地面件量收缩 6% 形成对冲。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">中欧班列累计运送货物近 <b>800 万标箱</b></div><div class="d">横跨欧亚的铁路货运持续扩容，为海运提供陆路替代方案。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">内贸集装箱运价指数周报（XH·PDCI）持续发布</div><div class="d">新华·泛亚航运口径，内贸集运景气度参考指标。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 8: 贸易形势 ============ -->
+<section id="sec8">
+  <div class="section-head"><h2>🌍 贸易形势</h2><div class="rule"></div><div class="cnt">三大区域</div></div>
+  <div class="triple">
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--blue)"></span>🇺🇸 美国</h3>
+      <div class="item"><div class="t">中美关税互降，集运指数飙升超 10%</div><div class="d">贸易缓和信号，跨境物流情绪修复。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">FedEx Freight 6/1 分拆独立上市</div><div class="d">美国零担货运格局重塑，聚焦核心快递业务。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">美国 MoCRA 重塑化妆品监管</div><div class="d">FDA 获强制监管权，国产美妆出海合规门槛抬升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--purple)"></span>🇪🇺 欧洲</h3>
+      <div class="item"><div class="t">欧盟拟推<b>"欧版 301 条款"</b>反制中国补贴</div><div class="d">6月19日报道，考虑对混动车征反补贴税，贸易防御加码。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">商务部对<b>欧盟乳制品</b>征反补贴税（2026年第9号公告）</div><div class="d">中方反制落地，中欧贸易博弈进入"组合拳"阶段。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">欧盟《工业加速器法案》限制电池/电动车/光伏/关键原材料四大行业</div><div class="d">2026年4月推出，设置"欧盟原产"排他性条款。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">2026/5/1 起欧盟禁止公资项目采购中国光伏逆变器/储能变流器</div><div class="d">剑指华为、阳光电源等，新能源贸易摩擦引爆点。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+    </div>
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--green-2)"></span>🌏 亚太</h3>
+      <div class="item"><div class="t">中欧班列南通道迈入"规模运营"新阶段</div><div class="d">跨里海/中亚线路提速，对冲红海等地缘扰动。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">花知晓加速日本、东南亚扩张</div><div class="d">日本近千家药妆店 + 东南亚渠道，亚太成国货美妆主战场。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">中国造船三大指标领跑全球，完工量占世界 <b>56.1%</b></div><div class="d">新接订单占 69%、手持订单 66.8%，船东回流中国。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 9: 政策监管 ============ -->
+<section id="sec9">
+  <div class="section-head"><h2>📋 政策监管</h2><div class="rule"></div><div class="cnt">物流 + 美妆双线</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内政策 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t">药监局强化<b>化妆品网络经营监管</b></div><div class="d">依《化妆品监督管理条例》规范网络经营，抽检+处罚并行。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">化妆品<b>抽检不合格通报</b>常态化</div><div class="d">面膜等品类标签/成分不合规被点名，合规成本上升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">商务部对欧盟乳制品征<b>反补贴税</b></div><div class="d">国务院关税税则委员会依《反补贴条例》作出决定。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">中欧电动汽车转<b>"最低价格承诺"</b>机制（2026年1月）</div><div class="d">替代此前最高 35.3% 的额外反补贴税，谈判意愿显现。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t"><b>集装箱运价指数期货</b>获批上市</div><div class="d">金融工具护航航运实体，物流企业可对冲运价风险。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际法规 <span class="geo">Global</span></div>
+      <div class="item"><div class="t">欧盟 (EC) No 1223/2009 <b>致敏原标注</b>新规推进</div><div class="d">2026/7/31 新品强制合规，2028 年存量产品全部整改。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">美国 <b>MoCRA</b> 赋予 FDA 强制监管权</div><div class="d">上市前无需审批，但上市后安全问责与不良反应监测强化。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">欧盟《工业加速器法案》设"欧盟原产"排他条款</div><div class="d">公共采购与支持政策设限，构成制度性贸易壁垒。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">欧盟<b>光伏逆变器/储能变流器</b>采购禁令（5/1 生效）</div><div class="d">公资可再生能源项目禁止采购中国相关设备。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">OECD 报告指责中国企业 60% 份额增长依赖补贴</div><div class="d">成为欧盟反补贴决策关键依据，中方坚决否认。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 10: 竞对情报 ============ -->
+<section id="sec10">
+  <div class="section-head"><h2>🏆 竞对情报</h2><div class="rule"></div><div class="cnt">物流龙头对比</div></div>
+  <div class="dual">
+    <div class="col">
+      <div class="col-head"><span class="flag">🇨🇳</span> 国内快递 <span class="geo">Domestic</span></div>
+      <div class="item"><div class="t"><b>顺丰控股</b> H1 营收 1555 亿（+5.9%），扣非净利 50 亿（+9.3%）</div><div class="d">扣非净利率 3.2%，外部不确定下盈利质量稳步提升。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">顺丰<b>时效+经济</b>双线，鄂州枢纽释放航空货运产能</div><div class="d">航空件量增长支撑高端件单价，护城河稳固。</div><div class="src"><span class="src-tag">[来源: AI推断]</span></div></div>
+      <div class="item"><div class="t"><b>菜鸟</b> 启动 IPO 流程，京东物流持续扩仓</div><div class="d">电商物流头部资本化提速，供应链能力外溢。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">快递"内卷"下头部玩家竞逐 <b>171 亿美元</b>海外市场</div><div class="d">通达系+极兔东南亚价格战，顺丰以时效件错位竞争。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>韵达/中通/圆通</b>等通达系以单票成本优势争夺电商件</div><div class="d">珀莱雅供应链中韵达为快递物流合作方之一。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+    </div>
+    <div class="col">
+      <div class="col-head"><span class="flag">🌐</span> 国际快递 <span class="geo">Global</span></div>
+      <div class="item"><div class="t"><b>FedEx</b> FY2026 营收 $947 亿（+8%），营业利润 $54.6 亿（+5%）</div><div class="d">全年盈利超预期，B2B 高端化转型确立竞争优势。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">毛利率：<b>FedEx 30% &gt; UPS 21% &gt; DHL 17%</b></div><div class="d">FedEx 与 UPS 差距扩大至 9pct，定价分化显著。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">FedEx Q4 净利润 <b>9.66 亿美元</b></div><div class="d">最后一个含货运业务财季，营收利润均超华尔街预期。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t">FedEx CY2026 营收指引 <b>+11%</b>，调整后 EPS $16.90–18.10</div><div class="d">分拆 Freight 后聚焦核心，隐含过渡期 20% 增长。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t">UPS、DHL 跟进涨价，全球快递定价中枢上移</div><div class="d">燃油附加费+通胀推动，顺丰高端件存在对标空间。</div><div class="src"><span class="src-tag">[来源: AI推断]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 11: 上下游 ============ -->
+<section id="sec11">
+  <div class="section-head"><h2>🔗 上下游</h2><div class="rule"></div><div class="cnt">供应链档案内公司</div></div>
+  <div class="triple">
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--amber)"></span>🧪 原料端</h3>
+      <div class="item"><div class="t"><b>华熙生物</b>（中国·透明质酸/功能糖）</div><div class="d">中报营收 17.56 亿（-22.32%），原料业务占比 36.38% 升至第一。</div><div class="src"><span class="src-tag">[来源: Web]</span></div></div>
+      <div class="item"><div class="t"><b>BASF 巴斯夫</b>（德国·活性物/乳化剂）</div><div class="d">全球化工龙头，化妆品活性成分核心供应商。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>DSM 帝斯曼</b>（荷兰·防晒剂/维生素/肽类）</div><div class="d">功效原料头部，珀莱雅防晒与抗老线原料来源。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>恩和生物</b>（中国·合成生物学原料）</div><div class="d">合成生物新锐，替代发酵工艺降本方向。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>亚什兰 Ashland</b>（美国·功能性原料/防腐体系）</div><div class="d">功能性原料与防腐体系供应商，国际合规背书。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>LipoTrue / CODIF / CEVA</b>（西班牙/法国·海洋活性物）</div><div class="d">海洋生物活性物、海藻原料，珀莱雅海洋护肤线供应商。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+    </div>
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--blue)"></span>📦 物流包装</h3>
+      <div class="item"><div class="t"><b>顺丰速运</b>（快递物流）</div><div class="d">H1 营收 1555 亿（+5.9%），扣非净利 50 亿（+9.3%）。</div><div class="src"><span class="src-tag">[来源: Sogou]</span></div></div>
+      <div class="item"><div class="t"><b>京东物流</b>（供应链物流）</div><div class="d">仓配一体化能力，珀莱雅电商大促履约备选。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>韵达快递</b>（快递物流）</div><div class="d">通达系成本优势，日化电商件主力承运之一。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>厦门合兴包装</b>（纸箱/包装印刷）</div><div class="d">美妆礼盒与快递纸箱供应商，包装成本敏感项。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>华章机器人</b>（仓储自动化）</div><div class="d">智能仓储解决方案，珀莱雅仓配自动化升级方向。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>旺店通</b>（电商 ERP/WMS）</div><div class="d">电商订单与仓储管理系统，多平台履约中枢。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+    </div>
+    <div class="region-card">
+      <h3><span class="dot" style="background:var(--pink)"></span>💅 品牌渠道</h3>
+      <div class="item"><div class="t"><b>花知晓</b>（51% 控股·彩妆）</div><div class="d">2025 营收 17.26 亿、净利 2.80 亿，出海年销破亿。</div><div class="src"><span class="src-tag">[来源: Sogou / Web]</span></div></div>
+      <div class="item"><div class="t"><b>彩棠</b>（71.36%·彩妆）</div><div class="d">专业彩妆品牌，珀莱雅彩妆第二梯队。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t"><b>Off&Relax</b>（100%·头皮护理）</div><div class="d">头皮护理细分，与悦芙媞、原色波塔、惊时组成多品牌矩阵。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t">线上：<b>天猫 / 抖音 / 京东 / 小红书 / 唯品会</b></div><div class="d">直播电商+内容电商双驱动，抖音为增长主力。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+      <div class="item"><div class="t">线下：<b>屈臣氏</b> + <b>Guardian Malaysia</b></div><div class="d">国内 CS 渠道 + 东南亚零售，出海线下据点。</div><div class="src"><span class="src-tag">[来源: 供应链档案]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 12: 风险 ============ -->
+<section id="sec12">
+  <div class="section-head"><h2>⚠️ 风险矩阵</h2><div class="rule"></div><div class="cnt">分级关注</div></div>
+  <div class="risk-list">
+    <div class="risk-group">
+      <h3>🔴 高风险</h3>
+      <div class="risk-item"><span class="lv">🔴</span><span class="desc"><b>中欧贸易摩擦升级</b>：欧盟拟推"欧版301条款"，化妆品/原材料出口或遭波及。</span><span class="src">[来源: Web]</span></div>
+      <div class="risk-item"><span class="lv">🔴</span><span class="desc"><b>花知晓 9.24 亿商誉减值风险</b>：近6倍溢价不设对赌，若业绩不达预期将计提减值。</span><span class="src">[来源: Sogou]</span></div>
+      <div class="risk-item"><span class="lv">🔴</span><span class="desc"><b>珀莱雅经营现金流 -26.48%</b>：现金净流入同比减少 3.42 亿，回款与备货占用需警惕。</span><span class="src">[来源: Sogou]</span></div>
+    </div>
+    <div class="risk-group">
+      <h3>🟠 中风险</h3>
+      <div class="risk-item"><span class="lv">🟠</span><span class="desc"><b>华熙生物营收净利双降</b>：行业需求疲软传导至原料端，珀莱雅原料成本或波动。</span><span class="src">[来源: Web]</span></div>
+      <div class="risk-item"><span class="lv">🟠</span><span class="desc"><b>FedEx 分拆遗留成本</b>：Freight 剥离后 stranded costs 承压，全球快递定价或上移。</span><span class="src">[来源: Web]</span></div>
+      <div class="risk-item"><span class="lv">🟠</span><span class="desc"><b>快递"内卷"加剧</b>：价格战压缩物流毛利，或传导至电商履约成本。</span><span class="src">[来源: Sogou]</span></div>
+    </div>
+    <div class="risk-group">
+      <h3>🔵 低风险</h3>
+      <div class="risk-item"><span class="lv">🔵</span><span class="desc"><b>物流景气指数回升</b>：9月 53.5% 环比 +3.2pct，行业活跃度向好。</span><span class="src">[来源: Sogou]</span></div>
+      <div class="risk-item"><span class="lv">🔵</span><span class="desc"><b>集运期货获批</b>：运价避险工具落地，物流成本波动可控性增强。</span><span class="src">[来源: Sogou]</span></div>
+    </div>
+    <div class="risk-group">
+      <h3>🟢 机会</h3>
+      <div class="risk-item"><span class="lv">🟢</span><span class="desc"><b>花知晓出海年销破亿</b>：美日核心市场 + 东南亚扩张，国货美妆全球化窗口。</span><span class="src">[来源: Web]</span></div>
+      <div class="risk-item"><span class="lv">🟢</span><span class="desc"><b>中美关税互降利好集运</b>：跨境物流需求提振，供应链修复。</span><span class="src">[来源: Sogou]</span></div>
+    </div>
+    <div class="risk-group">
+      <h3>✅ 行动建议</h3>
+      <div class="risk-item"><span class="lv">✅</span><span class="desc"><b>顺丰跟进珀莱雅多品牌出海</b>：花知晓美日韩+东南亚扩张带来跨境物流增量。</span><span class="src">[来源: AI推断]</span></div>
+      <div class="risk-item"><span class="lv">✅</span><span class="desc"><b>跨境电商物流 + 东南亚仓配</b>：对接花知晓 Amazon/药妆店渠道的履约需求。</span><span class="src">[来源: AI推断]</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Section 13: Footer ============ -->
+<footer>
+  <div class="src-note">数据来源：搜狗移动端实时搜索 · 东方财富行情 API · 网络公开信息 · 供应链档案</div>
+  <div class="disclaimer">本报告由 Hermes Agent 自动生成，仅供内部参考，不构成任何投资建议。所载数据与信息均来自公开渠道，时效性与准确性以官方披露为准。文中 [来源: AI推断] 标注内容基于训练知识，请结合最新公开信息核实后再作决策。</div>
+  <div class="sign">Proya Daily Brief V4 · Generated 2026-09-06 08:30 CST · 🗄️ Proya DB</div>
+</footer>
+
+</body>
+</html>
