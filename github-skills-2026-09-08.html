@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes Skill 每日盘点 · 2026-09-08</title>
+<style>
+  :root{
+    --bg:#0b0d12; --bg2:#11141c; --card:#161a24; --card2:#1b2130;
+    --border:#262c3d; --txt:#e6e9f0; --sub:#9aa3b8; --dim:#5c667d;
+    --accent:#7c9cff; --accent2:#4ade80; --warn:#fbbf24; --pink:#f472b6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI","Microsoft YaHei",sans-serif;line-height:1.6;padding:32px 20px}
+  .wrap{max-width:960px;margin:0 auto}
+  header{border:1px solid var(--border);background:linear-gradient(135deg,var(--bg2),var(--card));border-radius:16px;padding:28px 32px;margin-bottom:24px}
+  header h1{font-size:26px;font-weight:700;letter-spacing:.5px}
+  header h1 .dot{color:var(--accent)}
+  header .meta{margin-top:10px;color:var(--sub);font-size:14px}
+  header .meta b{color:var(--accent2)}
+  .stat-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+  .stat{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 18px;font-size:13px}
+  .stat b{display:block;font-size:22px;color:var(--accent)}
+  h2{font-size:18px;margin:28px 0 14px;color:var(--txt);display:flex;align-items:center;gap:8px}
+  h2::before{content:"";width:4px;height:18px;background:var(--accent);border-radius:2px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  th{background:var(--bg2);color:var(--sub);font-size:12px;text-transform:uppercase;letter-spacing:.5px;padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+  td{padding:14px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.name{font-weight:600;color:#fff;white-space:nowrap}
+  td.name .repo{color:var(--sub);font-weight:400;font-size:12px;display:block;margin-top:2px}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;margin-left:6px;font-weight:500}
+  .tag.new{background:rgba(74,222,128,.12);color:var(--accent2)}
+  .tag.zh{background:rgba(124,156,255,.12);color:var(--accent)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .empty{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;text-align:center;color:var(--sub)}
+  .links{margin-top:28px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+  .links h3{font-size:15px;margin-bottom:12px;color:var(--accent2)}
+  .links a{display:block;padding:8px 0;word-break:break-all}
+  footer{margin-top:24px;text-align:center;color:var(--dim);font-size:12px}
+  .note{color:var(--dim);font-size:12px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Hermes Skill <span class="dot">每日盘点</span></h1>
+    <div class="meta">📅 盘点日期：<b>2026-09-08</b> · 数据源：GitHub Search API（hermes skill / topic:hermes-skill）</div>
+    <div class="stat-row">
+      <div class="stat"><b>13</b>今日新增 skill</div>
+      <div class="stat"><b>2</b>今日(09-08)创建</div>
+      <div class="stat"><b>11</b>昨日(09-07)创建</div>
+    </div>
+  </header>
+
+  <h2>📊 今日新增 Skill</h2>
+  <table>
+    <thead><tr><th style="width:26%">Skill / 仓库</th><th style="width:46%">描述</th><th style="width:16%">来源</th><th style="width:12%">链接</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">hermes-core-skills<span class="tag new">今日</span><span class="repo">szabo-agent/hermes-core-skills</span></td>
+        <td>Hermes 核心技能集，内含 <b>coding-agent-routing</b>（自主编码代理路由）skill，配 AGENTS.md 规范。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/szabo-agent/hermes-core-skills">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">traficlab-factory<span class="tag new">今日</span><span class="repo">neokyhurtado-cmd/traficlab-factory</span></td>
+        <td>TraficLab 工厂：Hermes 团队 onboarding 的 profile、skills 与 bootstrap 脚手架（西语）。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/neokyhurtado-cmd/traficlab-factory">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">wechat-article-skill<span class="tag zh">中文</span><span class="repo">formero009/wechat-article-skill</span></td>
+        <td>公众号 AI 科技文章全流程写作 skill：选题→调研→成稿→QA→配图→微信草稿发布（Hermes/Claude skill 包）。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/formero009/wechat-article-skill">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">douyin-bluesea-collector<span class="tag zh">中文</span><span class="repo">why20261/douyin-bluesea-collector</span></td>
+        <td>抖音蓝海爆品采集：结合热搜榜+关键词视频数据，从细分场景切入找蓝海爆品、避开红海大词竞争。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/why20261/douyin-bluesea-collector">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">douyin-social<span class="tag zh">中文</span><span class="repo">why20261/douyin-social</span></td>
+        <td>抖音社媒运营：串起热搜榜/关键词搜索/达人主页，完成「热点选题→脚本卖点→粉丝画像匹配」种草闭环。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/why20261/douyin-social">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">douyin-kol-searchs<span class="tag zh">中文</span><span class="repo">why20261/douyin-kol-searchs</span></td>
+        <td>抖音 KOL 数据查询：关键词搜视频/图文筛选、实时热榜、博主作品抓取、视频评论分析四大能力。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/why20261/douyin-kol-searchs">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">suno-playback-capture<span class="repo">Zombie-W33D/suno-playback-capture</span></td>
+        <td>Hermes skill：捕获专用浏览器隔离音频，把 Suno AI 曲目下载为干净、裁剪、打标的 WAV。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/Zombie-W33D/suno-playback-capture">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">agent-craft-for-hermes<span class="repo">MirzaMotoTech/agent-craft-for-hermes</span></td>
+        <td>5 个可安装 Hermes skill，用于纪律化的「证据优先」agent 执行。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/MirzaMotoTech/agent-craft-for-hermes">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">hermes-capability-health<span class="repo">MirzaMotoTech/hermes-capability-health</span></td>
+        <td>对 Hermes 的 tools/skills/MCP/runtime 边界做静默只读健康检查。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/MirzaMotoTech/hermes-capability-health">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">lean-diff-review<span class="repo">UgurInanc12/lean-diff-review</span></td>
+        <td>Hermes skill：审查单个 diff 的 broken/missing/over-built 代码，按需调用（非 always-on）。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/UgurInanc12/lean-diff-review">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">clariflix-skills<span class="repo">glaucohf/clariflix-skills</span></td>
+        <td>ClariFlix：面向 Hermes/Claude/ChatGPT/Codex 的 AI agent skills 中心。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/glaucohf/clariflix-skills">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">img2hologram<span class="repo">dotroza/img2hologram</span></td>
+        <td>本地 agentic 生成管线：单图生成 mesh + ComfyUI workflow，MCP 连 ComfyUI/Lens Studio，Spectacles 全息可视化。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/dotroza/img2hologram">repo</a></td>
+      </tr>
+      <tr>
+        <td class="name">agent-equipe<span class="repo">MGIT74/agent-equipe</span></td>
+        <td>Hermes 多员工 Web 应用：每个员工用独立 profile（memory/skills/history）对话。</td>
+        <td>GitHub</td>
+        <td><a href="https://github.com/MGIT74/agent-equipe">repo</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">注：盘点范围为最近 2 天（09-07 ~ 09-08）新建的 hermes-skill 相关仓库，共 13 个。</p>
+
+  <div class="links">
+    <h3>🔗 在线存档</h3>
+    <a href="https://hermes-daily2-1443003958.cos.ap-guangzhou.myqcloud.com/github-skills-2026-09-08.html">COS（国内直接打开）</a>
+    <a href="https://chaibobo9246-ops.github.io/hermes-daily/github-skills-2026-09-08.html">GitHub Pages（需代理）</a>
+  </div>
+
+  <footer>Hermes Skill 每日盘点 · 由 Hermes Agent 自动生成 · 2026-09-08</footer>
+</div>
+</body>
+</html>
